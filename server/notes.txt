@@ -1,0 +1,23 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55SWQiOiI2NGI0ZWVjZDJlNTFjNWYxMmJmZmFlNTUiLCJpYXQiOjE2ODk1Nzk4MzZ9.gKoZgzQqdKBeod2Y0A1muAp0jEXfHY780O255mtX9pQ
+
+
+{
+  "companyName":"tesla",
+  "title": "software dev",
+  "skill": "python",
+  "experience": "4 yrs"
+}
+
+
+{
+  "email": "google@raghav.com",
+  "password": "qwerty"
+}
+
+
+{
+  "companyName":"tesla",
+  "industry": "cars",
+  "email": "tesla@raghav.com",
+  "password": "qwerty"
+}
