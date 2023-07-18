@@ -1,0 +1,10 @@
+{
+  "email": "",
+  "companyName": "",
+  "address": "",
+  "phoneNumber": "",
+  "website": "",
+  "industry": "",
+  "aboutCompany": "",
+  "jobPosts": ["<postId>", "<postId>", "<postId>"]
+}

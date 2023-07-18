@@ -1,0 +1,66 @@
+{
+  "email": "",
+  "firstName": "",
+  "lastName": "",
+  "dob": "",
+  "address": "",
+  "languages": {
+    "eng": {
+      "proficiency": ""
+    },
+    "hindi": {
+      "proficiency": ""
+    }
+  },
+  "phoneNumber": "",
+  "profileSummary": "",
+  "resume": {
+    "status": "",
+    "resumeHeadline": "",
+    "skills": [
+      {
+        "skillName": "skill no 1",
+        "experience": "1 yrs"
+      },
+      {
+        "skillName": "skill no 2",
+        "experience": "2 yrs"
+      },
+      {
+        "skillName": "skill no 3",
+        "experience": "12 yrs"
+      }
+    ],
+    "employment": {
+      "currentlyEmployed": false,
+      "employmentType": "",
+      "totalExperience": "",
+      "currentCompany": "",
+      "joiningDate": "",
+      "salary": "",
+      "skillsRequired": ""
+    },
+    "education": {
+      "educationType": "",
+      "course": "",
+      "university": "",
+      "courseType": "",
+      "duration": "",
+      "score": ""
+    },
+    "projects": [
+      {
+        "title": "",
+        "isFinished": false,
+        "duration": "",
+        "details": ""
+      }
+    ],
+    "onlineProfiles": [
+      {
+        "websiteName": "",
+        "websiteLink": ""
+      }
+    ]
+  }
+}

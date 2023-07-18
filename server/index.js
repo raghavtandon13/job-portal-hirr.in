@@ -6,8 +6,10 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Company from "./models/Company.js";
 import Job from "./models/Job.js";
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 // Authentication middleware
 const authenticate = (req, res, next) => {
@@ -96,6 +98,7 @@ app.post("/login/user", async (req, res) => {
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
     res.json({ token });
+    console.log("user logged in")
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ message: "An error occurred during login" });
