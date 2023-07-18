@@ -1,0 +1,29 @@
+.signup-box {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 70vh;
+}
+.signup-heading {
+    color: black;
+}
+.signup-input {
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.signup-input input {
+    font-family: 'Roboto Slab', serif;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: none;
+    color: black;
+}
+.signup-button {
+    gap: 4px;
+    display: flex;
+    justify-content: center;
+}

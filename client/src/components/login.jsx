@@ -30,7 +30,9 @@ const Login = () => {
 
   return (
     <div className="login-box">
-      <div className="login-heading">Login</div>
+      <div className="login-heading">
+        <h1>Login</h1>
+      </div>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <input

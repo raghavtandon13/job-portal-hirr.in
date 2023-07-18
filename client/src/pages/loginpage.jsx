@@ -5,7 +5,7 @@ import Login from "../components/login";
 const Loginpage = () => {
   return (
     <>
-      <Navbar buttonLink="/" buttonLabel="Home" />
+      <Navbar buttonLink="/" buttonLabel="Home" button2Link="/signup" button2Label="Register"/>
       <Login />
     </>
   );
