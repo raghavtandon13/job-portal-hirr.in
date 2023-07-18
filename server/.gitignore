@@ -1,5 +1,4 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node
-# Edit at https://www.toptal.com/developers/gitignore?templates=node
+*.pptx
 
 ### Node ###
 # Logs
@@ -94,7 +93,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
-
+hiring
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and not Next.js
