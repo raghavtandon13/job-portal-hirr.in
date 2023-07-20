@@ -1,0 +1,17 @@
+.resume {
+    text-align: left;
+    /* background-color: green; */
+    color: black;
+    height: 40vh;
+    border-radius: 10px;
+}
+.resume h1 {
+    font-size: 36px;
+    margin-left: 5%;
+}
+.resume h4 {
+    font-size: 25px;
+}
+.title {
+    color: gray;
+}

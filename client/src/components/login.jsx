@@ -20,8 +20,14 @@ const Login = () => {
       });
 
       if (response.ok) {
+        const responseData = await response.json();
+        const token = responseData.token; // Assuming your token key in the response is "token"
+
         console.log("Login successful!");
-        navigate("/profile")
+        localStorage.setItem('token', token);
+        console.log("token stored")
+        navigate("/profile");
+
       } else {
         console.error("Login failed");
       }
