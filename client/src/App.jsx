@@ -7,6 +7,10 @@ import Profilepage from "./pages/profilepage";
 import "./App.css";
 
 function App() {
+  const isLoggedIn = () => {
+    const token = localStorage.getItem("token");
+    return !!token;
+  };
   return (
     <>
       <BrowserRouter>
@@ -14,7 +18,10 @@ function App() {
           <Route path="/" element={<Homepage />}></Route>
           <Route path="login" element={<Loginpage />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
-          <Route path="profile" element={<Profilepage />}></Route>
+          <Route
+            path="profile"
+            element={isLoggedIn() ? <Profilepage /> : <Loginpage />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>
