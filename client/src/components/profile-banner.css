@@ -1,0 +1,26 @@
+.profile-banner {
+  border-radius: 10px;
+  width: 70vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2)
+}
+.profile-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1%;
+  flex: 1;
+}
+.profile-left img {
+  border: 4px solid;
+  border-radius: 167px;
+  width: 15vw;
+  height: 15vw;
+}
+.profile-right {
+  color: black;
+  margin: 1%;
+  flex: 4;
+}
