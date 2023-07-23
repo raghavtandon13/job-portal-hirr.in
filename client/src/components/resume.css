@@ -1,11 +1,14 @@
 .resume {
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   text-align: left;
   color: black;
   height: 50vh;
   border-radius: 10px;
-  gap: 2%;
+  gap: 6%;
+  margin: 2% 0%;
+  padding-bottom: 2%;
 }
 .resume h1 {
   font-size: 36px;
@@ -14,13 +17,17 @@
 .resume h4 {
   margin-left: 5%;
   font-size: 18px;
+  color: gray;
+  font-weight: 300;
 }
 .title {
+  background-image: linear-gradient(to right, #747bff33, #747bff00);
+  /* background-color: #747bff1f; */
   text-decoration: dashed;
   font-size: 10px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  color: gray;
+  /* font-family: "Poppins", sans-serif; */
+  font-weight: 600;
+  color: black !important;
   margin-bottom: 10px;
 }
 .resume-headline,
@@ -29,28 +36,38 @@
 .resume-education,
 .resume-projects,
 .resume-profiles {
-  background-color: rgb(248 248 248);
+  /* background-color: rgb(248 248 248); */
   box-shadow: 1px;
   gap: 10%;
   display: flex;
   flex-direction: column;
+  /* box-shadow: 0 6px 12px 12px rgba(30,10,58,.04); */
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid #747bff47;
+  padding: 20px 0px;
 }
 .skills-group h5 {
-  border: 1px solid black;
+  background-color: #ffffff;
+  border: 1px solid #e7e7f1;
   padding: 4px;
   border-radius: 18px;
   font-size: medium;
   margin: 1px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .skills-group {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 2%;
+  padding-bottom: 10px;
 }
 .name {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
+  color: black !important;
+  /* font-family: "Poppins", sans-serif; */
+  font-weight: 500 !important;
   font-size: 10px;
 }
 .employment-group,
@@ -59,3 +76,13 @@
 .profile-group {
   margin: 10px 0px;
 }
+
+.resume-skills {
+  display: flex;
+}
+/* .resume-skills .title {
+  flex: 1;
+}
+.resume-skills .skills-group {
+  flex: 1;
+} */

@@ -8,7 +8,7 @@ const Profilepage = () => {
     <>
       <Navbar
         buttonLink="/"
-        buttonLabel="Home"
+        buttonLabel="Search"
         button2Link="/signup"
         button2Label="Settings"
       />

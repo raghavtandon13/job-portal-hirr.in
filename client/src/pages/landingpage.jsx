@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import Banner from "../components/banner";
-const Homepage = () => {
+const LandingPage = () => {
   return (
     <>
       <Navbar buttonLink="/login" buttonLabel="Login" button2Link="/signup" button2Label="Register"/>
@@ -10,4 +10,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default LandingPage;

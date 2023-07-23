@@ -5,7 +5,7 @@ const Resume = () => {
   return (
     <>
       <div className="resume">
-        <h1>RESUME</h1>
+        {/* <h1>RESUME</h1> */}
         <div className="resume-headline">
           <h4 className="title">Resume Headline</h4>
           <h4>Software Enggineer from San Fransico</h4>
