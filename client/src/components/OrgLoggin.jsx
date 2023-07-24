@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "./Orgloggin.css";
 
-const Login = () => {
+const OrgLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const response = await fetch("http://localhost:3000/login/user/", {
+      const response = await fetch("http://localhost:3000/login/company/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,10 +24,9 @@ const Login = () => {
         const token = responseData.token; // Assuming your token key in the response is "token"
 
         console.log("Login successful!");
-        localStorage.setItem('token', token);
-        console.log("token stored")
+        localStorage.setItem("token", token);
+        console.log("token stored");
         navigate("/profile");
-
       } else {
         console.error("Login failed");
       }
@@ -40,6 +39,7 @@ const Login = () => {
     <div className="login-box">
       <div className="login-heading">
         <h1>Login</h1>
+        <h2>India's no. 1 Recruitment Platform</h2>
       </div>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
@@ -63,4 +63,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default OrgLogin;

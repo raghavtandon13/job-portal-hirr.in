@@ -5,6 +5,8 @@ import Loginpage from "./pages/loginpage";
 import SignUp from "./pages/signuppage";
 import Profilepage from "./pages/profilepage";
 import Homepage from "./pages/homepage";
+import OrgsignupPage from "./pages/orgsignuppage";
+import Orgloginpage from "./pages/orgloginpage";
 import "./App.css";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path="/home" element={<Homepage />}></Route>
           <Route path="login" element={<Loginpage />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
+          <Route path="signup/org" element={<OrgsignupPage />}></Route>
+          <Route path="login/org" element={<Orgloginpage />}></Route>
           <Route
             path="profile"
             element={isLoggedIn() ? <Profilepage /> : <Loginpage />}

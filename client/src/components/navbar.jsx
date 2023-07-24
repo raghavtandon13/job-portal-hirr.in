@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ buttonLabel, buttonLink,button2Label, button2Link }) => {
+const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link }) => {
   return (
     <nav className="navbar">
       <div className="navbar-right">
@@ -23,8 +23,8 @@ const Navbar = ({ buttonLabel, buttonLink,button2Label, button2Link }) => {
               For employers&#8628;
             </button>
             <div class="dropdown-content">
-              <a href="#">Employer Login</a>
-              <a href="#">Register</a>
+              <Link to="/login/org">Employer Login</Link>
+              <Link to="/signup/org">Register</Link>
               <a href="#">Post a Job</a>
             </div>
           </div>
