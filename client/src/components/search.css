@@ -6,6 +6,7 @@
   background-color: #c9c9c957;
   flex: 1;
   justify-content: space-evenly;
+  margin-top: 80px;
 }
 .banner-search input {
   color: black;

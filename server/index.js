@@ -215,6 +215,7 @@ app.get("/jobs/search", async (req, res) => {
     const jobs = await Job.find(filter);
 
     res.json(jobs);
+    console.log(jobs)
   } catch (error) {
     console.error("Error while fetching jobs:", error);
     res.status(500).json({ message: "An error occurred while fetching jobs" });

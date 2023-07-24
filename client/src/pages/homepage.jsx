@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
 import Search from "../components/search";
-import JobPost from "../components/JobPost";
 
 const Homepage = () => {
   return (
@@ -13,9 +12,8 @@ const Homepage = () => {
         button2Link="/signup"
         button2Label="Register"
       />
-      <ProfileBanner />
+      {/* <ProfileBanner /> */}
       <Search/>
-      <JobPost/>
     </>
   );
 };

@@ -1,0 +1,15 @@
+.card {
+  color: black;
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid #747bff47;
+  padding: 20px 20px;
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
+}
+.card h3,
+h4 {
+  font-weight: 500;
+}

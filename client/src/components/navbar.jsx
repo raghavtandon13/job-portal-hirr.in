@@ -22,7 +22,7 @@ const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link }) => {
             <button className="emp-btn dropdown-button">
               For employers&#8628;
             </button>
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <Link to="/login/org">Employer Login</Link>
               <Link to="/signup/org">Register</Link>
               <a href="#">Post a Job</a>
