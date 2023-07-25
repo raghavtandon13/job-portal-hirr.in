@@ -1,6 +1,6 @@
 .profile-meter {
   color: black;
-    margin-top: 60px;
+  margin-top: 40px;
   height: 20vh;
   border: 1px solid #747bff47;
   border-radius: 20px;
@@ -32,16 +32,15 @@
   margin-bottom: -15px;
 }
 .meter-text {
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 .meter-text p {
-    padding: 4%;
-    background-color: aliceblue ;
-    border-radius: 10px;
-    border: 1px solid #e6e7fc;
+  padding: 4%;
+  background-color: aliceblue;
+  border-radius: 10px;
+  border: 1px solid #e6e7fc;
 }
