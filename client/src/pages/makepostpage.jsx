@@ -1,15 +1,14 @@
 import React from 'react'
 import Navbar from "../components/navbar";
-import OrgPosts from '../components/OrgPosts';
-import PostData from '../components/PostData';
+import MakePost from '../components/makePost';
 
-const Orghomepage = () => {
+const Makepostpage = () => {
   return (
     <>
     <Navbar buttonLink="/" buttonLabel="Settings" button2Link="/signup" button2Label="Profile"/>
-    <OrgPosts/>
+    <MakePost/>
     </>
   )
 }
 
-export default Orghomepage
+export default Makepostpage

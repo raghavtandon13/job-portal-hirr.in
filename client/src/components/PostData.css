@@ -1,0 +1,29 @@
+li {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+}
+.post-details {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100px;
+  align-content: center;
+  justify-content: space-around;
+}
+.post-details-text h3 {
+  font-weight: 600;
+}
+.post-details-btn {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.post-details-btn button {
+  height: fit-content;
+}
+.post-end-break {
+  width: 80%;
+  border: 1px solid #00000052;
+}

@@ -9,8 +9,11 @@ import Job from "./models/Job.js";
 import cors from 'cors';
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
+
 // Authentication middleware
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization;
@@ -181,6 +184,7 @@ app.post("/signup/company", async (req, res) => {
 
 app.post("/jobs", authenticate, async (req, res) => {
   try {
+    console.log("Request body:", req.body);
     const { companyName, title, skills, experience } = req.body;
 
     // Find the company based on the company name

@@ -1,0 +1,20 @@
+.org-home {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.org-posts {
+  color: black;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 70vw;
+  height: fit-content;
+}
+.org-post-heading {
+  width: 70vw;
+  text-align: left;
+  padding: 1% 2%;
+}
+.org-post-heading h3 {
+    background-image: linear-gradient(to right, #747bff33, #747bff00);
+}
