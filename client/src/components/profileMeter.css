@@ -1,0 +1,47 @@
+.profile-meter {
+  color: black;
+    margin-top: 60px;
+  height: 20vh;
+  border: 1px solid #747bff47;
+  border-radius: 20px;
+}
+.meter-brand h3 {
+  font-weight: 500;
+  font-size: 16px;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  background-image: linear-gradient(to right, #747bff33, #747bff00);
+}
+.meter-heading h5 {
+  font-weight: 300;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.meter-details {
+  display: flex;
+  flex-direction: row;
+}
+.meter-percent {
+  margin: 10px;
+  margin-left: 20px;
+  margin-bottom: -15px;
+}
+.meter-text {
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+.meter-text p {
+    padding: 4%;
+    background-color: aliceblue ;
+    border-radius: 10px;
+    border: 1px solid #e6e7fc;
+}

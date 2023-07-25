@@ -36,7 +36,7 @@ const Signup = () => {
         console.log("Signup successful!");
         localStorage.setItem("token", token);
         console.log("token stored");
-        navigate("/profile"); // change this to resume builder
+        navigate("/home"); // change this to resume builder
       } else {
         console.error("Signup failed");
       }

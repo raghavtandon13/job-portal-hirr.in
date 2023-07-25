@@ -26,7 +26,7 @@ const Login = () => {
         console.log("Login successful!");
         localStorage.setItem('token', token);
         console.log("token stored")
-        navigate("/profile");
+        navigate("/home");
 
       } else {
         console.error("Login failed");

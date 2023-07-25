@@ -24,8 +24,8 @@ function App() {
           <Route path="/home" element={<Homepage />}></Route>
           <Route path="login" element={<Loginpage />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
-          <Route path="signup/org" element={<OrgsignupPage />}></Route>
-          <Route path="login/org" element={<Orgloginpage />}></Route>
+          <Route path="org/signup" element={<OrgsignupPage />}></Route>
+          <Route path="org/login" element={<Orgloginpage />}></Route>
           <Route path="org/home" element={<Orghomepage />}></Route>
           <Route path="org/makepost" element={<Makepostpage />}></Route>
           <Route

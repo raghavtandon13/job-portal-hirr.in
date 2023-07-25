@@ -1,6 +1,7 @@
 import React from "react";
 import image from "../assets/profile-pic.jpg";
 import "./longProfBanner.css";
+import { Link } from "react-router-dom";
 
 const LongBanner = () => {
   return (
@@ -11,7 +12,9 @@ const LongBanner = () => {
         </div>
         <div className="long-right">
           <div className="long-name">
+            <Link to={"/profile"}>
             <h1>Shawn Mendez</h1>
+            </Link>
             <h3>Backend Developer</h3>
             <h4>at Google</h4>
           </div>

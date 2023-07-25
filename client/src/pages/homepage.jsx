@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
 import LongBanner from "../components/longProfBanner";
 import Search from "../components/search";
+import ProfileMeter from "../components/profileMeter";
 import "./Homepage.css";
 
 const Homepage = () => {
@@ -14,10 +15,12 @@ const Homepage = () => {
         button2Link="/signup"
         button2Label="Settings"
       />
+      <Search />
       <div className="wrapper">
         <LongBanner />
-        <div className="search-wrapper">
-          <Search />
+
+        <div className="sub-wrapper">
+          <ProfileMeter />
         </div>
       </div>
     </>
