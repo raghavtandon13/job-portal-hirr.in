@@ -17,12 +17,16 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
+.login-form form button {
+  background-color: rgb(31, 34, 35);
+}
 .login-form a {
-    color: black;
+    /* color: black; light mode */
+    color: rgb(232, 230, 227);
 }
 .login-heading {
   font-family: 'Roboto Slab', serif;
-  color: black;
+  /* color: black; light mode */
 }
 .login-form form input {
     font-family: 'Roboto Slab', serif;
@@ -31,5 +35,6 @@
     border: 2px solid black;
     border-radius: 10px;
     background: none;
-    color: black;
+    /* color: black; light mode*/
+    border-color: rgb(140, 130, 115);
 }
