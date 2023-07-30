@@ -2,8 +2,9 @@
     color: black;
     margin-top: 10px;
     height: 30vh;
-    border: 1px solid #747bff47;
+    /* border: 1px solid #747bff47; */
     border-radius: 20px;
+    background-color: rgb(31, 34, 35);
 }
 .reccos-brand h3 {
   font-weight: 500;
@@ -11,7 +12,8 @@
   text-align: left;
   margin-left: 20px;
   margin-top: 10px;
-  background-image: linear-gradient(to right, #747bff33, #747bff00);
+  /* background-image: linear-gradient(to right, #747bff33, #747bff00); */
+  color: white;
 }
 .reccos-group {
     width: 100%;
