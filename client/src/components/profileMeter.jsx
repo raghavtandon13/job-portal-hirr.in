@@ -20,7 +20,7 @@ const ProfileMeter = () => {
         <div className="meter-text">
           <p>Projects</p>
           <p>Video Introduction</p>
-          <p>Hobbies</p>
+          <p>Education</p>
         </div>
       </div>
     </div>

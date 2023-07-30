@@ -4,6 +4,7 @@ import ProfileBanner from "../components/profile-banner";
 import LongBanner from "../components/longProfBanner";
 import Search from "../components/search";
 import ProfileMeter from "../components/profileMeter";
+import Reccos from "../components/reccos";
 import "./Homepage.css";
 
 const Homepage = () => {
@@ -21,6 +22,8 @@ const Homepage = () => {
 
         <div className="sub-wrapper">
           <ProfileMeter />
+          <Reccos desc="Job Reccomendations for you"/>
+          <Reccos desc="Saved Jobs"/>
         </div>
       </div>
     </>
