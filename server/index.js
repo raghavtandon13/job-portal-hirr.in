@@ -13,8 +13,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
-
+//------------------------------------------------
 // Authentication middleware for Organization
+
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization;
 
@@ -39,6 +40,7 @@ const authenticate = (req, res, next) => {
       .json({ message: "An error occurred during authentication" });
   }
 };
+//------------------------------------------------
 
 // Authentication middleware for User
 
@@ -66,7 +68,7 @@ const userAuthenticate = async (req, res, next) => {
       .json({ message: "An error occurred during authentication" });
   }
 };
-
+//------------------------------------------------
 // MongoDB connection
 
 const MONGODB_URI =
@@ -79,9 +81,11 @@ mongoose
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
-
+//------------------------------------------------
 // Routes
+
 // Home Route
+
 app.get("/", (req, res) => {
   res.send("WELCOME, you're one step closer to finding your dream job.");
 });
@@ -359,6 +363,7 @@ app.get("/company/jobs", authenticate, async (req, res) => {
   }
 });
 
+//------------------------------------------------
 // Express App listening on PORT
 
 const port = 3000;
