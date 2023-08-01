@@ -260,6 +260,31 @@ app.post("/jobs/:jobId/apply", userAuthenticate, async (req, res) => {
   }
 });
 
+// Route for saving in a given job
+
+app.post("/jobs/:jobId/save", userAuthenticate, async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
+    const user = req.user;
+
+    const job = await Job.findById(jobId);
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    } else console.log("job found");
+
+    if (!user.saved) {
+      user.saved = [];
+    }
+    user.saved.push(jobId);
+    await user.save();
+
+    res.json({ message: "Job saved successfully" });
+  } catch (error) {
+    console.error("Error saving job:", error);
+    res.status(500).json({ message: "An error occurred during saving job" });
+  }
+});
+
 // Route for viewing applications of user
 
 app.get("/user/applications", userAuthenticate, async (req, res) => {
@@ -275,6 +300,22 @@ app.get("/user/applications", userAuthenticate, async (req, res) => {
     res
       .status(500)
       .json({ message: "An error occurred while fetching user applications" });
+  }
+});
+// Route for viewing saved jobs of user
+
+app.get("/user/saved", userAuthenticate, async (req, res) => {
+  try {
+    const user = req.user;
+
+    const saved = await Job.find({ _id: { $in: user.saved } });
+
+    res.json(saved);
+  } catch (error) {
+    console.error("Error while fetching user saved jobs:", error);
+    res
+      .status(500)
+      .json({ message: "An error occurred while fetching user saved jobs" });
   }
 });
 

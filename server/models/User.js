@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   applications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
+  saved: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
 });
 
 userSchema.pre("save", async function (next) {
