@@ -22,8 +22,8 @@ const Homepage = () => {
 
         <div className="sub-wrapper">
           <ProfileMeter />
-          <Reccos desc="Job Reccomendations for you"/>
-          <Reccos desc="Saved Jobs"/>
+          <Reccos desc="Job Reccomendations for you" />
+          <Reccos desc="Saved Jobs" />
         </div>
       </div>
     </>

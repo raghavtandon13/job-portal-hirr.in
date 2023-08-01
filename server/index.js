@@ -108,7 +108,7 @@ app.post("/login/user", async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
-    res.cookie("jwttoken", token, {
+    res.cookie("mytoken", token, {
       expires: new Date(Date.now() + 3600000),
       httpOnly: true,
     });
@@ -315,7 +315,7 @@ app.get("/user/applications", userAuthenticate, async (req, res) => {
       .json({ message: "An error occurred while fetching user applications" });
   }
 });
-// Route for viewing saved jobs of user
+// Route for fetching saved jobs of user
 
 app.get("/user/saved", userAuthenticate, async (req, res) => {
   try {

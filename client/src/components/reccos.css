@@ -1,12 +1,16 @@
 .reccos {
-    color: black;
-    margin-top: 10px;
-    height: 30vh;
-    /* border: 1px solid #747bff47; */
-    border-radius: 20px;
-    background-color: rgb(31, 34, 35);
+  
+  border: 1px solid rgb(42 42 72);
+  color: black;
+  margin-top: 10px;
+  height: 30vh;
+  /* border: 1px solid #747bff47; */
+  border-radius: 20px;
+  background-color: rgb(31, 34, 35);
+  max-height: 280px;
 }
 .reccos-brand h3 {
+  padding-top: 10px;
   font-weight: 500;
   font-size: 16px;
   text-align: left;
@@ -16,17 +20,20 @@
   color: white;
 }
 .reccos-group {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-wrap: wrap;
-    height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 85%;
+  gap: 10px;
 }
 .recc {
-    padding: 60px 70px;
-    background-color: aliceblue;
-    border-radius: 10px;
-    border: 1px solid #e6e7fc;
+  text-align: left;
+  color: white;
+  padding: 70px 80px 10px 10px;
+  background-color: #1f2223;
+  border-radius: 10px;
+  border: 2px solid #2a2a48;
 }

@@ -12,7 +12,6 @@ const MakePost = () => {
     document.getElementById("title").value = "";
     document.getElementById("experience").value = "";
     document.getElementById("skills").value = "";
-
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,9 +20,7 @@ const MakePost = () => {
       const response = await fetch("http://localhost:3000/jobs", {
         method: "POST",
         headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55SWQiOiI2NGJlMmM5YzdlMzY0ZTIwYzAzYzc3MzQiLCJpYXQiOjE2OTAxOTU5MDN9.kEptQ1pjmb4-Y5DomDDxJGDsGgvcCvQL8pxHzIzs7PM",
-            "Content-Type": "application/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(data),
       });
