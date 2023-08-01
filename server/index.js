@@ -108,6 +108,11 @@ app.post("/login/user", async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
+    res.cookie("jwttoken", token, {
+      expires: new Date(Date.now() + 3600000),
+      httpOnly: true,
+    });
+
     res.json({ token });
     console.log("user logged in");
   } catch (error) {
