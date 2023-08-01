@@ -86,7 +86,7 @@ app.get("/", (req, res) => {
   res.send("WELCOME, you're one step closer to finding your dream job.");
 });
 
-// Login for User
+// Route for Login for User
 
 app.post("/login/user", async (req, res) => {
   try {
@@ -96,14 +96,11 @@ app.post("/login/user", async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    if (password !== user.password) {
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    // USE ENCRRYPTED PASSWORD WHEN FRONTEND IS COMPLETED - !!! important
-    // const isPasswordValid = await bcrypt.compare(password, user.password);
-    // if (!isPasswordValid) {
-    //   return res.status(401).json({ message: 'Invalid credentials' });
-    // }
 
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
@@ -115,7 +112,7 @@ app.post("/login/user", async (req, res) => {
   }
 });
 
-// Login for Organization
+// Route for Login for Organization
 
 app.post("/login/company", async (req, res) => {
   try {
@@ -126,14 +123,10 @@ app.post("/login/company", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    if (password !== company.password) {
+    const isPasswordValid = await bcrypt.compare(password, company.password);
+    if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    // USE ENCRRYPTED PASSWORD WHEN FRONTEND IS COMPLETED - !!! important
-    // const isPasswordValid = await bcrypt.compare(password, company.password);
-    // if (!isPasswordValid) {
-    //   return res.status(401).json({ message: "Invalid credentials" });
-    // }
 
     const token = jwt.sign({ companyId: company._id }, "your-secret-key");
 
@@ -147,7 +140,7 @@ app.post("/login/company", async (req, res) => {
   }
 });
 
-// Signup for User
+// Route for Signup for User
 
 app.post("/signup/user", async (req, res) => {
   try {
@@ -169,7 +162,7 @@ app.post("/signup/user", async (req, res) => {
   }
 });
 
-// Signup for Organization
+// Route for Signup for Organization
 
 app.post("/signup/company", async (req, res) => {
   try {
