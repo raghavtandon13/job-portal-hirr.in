@@ -5,7 +5,9 @@ const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link }) => {
   return (
     <nav className="navbar">
       <div className="navbar-right">
-        <div className="navbar-brand">HIRR.IN</div>
+        <div className="navbar-brand">
+          <Link to='/'>HIRR.IN</Link>
+        </div>
       </div>
       <div className="navbar-left">
         <div className="navbar-btn-group">
