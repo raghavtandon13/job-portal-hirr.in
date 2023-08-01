@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Company from "./models/Company.js";
 import Job from "./models/Job.js";
-import cors from 'cors';
+import cors from "cors";
 
 const app = express();
 app.use(bodyParser.json());
@@ -101,7 +101,7 @@ app.post("/login/user", async (req, res) => {
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
     res.json({ token });
-    console.log("user logged in")
+    console.log("user logged in");
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ message: "An error occurred during login" });
@@ -219,15 +219,14 @@ app.get("/jobs/search", async (req, res) => {
     const jobs = await Job.find(filter);
 
     res.json(jobs);
-    console.log(jobs)
+    console.log(jobs);
   } catch (error) {
     console.error("Error while fetching jobs:", error);
     res.status(500).json({ message: "An error occurred while fetching jobs" });
   }
 });
 
-
-app.post('/jobs/:jobId/apply', userAuthenticate, async (req, res) => {
+app.post("/jobs/:jobId/apply", userAuthenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const user = req.user; // Assuming the authenticated user is stored in req.user
@@ -235,8 +234,8 @@ app.post('/jobs/:jobId/apply', userAuthenticate, async (req, res) => {
     // Check if the job exists
     const job = await Job.findById(jobId);
     if (!job) {
-      return res.status(404).json({ message: 'Job not found' });
-    } else console.log('job found');
+      return res.status(404).json({ message: "Job not found" });
+    } else console.log("job found");
 
     // Add the job to the user's applications
     if (!user.applications) {
@@ -249,13 +248,14 @@ app.post('/jobs/:jobId/apply', userAuthenticate, async (req, res) => {
     job.applicants.push(user._id);
     await job.save();
 
-    res.json({ message: 'Job application successful' });
+    res.json({ message: "Job application successful" });
   } catch (error) {
-    console.error('Error during job application:', error);
-    res.status(500).json({ message: 'An error occurred during job application' });
+    console.error("Error during job application:", error);
+    res
+      .status(500)
+      .json({ message: "An error occurred during job application" });
   }
 });
-
 
 app.get("/user/applications", userAuthenticate, async (req, res) => {
   //add authenticate
@@ -275,7 +275,7 @@ app.get("/user/applications", userAuthenticate, async (req, res) => {
   }
 });
 
-app.get('/jobs/:jobId/applicants', authenticate, async (req, res) => {
+app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const company = req.company; // Assuming the authenticated company is stored in req.company
@@ -283,7 +283,7 @@ app.get('/jobs/:jobId/applicants', authenticate, async (req, res) => {
     // Check if the job exists and belongs to the company
     const job = await Job.findOne({ _id: jobId, company: company._id });
     if (!job) {
-      return res.status(404).json({ message: 'Job not found' });
+      return res.status(404).json({ message: "Job not found" });
     }
 
     // Retrieve the applicants for the job
@@ -291,8 +291,10 @@ app.get('/jobs/:jobId/applicants', authenticate, async (req, res) => {
 
     res.json(applicants);
   } catch (error) {
-    console.error('Error while fetching job applicants:', error);
-    res.status(500).json({ message: 'An error occurred while fetching job applicants' });
+    console.error("Error while fetching job applicants:", error);
+    res
+      .status(500)
+      .json({ message: "An error occurred while fetching job applicants" });
   }
 });
 
@@ -307,10 +309,11 @@ app.get("/company/jobs", authenticate, async (req, res) => {
     res.json({ jobs });
   } catch (error) {
     console.error("Error retrieving jobs:", error);
-    res.status(500).json({ message: "An error occurred while retrieving jobs" });
+    res
+      .status(500)
+      .json({ message: "An error occurred while retrieving jobs" });
   }
 });
-
 
 const port = 3000;
 app.listen(port, () => {
