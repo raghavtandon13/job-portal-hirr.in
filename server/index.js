@@ -138,6 +138,10 @@ app.post("/login/company", async (req, res) => {
     }
 
     const token = jwt.sign({ companyId: company._id }, "your-secret-key");
+    res.cookie("jwttoken", token, {
+      expires: new Date(Date.now() + 3600000),
+      httpOnly: true,
+    });
 
     company.sessionToken = token;
     await company.save();
