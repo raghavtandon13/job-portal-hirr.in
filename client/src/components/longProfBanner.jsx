@@ -1,9 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import image from "../assets/profile-pic.jpg";
 import "./longProfBanner.css";
 import { Link } from "react-router-dom";
 
 const LongBanner = () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+  const token = getCookie("mytoken");
+  // const token = document.cookie.includes("mytoken");
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/user/details", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUserName(data.name);
+        } else {
+          console.error("Failed to fetch user details");
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    fetchUserDetails();
+  }, []);
+
   return (
     <>
       <div className="long-banner">
@@ -13,7 +47,7 @@ const LongBanner = () => {
         <div className="long-right">
           <div className="long-name">
             <Link to={"/profile"}>
-            <h1>Shawn Mendez</h1>
+              <h1>{userName}</h1>
             </Link>
             <h3>Backend Developer</h3>
             <h4>at Google</h4>

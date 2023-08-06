@@ -11,7 +11,8 @@ import cors from "cors";
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
+app.use(cors({ credentials: true, origin: "http://localhost:5173" })); 
+// app.use(cors({ origin: "*" }));
 // app.use(cors());
 app.use(express.json());
 //------------------------------------------------
@@ -96,18 +97,22 @@ app.get("/", (req, res) => {
 app.post("/login/user", async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email);
 
     const user = await User.findOne({ email });
+    console.log(user);
     if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Invalid credentials 1" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Invalid credentials 2" });
     }
 
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
+
+    console.log(token);
 
     res.cookie("mytoken", token, {
       expires: new Date(Date.now() + 3600000),
@@ -383,6 +388,40 @@ app.get("/company/jobs", authenticate, async (req, res) => {
   }
 });
 
+// temp route
+
+app.get("/api/validate_token", (req, res) => {
+  const token = req.header("Authorization");
+
+  if (!token) {
+    return res.status(401).json({ message: "Token missing." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, "your-secret-key"); // Verify the token using your secret key
+    // Token is valid, you can optionally send some user data back in the response
+    return res.status(200).json({ message: "Token is valid.", user: decoded });
+  } catch (error) {
+    return res.status(401).json({ message: "Invalid token." });
+  }
+});
+
+//Route for user details
+app.get("/user/details", userAuthenticate, async (req, res) => {
+  const user = req.user
+  try {
+    const userDetails = await User.findOne({ _id: user._id });
+
+    if (!userDetails) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    return res.json(userDetails);
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
 //------------------------------------------------
 // Express App listening on PORT
 

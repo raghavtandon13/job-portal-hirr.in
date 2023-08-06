@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./reccos.css";
 
 const Reccos = ({ desc }) => {
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+  const token = getCookie("mytoken");
+
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
@@ -9,8 +17,8 @@ const Reccos = ({ desc }) => {
       try {
         const response = await fetch("http://localhost:3000/user/saved", {
           headers: {
-            Authorization:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM4YWIwMzA1MTZmMWNhNjkyNWQxN2YiLCJpYXQiOjE2OTA4ODkyNDl9.a7i8NIZSDPOzQ9qdoVB9iXub6wUvlQRrNBv5DGTVfM4",
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
           },
         });
 
