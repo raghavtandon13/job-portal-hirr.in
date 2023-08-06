@@ -1,7 +1,10 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
-const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link }) => {
+const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link, funcBtn }) => {
+
+
+
   return (
     <nav className="navbar">
       <div className="navbar-right">
@@ -27,7 +30,7 @@ const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link }) => {
             <div className="dropdown-content">
               <Link to="/org/login">Employer Login</Link>
               <Link to="/org/signup">Register</Link>
-              <a href="#">Post a Job</a>
+              <a onClick={funcBtn} href="#">Log Out</a>
             </div>
           </div>
         </div>

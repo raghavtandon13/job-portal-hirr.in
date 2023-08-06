@@ -11,7 +11,8 @@ import cors from "cors";
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
+// app.use(cors());
 app.use(express.json());
 //------------------------------------------------
 // Authentication middleware for Organization
@@ -110,10 +111,20 @@ app.post("/login/user", async (req, res) => {
 
     res.cookie("mytoken", token, {
       expires: new Date(Date.now() + 3600000),
-      httpOnly: true,
+      // httpOnly: true,
     });
 
-    res.json({ token });
+    // res.json({ token });
+    res.json({
+      success: true,
+      message: "Login successful",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        // Add other relevant user data
+      },
+    });
     console.log("user logged in");
   } catch (error) {
     console.error("Error during login:", error);
@@ -140,7 +151,7 @@ app.post("/login/company", async (req, res) => {
     const token = jwt.sign({ companyId: company._id }, "your-secret-key");
     res.cookie("jwttoken", token, {
       expires: new Date(Date.now() + 3600000),
-      httpOnly: true,
+      // httpOnly: true,
     });
 
     company.sessionToken = token;

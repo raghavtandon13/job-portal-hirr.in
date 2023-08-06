@@ -8,6 +8,10 @@
   font-family: "Roboto Slab", serif;
   color: black;
 }
+
+.signup-heading h1 {
+  color: #e1e1e1;
+}
 .signup-input {
   height: 45vh;
   display: flex;
@@ -18,7 +22,7 @@
   font-family: "Roboto Slab", serif;
   padding: 8px;
   font-size: 16px;
-  border: 2px solid black;
+  border: 2px solid #8c8273;
   border-radius: 10px;
   background: none;
   color: black;
@@ -27,4 +31,7 @@
   gap: 4px;
   display: flex;
   justify-content: center;
+}
+.signup-button button {
+  background-color: #1f2223;
 }
