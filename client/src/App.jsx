@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./pages/landingpage";
 import Loginpage from "./pages/loginpage";
@@ -9,7 +8,6 @@ import OrgsignupPage from "./pages/orgsignuppage";
 import Orgloginpage from "./pages/orgloginpage";
 import Orghomepage from "./pages/orghomepage";
 import Makepostpage from "./pages/makepostpage";
-
 import "./App.css";
 
 function App() {
@@ -18,37 +16,71 @@ function App() {
     console.log(token);
     return token;
   };
+  const isLoggedInOrg = () => {
+    const token = document.cookie.includes("orgtoken");
+    console.log(token);
+    return token;
+  };
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="signup" element={<SignUp />}></Route>
-          <Route path="org/signup" element={<OrgsignupPage />}></Route>
-          <Route path="org/login" element={<Orgloginpage />}></Route>
-          <Route path="org/home" element={<Orghomepage />}></Route>
-          <Route path="org/makepost" element={<Makepostpage />}></Route>
-
+          {/* User Routes */}
           <Route
-            path="login"
+            path="/login"
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <Loginpage />}
-          ></Route>
+          />
 
           <Route
             path="/"
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <LandingPage />}
-          ></Route>
+          />
 
           <Route
             path="/home"
             element={isLoggedIn() ? <Homepage /> : <Navigate to={"/"} />}
-          ></Route>
+          />
 
           <Route
-            path="profile"
+            path="/profile"
             element={
               isLoggedIn() ? <Profilepage /> : <Navigate to={"/login"} />
             }
-          ></Route>
+          />
+
+          <Route
+            path="/signup"
+            element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}
+          />
+
+          {/* Org Routes */}
+
+          <Route
+            path="/org/home"
+            element={isLoggedInOrg() ? <Orghomepage /> : <Navigate to={"/"} />}
+          />
+
+          <Route
+            path="/org/signup"
+            element={
+              isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <OrgsignupPage />
+            }
+          />
+
+          <Route
+            path="/org/makepost"
+            element={
+              isLoggedInOrg() ? <Makepostpage /> : <Navigate to={"/org/login"} />
+            }
+          />
+
+          <Route
+            path="/org/login"
+            element={
+              isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <Orgloginpage />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

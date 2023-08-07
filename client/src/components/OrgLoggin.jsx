@@ -17,18 +17,16 @@ const OrgLogin = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+        credentials: "include",
       });
 
       if (response.ok) {
-        const responseData = await response.json();
-        const token = responseData.token; // Assuming your token key in the response is "token"
-
         console.log("Login successful!");
-        localStorage.setItem("token", token);
-        console.log("token stored");
+        window.location.reload();
         navigate("/org/home");
       } else {
-        console.error("Login failed");
+        const errorData = await response.json();
+        console.error("Login failed:", errorData.message);
       }
     } catch (error) {
       console.error("An error occurred:", error);

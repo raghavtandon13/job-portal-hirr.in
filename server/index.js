@@ -11,7 +11,7 @@ import cors from "cors";
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({ credentials: true, origin: "http://localhost:5173" })); 
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 // app.use(cors({ origin: "*" }));
 // app.use(cors());
 app.use(express.json());
@@ -142,8 +142,10 @@ app.post("/login/user", async (req, res) => {
 app.post("/login/company", async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email);
 
     const company = await Company.findOne({ email });
+    console.log(company);
     if (!company) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
@@ -154,7 +156,7 @@ app.post("/login/company", async (req, res) => {
     }
 
     const token = jwt.sign({ companyId: company._id }, "your-secret-key");
-    res.cookie("jwttoken", token, {
+    res.cookie("orgtoken", token, {
       expires: new Date(Date.now() + 3600000),
       // httpOnly: true,
     });
@@ -408,7 +410,7 @@ app.get("/api/validate_token", (req, res) => {
 
 //Route for user details
 app.get("/user/details", userAuthenticate, async (req, res) => {
-  const user = req.user
+  const user = req.user;
   try {
     const userDetails = await User.findOne({ _id: user._id });
 

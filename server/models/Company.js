@@ -7,6 +7,7 @@ const companySchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   jobs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Job' }],
+  role: { type: String, enum: ["user", "organization", "admin"], default: "organization" },
   sessionToken: { type: String }
 });
 

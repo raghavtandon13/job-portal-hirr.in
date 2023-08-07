@@ -7,6 +7,12 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   applications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
   saved: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
+  role: {
+    type: String,
+    enum: ["user", "organization", "admin"],
+    default: "user",
+  },
+  profilePicture: { type: String, default: "" },
 });
 
 userSchema.pre("save", async function (next) {

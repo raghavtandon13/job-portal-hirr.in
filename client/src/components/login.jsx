@@ -32,21 +32,6 @@ const Login = () => {
       console.error("An error occurred:", error);
     }
   };
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       const token = responseData.token;
-
-  //       console.log("Login successful!");
-  //       localStorage.setItem("token", token);
-  //       console.log("token stored");
-  //       navigate("/home");
-  //     } else {
-  //       console.error("Login failed");
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occurred:", error);
-  //   }
-  // };
 
   return (
     <div className="login-box">

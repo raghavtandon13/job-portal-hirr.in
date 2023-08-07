@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import image from "../assets/profile-pic.jpg";
+import image from "../assets/user.png";
 import "./longProfBanner.css";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const LongBanner = () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const token = getCookie("mytoken");
-  // const token = document.cookie.includes("mytoken");
+
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const LongBanner = () => {
     <>
       <div className="long-banner">
         <div className="long-left">
-          <img src={image} alt="" />
+          <img src={image || image} alt="" />
         </div>
         <div className="long-right">
           <div className="long-name">
