@@ -11,17 +11,16 @@
   margin-top: 80px;
 }
 .banner-search input {
-  padding-left: 50px;
+  /* padding-left: 50px; */
   color: black;
-  border-radius: 10px;
-  width: 18vw;
-  font-size: large;
+  border-radius: 14px;
+  width: 25%;
+  font-size: initial;
   border: none;
   background-color: rgb(24, 26, 27);
-  /* background-color: white; light mode */
 }
 .banner-search input::placeholder {
-  /* text-align: center; */
+  text-align: center;
 }
 .banner-search input:focus {
   outline: none;

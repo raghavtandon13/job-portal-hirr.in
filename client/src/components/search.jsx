@@ -38,7 +38,7 @@ const Search = () => {
       <div className="banner-search">
         <input
           type="text"
-          placeholder="Enter skills/designations"
+          placeholder="Skills/designations"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />

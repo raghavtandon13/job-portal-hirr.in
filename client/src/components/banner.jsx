@@ -38,7 +38,7 @@ const Banner = ({ heading, subheading }) => {
         <p>{subheading || defaultSubheading}</p>
       </div>
       <div className="banner-search">
-        <input type="text" placeholder="Enter skills/designations" />
+        <input type="text" placeholder="Skills/designations" />
         <input type="text" placeholder="Select Experience" />
         <input type="text" placeholder="Enter Location" />
         <button onClick={handleSearch}>Search</button>
