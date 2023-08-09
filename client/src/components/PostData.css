@@ -10,9 +10,11 @@ li {
   min-height: 100px;
   align-content: center;
   justify-content: space-around;
+  color: darkgray;
 }
 .post-details-text h3 {
-  font-weight: 600;
+  font-weight: 500;
+  color: #4a4aff;
 }
 .post-details-btn {
   display: flex;

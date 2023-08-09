@@ -6,7 +6,7 @@ const OrgPosts = () => {
   return (
     <>
       <div className="org-home">
-        <div className="org-posts">
+        <div className="org-posts-1">
           <div className="org-post-heading">
             <h3>Your Job Posts</h3>
           </div>
@@ -14,7 +14,7 @@ const OrgPosts = () => {
             <PostData />
           </div>
         </div>
-        <div className="make-posts">
+        <div className="make-posts-btn">
           <button>Make new Job Post</button>
         </div>
       </div>

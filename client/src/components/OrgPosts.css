@@ -3,9 +3,10 @@
   flex-direction: column;
   gap: 10px;
 }
-.org-posts  {
+
+.org-posts-1 {
   color: black;
-  border: 2px solid #ffffff;
+  border: 2px solid #2a2a48;
   border-radius: 20px;
   width: 70vw;
   height: fit-content;
@@ -17,10 +18,12 @@
   padding: 1% 2%;
 }
 .org-post-heading h3 {
+  font-weight: 400;
   width: max-content;
   border-bottom: 2px solid;
   color: white;
 }
-.post-details-text  {
-  color: darkgray;
+
+.make-posts-btn button {
+  background-color: #1f2223;
 }
