@@ -10,7 +10,30 @@
   background-color: #1f2223;
   align-items: flex-start;
 }
-.card h3,
-h4 {
+.card h3 {
   font-weight: 500;
+}
+.card h4 {
+  font-size: 15px;
+}
+.card p {
+  font-size: 13px;
+}
+.card h4 {
+  font-weight: 500;
+  color: rgb(217, 217, 217);
+}
+.card p {
+  font-weight: 300;
+  color: darkgray;
+}
+.card button {
+  min-width: 65px;
+  font-size: 10px;
+}
+.card-btns {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

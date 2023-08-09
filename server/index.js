@@ -443,10 +443,11 @@ app.get("/jobs/:jobId/status",userAuthenticate, async (req, res) => {
 
     
     const applied = job.applicants.includes(user._id);
+    const saved = user.saved.includes(jobId)
 
 
 
-    return res.status(200).json({ applied });
+    return res.status(200).json({ applied, saved });
   } catch (error) {
     console.error("An error occurred:", error);
     res.status(500).json({ message: "Internal Server Error" });

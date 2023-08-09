@@ -1,9 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import "./card.css";
 
 const Card = ({ data }) => {
   const [applied, setApplied] = useState(false);
+  const [saved, setSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   function getCookie(name) {
@@ -31,6 +34,7 @@ const Card = ({ data }) => {
         if (response.ok) {
           const responseData = await response.json();
           setApplied(responseData.applied);
+          setSaved(responseData.saved);
         }
       } catch (error) {
         console.error("An error occurred:", error);
@@ -75,12 +79,14 @@ const Card = ({ data }) => {
         <p>Experience: {data.experience}</p>
         <p>Skills: Javascrpit,Typescript, MERN stack</p>
         <p>Location: Delhi</p>
-        {applied ? (
-          <button style={{ backgroundColor: "gray" }}>Applied</button>
-        ) : (
-          <button onClick={handleApply}>Apply</button>
-        )}
-        {/* <button onClick={handleApply}>Apply</button> */}
+        <div className="card-btns">
+          {applied ? (
+            <button style={{ backgroundColor: "gray" }}>Applied</button>
+          ) : (
+            <button onClick={handleApply}>Apply</button>
+          )}
+          {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+        </div>
       </div>
     </>
   );

@@ -39,6 +39,8 @@
   padding: 0px 20%;
   justify-content: space-evenly;
 }
+.navbar-btn-group button {
+}
 .emp-btn {
   font-weight: bolder;
   color: black;
@@ -57,7 +59,7 @@
   color: rgb(200, 195, 188);
   border: 1px solid white !important;
   /* color: #333; light mode */
-  padding: 10px;
+  /* padding: 10px; */
   border: none;
   cursor: pointer;
 }
@@ -97,3 +99,28 @@
   display: block;
 }
 
+@media only screen and (max-width: 1340px) {
+  .navbar {
+    justify-content: space-between;
+  }
+  .navbar-btn-group button {
+    font-size: 80%;
+  }
+  .navbar-btn-group {
+    padding: 0;
+    gap: 10px;
+    justify-content: center;
+  }
+  /* .navbar-left {
+    max-width: 300px;
+    flex: 1;
+  } */
+  .navbar-right {
+    flex: 1;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .navbar-left {
+    flex: 3;
+  }
+}
