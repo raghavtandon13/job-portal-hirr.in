@@ -1,14 +1,15 @@
 .org-home {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.org-posts {
+.org-posts  {
   color: black;
-  border: 2px solid black;
+  border: 2px solid #ffffff;
   border-radius: 20px;
   width: 70vw;
   height: fit-content;
+  background-color: #1f2223;
 }
 .org-post-heading {
   width: 70vw;
@@ -16,5 +17,10 @@
   padding: 1% 2%;
 }
 .org-post-heading h3 {
-    background-image: linear-gradient(to right, #747bff33, #747bff00);
+  width: max-content;
+  border-bottom: 2px solid;
+  color: white;
+}
+.post-details-text  {
+  color: darkgray;
 }
