@@ -1,15 +1,29 @@
-import React from 'react'
+import React from "react";
 import Navbar from "../components/navbar";
-import OrgPosts from '../components/OrgPosts';
-import PostData from '../components/PostData';
+import OrgPosts from "../components/OrgPosts";
+import PostData from "../components/PostData";
 
 const Orghomepage = () => {
+  function handleLogout() {
+    document.cookie =
+      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload();
+    return <Navigate to="org/login" />;
+  }
   return (
     <>
-    <Navbar buttonLink="/" buttonLabel="Settings" button2Link="/signup" button2Label="Profile"/>
-    <OrgPosts/>
+      <Navbar
+        buttonLink="/"
+        buttonLabel="Settings"
+        button2Link="/signup"
+        button2Label="Profile"
+        funcBtn={handleLogout}
+      />
+      <OrgPosts />
     </>
-  )
-}
+  );
+};
 
-export default Orghomepage
+export default Orghomepage;

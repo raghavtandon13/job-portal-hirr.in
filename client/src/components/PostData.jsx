@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./PostData.css";
 
 const PostData = () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+  const token = getCookie("orgtoken");
+
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     // Fetch data from the API using Fetch
@@ -9,8 +16,8 @@ const PostData = () => {
       try {
         const response = await fetch("http://localhost:3000/company/jobs", {
           headers: {
-            Authorization:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55SWQiOiI2NGI1MDVlZWNkNmU3OTU2OTQ2NDNlYmMiLCJpYXQiOjE2OTAxOTE2MjN9.P8BlffK-8hF709VqAcyx9UipOF7OokonE5Kf-5fvAUI", // Replace 'your-auth-token' with the actual token
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
           },
         });
         const data = await response.json();

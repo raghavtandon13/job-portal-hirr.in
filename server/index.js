@@ -18,7 +18,7 @@ app.use(express.json());
 //------------------------------------------------
 // Authentication middleware for Organization
 
-const authenticate = (req, res, next) => {
+const authenticate = async (req, res, next) => {
   const token = req.headers.authorization;
 
   if (!token) {
@@ -27,12 +27,15 @@ const authenticate = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, "your-secret-key");
-    const company = Company.findOne({ _id: decoded.companyId });
+    // const company = Company.findOne({ _id: decoded.companyId });
+    const company = await Company.findOne({ _id: decoded.companyId }).exec(); // Use exec() to return a Promise
+    console.log(decoded.companyId)
+
 
     if (!company) {
       return res.status(401).json({ message: "Unauthorized" });
     }
-
+    console.log(company.companyName)
     req.company = company;
     next();
   } catch (error) {
@@ -378,8 +381,9 @@ app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
 app.get("/company/jobs", authenticate, async (req, res) => {
   try {
     const { company } = req;
+    console.log(company.companyName, "from route")
 
-    const jobs = await Job.find({ companyId: company._id });
+    const jobs = await Job.find({ companyName: company.companyName });
 
     res.json({ jobs });
   } catch (error) {
@@ -424,6 +428,32 @@ app.get("/user/details", userAuthenticate, async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 });
+
+//Route for know application status for a given job {applied or can apply}
+
+app.get("/jobs/:jobId/status",userAuthenticate, async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
+    const user = req.user;
+
+    const job = await Job.findById(jobId);
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    
+    const applied = job.applicants.includes(user._id);
+
+
+
+    return res.status(200).json({ applied });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
 //------------------------------------------------
 // Express App listening on PORT
 

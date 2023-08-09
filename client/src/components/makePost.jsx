@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import "./makePost.css";
 
 const MakePost = () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+  const token = getCookie("orgtoken");
+
   const [title, setTitle] = useState("");
   const [skills, setSkills] = useState("");
   const [experience, setExperience] = useState("");
@@ -20,7 +27,8 @@ const MakePost = () => {
       const response = await fetch("http://localhost:3000/jobs", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
         },
         body: JSON.stringify(data),
       });
