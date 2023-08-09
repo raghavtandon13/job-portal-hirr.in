@@ -28,13 +28,19 @@ html {
 }
 
 body {
-  
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: ;
 }
+
+
+/* body {
+  background: linear-gradient(90deg, black 14px, transparent 100%) center, linear-gradient(black 14px, transparent 100%) center, #a799cc;
+  background-size: 15px 15px;
+} */
 
 h1 {
   font-size: 3.2em;
