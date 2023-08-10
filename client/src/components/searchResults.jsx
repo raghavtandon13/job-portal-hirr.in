@@ -1,8 +1,5 @@
-// SearchResults.jsx
-
 import React, { useState, useEffect } from "react";
-import Card from "./card"; // Import the Card component
-
+import Card from "./card";
 const SearchResults = () => {
   const [responseData, setResponseData] = useState([]);
 
