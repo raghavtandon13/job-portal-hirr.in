@@ -404,7 +404,6 @@ app.get("/api/validate_token", (req, res) => {
 
   try {
     const decoded = jwt.verify(token, "your-secret-key");
-    // Token is valid, you can optionally send some user data back in the response
     return res.status(200).json({ message: "Token is valid.", user: decoded });
   } catch (error) {
     return res.status(401).json({ message: "Invalid token." });
