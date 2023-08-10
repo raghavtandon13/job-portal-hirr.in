@@ -121,7 +121,6 @@ app.post("/login/user", async (req, res) => {
       // httpOnly: true,
     });
 
-    // res.json({ token });
     res.json({
       success: true,
       message: "Login successful",
