@@ -22,7 +22,6 @@ const SearchResults = () => {
 
   return (
     <div className="search-results">
-      {/* Map through the responseData and render a Card for each JSON object */}
       {responseData.map((item) => (
         <Card key={item._id} data={item} />
       ))}
