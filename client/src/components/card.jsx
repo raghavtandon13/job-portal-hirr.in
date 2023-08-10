@@ -17,7 +17,6 @@ const Card = ({ data }) => {
   const token = getCookie("mytoken");
 
   useEffect(() => {
-    // Fetch job application status when component mounts
     async function fetchApplicationStatus() {
       try {
         const response = await fetch(
