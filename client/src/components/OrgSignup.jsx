@@ -23,7 +23,7 @@ const OrgSignup = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        const token = responseData.token; // Assuming your token key in the response is "token"
+        const token = responseData.token;
 
         console.log("Login successful!");
         localStorage.setItem("token", token);
