@@ -38,17 +38,11 @@
 }
 .navbar-btn-group button {
 }
-.emp-btn {
-  font-weight: bolder;
-  color: black;
-  background-color: white;
-}
 
 /* Style the dropdown button */
 .dropdown .dropdown-button {
-  background-color: rgb(32, 35, 36);
   color: rgb(200, 195, 188);
-  border: 1px solid white !important;
+  color: #fff;
   border: none;
   cursor: pointer;
 }

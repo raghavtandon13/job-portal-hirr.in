@@ -7,6 +7,10 @@ const Navbar = ({
   button2Label,
   button2Link,
   funcBtn,
+  funcBtnName,
+  dropdownName,
+  dropdown1,
+  dropdown2,
 }) => {
   return (
     <nav className="navbar">
@@ -25,13 +29,13 @@ const Navbar = ({
           </Link>
           <div className="dropdown">
             <button className="emp-btn dropdown-button">
-              For employers&#8628;
+              {dropdownName || "Employer Login"}&#8628;
             </button>
             <div className="dropdown-content">
-              <Link to="/org/login">Employer Login</Link>
-              <Link to="/org/signup">Register</Link>
-              <a onClick={funcBtn} href="#">
-                Log Out
+              <Link to="/org/login">{dropdown1 || "Employer Login"}</Link>
+              <Link to="/org/signup">{dropdown2 || "Register"}</Link>
+              <a onClick={funcBtn} href="">
+                {funcBtnName}
               </a>
             </div>
           </div>

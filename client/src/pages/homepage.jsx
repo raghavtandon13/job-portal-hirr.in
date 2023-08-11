@@ -20,11 +20,15 @@ const Homepage = () => {
   return (
     <>
       <Navbar
-        buttonLink="/login"
-        buttonLabel="Applications"
-        button2Link="/signup"
-        button2Label="Settings"
+        buttonLink="/profile"
+        buttonLabel="Profile"
+        button2Link=""
+        button2Label="Saved Jobs"
         funcBtn={handleLogout}
+        funcBtnName="Logout"
+        dropdownName={"Settings"}
+        dropdown1="option #1"
+        dropdown2="option #2"
       />
       <Search />
       <div className="wrapper">
