@@ -36,7 +36,7 @@ const Homepage = () => {
 
         <div className="sub-wrapper">
           <ProfileMeter />
-          <Reccos desc="Job Reccomendations for you" />
+          <Reccos desc="Job Reccomendations for you" useApiUrl2={true} />
           <Reccos desc="Saved Jobs" />
         </div>
       </div>
