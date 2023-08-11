@@ -70,6 +70,31 @@ const Card = ({ data }) => {
       console.error("An error occurred:", error);
     }
   };
+  const handleSave = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/jobs/${data._id}/save`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        setSaved(!saved);
+        const responseData = await response.json();
+
+        console.log("Job save/unsave succesfully");
+      } else {
+        console.error("Job save/unsave failed");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
   return (
     <>
       <div className="card">
@@ -84,7 +109,9 @@ const Card = ({ data }) => {
           ) : (
             <button onClick={handleApply}>Apply</button>
           )}
-          {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+          <button className="save-btn" onClick={handleSave}>
+            {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+          </button>
         </div>
       </div>
     </>

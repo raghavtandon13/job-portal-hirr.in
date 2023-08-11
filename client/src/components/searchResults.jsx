@@ -16,9 +16,6 @@ const SearchResults = () => {
 
     const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}`;
 
-    // const apiUrl = `http://localhost:3000/jobs/search?experience=${queryParams.get(
-    //   "experience"
-    // )}&skills=${queryParams.get("skills")}&title=${queryParams.get("title")}`;
 
     try {
       const response = await fetch(apiUrl, {
@@ -41,7 +38,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     fetchSearchResults();
-  }, [queryParams]); // Add queryParams as a dependency to trigger re-fetch on change
+  }, [queryParams.toString()]); // Add queryParams as a dependency to trigger re-fetch on change
 
   return (
     <div className="card-container">

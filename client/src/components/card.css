@@ -37,3 +37,13 @@
   display: flex;
   justify-content: space-between;
 }
+.save-btn {
+  background: none;
+  border: none;
+}
+.save-btn:focus {
+  outline: none;
+}
+.save-btn:hover {
+  border: none;
+}

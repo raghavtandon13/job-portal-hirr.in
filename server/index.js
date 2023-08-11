@@ -302,20 +302,31 @@ app.post("/jobs/:jobId/save", userAuthenticate, async (req, res) => {
     const job = await Job.findById(jobId);
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
-    } else console.log("job found");
+    }
 
     if (!user.saved) {
       user.saved = [];
     }
-    user.saved.push(jobId);
-    await user.save();
+    const jobIdObject = new mongoose.Types.ObjectId(jobId);
+    if (user.saved.includes(jobId)) {
+      // If the job is already saved, remove it from the user's saved array
+      // user.saved = user.saved.filter((savedJobId) => savedJobId !== jobId);
+      await user.updateOne({ $pull: { saved: jobIdObject } });
+      await user.save(); // Save the user changes
+      res.json({ message: "Job unsaved successfully" });
+    } else {
+      await user.updateOne({ $push: { saved: jobIdObject } });
+      // user.saved.push(jobId);
+      await user.save(); // Save the user changes
+      res.json({ message: "Job saved successfully" });
+    }
 
-    res.json({ message: "Job saved successfully" });
   } catch (error) {
     console.error("Error saving job:", error);
     res.status(500).json({ message: "An error occurred during saving job" });
   }
 });
+
 
 // Route for viewing applications of user
 
