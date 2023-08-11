@@ -38,7 +38,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     fetchSearchResults();
-  }, [queryParams.toString()]); // Add queryParams as a dependency to trigger re-fetch on change
+  }, [queryParams.toString()]);
 
   return (
     <div className="card-container">
