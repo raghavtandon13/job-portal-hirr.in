@@ -12,16 +12,21 @@
 }
 .banner-search input {
   /* padding-left: 50px; */
-  color: black;
+  color: #fff;
   border-radius: 14px;
   width: 25%;
   font-size: initial;
   border: none;
   background-color: rgb(24, 26, 27);
+  text-align: center;
 }
 .banner-search input::placeholder {
   text-align: center;
 }
 .banner-search input:focus {
   outline: none;
+}
+
+.card-container .no-res {
+  padding: 10%;
 }

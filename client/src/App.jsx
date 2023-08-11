@@ -8,6 +8,7 @@ import OrgsignupPage from "./pages/orgsignuppage";
 import Orgloginpage from "./pages/orgloginpage";
 import Orghomepage from "./pages/orghomepage";
 import Makepostpage from "./pages/makepostpage";
+import Searchpage from "./pages/Searchpage";
 import "./App.css";
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}
           />
 
+          <Route path="/search" element={<Searchpage />} />
+
           {/* Org Routes */}
 
           <Route
@@ -64,14 +67,22 @@ function App() {
           <Route
             path="/org/signup"
             element={
-              isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <OrgsignupPage />
+              isLoggedInOrg() ? (
+                <Navigate to={"/org/home"} />
+              ) : (
+                <OrgsignupPage />
+              )
             }
           />
 
           <Route
             path="/org/makepost"
             element={
-              isLoggedInOrg() ? <Makepostpage /> : <Navigate to={"/org/login"} />
+              isLoggedInOrg() ? (
+                <Makepostpage />
+              ) : (
+                <Navigate to={"/org/login"} />
+              )
             }
           />
 
