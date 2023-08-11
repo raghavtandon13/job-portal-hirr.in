@@ -1,15 +1,10 @@
 .profile-banner {
-  font-family: 'Poppins', sans-serif;
-  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+  font-family: "Poppins", sans-serif;
   border-radius: 30px;
   width: 70vw;
   height: 30vh;
   display: flex;
   flex-direction: row;
-  /* border: 1px solid rgba(0, 0, 0, 0.200); */
-  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); */
-  /* background-color: rgb(248 248 248); */
-  /* box-shadow: 0 6px 12px 12px rgba(30,10,58,.04); */
   border: 1px solid #747bff47;
   border-radius: 20px;
   background-color: white;
@@ -23,7 +18,6 @@
   flex: 1.5;
 }
 .profile-left img {
-  /* border: 8px solid gray; */
   border-radius: 167px;
   width: 13vw;
   height: 13vw;
@@ -42,11 +36,11 @@
   border: 1px solid #0000001a;
 }
 .profile-name h1 {
-  /* font-family: 'Roboto Slab', serif !important; */
   margin: 0;
 }
 .profile-name,
-h3, h4 {
+h3,
+h4 {
   margin: 0;
 }
 .profile-name h3 {

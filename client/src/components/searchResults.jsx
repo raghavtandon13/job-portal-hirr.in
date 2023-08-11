@@ -16,7 +16,6 @@ const SearchResults = () => {
 
     const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}`;
 
-
     try {
       const response = await fetch(apiUrl, {
         method: "GET",

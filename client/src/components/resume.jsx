@@ -5,7 +5,6 @@ const Resume = () => {
   return (
     <>
       <div className="resume">
-        {/* <h1>RESUME</h1> */}
         <div className="resume-headline">
           <h4 className="title">Resume Headline</h4>
           <h4>Software Enggineer from San Fransico</h4>
@@ -23,7 +22,7 @@ const Resume = () => {
           </div>
         </div>
         <div className="resume-employment">
-            <h4 className="title">Employment</h4>
+          <h4 className="title">Employment</h4>
           <div className="employment-group">
             <h4 className="name">Backend Developer</h4>
             <h4>Google</h4>
@@ -31,7 +30,7 @@ const Resume = () => {
           </div>
         </div>
         <div className="resume-education">
-            <h4 className="title">Education</h4>
+          <h4 className="title">Education</h4>
           <div className="education-group">
             <h4 className="name">B.Tech</h4>
             <h4>San Fran University</h4>
@@ -44,7 +43,7 @@ const Resume = () => {
           </div>
         </div>
         <div className="resume-projects">
-            <h4 className="title">Projects</h4>
+          <h4 className="title">Projects</h4>
           <div className="project-group">
             <h4 className="name">Social Sphere</h4>
             <h4>College Project</h4>
@@ -59,15 +58,15 @@ const Resume = () => {
           </div>
         </div>
         <div className="resume-profiles">
-            <h4 className="title">Online Profiles</h4>
-            <div className="profile-group">
-                <h4 className="name">Github</h4>
-                <h4>https://github.com/wowowowow</h4>
-            </div>
-            <div className="profile-group">
-                <h4 className="name">CodeChef</h4>
-                <h4>https://codechef.com/wowowowow</h4>
-            </div>
+          <h4 className="title">Online Profiles</h4>
+          <div className="profile-group">
+            <h4 className="name">Github</h4>
+            <h4>https://github.com/wowowowow</h4>
+          </div>
+          <div className="profile-group">
+            <h4 className="name">CodeChef</h4>
+            <h4>https://codechef.com/wowowowow</h4>
+          </div>
         </div>
       </div>
     </>

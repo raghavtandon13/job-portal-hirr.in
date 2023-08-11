@@ -9,8 +9,7 @@ const OrgPosts = () => {
       <div className="org-home">
         <div className="make-posts-btn">
           <Link to="/org/makepost">
-
-          <button>Make new Job Post</button>
+            <button>Make new Job Post</button>
           </Link>
         </div>
         <div className="org-posts-1">

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
-import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -31,12 +30,12 @@ const Signup = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        const token = responseData.token; // Assuming your token key in the response is "token"
+        const token = responseData.token;
 
         console.log("Signup successful!");
         localStorage.setItem("token", token);
         console.log("token stored");
-        navigate("/home"); // change this to resume builder
+        navigate("/home");
       } else {
         console.error("Signup failed");
       }

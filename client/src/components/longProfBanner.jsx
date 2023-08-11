@@ -59,7 +59,6 @@ const LongBanner = () => {
               <h4>4 Year</h4>
               <h4>₹ 8,00,00</h4>
             </div>
-            {/* <hr /> */}
             <div className="long-details-right">
               <h4>9817264590</h4>
               <h4>user@raghav.com</h4>

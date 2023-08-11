@@ -1,48 +1,10 @@
-import React, { useState } from "react";
-import Search from "./search"
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import Search from "./search";
 import "./banner.css";
 
 const Banner = ({ heading, subheading }) => {
-  const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [experience, setExperience] = useState("");
-  const [skills, setSkills] = useState("");
   const defaultHeading = "Find your dream job now";
   const defaultSubheading = "5 lakh+ jobs for you to explore";
-  // const handleSearch = async (e) => {
-  //   console.log("button clicked");
-  //   e.preventDefault();
-  //   const apiUrl = `http://localhost:3000/jobs/search?experience=${experience}`;
-
-  //   try {
-  //     const response = await fetch(apiUrl, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       console.log(responseData);
-  //       console.log("Search successful!");
-  //     } else {
-  //       console.error("Search failed");
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occurred:", error);
-  //   }
-  // };
-
-  const handleSearch = () => {
-    const queryParams = new URLSearchParams({
-      experience,
-    });
-
-    navigate(`/search?${queryParams.toString()}`);
-  };
-
 
   return (
     <div className="banner">
@@ -50,13 +12,7 @@ const Banner = ({ heading, subheading }) => {
         <h1>{heading || defaultHeading}</h1>
         <p>{subheading || defaultSubheading}</p>
       </div>
-      {/* <div className="banner-search">
-        <input type="text" placeholder="Skills / designations" />
-        <input type="text" placeholder="Select Experience" />
-        <input type="text" placeholder="Enter Location" />
-        <button onClick={handleSearch}>Search</button>
-      </div> */}
-      <Search/>
+      <Search />
     </div>
   );
 };

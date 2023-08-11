@@ -21,20 +21,17 @@
   background-color: rgb(31, 34, 35);
 }
 .login-form a {
-    /* color: black; light mode */
-    color: rgb(232, 230, 227);
+  color: rgb(232, 230, 227);
 }
 .login-heading {
-  font-family: 'Roboto Slab', serif;
-  /* color: black; light mode */
+  font-family: "Roboto Slab", serif;
 }
 .login-form form input {
-    font-family: 'Roboto Slab', serif;
-    padding: 8px;
-    font-size: 16px;
-    border: 2px solid black;
-    border-radius: 10px;
-    background: none;
-    /* color: black; light mode*/
-    border-color: rgb(140, 130, 115);
+  font-family: "Roboto Slab", serif;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background: none;
+  border-color: rgb(140, 130, 115);
 }

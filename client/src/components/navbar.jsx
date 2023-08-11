@@ -1,15 +1,18 @@
 import "./Navbar.css";
 import { Link, Navigate } from "react-router-dom";
 
-const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link, funcBtn }) => {
-
-
-
+const Navbar = ({
+  buttonLabel,
+  buttonLink,
+  button2Label,
+  button2Link,
+  funcBtn,
+}) => {
   return (
     <nav className="navbar">
       <div className="navbar-right">
         <div className="navbar-brand">
-          <Link to='/'>HIRR.IN</Link>
+          <Link to="/">HIRR.IN</Link>
         </div>
       </div>
       <div className="navbar-left">
@@ -20,9 +23,6 @@ const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link, funcBtn })
           <Link to={button2Link}>
             <button>{button2Label}</button>
           </Link>
-          {/* <Link to={"/signup"}>
-            <button>Register</button>
-          </Link> */}
           <div className="dropdown">
             <button className="emp-btn dropdown-button">
               For employers&#8628;
@@ -30,7 +30,9 @@ const Navbar = ({ buttonLabel, buttonLink, button2Label, button2Link, funcBtn })
             <div className="dropdown-content">
               <Link to="/org/login">Employer Login</Link>
               <Link to="/org/signup">Register</Link>
-              <a onClick={funcBtn} href="#">Log Out</a>
+              <a onClick={funcBtn} href="#">
+                Log Out
+              </a>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "./card";
 import "./search.css";
 
 const Search = () => {
@@ -8,36 +7,12 @@ const Search = () => {
   const [title, setTitle] = useState("");
   const [experience, setExperience] = useState("");
   const [skills, setSkills] = useState("");
-  const [responseData, setResponseData] = useState([]);
-
-  // const handleSearch = async (e) => {
-  //   console.log("button clicked");
-  //   e.preventDefault();
-  //   const apiUrl = `http://localhost:3000/jobs/search?experience=${experience}`;
-
-  //   try {
-  //     const response = await fetch(apiUrl, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       setResponseData(responseData); // Save the response data in state
-  //       console.log("Search successful!");
-  //     } else {
-  //       console.error("Search failed");
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occurred:", error);
-  //   }
-  // };
 
   const handleSearch = () => {
     const queryParams = new URLSearchParams({
-      experience,title,location
+      experience,
+      title,
+      location,
     });
 
     navigate(`/search?${queryParams.toString()}`);
@@ -65,13 +40,7 @@ const Search = () => {
           onChange={(e) => setSkills(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
-        {/* Render Card components for each item in the responseData */}
       </div>
-      {/* <div className="card-container">
-        {responseData.map((item) => (
-          <Card key={item._id} data={item} />
-        ))}
-      </div> */}
     </>
   );
 };

@@ -1,5 +1,4 @@
 :root {
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -35,7 +34,6 @@ body {
   min-height: 100vh;
   background-image: ();
 }
-
 
 /* body {
   background: linear-gradient(90deg, black 14px, transparent 100%) center, linear-gradient(black 14px, transparent 100%) center, #a799cc;

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./reccos.css";
 
 const Reccos = ({ desc }) => {
-
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);

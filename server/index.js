@@ -28,7 +28,7 @@ const authenticate = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, "your-secret-key");
 
-    const company = await Company.findOne({ _id: decoded.companyId }).exec(); // Use exec() to return a Promise
+    const company = await Company.findOne({ _id: decoded.companyId }).exec();
     console.log(decoded.companyId);
 
     if (!company) {
@@ -308,25 +308,21 @@ app.post("/jobs/:jobId/save", userAuthenticate, async (req, res) => {
       user.saved = [];
     }
     const jobIdObject = new mongoose.Types.ObjectId(jobId);
+
     if (user.saved.includes(jobId)) {
-      // If the job is already saved, remove it from the user's saved array
-      // user.saved = user.saved.filter((savedJobId) => savedJobId !== jobId);
       await user.updateOne({ $pull: { saved: jobIdObject } });
-      await user.save(); // Save the user changes
+      await user.save();
       res.json({ message: "Job unsaved successfully" });
     } else {
       await user.updateOne({ $push: { saved: jobIdObject } });
-      // user.saved.push(jobId);
-      await user.save(); // Save the user changes
+      await user.save();
       res.json({ message: "Job saved successfully" });
     }
-
   } catch (error) {
     console.error("Error saving job:", error);
     res.status(500).json({ message: "An error occurred during saving job" });
   }
 });
-
 
 // Route for viewing applications of user
 
@@ -334,7 +330,6 @@ app.get("/user/applications", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
 
-    const bbapplications = await Job.find({ _id: { $in: user.applications } });
     const applications = await Job.find({ _id: { $in: user.applications } });
 
     res.json(applications);

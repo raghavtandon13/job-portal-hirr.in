@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #e5e6ff; light mode */
   background-color: rgb(31, 34, 35);
   padding: 10px;
   position: fixed;
@@ -13,13 +12,11 @@
   height: 60px;
   z-index: 9999;
 }
-
 .navbar-right {
   flex: 1;
 }
 .navbar-brand {
   font-family: "Angkor", cursive;
-  /* color: black; light mode */
   color: rgb(224, 224, 224);
   font-size: 30px;
 }
@@ -47,19 +44,11 @@
   background-color: white;
 }
 
-/* .dropdown {
-  position: relative;
-  display: inline-block;
-} */
-
 /* Style the dropdown button */
 .dropdown .dropdown-button {
-  /* background-color: #f1f1f1; light mode */
   background-color: rgb(32, 35, 36);
   color: rgb(200, 195, 188);
   border: 1px solid white !important;
-  /* color: #333; light mode */
-  /* padding: 10px; */
   border: none;
   cursor: pointer;
 }
@@ -68,11 +57,8 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  /* background-color: #f9f9f9; light mode */
   background-color: rgb(27, 30, 31);
-
   min-width: 160px;
-  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
   z-index: 1;
   margin-top: 1px;
   border-radius: 12px;
@@ -81,7 +67,6 @@
 /* Style the dropdown menu items */
 .dropdown-content a {
   color: rgb(200, 195, 188);
-  /* color: #333; light mode */
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -89,7 +74,6 @@
 
 /* Change color of dropdown menu items on hover */
 .dropdown-content a:hover {
-  /* background-color: #ddd; light mode */
   background-color: rgb(43, 47, 49);
   border-radius: 5px;
 }
@@ -111,10 +95,6 @@
     gap: 10px;
     justify-content: center;
   }
-  /* .navbar-left {
-    max-width: 300px;
-    flex: 1;
-  } */
   .navbar-right {
     flex: 1;
   }
