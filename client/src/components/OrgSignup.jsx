@@ -8,34 +8,76 @@ const OrgSignup = () => {
   const [companyName, setcompanyName] = useState("");
   const [industry, setIndustry] = useState("");
   const navigate = useNavigate();
+  const [orgPicture, setOrgPicture] = useState(null);
+
+  const handleOrgPictureChange = (file) => {
+    setOrgPicture(file);
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const data = { companyName, industry, email, password };
+  //   try {
+  //     const response = await fetch("http://localhost:3000/signup/company/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //     });
+
+  //     if (response.ok) {
+  //       const responseData = await response.json();
+  //       const token = responseData.token;
+
+  //       console.log("Login successful!");
+  //       localStorage.setItem("token", token);
+  //       console.log("token stored");
+  //       navigate("/org/home");
+  //     } else {
+  //       console.error("Login failed");
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred:", error);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { companyName, industry, email, password };
+    const data = new FormData();
+
+    data.append("companyName", companyName);
+    data.append("email", email);
+    data.append("password", password);
+    data.append("industry", industry);
+    if (orgPicture) {
+      data.append("orgPicture", orgPicture);
+    }
+
     try {
       const response = await fetch("http://localhost:3000/signup/company/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: data,
       });
 
       if (response.ok) {
         const responseData = await response.json();
         const token = responseData.token;
 
-        console.log("Login successful!");
+        console.log("Signup successful!");
         localStorage.setItem("token", token);
         console.log("token stored");
         navigate("/org/home");
       } else {
-        console.error("Login failed");
+        console.error("Signup failed");
       }
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  };
+  };  
+
+
+
 
   const handleReset = () => {
     document.getElementById("name").value = "";
@@ -90,6 +132,12 @@ const OrgSignup = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="file"
+            name="orgPicture"
+            accept="image/*"
+            onChange={(e) => handleOrgPictureChange(e.target.files[0])}
           />
         </div>
         <div className="signup-button">

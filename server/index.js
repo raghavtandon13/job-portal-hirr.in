@@ -9,7 +9,6 @@ import Job from "./models/Job.js";
 import cors from "cors";
 import path from "path";
 import multer from "multer";
-import sharp from "sharp";
 
 const app = express();
 app.use(bodyParser.json());
@@ -24,7 +23,7 @@ app.use("/static", express.static("public"));
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./public/uploads"); // Set your desired upload folder
+    cb(null, "./public/uploads");
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
@@ -215,16 +214,17 @@ app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
 
 // Route for Signup for Organization
 
-app.post("/signup/company", async (req, res) => {
+app.post("/signup/company",upload.single("orgPicture"), async (req, res) => {
   try {
     const { companyName, industry, email, password } = req.body;
+    const orgPicture = req.file ? req.file.filename : ""
 
     const existingCompany = await Company.findOne({ email });
     if (existingCompany) {
       return res.status(409).json({ message: "Email is already registered" });
     }
 
-    const company = new Company({ companyName, industry, email, password });
+    const company = new Company({ companyName, industry, email, password, orgPicture });
     await company.save();
 
     res.status(201).json({ message: "Company registered successfully" });

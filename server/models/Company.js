@@ -13,6 +13,7 @@ const companySchema = new mongoose.Schema({
     default: "organization",
   },
   sessionToken: { type: String },
+  orgPicture: { type: String, default: "" },
 });
 
 companySchema.pre("save", async function (next) {
