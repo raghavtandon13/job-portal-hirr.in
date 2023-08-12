@@ -1,0 +1,78 @@
+.profile-banner {
+    font-family: "Poppins", sans-serif;
+    border-radius: 30px;
+    /* width: 200%; */
+    /* height: 30vh; */
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #747bff47;
+    border-radius: 20px;
+    background-color: #1f2223;
+    margin-top: 6%;
+    padding: 5% 0%;
+}
+
+
+.profile-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1%;
+    flex: 1.5;
+}
+
+
+.profile-right {
+    gap: 3%;
+    text-align: left;
+    display: flex;
+    color: #fff;
+    margin: 1%;
+    flex: 4;
+    flex-direction: column;
+}
+
+
+.profile-name h1 {
+    margin: 0;
+    color: white;
+}
+
+.profile-name h3 {
+    font-weight: 600;
+    color: darkgray;
+}
+
+
+.profile-name h4 {
+    font-weight: 500;
+    color: darkgray;
+}
+
+.profile-details h4 {
+    font-weight: 500;
+    color: darkgray;
+}
+
+.resume h4 {
+    margin-left: 5%;
+    font-size: 18px;
+    color: gray;
+    font-weight: 300;
+}
+
+.title {
+    /* background-image: linear-gradient(to right, #747bff33, #747bff00); */
+    text-decoration: dashed;
+    font-size: 10px;
+    font-weight: 600;
+    color: darkgray !important;
+    margin-bottom: 10px;
+}
+
+.name {
+    color: white !important;
+    font-weight: 500 !important;
+    font-size: 10px;
+}

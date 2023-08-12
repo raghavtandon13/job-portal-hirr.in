@@ -7,7 +7,7 @@ const Resume = () => {
       <div className="resume">
         <div className="resume-headline">
           <h4 className="title">Resume Headline</h4>
-          <h4>Software Enggineer from San Fransico</h4>
+          <h4 className="name">Software Enggineer from San Fransico</h4>
         </div>
         <div className="resume-skills">
           <h4 className="title">Key Skills</h4>

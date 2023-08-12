@@ -7,7 +7,7 @@
   height: 50vh;
   border-radius: 10px;
   gap: 6%;
-  margin: 2% 0%;
+  margin: 4% 0%;
   padding-bottom: 2%;
 }
 .resume h1 {
@@ -21,11 +21,11 @@
   font-weight: 300;
 }
 .title {
-  background-image: linear-gradient(to right, #747bff33, #747bff00);
+  /* background-image: linear-gradient(to right, #747bff33, #747bff00); */
   text-decoration: dashed;
   font-size: 10px;
   font-weight: 600;
-  color: black !important;
+  color: darkgray !important;
   margin-bottom: 10px;
 }
 .resume-headline,
@@ -39,19 +39,21 @@
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  background-color: white;
+  background-color: #1f2223;
   border: 1px solid #747bff47;
   padding: 20px 0px;
 }
 .skills-group h5 {
-  background-color: #ffffff;
-  border: 1px solid #e7e7f1;
+  background-color: #181a1b;
+  border: 1px solid #363b60;
   padding: 4px;
   border-radius: 18px;
-  font-size: medium;
   margin: 1px;
   font-size: 14px;
   font-weight: 500;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .skills-group {
   display: flex;
@@ -61,7 +63,7 @@
   padding-bottom: 10px;
 }
 .name {
-  color: black !important;
+  color: white !important;
   font-weight: 500 !important;
   font-size: 10px;
 }
