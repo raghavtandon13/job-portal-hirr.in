@@ -27,7 +27,7 @@ const LongBanner = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const imageUrl = `http://localhost:3000/static/${data.profilePicture}`;
+          const imageUrl = `http://localhost:3000/static/uploads/${data.profilePicture}`;
           setUserImage(imageUrl);
           setUserName(data.name);
         } else {

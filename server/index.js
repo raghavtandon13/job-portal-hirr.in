@@ -9,6 +9,7 @@ import Job from "./models/Job.js";
 import cors from "cors";
 import path from "path";
 import multer from "multer";
+import sharp from "sharp";
 
 const app = express();
 app.use(bodyParser.json());
