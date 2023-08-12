@@ -16,16 +16,56 @@ const Signup = () => {
     document.getElementById("password").value = "";
     document.getElementById("re-password").value = "";
   };
+
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  const handleProfilePictureChange = (file) => {
+    setProfilePicture(file);
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const data = { name, email, password };
+  //   try {
+  //     const response = await fetch("http://localhost:3000/signup/user/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //     });
+
+  //     if (response.ok) {
+  //       const responseData = await response.json();
+  //       const token = responseData.token;
+
+  //       console.log("Signup successful!");
+  //       localStorage.setItem("token", token);
+  //       console.log("token stored");
+  //       navigate("/home");
+  //     } else {
+  //       console.error("Signup failed");
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred:", error);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { name, email, password };
+    const data = new FormData();
+
+    data.append("name", name);
+    data.append("email", email);
+    data.append("password", password);
+    if (profilePicture) {
+      data.append("profilePicture", profilePicture);
+    }
+
     try {
       const response = await fetch("http://localhost:3000/signup/user/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: data,
       });
 
       if (response.ok) {
@@ -43,6 +83,7 @@ const Signup = () => {
       console.error("An error occurred:", error);
     }
   };
+
   return (
     <div className="signup-box">
       <div className="signup-heading">
@@ -91,6 +132,12 @@ const Signup = () => {
             name="password"
             id="re-password"
             placeholder="Re-enter Password"
+          />
+          <input
+            type="file"
+            name="profilePicture"
+            accept="image/*"
+            onChange={(e) => handleProfilePictureChange(e.target.files[0])}
           />
         </div>
         <div className="signup-button">

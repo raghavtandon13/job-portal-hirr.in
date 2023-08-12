@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import multer from "multer";
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },

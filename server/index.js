@@ -7,6 +7,8 @@ import User from "./models/User.js";
 import Company from "./models/Company.js";
 import Job from "./models/Job.js";
 import cors from "cors";
+import path from "path";
+import multer from "multer";
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,6 +17,21 @@ app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 // app.use(cors({ origin: "*" }));
 // app.use(cors());
 app.use(express.json());
+
+app.use("/static", express.static("public"));
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./public/uploads"); // Set your desired upload folder
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
 //------------------------------------------------
 // Authentication middleware for Organization
 
@@ -174,17 +191,18 @@ app.post("/login/company", async (req, res) => {
 
 // Route for Signup for User
 
-app.post("/signup/user", async (req, res) => {
+app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
   try {
     console.log(req.body);
     const { name, email, password } = req.body;
+    const profilePicture = req.file ? req.file.filename : "";
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({ message: "Email is already registered" });
     }
 
-    const user = new User({ name, email, password });
+    const user = new User({ name, email, password, profilePicture });
     await user.save();
 
     res.status(201).json({ message: "User created successfully" });

@@ -12,6 +12,7 @@ const LongBanner = () => {
   const token = getCookie("mytoken");
 
   const [userName, setUserName] = useState("");
+  const [userImage, setUserImage] = useState("");
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -26,6 +27,8 @@ const LongBanner = () => {
 
         if (response.ok) {
           const data = await response.json();
+          const imageUrl = `http://localhost:3000/static/${data.profilePicture}`;
+          setUserImage(imageUrl);
           setUserName(data.name);
         } else {
           console.error("Failed to fetch user details");
@@ -42,7 +45,7 @@ const LongBanner = () => {
     <>
       <div className="long-banner">
         <div className="long-left">
-          <img src={image || image} alt="" />
+          <img src={userImage || image} alt="" />
         </div>
         <div className="long-right">
           <div className="long-name">
