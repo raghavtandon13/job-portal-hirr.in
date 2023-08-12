@@ -7,6 +7,18 @@
   background-color: rgb(31, 34, 35);
   max-height: 280px;
 }
+
+.reccos-brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.reccos-brand button {
+  font-size: small;
+  font-weight: 300;
+  margin-right: 20px;
+  margin-top: 10px;
+}
 .reccos-brand h3 {
   padding-top: 10px;
   font-weight: 500;

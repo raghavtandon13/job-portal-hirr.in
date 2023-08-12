@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./reccos.css";
 
 const Reccos = ({ desc, useApiUrl2 }) => {
@@ -14,6 +15,11 @@ const Reccos = ({ desc, useApiUrl2 }) => {
   const apiUrl1 = "http://localhost:3000/user/saved";
   const apiUrl2 = "http://localhost:3000/jobs/search";
   const apiUrl = useApiUrl2 ? apiUrl2 : apiUrl1;
+
+  const savedUrl = "/user/saved";
+  const reccoUrl = "/user/reccos";
+
+  const linkUrl = useApiUrl2 ? reccoUrl : savedUrl;
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -43,6 +49,9 @@ const Reccos = ({ desc, useApiUrl2 }) => {
     <div className="reccos">
       <div className="reccos-brand">
         <h3>{desc}</h3>
+        <Link to={linkUrl}>
+          <button>See More&rarr;</button>
+        </Link>
       </div>
 
       <div className="reccos-group">
