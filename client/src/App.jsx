@@ -9,6 +9,8 @@ import Orgloginpage from "./pages/orgloginpage";
 import Orghomepage from "./pages/orghomepage";
 import Makepostpage from "./pages/makepostpage";
 import Searchpage from "./pages/Searchpage";
+import ReccoPage from "./pages/reccoPage";
+import SavedPage from "./pages/savedPage";
 import "./App.css";
 
 function App() {
@@ -53,6 +55,16 @@ function App() {
           <Route
             path="/signup"
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}
+          />
+
+          <Route
+            path="/user/saved"
+            element={isLoggedIn() ? <SavedPage /> : <Navigate to={"/"} />}
+          />
+
+          <Route
+            path="/user/reccos"
+            element={isLoggedIn() ? <ReccoPage /> : <Navigate to={"/"} />}
           />
 
           <Route path="/search" element={<Searchpage />} />
