@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 
-const SavedPage = () => {
+const ApplicationsPage = () => {
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -14,7 +14,7 @@ const SavedPage = () => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl = "http://localhost:3000/user/saved";
+  const apiUrl = "http://localhost:3000/user/applications";
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -52,4 +52,4 @@ const SavedPage = () => {
   );
 };
 
-export default SavedPage;
+export default ApplicationsPage;

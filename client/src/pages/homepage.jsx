@@ -22,8 +22,8 @@ const Homepage = () => {
       <Navbar
         buttonLink="/profile"
         buttonLabel="Profile"
-        button2Link=""
-        button2Label="Saved Jobs"
+        button2Link="/user/applications"
+        button2Label="Applications"
         funcBtn={handleLogout}
         funcBtnName="Logout"
         dropdownName={"Settings"}

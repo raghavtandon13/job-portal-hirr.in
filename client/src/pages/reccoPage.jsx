@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 
-const ApplicationsPage = () => {
+const ReccoPage = () => {
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -14,7 +14,7 @@ const ApplicationsPage = () => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl = "http://localhost:3000/user/applications";
+  const apiUrl = "http://localhost:3000/jobs/search/";
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -45,11 +45,11 @@ const ApplicationsPage = () => {
       <Navbar />
       <div>
         {jobs.map((data) => (
-          <Card data={data} />
+          <Card key={data._id} data={data} />
         ))}
       </div>
     </>
   );
 };
 
-export default ApplicationsPage;
+export default ReccoPage;

@@ -9,8 +9,9 @@ import Orgloginpage from "./pages/orgloginpage";
 import Orghomepage from "./pages/orghomepage";
 import Makepostpage from "./pages/makepostpage";
 import Searchpage from "./pages/Searchpage";
-import ReccoPage from "./pages/reccoPage";
+import ApplicationsPage from "./pages/ApplicationsPage";
 import SavedPage from "./pages/savedPage";
+import ReccoPage from "./pages/reccoPage";
 import "./App.css";
 
 function App() {
@@ -63,8 +64,17 @@ function App() {
           />
 
           <Route
+            path="/user/applications"
+            element={
+              isLoggedIn() ? <ApplicationsPage /> : <Navigate to={"/"} />
+            }
+          />
+          
+          <Route
             path="/user/reccos"
-            element={isLoggedIn() ? <ReccoPage /> : <Navigate to={"/"} />}
+            element={
+              isLoggedIn() ? <ReccoPage /> : <Navigate to={"/"} />
+            }
           />
 
           <Route path="/search" element={<Searchpage />} />
