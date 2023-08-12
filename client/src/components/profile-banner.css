@@ -34,8 +34,9 @@
   flex-direction: column;
 }
 .profile-right hr {
-  width: 100%;
-  border: 1px solid #0000001a;
+  width: 80%;
+  border: 1px solid #80808040;
+  margin-left: 0%;
 }
 .profile-name h1 {
   margin: 0;
