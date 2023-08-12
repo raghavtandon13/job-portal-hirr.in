@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
+import "./rsa.css";
 
 const SavedPage = () => {
   function getCookie(name) {
@@ -42,8 +43,20 @@ const SavedPage = () => {
 
   return (
     <>
-      <Navbar />
-      <div>
+      <Navbar
+        buttonLink="/profile"
+        buttonLabel="Profile"
+        button2Link="/user/applications"
+        button2Label="Applications"
+        funcBtnName="Logout"
+        dropdownName={"Settings"}
+        dropdown1="option #1"
+        dropdown2="option #2"
+      />
+      <div className="page-title">
+        <h2>Your Saved Jobs</h2>
+      </div>
+      <div className="card-collection">
         {jobs.map((data) => (
           <Card key={data._id} data={data} />
         ))}
