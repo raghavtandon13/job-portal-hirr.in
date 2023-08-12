@@ -9,7 +9,7 @@ const LandingPage = () => {
         buttonLabel="Login"
         button2Link="/signup"
         button2Label="Register"
-        funcBtnName="Legal"
+        funcBtnName="About Us"
       />
       <Banner />
     </>
