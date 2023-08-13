@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GoogleIcon from "@mui/icons-material/Google";
 import "./login.css";
 
 const Login = () => {
@@ -33,11 +34,27 @@ const Login = () => {
     }
   };
 
+  const handleGoogleAuth = () => {
+    // Redirect the user to the Google authentication route
+    window.location.href = "http://localhost:3000/auth/google";
+  };
+
   return (
     <div className="login-box">
       <div className="login-heading">
         <h1>Login</h1>
       </div>
+          <div className="googlediv2">
+            <button
+              className="googleBtn2"
+              type="button"
+              onClick={handleGoogleAuth}
+            >
+              <GoogleIcon />
+              Log in with Google
+            </button>
+          </div>
+          <p>or</p>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <input

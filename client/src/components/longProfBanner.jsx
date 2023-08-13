@@ -13,6 +13,7 @@ const LongBanner = () => {
 
   const [userName, setUserName] = useState("");
   const [userImage, setUserImage] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -35,6 +36,7 @@ const LongBanner = () => {
             setUserImage(image);
           }
           setUserName(data.name);
+          setUserEmail(data.email);
         } else {
           console.error("Failed to fetch user details");
         }
@@ -69,7 +71,7 @@ const LongBanner = () => {
             </div>
             <div className="long-details-right">
               <h4>9817264590</h4>
-              <h4>user@raghav.com</h4>
+              <h4>{userEmail}</h4>
               <h4>15 days of less notice</h4>
             </div>
           </div>

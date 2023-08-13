@@ -1,6 +1,6 @@
 .login-box {
   width: 30vw;
-  height: 45vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,4 +34,22 @@
   border-radius: 10px;
   background: none;
   border-color: rgb(140, 130, 115);
+}
+.googleBtn2 {
+  gap: 10px;
+  width: max-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #8c8273;
+}
+
+.googlediv2 {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.login-box p {
+  padding: 2%;
 }

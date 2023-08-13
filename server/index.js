@@ -9,6 +9,12 @@ import Job from "./models/Job.js";
 import cors from "cors";
 import path from "path";
 import multer from "multer";
+import passport from "passport";
+import session from "express-session";
+import dotenv from "dotenv";
+import "./passport-setup.js";
+
+dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,6 +25,18 @@ app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(express.json());
 
 app.use("/static", express.static("public"));
+
+// Passport middleware
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -378,7 +396,7 @@ app.get("/user/applications", userAuthenticate, async (req, res) => {
 app.get("/user/saved", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
-
+    console.log(user)
     const saved = await Job.find({ _id: { $in: user.saved } });
 
     res.json(saved);
@@ -487,6 +505,47 @@ app.get("/jobs/:jobId/status", userAuthenticate, async (req, res) => {
   }
 });
 
+// Route for google auth
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+// app.get(
+//   "/auth/google/callback",
+//   passport.authenticate("google", {
+//     failureRedirect: "/",
+//     session: false,
+//     responseType: "token", // Request token as response
+//   }),
+//   (req, res) => {
+//     // Retrieve the access token from the request object
+//     const mytoken = req.user.mytoken;
+
+//     // Set a secure HttpOnly cookie with the access token
+//     res.cookie("mytoken", mytoken);
+
+//     // Redirect back to your frontend or respond as needed
+//     res.redirect("http://localhost:5173"); // Update with your frontend URL
+//   }
+// );
+
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/" }),
+  (req, res) => {
+    // Generate a JWT and send it back as a cookie
+    const user = req.user; // Assuming user is available in the request object after successful Google authentication
+    const token = jwt.sign({ userId: user._id }, "your-secret-key");
+
+    // Set a secure HttpOnly cookie
+    res.cookie("mytoken", token);
+
+    // Redirect back to your frontend
+    res.redirect("http://localhost:5173"); // Update with your frontend URL
+  }
+);
 //------------------------------------------------
 // Express App listening on PORT
 

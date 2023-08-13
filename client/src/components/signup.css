@@ -26,7 +26,7 @@
   border-radius: 10px;
   background: none;
   color: white;
-  width: 100%;
+  width: 96%;
   display: flex;
 }
 .signup-button {
@@ -64,4 +64,22 @@ input[type="file"]::after {
   transform: translateY(-50%);
   color: green;
   pointer-events: none;
+}
+.googleBtn {
+  gap: 10px;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #8c8273;
+}
+
+.googlediv {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.signup-box form p {
+  padding-top: 12px;
 }

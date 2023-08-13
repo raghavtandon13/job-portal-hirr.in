@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GoogleIcon from "@mui/icons-material/Google";
 import "./signup.css";
 
 const Signup = () => {
@@ -23,6 +24,10 @@ const Signup = () => {
     setIsFileSelected(true);
   };
 
+  const handleGoogleAuth = () => {
+    // Redirect the user to the Google authentication route
+    window.location.href = "http://localhost:3000/auth/google";
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -62,6 +67,17 @@ const Signup = () => {
         <h1>Register to find jobs and grow your career</h1>
       </div>
       <form onSubmit={handleSubmit}>
+        <div className="googlediv">
+          <button
+            className="googleBtn"
+            type="button"
+            onClick={handleGoogleAuth}
+          >
+            <GoogleIcon />
+            Sign up with Google
+          </button>
+        </div>
+        <p>or</p>
         <div className="signup-input">
           <input
             type="text"
