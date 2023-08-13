@@ -17,6 +17,7 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
+
 .signup-input input {
   font-family: "Roboto Slab", serif;
   padding: 8px;
@@ -25,6 +26,8 @@
   border-radius: 10px;
   background: none;
   color: white;
+  width: 100%;
+  display: flex;
 }
 .signup-button {
   gap: 4px;
@@ -33,4 +36,32 @@
 }
 .signup-button button {
   background-color: #1f2223;
+}
+
+#profilePictureInput {
+  color: transparent;
+  z-index: 0;
+}
+
+input[type="file"]::after {
+  content: "Upload profile picture";
+  color: gray;
+  position: absolute;
+  top: 50%;
+  left: 120px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.file-input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.file-selected-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: green;
+  pointer-events: none;
 }
