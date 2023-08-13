@@ -214,17 +214,23 @@ app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
 
 // Route for Signup for Organization
 
-app.post("/signup/company",upload.single("orgPicture"), async (req, res) => {
+app.post("/signup/company", upload.single("orgPicture"), async (req, res) => {
   try {
     const { companyName, industry, email, password } = req.body;
-    const orgPicture = req.file ? req.file.filename : ""
+    const orgPicture = req.file ? req.file.filename : "";
 
     const existingCompany = await Company.findOne({ email });
     if (existingCompany) {
       return res.status(409).json({ message: "Email is already registered" });
     }
 
-    const company = new Company({ companyName, industry, email, password, orgPicture });
+    const company = new Company({
+      companyName,
+      industry,
+      email,
+      password,
+      orgPicture,
+    });
     await company.save();
 
     res.status(201).json({ message: "Company registered successfully" });
@@ -247,8 +253,16 @@ app.post("/jobs", authenticate, async (req, res) => {
     if (!company) {
       return res.status(404).json({ message: "Company not found" });
     }
-
-    const job = new Job({ title, companyName, skills, experience });
+    const companyId = company._id;
+    const orgPicture = company.orgPicture;
+    const job = new Job({
+      title,
+      companyName,
+      skills,
+      experience,
+      companyId,
+      orgPicture,
+    });
     await job.save();
     company.jobs.push(job);
     await company.save();

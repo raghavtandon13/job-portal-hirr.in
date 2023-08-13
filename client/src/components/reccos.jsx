@@ -14,13 +14,13 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
   const apiUrl1 = "http://localhost:3000/user/saved";
   const apiUrl2 = "http://localhost:3000/jobs/search";
+  // const apiUrl2 = "http://localhost:3000/jobs/saved";
   const apiUrl = useApiUrl2 ? apiUrl2 : apiUrl1;
 
   const savedUrl = "/user/saved";
   const reccoUrl = "/user/reccos";
 
   const linkUrl = useApiUrl2 ? reccoUrl : savedUrl;
-
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -55,13 +55,17 @@ const Reccos = ({ desc, useApiUrl2 }) => {
       </div>
 
       <div className="reccos-group">
-        {jobs.slice(0, 3).map((job) => (
-          <div className="recc" key={job._id}>
-            <p>{job.title}</p>
-            <p>{job.companyName}</p>
-            <p>Skills: {job.skills.join(", ")}</p>
-          </div>
-        ))}
+        {jobs.slice(0, 3).map((job) => {
+          const imageUrl = `http://localhost:3000/static/uploads/${job.orgPicture}`;
+          return (
+            <div className="recc" key={job._id}>
+              <img src={imageUrl} alt="" />
+              <p>{job.title}</p>
+              <p>{job.companyName}</p>
+              <p>Skills: {job.skills.join(", ")}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

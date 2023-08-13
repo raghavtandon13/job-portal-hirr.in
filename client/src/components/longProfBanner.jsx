@@ -28,7 +28,12 @@ const LongBanner = () => {
         if (response.ok) {
           const data = await response.json();
           const imageUrl = `http://localhost:3000/static/uploads/${data.profilePicture}`;
-          setUserImage(imageUrl);
+
+          if (data.profilePicture && data.profilePicture.trim() !== "") {
+            setUserImage(imageUrl);
+          } else {
+            setUserImage(image);
+          }
           setUserName(data.name);
         } else {
           console.error("Failed to fetch user details");
