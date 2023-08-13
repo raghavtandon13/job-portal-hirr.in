@@ -59,10 +59,14 @@ const Reccos = ({ desc, useApiUrl2 }) => {
           const imageUrl = `http://localhost:3000/static/uploads/${job.orgPicture}`;
           return (
             <div className="recc" key={job._id}>
-              <img src={imageUrl} alt="" />
-              <p>{job.title}</p>
-              <p>{job.companyName}</p>
-              <p>Skills: {job.skills.join(", ")}</p>
+              <div className="recc-pic">
+                <img src={imageUrl} alt="" />
+              </div>
+              <div className="recc-txt">
+                <p>{job.title}</p>
+                <p>{job.companyName}</p>
+                <p>Skills: {job.skills.join(", ")}</p>
+              </div>
             </div>
           );
         })}

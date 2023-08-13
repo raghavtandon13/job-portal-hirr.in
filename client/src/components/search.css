@@ -26,3 +26,28 @@
 .card-container .no-res {
   padding: 10%;
 }
+@media only screen and (max-width: 700px) {
+  .banner-search {
+    border-radius: 14px !important;
+    display: flex;
+    padding: 1%;
+    background-color: rgba(54, 59, 61, 0.34);
+    flex: 1;
+    justify-content: space-evenly;
+    gap: 6px !important;
+    margin-top: 80px;
+    padding: 6px !important;
+    flex-direction: column;
+    padding: 10px 4px;
+  }
+  .banner-search input {
+    color: #fff;
+    border-radius: 20px;
+    width: 100% !important;
+    font-size: initial;
+    border: none;
+    background-color: rgb(24, 26, 27);
+    text-align: center;
+    padding: 10px 0px;
+  }
+}
