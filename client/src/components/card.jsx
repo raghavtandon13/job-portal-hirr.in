@@ -95,14 +95,22 @@ const Card = ({ data }) => {
       console.error("An error occurred:", error);
     }
   };
+  const picUrl = `http://localhost:3000/static/uploads/${data.orgPicture}`;
   return (
     <>
       <div className="card">
-        <h3>{data.title}</h3>
-        <h4>{data.companyName}</h4>
-        <p>Experience: {data.experience}</p>
-        <p>Skills: Javascrpit,Typescript, MERN stack</p>
-        <p>Location: Delhi</p>
+        <div className="card-info">
+          <div className="card-txt">
+            <h3>{data.title}</h3>
+            <h4>{data.companyName}</h4>
+            <p>Experience: {data.experience}</p>
+            <p>Skills: Javascrpit,Typescript, MERN stack</p>
+            <p>Location: Delhi</p>
+          </div>
+          <div className="card-pic">
+            <img src={picUrl} alt="" />
+          </div>
+        </div>
         <div className="card-btns">
           {applied ? (
             <button style={{ backgroundColor: "gray" }}>Applied</button>
