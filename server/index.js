@@ -517,7 +517,7 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
-    // Generate a JWT and send it back as a cookie
+    
     const user = req.user; // Assuming user is available in the request object after successful Google authentication
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
