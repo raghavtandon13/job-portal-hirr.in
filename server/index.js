@@ -520,7 +520,6 @@ app.get(
     const user = req.user;
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
-    // Set a secure HttpOnly cookie
     res.cookie("mytoken", token);
 
     // Redirect back to your frontend
