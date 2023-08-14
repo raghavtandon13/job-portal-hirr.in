@@ -450,7 +450,7 @@ app.get("/company/jobs", authenticate, async (req, res) => {
   }
 });
 
-// temp route
+// Route for validation of token
 
 app.get("/api/validate_token", (req, res) => {
   const token = req.header("Authorization");
