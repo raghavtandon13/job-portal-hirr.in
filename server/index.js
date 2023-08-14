@@ -214,7 +214,7 @@ app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
     console.log(req.body);
     const { name, email, password } = req.body;
     let profilePicture = req.file ? req.file.filename : "";
-    profilePicture = `http://localhost:3000/static/uploads/${profilePicture}`
+    profilePicture = `http://localhost:3000/static/uploads/${profilePicture}`;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -397,7 +397,7 @@ app.get("/user/applications", userAuthenticate, async (req, res) => {
 app.get("/user/saved", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
-    console.log(user)
+    console.log(user);
     const saved = await Job.find({ _id: { $in: user.saved } });
 
     res.json(saved);
@@ -512,25 +512,6 @@ app.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
-
-// app.get(
-//   "/auth/google/callback",
-//   passport.authenticate("google", {
-//     failureRedirect: "/",
-//     session: false,
-//     responseType: "token", // Request token as response
-//   }),
-//   (req, res) => {
-//     // Retrieve the access token from the request object
-//     const mytoken = req.user.mytoken;
-
-//     // Set a secure HttpOnly cookie with the access token
-//     res.cookie("mytoken", mytoken);
-
-//     // Redirect back to your frontend or respond as needed
-//     res.redirect("http://localhost:5173"); // Update with your frontend URL
-//   }
-// );
 
 app.get(
   "/auth/google/callback",
