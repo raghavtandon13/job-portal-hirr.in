@@ -517,8 +517,7 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
-    
-    const user = req.user; // Assuming user is available in the request object after successful Google authentication
+    const user = req.user;
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
     // Set a secure HttpOnly cookie
