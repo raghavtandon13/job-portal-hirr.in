@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 70vw;
+  padding-bottom: 10%;
 }
 .banner-heading {
   display: flex;
@@ -41,4 +42,75 @@
 }
 .banner-search input:focus {
   outline: none;
+}
+.brands {
+  margin: 10% 0px;
+  gap: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.brands img {
+  width: 90px;
+  filter: grayscale(1) contrast(0.1);
+}
+.banner-ad {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: row;
+}
+.banner-ad-left {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  /* align-content: flex-start; */
+}
+.banner-ad-left h1 {
+  text-align: left;
+}
+.banner-ad-left button {
+background-color: black;
+}
+.banner-ad-right {
+  flex: 1;
+}
+.banner-ad-right img {
+  width: 30px;
+  color: white;
+}
+.banner-part {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.banner-part-l {
+  flex: 1;
+}
+.banner-part-r {
+  display: flex;
+  flex: 3;
+  text-align: left;
+  gap: 10px;
+  flex-direction: column;
+}
+.banner-part-r h4 {
+  color: gray;
+}
+.banner-part-l hr {
+  width: 0;
+  height: 80px;
+}
+
+@media only screen and (max-width: 700px) {
+  .banner-ad {
+    flex-direction: column;
+  }
+  .banner-ad-left {
+    margin-bottom: 10%;
+  }
+  .brands {
+    display: none;
+  }
 }

@@ -28,7 +28,7 @@ const LongBanner = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const imageUrl = `http://localhost:3000/static/uploads/${data.profilePicture}`;
+          const imageUrl = `${data.profilePicture}`;
 
           if (data.profilePicture && data.profilePicture.trim() !== "") {
             setUserImage(imageUrl);

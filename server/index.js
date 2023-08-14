@@ -213,7 +213,8 @@ app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
   try {
     console.log(req.body);
     const { name, email, password } = req.body;
-    const profilePicture = req.file ? req.file.filename : "";
+    let profilePicture = req.file ? req.file.filename : "";
+    profilePicture = `http://localhost:3000/static/uploads/${profilePicture}`
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {

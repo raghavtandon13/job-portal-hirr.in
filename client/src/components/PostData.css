@@ -11,6 +11,10 @@ li {
   justify-content: space-around;
   color: darkgray;
 }
+
+.post-details-text {
+  text-align: left;
+}
 .post-details-text h3 {
   font-weight: 500;
   color: #4a4aff;

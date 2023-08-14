@@ -21,7 +21,10 @@ passport.use(
           user = new User({
             name: profile.displayName,
             email: profile.emails[0].value,
-            profilePicture: profile.photos && profile.photos.length > 0 ? profile.photos[0].value : '',
+            profilePicture:
+              profile.photos && profile.photos.length > 0
+                ? profile.photos[0].value
+                : "",
             // Set other user properties as needed
           });
           await user.save();

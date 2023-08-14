@@ -31,7 +31,7 @@ function App() {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const tits = getCookie("mytoken");
-  console.log("tits",tits);
+  console.log("tits", tits);
   return (
     <>
       <BrowserRouter>
@@ -44,7 +44,15 @@ function App() {
 
           <Route
             path="/"
-            element={isLoggedIn() ? <Navigate to={"/home"} /> : <LandingPage />}
+            element={
+              isLoggedIn() ? (
+                <Navigate to={"/home"} />
+              ) : isLoggedInOrg() ? (
+                <Navigate to={"/org/home"} />
+              ) : (
+                <LandingPage />
+              )
+            }
           />
 
           <Route

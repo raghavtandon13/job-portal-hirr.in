@@ -9,38 +9,12 @@ const OrgSignup = () => {
   const [industry, setIndustry] = useState("");
   const navigate = useNavigate();
   const [orgPicture, setOrgPicture] = useState(null);
+  const [isFileSelected, setIsFileSelected] = useState(false);
 
   const handleOrgPictureChange = (file) => {
     setOrgPicture(file);
+    setIsFileSelected(true);
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const data = { companyName, industry, email, password };
-  //   try {
-  //     const response = await fetch("http://localhost:3000/signup/company/", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       const token = responseData.token;
-
-  //       console.log("Login successful!");
-  //       localStorage.setItem("token", token);
-  //       console.log("token stored");
-  //       navigate("/org/home");
-  //     } else {
-  //       console.error("Login failed");
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occurred:", error);
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,10 +48,7 @@ const OrgSignup = () => {
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  };  
-
-
-
+  };
 
   const handleReset = () => {
     document.getElementById("name").value = "";
@@ -133,13 +104,22 @@ const OrgSignup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input
-            type="file"
-            name="orgPicture"
-            accept="image/*"
-            onChange={(e) => handleOrgPictureChange(e.target.files[0])}
-          />
+          <div className="file-input-container">
+            <input
+              type="file"
+              name="profilePicture"
+              accept="image/*"
+              id="profilePictureInput"
+              onChange={(e) => handleOrgPictureChange(e.target.files[0])}
+              title="Upload profile picture"
+              required
+            />
+            {isFileSelected && (
+              <span className="file-selected-icon">&#10003;</span>
+            )}
+          </div>
         </div>
+
         <div className="signup-button">
           <button>Submit</button>
           <button onClick={handleReset}>Reset</button>

@@ -1,0 +1,46 @@
+.footer {
+  background-color: #1f2223;
+  color: white;
+}
+.footer a {
+  color: white;
+}
+
+/*  */
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1f2223; /* Set your desired background color */
+  color: white; /* Set your desired text color */
+}
+
+.footer-container {
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo a {
+  text-decoration: none;
+  font-family: "Angkor", cursive;
+  color: rgb(224, 224, 224);
+  font-size: 30px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  margin-right: 20px;
+  color: white; /* Set your desired link color */
+}
+@media only screen and (max-width: 700px) {
+    .footer-container {
+        flex-direction: column;
+      }
+}
+
+
