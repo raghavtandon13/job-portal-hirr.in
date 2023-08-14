@@ -7,7 +7,7 @@ const jobSchema = new mongoose.Schema({
   skills: { type: [String], required: true },
   experience: { type: String, required: true },
   applicants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-  orgPicture: { type: String }, // Add this field
+  orgPicture: { type: String },
   // Other job fields...
 });
 
