@@ -14,7 +14,7 @@ const Card = ({ data }) => {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
-  // const token = getCookie("mytoken");
+
   const token = getCookie("mytoken");
 
   useEffect(() => {
