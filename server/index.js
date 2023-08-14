@@ -522,7 +522,6 @@ app.get(
 
     res.cookie("mytoken", token);
 
-    // Redirect back to your frontend
     res.redirect("http://localhost:5173"); // Update with your frontend URL
   }
 );
