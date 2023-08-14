@@ -35,7 +35,6 @@ const Login = () => {
   };
 
   const handleGoogleAuth = () => {
-    // Redirect the user to the Google authentication route
     window.location.href = "http://localhost:3000/auth/google";
   };
 
@@ -44,17 +43,13 @@ const Login = () => {
       <div className="login-heading">
         <h1>Login</h1>
       </div>
-          <div className="googlediv2">
-            <button
-              className="googleBtn2"
-              type="button"
-              onClick={handleGoogleAuth}
-            >
-              <GoogleIcon />
-              Log in with Google
-            </button>
-          </div>
-          <p>or</p>
+      <div className="googlediv2">
+        <button className="googleBtn2" type="button" onClick={handleGoogleAuth}>
+          <GoogleIcon />
+          Log in with Google
+        </button>
+      </div>
+      <p>or</p>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <input
