@@ -14,7 +14,7 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
   const apiUrl1 = "http://localhost:3000/user/saved";
   const apiUrl2 = "http://localhost:3000/jobs/search";
-  // const apiUrl2 = "http://localhost:3000/jobs/saved";
+  
   const apiUrl = useApiUrl2 ? apiUrl2 : apiUrl1;
 
   const savedUrl = "/user/saved";
