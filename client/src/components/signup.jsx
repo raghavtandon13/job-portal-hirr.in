@@ -25,7 +25,6 @@ const Signup = () => {
   };
 
   const handleGoogleAuth = () => {
-    // Redirect the user to the Google authentication route
     window.location.href = "http://localhost:3000/auth/google";
   };
   const handleSubmit = async (e) => {
