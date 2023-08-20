@@ -14,6 +14,7 @@ import session from "express-session";
 import dotenv from "dotenv";
 import "./passport-setup.js";
 import "./utils/otp.util.js";
+import { generateOTP } from "./utils/otp.util.js";
 
 dotenv.config();
 
@@ -546,6 +547,38 @@ app.get(
     res.redirect("http://localhost:5173");
   }
 );
+
+// Route for OTP login for user
+app.post("/otp-login", async (req, res) => {
+  const { phone } = req.body;
+  console.log(phone);
+  const user = await User.findOne({ phone });
+  console.log(user);
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+  const otp = generateOTP(6);
+  console.log(otp);
+  user.otp = otp;
+  await user.save();
+});
+app.post("/otp-verify", async (req, res) => {
+  const { phone, otp } = req.body;
+  const user = await User.findOne({ phone: phone });
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+  if (user.otp === otp) {
+    const token = jwt.sign({ userId: user._id }, "your-secret-key");
+    console.log("OTP verified successfully");
+    res.cookie("mytoken", token, {
+      expires: new Date(Date.now() + 3600000),
+    });
+  } else {
+    return res.status(404).json({ message: "OTP not verified" });
+  }
+});
+
 //------------------------------------------------
 // Express App listening on PORT
 
