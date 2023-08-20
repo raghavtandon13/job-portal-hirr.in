@@ -1,0 +1,79 @@
+"filename", "language", "JSON", "JavaScript", "JavaScript JSX", "CSS", "XML", "HTML", "comment", "blank", "total"
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\.eslintrc.cjs", "JavaScript", 0, 18, 0, 0, 0, 0, 1, 2, 21
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\index.html", "HTML", 0, 0, 0, 0, 0, 13, 0, 3, 16
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\package-lock.json", "JSON", 4167, 0, 0, 0, 0, 0, 0, 1, 4168
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\package.json", "JSON", 33, 0, 0, 0, 0, 0, 0, 1, 34
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\public\percent.svg", "XML", 0, 0, 0, 0, 8, 0, 0, 0, 8
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\public\vite.svg", "XML", 0, 0, 0, 0, 3, 0, 0, 1, 4
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\App.css", "CSS", 0, 0, 0, 23, 0, 0, 1, 2, 26
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\App.jsx", "JavaScript JSX", 0, 0, 111, 0, 0, 0, 2, 17, 130
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\4.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\blurry-gradient-haikei.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\circle-scatter-haikei.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\cube.svg", "XML", 0, 0, 0, 0, 6, 0, 0, 1, 7
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\one.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\react.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\two.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\assets\wave-haikei.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\OrgLoggin.css", "CSS", 0, 0, 0, 3, 0, 0, 0, 1, 4
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\OrgLoggin.jsx", "JavaScript JSX", 0, 0, 59, 0, 0, 0, 0, 6, 65
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\OrgPosts.css", "CSS", 0, 0, 0, 27, 0, 0, 0, 0, 27
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\OrgPosts.jsx", "JavaScript JSX", 0, 0, 26, 0, 0, 0, 0, 3, 29
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\OrgSignup.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\OrgSignup.jsx", "JavaScript JSX", 0, 0, 102, 0, 0, 0, 21, 9, 132
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\PostData.css", "CSS", 0, 0, 0, 33, 0, 0, 0, 2, 35
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\PostData.jsx", "JavaScript JSX", 0, 0, 52, 0, 0, 0, 0, 5, 57
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\banner.css", "CSS", 0, 0, 0, 112, 0, 0, 3, 1, 116
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\banner.jsx", "JavaScript JSX", 0, 0, 100, 0, 0, 0, 0, 2, 102
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\card.css", "CSS", 0, 0, 0, 64, 0, 0, 0, 0, 64
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\card.jsx", "JavaScript JSX", 0, 0, 118, 0, 0, 0, 0, 13, 131
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\login.css", "CSS", 0, 0, 0, 54, 0, 0, 0, 1, 55
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\login.jsx", "JavaScript JSX", 0, 0, 69, 0, 0, 0, 0, 7, 76
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\longProfBanner.css", "CSS", 0, 0, 0, 93, 0, 0, 2, 2, 97
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\longProfBanner.jsx", "JavaScript JSX", 0, 0, 76, 0, 0, 0, 0, 9, 85
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\makePost.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\makePost.jsx", "JavaScript JSX", 0, 0, 87, 0, 0, 0, 0, 8, 95
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\navbar.css", "CSS", 0, 0, 0, 144, 0, 0, 1, 5, 150
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\navbar.jsx", "JavaScript JSX", 0, 0, 82, 0, 0, 0, 0, 8, 90
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\profile-banner.css", "CSS", 0, 0, 0, 72, 0, 0, 2, 1, 75
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\profile-banner.jsx", "JavaScript JSX", 0, 0, 73, 0, 0, 0, 0, 8, 81
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\profileMeter.css", "CSS", 0, 0, 0, 92, 0, 0, 4, 1, 97
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\profileMeter.jsx", "JavaScript JSX", 0, 0, 28, 0, 0, 0, 0, 3, 31
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\reccos.css", "CSS", 0, 0, 0, 66, 0, 0, 2, 2, 70
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\reccos.jsx", "JavaScript JSX", 0, 0, 66, 0, 0, 0, 0, 13, 79
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\resume.css", "CSS", 0, 0, 0, 77, 0, 0, 1, 1, 79
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\resume.jsx", "JavaScript JSX", 0, 0, 74, 0, 0, 0, 0, 3, 77
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\search.css", "CSS", 0, 0, 0, 52, 0, 0, 1, 1, 54
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\search.jsx", "JavaScript JSX", 0, 0, 43, 0, 0, 0, 0, 6, 49
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\searchResults.jsx", "JavaScript JSX", 0, 0, 44, 0, 0, 0, 0, 10, 54
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\signup.css", "CSS", 0, 0, 0, 80, 0, 0, 0, 5, 85
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\components\signup.jsx", "JavaScript JSX", 0, 0, 111, 0, 0, 0, 23, 10, 144
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\index.css", "CSS", 0, 0, 0, 53, 0, 0, 4, 9, 66
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\main.jsx", "JavaScript JSX", 0, 0, 9, 0, 0, 0, 0, 2, 11
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\ApplicationsPage.jsx", "JavaScript JSX", 0, 0, 58, 0, 0, 0, 0, 11, 69
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\Footer.css", "CSS", 0, 0, 0, 38, 0, 0, 2, 7, 47
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\Footer.jsx", "JavaScript JSX", 0, 0, 22, 0, 0, 0, 0, 3, 25
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\Homepage.css", "CSS", 0, 0, 0, 24, 0, 0, 0, 0, 24
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\ReccoPage.jsx", "JavaScript JSX", 0, 0, 58, 0, 0, 0, 0, 11, 69
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\Searchpage.css", "CSS", 0, 0, 0, 3, 0, 0, 0, 0, 3
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\Searchpage.jsx", "JavaScript JSX", 0, 0, 22, 0, 0, 0, 0, 3, 25
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\homepage.jsx", "JavaScript JSX", 0, 0, 47, 0, 0, 0, 1, 4, 52
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\landingpage.jsx", "JavaScript JSX", 0, 0, 19, 0, 0, 0, 1, 3, 23
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\loginpage.jsx", "JavaScript JSX", 0, 0, 12, 0, 0, 0, 0, 3, 15
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\makepostpage.jsx", "JavaScript JSX", 0, 0, 12, 0, 0, 0, 0, 2, 14
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\orghomepage.jsx", "JavaScript JSX", 0, 0, 27, 0, 0, 0, 0, 3, 30
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\orgloginpage.jsx", "JavaScript JSX", 0, 0, 12, 0, 0, 0, 0, 2, 14
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\orgsignuppage.jsx", "JavaScript JSX", 0, 0, 12, 0, 0, 0, 0, 2, 14
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\profilepage.jsx", "JavaScript JSX", 0, 0, 19, 0, 0, 0, 0, 3, 22
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\rsa.css", "CSS", 0, 0, 0, 3, 0, 0, 0, 0, 3
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\savedPage.jsx", "JavaScript JSX", 0, 0, 58, 0, 0, 0, 0, 11, 69
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\src\pages\signuppage.jsx", "JavaScript JSX", 0, 0, 11, 0, 0, 0, 0, 2, 13
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\client\vite.config.js", "JavaScript", 0, 5, 0, 0, 0, 0, 0, 2, 7
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\server\index.js", "JavaScript", 0, 417, 0, 0, 0, 0, 35, 103, 555
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\server\models\Company.js", "JavaScript", 0, 23, 0, 0, 0, 0, 0, 4, 27
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\server\models\Job.js", "JavaScript", 0, 12, 0, 0, 0, 0, 1, 4, 17
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\server\models\User.js", "JavaScript", 0, 22, 0, 0, 0, 0, 0, 4, 26
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\server\package-lock.json", "JSON", 2509, 0, 0, 0, 0, 0, 0, 1, 2510
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\server\package.json", "JSON", 28, 0, 0, 0, 0, 0, 0, 1, 29
+"c:\Users\ragha\OneDrive\Documents\job-portal-hirr.in\server\passport-setup.js", "JavaScript", 0, 46, 0, 0, 0, 0, 1, 7, 54
+"Total", "-", 6737, 543, 1719, 1113, 24, 13, 109, 383, 10641
