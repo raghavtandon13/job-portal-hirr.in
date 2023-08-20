@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String },
+  phone: { type: Number, required: false, unique: true },
   applications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
   saved: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
   role: {
@@ -13,6 +14,7 @@ const userSchema = new mongoose.Schema({
     default: "user",
   },
   profilePicture: { type: String, default: "" },
+  otp: { type: Number },
 });
 
 userSchema.pre("save", async function (next) {

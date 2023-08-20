@@ -13,6 +13,7 @@ import passport from "passport";
 import session from "express-session";
 import dotenv from "dotenv";
 import "./passport-setup.js";
+import "./utils/otp.util.js";
 
 dotenv.config();
 
