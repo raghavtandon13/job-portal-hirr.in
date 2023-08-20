@@ -415,13 +415,16 @@ app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const company = req.company;
+    console.log(company);
 
-    const job = await Job.findOne({ _id: jobId, company: company._id });
+    const job = await Job.findOne({ _id: jobId });
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
     }
 
-    const applicants = await User.find({ _id: { $in: job.applicants } });
+    const applicants = await User.find({ _id: { $in: job.applicants } }).select(
+      "_id name email"
+    );
 
     res.json(applicants);
   } catch (error) {
@@ -470,6 +473,23 @@ app.get("/api/validate_token", (req, res) => {
 //Route for user details
 app.get("/user/details", userAuthenticate, async (req, res) => {
   const user = req.user;
+  try {
+    const userDetails = await User.findOne({ _id: user._id });
+
+    if (!userDetails) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    return res.json(userDetails);
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/user/:user/details", async (req, res) => {
+  // const user = req.user;
+  const user = req.params.user;
   try {
     const userDetails = await User.findOne({ _id: user._id });
 

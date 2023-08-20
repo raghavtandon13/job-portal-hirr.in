@@ -33,7 +33,7 @@
 .navbar-btn-group {
   width: 100%;
   display: flex;
-  padding: 0px 20%;
+  padding: 0px 15%;
   justify-content: space-evenly;
 }
 .navbar-btn-group button {

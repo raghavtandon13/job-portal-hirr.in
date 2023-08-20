@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import image from "../assets/user.png";
-// import image from "../assets/user.png";
 import "./profile-banner.css";
 
 const ProfileBanner = () => {
