@@ -38,16 +38,12 @@
 }
 .navbar-btn-group button {
 }
-
-/* Style the dropdown button */
 .dropdown .dropdown-button {
   color: rgb(200, 195, 188);
   color: #fff;
   border: none;
   cursor: pointer;
 }
-
-/* Style the dropdown menu */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -57,24 +53,77 @@
   margin-top: 1px;
   border-radius: 12px;
 }
-
-/* Style the dropdown menu items */
 .dropdown-content a {
   color: rgb(200, 195, 188);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-
-/* Change color of dropdown menu items on hover */
 .dropdown-content a:hover {
   background-color: rgb(43, 47, 49);
   border-radius: 5px;
 }
-
-/* Show the dropdown menu when the dropdown button is hovered */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.navbar-btn-group svg {
+  width: 30px;
+  align-self: center;
+}
+
+/* Notifications */
+
+.dropdown-1 .dropdown-button-1 {
+  color: rgb(200, 195, 188);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background-color: none;
+  background: none;
+}
+.dropdown-content-1 {
+  display: none;
+  position: absolute;
+  background-color: rgb(27, 30, 31);
+  min-width: 360px;
+  z-index: 1;
+  margin-top: 1px;
+  border-radius: 12px;
+}
+.dropdown-content-1 a {
+  color: rgb(200, 195, 188);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content-1 a:hover {
+  background-color: rgb(43, 47, 49);
+  border-radius: 5px;
+}
+.dropdown-button-1:focus {
+  outline: none;
+}
+.navbar-btn-group svg {
+  width: 30px;
+  align-self: center;
+}
+.notification-icon {
+  position: relative;
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
 }
 
 @media only screen and (max-width: 1340px) {
