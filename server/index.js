@@ -214,7 +214,7 @@ app.post("/login/company", async (req, res) => {
 app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
   try {
     console.log(req.body);
-    const { name, email, password } = req.body;
+    const { name, email, password, phone } = req.body;
     let profilePicture = req.file ? req.file.filename : "";
     profilePicture = `http://localhost:3000/static/uploads/${profilePicture}`;
 
@@ -223,7 +223,7 @@ app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
       return res.status(409).json({ message: "Email is already registered" });
     }
 
-    const user = new User({ name, email, password, profilePicture });
+    const user = new User({ name, email, phone, password, profilePicture });
     await user.save();
 
     res.status(201).json({ message: "User created successfully" });
@@ -564,16 +564,18 @@ app.post("/otp-login", async (req, res) => {
 });
 app.post("/otp-verify", async (req, res) => {
   const { phone, otp } = req.body;
-  const user = await User.findOne({ phone: phone });
+  const user = await User.findOne({ phone });
+  console.log(user);
   if (!user) {
     return res.status(404).json({ message: "User not found" });
   }
-  if (user.otp === otp) {
+  if (user.otp === parseInt(otp)) {
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
     console.log("OTP verified successfully");
     res.cookie("mytoken", token, {
       expires: new Date(Date.now() + 3600000),
     });
+    return res.status(200).json({ message: "OTP verified successfully" });
   } else {
     return res.status(404).json({ message: "OTP not verified" });
   }

@@ -7,6 +7,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [isFileSelected, setIsFileSelected] = useState(false);
 
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const Signup = () => {
     data.append("name", name);
     data.append("email", email);
     data.append("password", password);
+    data.append("phone", phone);
     if (profilePicture) {
       data.append("profilePicture", profilePicture);
     }
@@ -91,6 +93,7 @@ const Signup = () => {
             name="phone"
             id="phone"
             placeholder="Mobile Number"
+            onChange={(e) => setPhone(e.target.value)}
           />
           <input
             type="email"
