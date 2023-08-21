@@ -9,7 +9,7 @@ import intel from "../assets/logos/intel-logo-removebg-preview.png";
 import microsoft from "../assets/logos/microsoft-logo-removebg-preview.png";
 import samsung from "../assets/logos/samsung-logo-removebg-preview.png";
 import toyota from "../assets/logos/toyota-logo-removebg-preview.png";
-import ViewInArTwoToneIcon from "@mui/icons-material/ViewInArTwoTone";
+// import ViewInArTwoToneIcon from "@mui/icons-material/ViewInArTwoTone";
 import cube from "../assets/cube.svg";
 const Banner = ({ heading, subheading }) => {
   const defaultHeading = "Find your dream job now";

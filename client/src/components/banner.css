@@ -4,8 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 70vw;
-  padding-bottom: 10%;
-  
+  padding-bottom: 5%;
 }
 .banner-heading {
   display: flex;
@@ -72,7 +71,7 @@
   text-align: left;
 }
 .banner-ad-left button {
-background-color: black;
+  background-color: black;
 }
 .banner-ad-right {
   flex: 1;
