@@ -54,8 +54,8 @@ const Signup = () => {
         document.cookie = `mytoken=${token}`;
 
         console.log("Signup successful!");
-        window.location.reload();
         navigate("/resume-builder");
+        window.location.reload();
       } else {
         console.error("Signup failed");
       }
