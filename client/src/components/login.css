@@ -25,9 +25,11 @@
 }
 .login-heading {
   font-family: "Roboto Slab", serif;
+  /* font-family: "Cabin", sans-serif; */
 }
 .login-form form input {
-  font-family: "Roboto Slab", serif;
+  /* font-family: "Roboto Slab", serif; */
+  font-family: "Cabin", sans-serif;
   padding: 8px;
   font-size: 16px;
   border: 2px solid black;

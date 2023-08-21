@@ -16,6 +16,7 @@
   border: none;
   background-color: rgb(24, 26, 27);
   text-align: center;
+  font-family: "Cabin", sans-serif;
 }
 .banner-search input::placeholder {
   text-align: center;

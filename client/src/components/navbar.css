@@ -1,5 +1,6 @@
 .navbar {
-  font-family: "Roboto Slab", serif;
+  /* font-family: "Roboto Slab", serif; */
+  font-family: "Cabin", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,6 @@
 .profile-banner {
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Cabin", sans-serif;
   border-radius: 30px;
   /* width: 200%; */
   /* height: 30vh; */
@@ -10,7 +11,7 @@
   border-radius: 20px;
   background-color: #1f2223;
   /* margin-top: 6%; */
-  padding: 5% 0%;
+  padding: 2% 0%;
 }
 .profile-left {
   display: flex;

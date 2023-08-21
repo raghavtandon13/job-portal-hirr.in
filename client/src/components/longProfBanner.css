@@ -1,6 +1,7 @@
 .long-banner {
   border: 1px solid rgb(42 42 72);
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Cabin", sans-serif;
   border-radius: 30px;
   width: 25vw;
   display: flex;

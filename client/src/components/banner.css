@@ -1,5 +1,6 @@
 .banner {
-  font-family: "Roboto Slab", serif;
+  /* font-family: "Roboto Slab", serif; */
+  font-family: "Cabin", sans-serif;
   color: rgb(232, 230, 227);
   display: flex;
   flex-direction: column;
@@ -7,6 +8,7 @@
   padding-bottom: 5%;
 }
 .banner-heading {
+    font-family: "Roboto Slab", serif;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -35,6 +37,7 @@
   border: none;
   background-color: rgb(24, 26, 27);
   text-align: center;
+  font-family: "Cabin", sans-serif;
 }
 .banner-search button {
   border-radius: 14px;
@@ -58,11 +61,13 @@
   filter: grayscale(1) contrast(0.1);
 }
 .banner-ad {
+  font-family: "Roboto Slab", serif;
   /* height: 100vh; */
   display: flex;
   flex-direction: row;
 }
 .banner-ad-left {
+
   display: flex;
   flex: 1;
   flex-direction: column;

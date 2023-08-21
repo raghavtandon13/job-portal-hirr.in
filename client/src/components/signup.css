@@ -6,6 +6,7 @@
 }
 .signup-heading {
   font-family: "Roboto Slab", serif;
+  /* font-family: "Cabin", sans-serif; */
   color: black;
 }
 .signup-heading h1 {
@@ -19,7 +20,8 @@
 }
 
 .signup-input input {
-  font-family: "Roboto Slab", serif;
+  /* font-family: "Roboto Slab", serif; */
+  font-family: "Cabin", sans-serif;
   padding: 8px;
   font-size: 16px;
   border: 2px solid #8c8273;
