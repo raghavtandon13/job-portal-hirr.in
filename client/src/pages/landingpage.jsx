@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import Banner from "../components/banner";
+import Testimonials from "./testimonials";
 import Footer from "./Footer";
 
 const LandingPage = () => {
@@ -14,7 +15,8 @@ const LandingPage = () => {
         funcBtnName="About Us"
       />
       <Banner />
-      {/* <Footer/> */}
+      <Testimonials />
+      <Footer/>
     </>
   );
 };
