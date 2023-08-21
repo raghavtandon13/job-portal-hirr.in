@@ -12,6 +12,7 @@ import Searchpage from "./pages/Searchpage";
 import ApplicationsPage from "./pages/ApplicationsPage";
 import SavedPage from "./pages/savedPage";
 import ReccoPage from "./pages/reccoPage";
+import ResumeBuilder from "./pages/Resume-Builder";
 import "./App.css";
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
               isLoggedIn() ? <Profilepage /> : <Navigate to={"/login"} />
             }
           />
-
+          <Route path="/resume-builder" element={<ResumeBuilder />} />
           <Route
             path="/signup"
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}

@@ -51,9 +51,9 @@ const Signup = () => {
         const token = responseData.token;
 
         console.log("Signup successful!");
-        localStorage.setItem("token", token);
+        localStorage.setItem("mytoken", token);
         console.log("token stored");
-        navigate("/home");
+        navigate("/login");
       } else {
         console.error("Signup failed");
       }

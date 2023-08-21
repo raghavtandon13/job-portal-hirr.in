@@ -213,7 +213,6 @@ app.post("/login/company", async (req, res) => {
 
 app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
   try {
-    console.log(req.body);
     const { name, email, password, phone } = req.body;
     let profilePicture = req.file ? req.file.filename : "";
     profilePicture = `http://localhost:3000/static/uploads/${profilePicture}`;
