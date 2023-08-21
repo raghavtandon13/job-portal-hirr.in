@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
   },
   profilePicture: { type: String, default: "" },
   otp: { type: Number },
+  updateReqeust: { type: Boolean, default: false },
 });
 
 userSchema.pre("save", async function (next) {

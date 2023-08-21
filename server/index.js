@@ -542,6 +542,7 @@ app.get(
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
     res.cookie("mytoken", token);
+    console.log(token);
 
     res.redirect("http://localhost:5173");
   }

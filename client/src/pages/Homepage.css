@@ -12,6 +12,25 @@
   display: flex;
   flex-direction: column;
 }
+.profile-req {
+  display: flex;
+  flex-direction: row;
+  background-color: #2a2a48;
+  padding: 16px 24px;
+  width: 66vw;
+  color: white !important;
+  border-radius: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-req h3 {
+}
+.profile-req button {
+  background-color: #de878700;
+}
+.profile-req a {
+  color: white !important;
+}
 @media only screen and (max-width: 1000px) {
   .wrapper {
     width: 90vw;

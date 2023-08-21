@@ -28,6 +28,7 @@ const LongBanner = () => {
 
         if (response.ok) {
           const data = await response.json();
+          // console.log(data.profilePicture);
           const imageUrl = `${data.profilePicture}`;
 
           if (data.profilePicture && data.profilePicture.trim() !== "") {
