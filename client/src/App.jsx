@@ -61,7 +61,12 @@ function App() {
               isLoggedIn() ? <Profilepage /> : <Navigate to={"/login"} />
             }
           />
-          <Route path="/resume-builder" element={<ResumeBuilder />} />
+          <Route
+            path="/resume-builder"
+            element={
+              isLoggedIn() ? <ResumeBuilder /> : <Navigate to={"/login"} />
+            }
+          />
           <Route
             path="/signup"
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}

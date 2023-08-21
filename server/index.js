@@ -225,7 +225,13 @@ app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
     const user = new User({ name, email, phone, password, profilePicture });
     await user.save();
 
-    res.status(201).json({ message: "User created successfully" });
+    const token = jwt.sign({ userId: user._id }, "your-secret-key");
+    res.cookie("mytoken", token, {
+      expires: new Date(Date.now() + 3600000),
+      httpOnly: true,
+    });
+
+    res.status(201).json({ message: "User created successfully", token: token });
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).json({ message: "An error occurred during signup" });

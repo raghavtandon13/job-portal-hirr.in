@@ -48,12 +48,14 @@ const Signup = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+        console.log(responseData)
         const token = responseData.token;
+        console.log(token);
+        document.cookie = `mytoken=${token}`;
 
         console.log("Signup successful!");
-        localStorage.setItem("mytoken", token);
-        console.log("token stored");
-        navigate("/login");
+        window.location.reload();
+        navigate("/resume-builder");
       } else {
         console.error("Signup failed");
       }
