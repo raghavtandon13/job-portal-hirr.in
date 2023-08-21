@@ -6,7 +6,7 @@ import LongBanner from "../components/longProfBanner";
 import Search from "../components/search";
 import ProfileMeter from "../components/profileMeter";
 import Reccos from "../components/reccos";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 import "./Homepage.css";
 
 const Homepage = () => {
@@ -43,7 +43,7 @@ const Homepage = () => {
           <Reccos desc="Saved Jobs" />
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

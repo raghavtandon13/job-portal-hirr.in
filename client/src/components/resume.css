@@ -4,11 +4,12 @@
   flex-direction: column;
   text-align: left;
   color: black;
-  height: 50vh;
+  /* height: 50vh; */
   border-radius: 10px;
-  gap: 6%;
-  margin: 4% 0%;
+  gap: 10px;
+  margin: 10px 0%;
   padding-bottom: 2%;
+  width: 70vw;
 }
 .resume h1 {
   font-size: 36px;

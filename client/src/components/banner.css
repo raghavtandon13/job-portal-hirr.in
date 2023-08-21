@@ -15,11 +15,13 @@
 .banner-search {
   border-radius: 24px;
   display: flex;
-  padding: 1%;
+  padding: 10px;
   background-color: rgba(54, 59, 61, 0.34);
   flex: 1;
   justify-content: space-evenly;
   gap: 10px;
+  width: 100%;
+  max-width: 68vw;
   /* margin-top: 80px; */
 }
 .banner-heading p {

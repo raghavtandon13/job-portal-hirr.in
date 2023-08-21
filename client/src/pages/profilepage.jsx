@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
 import Resume from "../components/resume";
+import Footer from "../components/Footer";
 
 const Profilepage = () => {
   return (
@@ -14,6 +15,7 @@ const Profilepage = () => {
       />
       <ProfileBanner />
       <Resume/>
+      <Footer/>
     </>
   );
 };

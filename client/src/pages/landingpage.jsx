@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import Banner from "../components/banner";
-import Testimonials from "./testimonials";
-import Footer from "./Footer";
+import Testimonials from "../components/testimonials";
+import Footer from "../components/footer";
 
 const LandingPage = () => {
   return (
