@@ -1,10 +1,10 @@
 .profile-meter {
-  border: 1px solid rgb(42 42 72);
+  border: 1px solid rgb(47, 51, 54);
   color: black;
   /* margin-top: 40px; */
   height: 20vh;
   border-radius: 20px;
-  background-color: rgb(31, 34, 35);
+  background-color: black;
   max-height: 180px;
   padding-bottom: 30px;
 }
@@ -46,9 +46,9 @@
 }
 .meter-text p {
   padding: 4%;
-  background-color: rgb(31, 34, 35);
+  background-color: black;
   border-radius: 10px;
-  border: 2px solid rgb(42 42 72);
+  border: 1px solid rgb(47, 51, 54);
   color: #e6e7fc;
 }
 @media only screen and (max-width: 700px) {

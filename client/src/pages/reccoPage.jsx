@@ -53,7 +53,7 @@ const ReccoPage = () => {
         dropdown1="option #1"
         dropdown2="option #2"
       />
-      <div className="page-title">
+      <div style={{ width: "64vw", textAlign: "left" }} className="page-title">
         <h2>Reccomendations for you</h2>
       </div>
       <div className="card-collection">

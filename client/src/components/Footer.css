@@ -3,6 +3,7 @@
   color: white;
   margin-top: 10vh;
 }
+
 .footer a {
   color: white;
 }
@@ -16,9 +17,19 @@
   background-color: #1f2223; /* Set your desired background color */
   color: white; /* Set your desired text color */
 }
-
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1f2223;
+  color: white;
+  border-top: 1px solid rgb(47, 51, 54);
+  background-color: rgba(0, 0, 0, 0.65);
+  border-bottom: 1px solid rgb(47, 51, 54);
+}
 .footer-container {
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -39,9 +50,7 @@
   color: white; /* Set your desired link color */
 }
 @media only screen and (max-width: 700px) {
-    .footer-container {
-        flex-direction: column;
-      }
+  .footer-container {
+    flex-direction: column;
+  }
 }
-
-

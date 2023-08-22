@@ -53,9 +53,10 @@ const SavedPage = () => {
         dropdown1="option #1"
         dropdown2="option #2"
       />
-      <div className="page-title">
+      <div style={{ width: "64vw", textAlign: "left" }} className="page-title">
         <h2>Your Saved Jobs</h2>
       </div>
+
       <div className="card-collection">
         {jobs.map((data) => (
           <Card key={data._id} data={data} />

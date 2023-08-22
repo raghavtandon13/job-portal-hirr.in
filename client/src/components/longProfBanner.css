@@ -1,5 +1,5 @@
 .long-banner {
-  border: 1px solid rgb(42 42 72);
+  border: 1px solid rgb(47, 51, 54);
   /* font-family: "Poppins", sans-serif; */
   font-family: "Cabin", sans-serif;
   border-radius: 30px;
@@ -9,7 +9,7 @@
   border-radius: 20px;
   background-color: white;
   /* margin-top: 4%; */
-  background-color: rgb(31, 34, 35);
+  background-color: black;
   /* height: inherit; */
   max-height: 85vh;
 }
