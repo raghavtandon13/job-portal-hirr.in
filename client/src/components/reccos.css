@@ -4,7 +4,7 @@
   /* margin-top: 10px; */
   height: max-content;
   border-radius: 20px;
-  background-color: black;
+  background-color: #00000085;
   /* max-height: 280px; */
   padding: 10px 0px;
   padding-bottom: 20px;
@@ -55,9 +55,9 @@
   flex-direction: column;
 }
 .recc img {
-  height: 82px;
-  width: 80px;
-  border-radius: 12px;
+  /* height: 82px; */
+  width: 40px;
+  border-radius: 4px;
 }
 .recc-txt p {
   margin: 0;

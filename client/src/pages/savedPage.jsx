@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
+import Footer from "../components/Footer";
 import "./rsa.css";
 
 const SavedPage = () => {
@@ -62,6 +63,7 @@ const SavedPage = () => {
           <Card key={data._id} data={data} />
         ))}
       </div>
+      <Footer />
     </>
   );
 };
