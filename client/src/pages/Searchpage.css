@@ -1,11 +1,7 @@
-.page-container {
-  background-image: url(https://images.unsplash.com/photo-1518014179319-21e9e8139b05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80);
-  background-color: #000000de;
-  background-blend-mode: multiply;
-  background-repeat: repeat;
-  background-size: cover;
-}
 .wrapper-searchpage {
+  display: flex;
   height: 100vh;
-  /* width: 100vw; */
+  align-self: center;
+  width: 70%;
+  flex-direction: column;
 }

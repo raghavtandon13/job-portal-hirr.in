@@ -16,6 +16,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #48444447;
   height: 30vh;
 }
 .test-div h3 {
