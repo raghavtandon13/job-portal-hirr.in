@@ -46,6 +46,7 @@
     padding: 6px !important;
     flex-direction: column;
     padding: 10px 4px;
+    max-height: none !important;
   }
   .banner-search input {
     color: #fff;

@@ -17,7 +17,7 @@
   align-items: center;
   flex-direction: column;
   background-color: #48444447;
-  height: 30vh;
+  height: 24vh;
 }
 .test-div h3 {
   color: white;
@@ -29,5 +29,36 @@
   color: gray;
 }
 .middle-test-div {
-  height: 35vh;
+  height: 30vh;
+}
+@media only screen and (max-width: 900px) {
+  .test {
+    flex-direction: column;
+    gap: 30px;
+    height: 70vh;
+  }
+  .test-div {
+    width: 60%;
+    height: 22vh;
+  }
+  .test-div h3 {
+    padding-top: 5%;
+  }
+  .middle-test-div {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .test {
+    height: max-content;
+  }
+  .test-div {
+    height: max-content;
+  }
+  .test-div h3 {
+    padding-top: 5%;
+  }
+  .middle-test-div {
+    width: 70%;
+  }
 }
