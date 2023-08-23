@@ -31,7 +31,7 @@
   outline: none;
 }
 .card-container .no-res {
-  padding: 10%;
+  padding: 10% 0%;
 }
 @media only screen and (max-width: 700px) {
   .banner-search {
@@ -57,5 +57,25 @@
     background-color: rgb(24, 26, 27);
     text-align: center;
     padding: 10px 0px;
+  }
+}
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.pagination button {
+  background-color: rgba(54, 59, 61, 0.34);
+  padding: 7px 10px;
+}
+.pagination button svg {
+  margin-top: 2px;
+}
+.pagination button:disabled {
+  border-color: #ffffff00 !important;
+}
+@media only screen and (max-width: 400px) {
+  .banner-search {
+    max-width: 40px;
   }
 }

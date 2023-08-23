@@ -231,7 +231,9 @@ app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
       httpOnly: true,
     });
 
-    res.status(201).json({ message: "User created successfully", token: token });
+    res
+      .status(201)
+      .json({ message: "User created successfully", token: token });
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).json({ message: "An error occurred during signup" });
@@ -304,17 +306,26 @@ app.post("/jobs", authenticate, async (req, res) => {
 
 app.get("/jobs/search", async (req, res) => {
   try {
-    const { title, skills, experience } = req.query;
+    const { title, skills, experience, page, limit } = req.query;
 
     const filter = {};
     if (title) filter.title = { $regex: title, $options: "i" };
     if (skills) filter.skills = { $in: skills.split(",") };
     if (experience) filter.experience = experience;
 
-    const jobs = await Job.find(filter);
+    const currentPage = parseInt(page) || 1;
+    const resultsPerPage = parseInt(limit) || 10;
 
-    res.json(jobs);
-    console.log(jobs);
+    const skip = (currentPage - 1) * resultsPerPage;
+
+    const jobs = await Job.find(filter).skip(skip).limit(resultsPerPage);
+
+    const totalResults = await Job.countDocuments(filter);
+
+    res.json({
+      results: jobs,
+      totalResults: totalResults,
+    });
   } catch (error) {
     console.error("Error while fetching jobs:", error);
     res.status(500).json({ message: "An error occurred while fetching jobs" });

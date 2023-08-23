@@ -148,6 +148,24 @@
 }
 @media only screen and (max-width: 800px) {
   .navbar-left {
-    flex: 3;
+    flex: 2;
   }
+}
+@media only screen and (max-width: 400px) {
+  .navbar-left {
+    flex: 5;
+  }
+  .navbar-right {
+    flex: 2;
+  }
+  .navbar-brand {
+    font-size: 20px;
+  }
+  .navbar-btn-group {
+    margin-right: 10px;
+  }
+  .navbar-btn-group button {
+    font-size: 70%;
+  }
+
 }

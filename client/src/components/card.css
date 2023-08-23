@@ -7,7 +7,7 @@
   margin: 2% 0;
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: #00000085;
   align-items: flex-start;
   width: 60vw;
 }
@@ -28,6 +28,7 @@
 .card p {
   font-weight: 300;
   color: darkgray;
+  text-align: left;
 }
 .card button {
   min-width: 65px;
