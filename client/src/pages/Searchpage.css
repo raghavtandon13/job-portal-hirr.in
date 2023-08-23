@@ -1,7 +1,5 @@
 .wrapper-searchpage {
   display: flex;
-  flex: 1;
-  height: 100vh;
   width: 70%;
   flex-direction: column;
   align-items: center;
@@ -9,7 +7,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the container takes up the full viewport height */
+  min-height: 100vh;
   width: 100vw;
   align-items: center;
 }
