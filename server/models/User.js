@@ -23,6 +23,12 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, 12);
   }
 });
+
+userSchema.index(
+  { phone: 1 },
+  { unique: true, partialFilterExpression: { phone: { $ne: null } } }
+);
+
 const User = mongoose.model("User", userSchema);
 
 export default User;
