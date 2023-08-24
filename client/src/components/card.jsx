@@ -129,7 +129,6 @@ const Card = ({ data }) => {
             </button>
           );  CHANGE API TO FETCH RESULTS 
         })} */}
-
         <div className="tags-group">
           <button>Remote</button>
           <button>New</button>

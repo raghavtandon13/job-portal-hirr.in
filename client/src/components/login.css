@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 500px;
+  width: 90%;
 }
 .login-form {
   height: 35vh;
@@ -54,4 +56,7 @@
 }
 .login-box p {
   padding: 2%;
+}
+
+@media only screen and (max-width: 800px) {
 }

@@ -13,8 +13,8 @@ const Reccos = ({ desc, useApiUrl2 }) => {
   const [jobs, setJobs] = useState([]);
 
   const apiUrl1 = "http://localhost:3000/user/saved";
-  const apiUrl2 = "http://localhost:3000/jobs/search";
-  
+  const apiUrl2 = "http://localhost:3000/jobs/reccos";
+
   const apiUrl = useApiUrl2 ? apiUrl2 : apiUrl1;
 
   const savedUrl = "/user/saved";
@@ -37,6 +37,7 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
         const data = await response.json();
         setJobs(data);
+        console.log(jobs);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

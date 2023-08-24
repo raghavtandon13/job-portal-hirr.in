@@ -332,6 +332,24 @@ app.get("/jobs/search", async (req, res) => {
   }
 });
 
+app.get("/jobs/reccos", async (req, res) => {
+  try {
+    const { title, skills, experience } = req.query;
+
+    const filter = {};
+    if (title) filter.title = { $regex: title, $options: "i" };
+    if (skills) filter.skills = { $in: skills.split(",") };
+    if (experience) filter.experience = experience;
+
+    const jobs = await Job.find(filter);
+
+    res.json(jobs);
+    console.log(jobs);
+  } catch (error) {
+    console.error("Error while fetching jobs:", error);
+    res.status(500).json({ message: "An error occurred while fetching jobs" });
+  }
+});
 // Route for applying in a given job
 
 app.post("/jobs/:jobId/apply", userAuthenticate, async (req, res) => {
