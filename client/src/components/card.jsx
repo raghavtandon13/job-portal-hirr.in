@@ -16,6 +16,14 @@ const Card = ({ data }) => {
   }
 
   const token = getCookie("mytoken");
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
 
   useEffect(() => {
     async function fetchApplicationStatus() {
@@ -97,6 +105,7 @@ const Card = ({ data }) => {
     }
   };
   const picUrl = `http://localhost:3000/static/uploads/${data.orgPicture}`;
+
   return (
     <>
       <div className="card">
@@ -111,6 +120,19 @@ const Card = ({ data }) => {
           <div className="card-pic">
             <img src={picUrl} alt="" />
           </div>
+        </div>
+        {/* {data.tags.map((tag, index) => {
+          const color = getRandomColor();
+          return (
+            <button className="tag" key={tag} style={{ backgroundColor: color }}>
+              {tag}
+            </button>
+          );  CHANGE API TO FETCH RESULTS 
+        })} */}
+
+        <div className="tags-group">
+          <button>Remote</button>
+          <button>New</button>
         </div>
         <div className="card-btns">
           {applied ? (

@@ -66,3 +66,34 @@
   height: 100px;
   border-radius: 12px;
 }
+.tags-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.tags-group button {
+  padding: 5px 5px;
+  border-radius: 60px;
+  margin: 10px 0px;
+}
+.tags-group button:nth-child(1) {
+  background-color: #d93535;
+}
+
+.tags-group button:nth-child(2) {
+  background-color: #646cff;
+}
+
+.tags-group button:nth-child(3) {
+  background-color: green;
+}
