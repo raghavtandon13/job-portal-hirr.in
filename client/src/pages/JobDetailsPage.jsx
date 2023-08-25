@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
+import "./jobdetailspage.css"
 
 function JobDetails() {
   const { jobId } = useParams();
@@ -14,6 +15,7 @@ function JobDetails() {
         const response = await fetch(`http://localhost:3000/jobs/${jobId}`);
         const data = await response.json();
         setJobDetails(data);
+        console.log(jobDetails.jobDescription);
       } catch (error) {
         console.error("An error occurred:", error);
       }
@@ -56,6 +58,13 @@ function JobDetails() {
       )}
 
       {jobDetails && <Card data={jobDetails} />}
+
+      {jobDetails && (
+        <div className="job-desc">
+          <h3>Job Description</h3>
+          <p style={{ whiteSpace: 'pre-line' }}>{jobDetails.jobDescription}</p>
+        </div>
+      )}
     </>
   );
 }

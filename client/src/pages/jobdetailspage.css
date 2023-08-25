@@ -1,0 +1,12 @@
+.job-desc {
+  width: 60vw;
+  text-align: left;
+  color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgb(47, 51, 54);
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #00000085;
+  width: 60vw;
+}

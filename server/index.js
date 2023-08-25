@@ -275,7 +275,7 @@ app.post("/signup/company", upload.single("orgPicture"), async (req, res) => {
 app.post("/jobs", authenticate, async (req, res) => {
   try {
     console.log("Request body:", req.body);
-    const { companyName, title, skills, experience } = req.body;
+    const { companyName, title, skills, experience, jobDescription} = req.body;
 
     const company = await Company.findOne({ companyName });
     if (!company) {
@@ -290,6 +290,7 @@ app.post("/jobs", authenticate, async (req, res) => {
       experience,
       companyId,
       orgPicture,
+      jobDescription
     });
     await job.save();
     company.jobs.push(job);
@@ -361,7 +362,7 @@ app.get("/jobs/:jobId", async (req, res) => {
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
     }
-
+    console.log(job);
     res.json(job);
   } catch (error) {
     console.error("Error while fetching job:", error);
@@ -490,7 +491,7 @@ app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
   }
 });
 
-// Route for fetching job posts from given organization
+// Route for fetching job posts from given organization (with org authentication)
 
 app.get("/company/jobs", authenticate, async (req, res) => {
   try {
@@ -505,6 +506,18 @@ app.get("/company/jobs", authenticate, async (req, res) => {
     res
       .status(500)
       .json({ message: "An error occurred while retrieving jobs" });
+  }
+});
+
+// Route for fetching job posts from given organization (with company ID)
+
+app.get("/jobs/:companyId/all", async (req, res) => {
+  const companyId = req.params.companyId;
+  try {
+    const jobs = await Job.find({ companyId: companyId });
+    res.json(jobs);
+  } catch (error) {
+    res.json(error);
   }
 });
 

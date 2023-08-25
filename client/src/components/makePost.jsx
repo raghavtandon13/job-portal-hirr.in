@@ -13,6 +13,7 @@ const MakePost = () => {
   const [skills, setSkills] = useState("");
   const [experience, setExperience] = useState("");
   const [companyName, setcompanyName] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
 
   const handleReset = () => {
     document.getElementById("name").value = "";
@@ -22,7 +23,7 @@ const MakePost = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { companyName, title, skills, experience };
+    const data = { companyName, title, skills, experience, jobDescription };
     try {
       const response = await fetch("http://localhost:3000/jobs", {
         method: "POST",
@@ -80,6 +81,13 @@ const MakePost = () => {
             placeholder="Experience in number of years"
             value={experience}
             onChange={(e) => setExperience(e.target.value)}
+          />
+          {/* Job Description Textarea */}
+          <textarea
+            id="jobDescription"
+            placeholder="Job Description"
+            value={jobDescription}
+            onChange={(e) => setJobDescription(e.target.value)}
           />
         </div>
         <div className="signup-button">
