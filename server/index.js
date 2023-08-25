@@ -260,7 +260,7 @@ app.post("/signup/company", upload.single("orgPicture"), async (req, res) => {
       orgPicture,
     });
     await company.save();
-
+    
     res.status(201).json({ message: "Company registered successfully" });
   } catch (error) {
     console.error("Error during company signup:", error);
@@ -275,7 +275,7 @@ app.post("/signup/company", upload.single("orgPicture"), async (req, res) => {
 app.post("/jobs", authenticate, async (req, res) => {
   try {
     console.log("Request body:", req.body);
-    const { companyName, title, skills, experience, jobDescription} = req.body;
+    const { companyName, title, skills, experience, jobDescription } = req.body;
 
     const company = await Company.findOne({ companyName });
     if (!company) {
@@ -290,7 +290,7 @@ app.post("/jobs", authenticate, async (req, res) => {
       experience,
       companyId,
       orgPicture,
-      jobDescription
+      jobDescription,
     });
     await job.save();
     company.jobs.push(job);
