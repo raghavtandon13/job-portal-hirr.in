@@ -79,7 +79,7 @@ async function createCompanyAndPostJob() {
         jobDescription
       }, {
         headers: {
-          Authorization: `Bearer ${authToken}`
+          Authorization: `${authToken}`
         }
       });
 
