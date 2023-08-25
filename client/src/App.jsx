@@ -13,6 +13,7 @@ import ApplicationsPage from "./pages/ApplicationsPage";
 import SavedPage from "./pages/savedPage";
 import ReccoPage from "./pages/reccoPage";
 import ResumeBuilder from "./pages/Resume-Builder";
+import JobDetails from "./pages/JobDetailsPage";
 import "./App.css";
 
 function App() {
@@ -90,6 +91,8 @@ function App() {
           />
 
           <Route path="/search" element={<Searchpage />} />
+
+          <Route path="/job/:jobId" element={<JobDetails/>} />
 
           {/* Org Routes */}
 

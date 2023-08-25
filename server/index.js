@@ -350,6 +350,25 @@ app.get("/jobs/reccos", async (req, res) => {
     res.status(500).json({ message: "An error occurred while fetching jobs" });
   }
 });
+
+// Route for fetching details of a job (by job ID)
+
+app.get("/jobs/:jobId", async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
+
+    const job = await Job.findById(jobId).select("-applicants");
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    res.json(job);
+  } catch (error) {
+    console.error("Error while fetching job:", error);
+    res.status(500).json({ message: "An error occurred while fetching job" });
+  }
+});
+
 // Route for applying in a given job
 
 app.post("/jobs/:jobId/apply", userAuthenticate, async (req, res) => {

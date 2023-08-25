@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import "./card.css";
@@ -8,6 +9,7 @@ const Card = ({ data }) => {
   const [applied, setApplied] = useState(false);
   const [saved, setSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -55,6 +57,9 @@ const Card = ({ data }) => {
   }, [data._id]);
 
   const handleApply = async () => {
+    if (!token) {
+      navigate("/login");
+    }
     try {
       const response = await fetch(
         `http://localhost:3000/jobs/${data._id}/apply`,
@@ -80,6 +85,9 @@ const Card = ({ data }) => {
     }
   };
   const handleSave = async () => {
+    if (!token) {
+      navigate("/login");
+    }
     try {
       const response = await fetch(
         `http://localhost:3000/jobs/${data._id}/save`,
@@ -111,7 +119,9 @@ const Card = ({ data }) => {
       <div className="card">
         <div className="card-info">
           <div className="card-txt">
+            <Link to={`/job/${data._id}`} style={{color:"white"}}>
             <h3>{data.title}</h3>
+            </Link>
             <h4>{data.companyName}</h4>
             <p>Experience: {data.experience}</p>
             <p>Skills: Javascrpit,Typescript, MERN stack</p>
