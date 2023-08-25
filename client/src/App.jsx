@@ -92,7 +92,7 @@ function App() {
 
           <Route path="/search" element={<Searchpage />} />
 
-          <Route path="/job/:jobId" element={<JobDetails/>} />
+          <Route path="/job/:jobId" element={<JobDetails />} />
 
           {/* Org Routes */}
 

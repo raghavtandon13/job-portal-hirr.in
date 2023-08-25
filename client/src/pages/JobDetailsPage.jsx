@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
-import "./jobdetailspage.css"
+import Reccos from "../components/reccos";
+import "./jobdetailspage.css";
 
 function JobDetails() {
   const { jobId } = useParams();
@@ -62,7 +63,15 @@ function JobDetails() {
       {jobDetails && (
         <div className="job-desc">
           <h3>Job Description</h3>
-          <p style={{ whiteSpace: 'pre-line' }}>{jobDetails.jobDescription}</p>
+          <p style={{ whiteSpace: "pre-line" }}>{jobDetails.jobDescription}</p>
+        </div>
+      )}
+      {jobDetails && (
+        <div className="random-div">
+          <Reccos
+            desc={`More jobs from ${jobDetails.companyName}`}
+            useApiUrl2={true}
+          />
         </div>
       )}
     </>

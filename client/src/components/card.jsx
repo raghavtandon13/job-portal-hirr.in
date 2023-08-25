@@ -3,14 +3,15 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import ShareIcon from '@mui/icons-material/Share';
 import "./card.css";
 
 const Card = ({ data }) => {
   const [applied, setApplied] = useState(false);
   const [saved, setSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -112,6 +113,23 @@ const Card = ({ data }) => {
       console.error("An error occurred:", error);
     }
   };
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: data.title,
+          text: "Check out this job!",
+          url: `http://your-website-url.com/job/${data._id}`, // Replace with the actual URL
+        });
+      } else {
+        console.log("Web Share API is not supported in this browser.");
+        // Provide a fallback behavior or UI here.
+      }
+    } catch (error) {
+      console.error("Error sharing:", error);
+      // Handle the error if sharing fails.
+    }
+  };
   const picUrl = `http://localhost:3000/static/uploads/${data.orgPicture}`;
 
   return (
@@ -119,8 +137,8 @@ const Card = ({ data }) => {
       <div className="card">
         <div className="card-info">
           <div className="card-txt">
-            <Link to={`/job/${data._id}`} style={{color:"white"}}>
-            <h3>{data.title}</h3>
+            <Link to={`/job/${data._id}`} style={{ color: "white" }}>
+              <h3>{data.title}</h3>
             </Link>
             <h4>{data.companyName}</h4>
             <p>Experience: {data.experience}</p>
@@ -149,9 +167,14 @@ const Card = ({ data }) => {
           ) : (
             <button onClick={handleApply}>Apply</button>
           )}
-          <button className="save-btn" onClick={handleSave}>
-            {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}
-          </button>
+          <div className="btn-group">
+            <button className="save-btn" onClick={handleSave}>
+              {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+            </button>
+            <button className="share-btn" onClick={handleShare}>
+              <ShareIcon />
+            </button>
+          </div>
         </div>
       </div>
     </>

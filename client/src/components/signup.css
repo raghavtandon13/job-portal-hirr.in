@@ -21,7 +21,17 @@
 }
 
 .signup-input input {
-  /* font-family: "Roboto Slab", serif; */
+  font-family: "Cabin", sans-serif;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #8c8273;
+  border-radius: 10px;
+  background: none;
+  color: white;
+  width: 96%;
+  display: flex;
+}
+.signup-input textarea {
   font-family: "Cabin", sans-serif;
   padding: 8px;
   font-size: 16px;

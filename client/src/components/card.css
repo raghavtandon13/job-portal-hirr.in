@@ -43,26 +43,30 @@
   display: flex;
   justify-content: space-between;
 }
-.save-btn {
+.save-btn,.share-btn {
   background: none;
   border: none;
 }
-.save-btn:focus {
+.save-btn:focus, .share-btn:focus {
   outline: none;
 }
-.save-btn:hover {
-  border: none;
+.save-btn:hover svg, .share-btn:hover svg {
+  fill: #7c7c7c;
 }
 .card-info {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 2px;
 }
 .card-txt {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.card-txt a {
+  text-align: left
 }
 .card-pic img {
   width: 100px;
