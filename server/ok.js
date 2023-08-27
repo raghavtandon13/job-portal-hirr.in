@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// Function to generate a random company name
+
 function generateCompanyName() {
   const companyNames = ['TechCorp', 'InnovateX', 'NexGen', 'SwiftTech', 'CyberSys'];
   return companyNames[Math.floor(Math.random() * companyNames.length)];
