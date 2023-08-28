@@ -305,9 +305,37 @@ app.post("/jobs", authenticate, async (req, res) => {
 
 // Route for searching jobs
 
+// app.get("/jobs/search", async (req, res) => {
+//   try {
+//     const { title, skills, experience, page, limit } = req.query;
+
+//     const filter = {};
+//     if (title) filter.title = { $regex: title, $options: "i" };
+//     if (skills) filter.skills = { $in: skills.split(",") };
+//     if (experience) filter.experience = experience;
+
+//     const currentPage = parseInt(page) || 1;
+//     const resultsPerPage = parseInt(limit) || 10;
+
+//     const skip = (currentPage - 1) * resultsPerPage;
+
+//     const jobs = await Job.find(filter).skip(skip).limit(resultsPerPage);
+
+//     const totalResults = await Job.countDocuments(filter);
+
+//     res.json({
+//       results: jobs,
+//       totalResults: totalResults,
+//     });
+//   } catch (error) {
+//     console.error("Error while fetching jobs:", error);
+//     res.status(500).json({ message: "An error occurred while fetching jobs" });
+//   }
+// });
+
 app.get("/jobs/search", async (req, res) => {
   try {
-    const { title, skills, experience, page, limit } = req.query;
+    const { title, skills, experience, page, limit, sort, order } = req.query;
 
     const filter = {};
     if (title) filter.title = { $regex: title, $options: "i" };
@@ -319,7 +347,22 @@ app.get("/jobs/search", async (req, res) => {
 
     const skip = (currentPage - 1) * resultsPerPage;
 
-    const jobs = await Job.find(filter).skip(skip).limit(resultsPerPage);
+    const sortOptions = {};
+    if (sort) {
+      if (sort === "rating") {
+        sortOptions.averageRating = order === "desc" ? -1 : 1;
+      } else if (sort === "relevance") {
+        // You can implement relevance-based sorting logic here
+        sortOptions.experience = order === "desc" ? -1 : 1;
+      } else if (sort === "datePosted") {
+        sortOptions.createdAt = order === "desc" ? -1 : 1;
+      }
+    }
+
+    const jobs = await Job.find(filter)
+      .sort(sortOptions)
+      .skip(skip)
+      .limit(resultsPerPage);
 
     const totalResults = await Job.countDocuments(filter);
 
@@ -332,6 +375,8 @@ app.get("/jobs/search", async (req, res) => {
     res.status(500).json({ message: "An error occurred while fetching jobs" });
   }
 });
+
+
 
 app.get("/jobs/reccos", async (req, res) => {
   try {

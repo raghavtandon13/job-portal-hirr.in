@@ -12,6 +12,13 @@ const SearchResults = () => {
   const [responseData, setResponseData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [sortCriteria, setSortCriteria] = useState("default"); // Default sorting
+  const [sortOrder, setSortOrder] = useState("asc"); // Initial sort order
+  const [selectedSortOption, setSelectedSortOption] = useState("default"); // Default sorting
+
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
 
   const fetchSearchResults = async () => {
     const experienceParam = queryParams.get("experience") || "";
@@ -20,7 +27,9 @@ const SearchResults = () => {
 
     const resultsPerPage = 3; // number of results per page
 
-    const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}`;
+    // const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}`;
+    // const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${sortCriteria}&order=${sortOrder}`;
+    const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${selectedSortOption}&order=${sortOrder}`;
 
     try {
       const response = await fetch(apiUrl, {
@@ -43,12 +52,67 @@ const SearchResults = () => {
     }
   };
 
+  // useEffect(() => {
+  //   fetchSearchResults();
+  // }, [queryParams.toString(), currentPage]);
+  // useEffect(() => {
+  //   fetchSearchResults();
+  // }, [queryParams.toString(), currentPage, sortCriteria, sortOrder]);
   useEffect(() => {
     fetchSearchResults();
-  }, [queryParams.toString(), currentPage]);
+  }, [queryParams.toString(), currentPage, selectedSortOption, sortOrder]);
 
   return (
     <div>
+      <div className="sorting">
+        <label>Sort by:</label>
+        <div>
+          <input
+            type="radio"
+            id="default"
+            value="default"
+            checked={selectedSortOption === "default"}
+            onChange={() => setSelectedSortOption("default")}
+          />
+          <label htmlFor="default">Reccomended</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="rating"
+            value="rating"
+            checked={selectedSortOption === "rating"}
+            onChange={() => setSelectedSortOption("rating")}
+          />
+          <label htmlFor="rating">Rating</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="relevance"
+            value="relevance"
+            checked={selectedSortOption === "relevance"}
+            onChange={() => setSelectedSortOption("relevance")}
+          />
+          <label htmlFor="relevance">Relevance</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="datePosted"
+            value="datePosted"
+            checked={selectedSortOption === "datePosted"}
+            onChange={() => setSelectedSortOption("datePosted")}
+          />
+          <label htmlFor="datePosted">Date Posted</label>
+        </div>
+        <button
+          onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+        >
+          {sortOrder === "asc" ? "▲ Ascending" : "▼ Descending"}
+        </button>
+      </div>
+
       <div className="card-container">
         {responseData.length === 0 ? (
           <p className="no-res">No results found.</p>
