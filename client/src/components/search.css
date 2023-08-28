@@ -83,7 +83,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-
+}
 .pagination button {
   background-color: rgba(54, 59, 61, 0.34);
   padding: 7px 10px;
