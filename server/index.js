@@ -516,7 +516,9 @@ app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const company = req.company;
-    console.log(company);
+    
+    console.log("here we go");
+    console.log(company.companyName);
 
     const job = await Job.findOne({ _id: jobId });
     if (!job) {
@@ -524,8 +526,9 @@ app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
     }
 
     const applicants = await User.find({ _id: { $in: job.applicants } }).select(
-      "_id name email"
+      "_id name email profilePicture"
     );
+    // console.log(applicants);
 
     res.json(applicants);
   } catch (error) {

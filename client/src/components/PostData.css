@@ -3,6 +3,7 @@ li {
   flex-direction: column;
 }
 .post-details {
+  gap: 10px;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -54,6 +55,15 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.applicants-group {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+}
+.applicants-group img {
+  width: 40px;
+  border-radius: 20px;
 }
 @media only screen and (max-width: 800px) {
   .post-details {
