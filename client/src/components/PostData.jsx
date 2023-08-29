@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Card from "./card";
 import "./PostData.css";
 
 const PostData = () => {
@@ -34,15 +35,19 @@ const PostData = () => {
         {jobs.map((job) => (
           <li key={job._id}>
             <div className="post-details">
-              <div className="post-details-text">
-                <h3>{job.title}</h3>
-                <p>Company: {job.companyName}</p>
-                <p>Experience: {job.experience}</p>
-                <p>Applicants: {job.applicants.length}</p>
-              </div>
-              <div className="post-details-btn">
-                <button>See Apllicants</button>
-                <button>Remove Post</button>
+              <Card key={job._id} data={job} />
+              <div className="group">
+                <div className="post-details-text">
+                  <h3>{job.title}</h3>
+                  {/* <p>Company: {job.companyName}</p> */}
+                  {/* <p>Experience: {job.experience}</p> */}
+                  <p>Applicants: {job.applicants.length}</p>
+                </div>
+                <div className="post-details-btn">
+                  <button>See Apllicants</button>
+                  <button>Remove Post</button>
+                  <button>Edit Post</button>
+                </div>
               </div>
             </div>
             <hr className="post-end-break" />
