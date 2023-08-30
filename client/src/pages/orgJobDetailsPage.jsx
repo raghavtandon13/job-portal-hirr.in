@@ -54,10 +54,11 @@ const OrgJobDetailsPage = () => {
       ) : (
         <Navbar
           buttonLink="/login"
-          buttonLabel="Login"
+          buttonLabel="Posts"
           button2Link="/signup"
-          button2Label="Register"
+          button2Label="Profile"
           funcBtnName="About Us"
+          dropdownName="Settings"
         />
       )}
 

@@ -15,12 +15,12 @@ const Orghomepage = () => {
   return (
     <>
       <Navbar
-        buttonLink="/"
-        buttonLabel="Settings"
+        buttonLink="/login"
+        buttonLabel="Posts"
         button2Link="/signup"
         button2Label="Profile"
-        funcBtn={handleLogout}
-        funcBtnName="Logout"
+        funcBtnName="About Us"
+        dropdownName="Settings"
       />
       <OrgPosts />
     </>
