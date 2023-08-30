@@ -260,7 +260,7 @@ app.post("/signup/company", upload.single("orgPicture"), async (req, res) => {
       orgPicture,
     });
     await company.save();
-    
+
     res.status(201).json({ message: "Company registered successfully" });
   } catch (error) {
     console.error("Error during company signup:", error);
@@ -375,8 +375,6 @@ app.get("/jobs/search", async (req, res) => {
     res.status(500).json({ message: "An error occurred while fetching jobs" });
   }
 });
-
-
 
 app.get("/jobs/reccos", async (req, res) => {
   try {
@@ -516,7 +514,7 @@ app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const company = req.company;
-    
+
     console.log("here we go");
     console.log(company.companyName);
 
@@ -656,6 +654,10 @@ app.get(
     const user = req.user;
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
 
+    if (req.user.profilePicture) {
+      user.profilePicture = req.user.profilePicture; // Assuming 'profilePicture' is the field name in your User schema
+      user.save();
+    }
     res.cookie("mytoken", token);
     console.log(token);
 

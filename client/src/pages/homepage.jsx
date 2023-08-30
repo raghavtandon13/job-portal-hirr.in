@@ -21,23 +21,20 @@ const Homepage = () => {
 
   const token = getCookie("mytoken");
 
-  // Simulating API call for demonstration
   const checkProfileStatus = async () => {
     try {
-      // Make your API call here and set showProfileReq based on the response
       const apiResponse = await fetch("http://localhost:3000/user/details", {
-        method: "GET", // Adjust the method as needed
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `${token}`,
-          // Include other headers if necessary
         },
       });
 
       if (apiResponse.ok) {
         const data = await apiResponse.json();
         console.log(data.updateReqeust);
-        setShowProfileReq(data.updateReqeust); // Fix the property name here
+        setShowProfileReq(data.updateReqeust);
       } else {
         console.error("Error fetching API:", apiResponse.statusText);
       }

@@ -6,6 +6,7 @@ import "./login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -28,6 +29,7 @@ const Login = () => {
       } else {
         const errorData = await response.json();
         console.error("Login failed:", errorData.message);
+        setLoginError(true); // Set the login error message
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -64,6 +66,9 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {loginError && (
+            <div className="error-message">Incorrect email or password</div>
+          )}
           <button type="submit">Submit</button>
         </form>
         <a href="">Use OTP to login</a>

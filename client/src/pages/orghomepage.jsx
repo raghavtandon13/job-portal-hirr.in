@@ -20,6 +20,7 @@ const Orghomepage = () => {
         button2Link="/signup"
         button2Label="Profile"
         funcBtn={handleLogout}
+        funcBtnName="Logout"
       />
       <OrgPosts />
     </>

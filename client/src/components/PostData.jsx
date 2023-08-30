@@ -74,6 +74,7 @@ const PostData = () => {
               <div className="group">
                 <div className="post-details-text">
                   <h3>{job.title}</h3>
+                  <h4>Post Insights</h4>
                   <p>Applicants: {job.applicants.length}</p>
                   <div className="applicants-group">
                     {applicantImages[job._id]?.map((imageUrl, index) => (
