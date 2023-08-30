@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import ShareIcon from '@mui/icons-material/Share';
+import CreateIcon from '@mui/icons-material/Create';
+import ShareIcon from "@mui/icons-material/Share";
 import "./card.css";
 
-const Card = ({ data }) => {
+const Card = ({ data, isCompanyLoggedIn }) => {
   const [applied, setApplied] = useState(false);
   const [saved, setSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -137,7 +138,12 @@ const Card = ({ data }) => {
       <div className="card">
         <div className="card-info">
           <div className="card-txt">
-            <Link to={`/job/${data._id}`} style={{ color: "white" }}>
+            <Link
+              to={
+                isCompanyLoggedIn ? `/org/jobs/${data._id}` : `/job/${data._id}`
+              }
+              style={{ color: "white" }}
+            >
               <h3>{data.title}</h3>
             </Link>
             <h4>{data.companyName}</h4>
@@ -162,7 +168,9 @@ const Card = ({ data }) => {
           <button>New</button>
         </div>
         <div className="card-btns">
-          {applied ? (
+          {isCompanyLoggedIn ? (
+            <button><CreateIcon/>Edit</button>
+          ) : applied ? (
             <button style={{ backgroundColor: "gray" }}>Applied</button>
           ) : (
             <button onClick={handleApply}>Apply</button>

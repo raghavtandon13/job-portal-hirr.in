@@ -70,7 +70,7 @@ const PostData = () => {
         {jobs.map((job) => (
           <li key={job._id}>
             <div className="post-details">
-              <Card key={job._id} data={job} />
+              <Card isCompanyLoggedIn={true} key={job._id} data={job} />
               <div className="group">
                 <div className="post-details-text">
                   <h3>{job.title}</h3>
