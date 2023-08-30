@@ -21,6 +21,7 @@ const Orghomepage = () => {
         button2Label="Profile"
         funcBtnName="About Us"
         dropdownName="Settings"
+        funcBtn={handleLogout}
       />
       <OrgPosts />
     </>

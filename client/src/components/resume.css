@@ -41,8 +41,8 @@
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  background-color: #1f2223;
-  border: 1px solid #747bff47;
+  background-color: #00000085;
+  border: 1px solid rgb(47, 51, 54);
   padding: 20px 0px;
 }
 .skills-group h5 {

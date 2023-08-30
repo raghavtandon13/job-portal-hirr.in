@@ -1,0 +1,17 @@
+.applicants-list .profile-banner {
+  width: 60vw;
+  /* padding: 20px; */
+}
+.applicants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #00000085;
+  border: 1px solid rgb(47, 51, 54);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px 0px;
+  text-align: left;
+}
+.applicants-list h3 {
+}

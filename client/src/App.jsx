@@ -15,6 +15,7 @@ import ReccoPage from "./pages/reccoPage";
 import ResumeBuilder from "./pages/Resume-Builder";
 import JobDetails from "./pages/JobDetailsPage";
 import OrgJobDetailsPage from "./pages/orgJobDetailsPage";
+import ApplicantsPage from "./pages/ApplicantsPage";
 import "./App.css";
 
 function App() {
@@ -131,6 +132,10 @@ function App() {
             }
           />
           <Route path="org/jobs/:jobId" element={<OrgJobDetailsPage />} />
+          <Route
+            path="org/jobs/:jobId/applicants"
+            element={<ApplicantsPage />}
+          />
         </Routes>
       </BrowserRouter>
     </>

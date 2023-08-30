@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "./card";
 import "./PostData.css";
 
@@ -88,7 +89,9 @@ const PostData = () => {
                   </div>
                 </div>
                 <div className="post-details-btn">
-                  <button>See Applicants</button>
+                  <Link to={`/org/jobs/${job._id}/applicants`}>
+                    <button>See Applicants</button>
+                  </Link>
                   <button>Remove Post</button>
                   <button>Edit Post</button>
                 </div>
