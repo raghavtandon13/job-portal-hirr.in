@@ -61,24 +61,27 @@ const OrgJobDetailsPage = () => {
           dropdownName="Settings"
         />
       )}
+      <div className="wrapper-ohdp">
+        {jobDetails && <Card data={jobDetails} isCompanyLoggedIn={true} />}
 
-      {jobDetails && <Card data={jobDetails} isCompanyLoggedIn={true} />}
-
-      {jobDetails && (
-        <div className="job-desc">
-          <h3>Job Description</h3>
-          <p style={{ whiteSpace: "pre-line" }}>{jobDetails.jobDescription}</p>
-        </div>
-      )}
-      <OrgChart viewsData={viewsData} />
-      {jobDetails && (
-        <div className="random-div">
-          <Reccos
-            desc={`More jobs from ${jobDetails.companyName}`}
-            useApiUrl2={true}
-          />
-        </div>
-      )}
+        {jobDetails && (
+          <div className="job-desc">
+            <h3>Job Description</h3>
+            <p style={{ whiteSpace: "pre-line" }}>
+              {jobDetails.jobDescription}
+            </p>
+          </div>
+        )}
+        <OrgChart viewsData={viewsData} />
+        {jobDetails && (
+          <div className="random-div">
+            <Reccos
+              desc={`More jobs from ${jobDetails.companyName}`}
+              useApiUrl2={true}
+            />
+          </div>
+        )}
+      </div>
     </>
   );
 };

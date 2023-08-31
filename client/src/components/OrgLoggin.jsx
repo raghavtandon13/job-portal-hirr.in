@@ -38,7 +38,7 @@ const OrgLogin = () => {
   return (
     <div className="login-box">
       <div className="login-heading">
-        <h1>Login</h1>
+        <h1>Employer Login</h1>
         <h2>India's no. 1 Recruitment Platform</h2>
       </div>
       <div className="login-form">

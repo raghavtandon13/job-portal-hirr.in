@@ -1,5 +1,6 @@
 .applicants-list .profile-banner {
   width: 60vw;
+  font-size: 50%;
   /* padding: 20px; */
 }
 .applicants-list {
@@ -14,4 +15,12 @@
   text-align: left;
 }
 .applicants-list h3 {
+}
+
+@media only screen and (min-width: 1000px) {
+  .applicants-list .profile-banner .profile-left img {
+    border-radius: 167px;
+    width: 7vw;
+    height: 7vw;
+  }
 }
