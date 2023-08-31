@@ -16,6 +16,7 @@ import ResumeBuilder from "./pages/Resume-Builder";
 import JobDetails from "./pages/JobDetailsPage";
 import OrgJobDetailsPage from "./pages/orgJobDetailsPage";
 import ApplicantsPage from "./pages/ApplicantsPage";
+import Userpage from "./pages/Userpage";
 import "./App.css";
 
 function App() {
@@ -136,6 +137,7 @@ function App() {
             path="org/jobs/:jobId/applicants"
             element={<ApplicantsPage />}
           />
+          <Route path="users/:userId" element={<Userpage />} />
         </Routes>
       </BrowserRouter>
     </>

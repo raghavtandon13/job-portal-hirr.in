@@ -11,7 +11,9 @@ const UserCard = (data) => {
         </div>
         <div className="profile-right">
           <div className="profile-name">
+            <Link to={`/users/${data.data._id}`}>
             <h1>{data.data.name}</h1>
+            </Link>
             <h3>Add job Title Here</h3>
             <h4>Add Organization here</h4>
           </div>
