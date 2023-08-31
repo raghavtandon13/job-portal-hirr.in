@@ -697,6 +697,28 @@ app.post("/otp-verify", async (req, res) => {
     return res.status(404).json({ message: "OTP not verified" });
   }
 });
+// Route for updating resume
+app.post("/resume-update", userAuthenticate, async (req, res) => {
+  try {
+    const user = req.user;
+
+    // Extract the resume data from the request body
+    const { skills, projects, profiles } = req.body;
+
+    // Update the user's resume data
+    user.resume.skills = skills;
+    user.resume.projects = projects;
+    user.resume.onlineProfiles = profiles;
+
+    // Save the user with updated resume data
+    await user.save();
+
+    res.status(200).json({ message: "Resume updated successfully!" });
+  } catch (error) {
+    console.error("Error updating resume:", error);
+    res.status(500).json({ error: "An error occurred while updating resume." });
+  }
+});
 
 //------------------------------------------------
 // Express App listening on PORT

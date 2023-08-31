@@ -16,6 +16,46 @@ const userSchema = new mongoose.Schema({
   profilePicture: { type: String, default: "" },
   otp: { type: Number },
   updateReqeust: { type: Boolean, default: false },
+  resume: {
+    status: ["Employed", "Unemployed"],
+    resumeHeadline: { type: String },
+    skills: [
+      {
+        skillName: { type: String },
+        experience: { type: Number },
+      },
+    ],
+    employment: {
+      currentlyEmployed: { type: Boolean, default: false },
+      employmentType: ["Full Time", "Part Time", "Internship"],
+      totalExperience: { type: Number },
+      currentCompany: { type: String },
+      joiningDate: { type: Date },
+      salary: { type: Number },
+      skillsRequired: [{ type: String }],
+    },
+    education: {
+      educationType: ["Full Time", "Correspondence"],
+      course: { type: String },
+      university: { type: String },
+      courseType: { type: String },
+      duration: { type: Number },
+    },
+    projects: [
+      {
+        title: { type: String },
+        isFinished: { type: Boolean, default: true },
+        duration: { type: Number },
+        details: { type: String },
+      },
+    ],
+    onlineProfiles: [
+      {
+        websiteName: { type: String },
+        websiteLink: { type: String },
+      },
+    ],
+  },
 });
 
 userSchema.pre("save", async function (next) {

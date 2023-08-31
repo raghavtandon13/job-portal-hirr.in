@@ -1,0 +1,64 @@
+.rb-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px;
+  width: 70vw;
+  padding: 2% 0%;
+  background-color: #00000085;
+  border: 1px solid rgb(47, 51, 54);
+  border-radius: 20px;
+}
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+.skills-box,
+.education-box,
+.experience-box,
+.online-profile-box,
+.project-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 5vw;
+  gap: 10px;
+}
+.skill,
+.profile,
+.project {
+  display: flex;
+  gap: 10px;
+}
+.project {
+  flex-direction: column;
+}
+.project-input-group {
+  display: flex;
+  gap: 10px;
+}
+.project textarea {
+  font-family: "Cabin", sans-serif;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #8c8273;
+  border-radius: 10px;
+  background: none;
+  color: white;
+}
+.rb-con input {
+  font-family: "Cabin", sans-serif;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #8c8273;
+  border-radius: 10px;
+  background: none;
+  color: white;
+}
+.rb-con hr {
+  border: 1px solid rgb(47 51 54);
+  width: 95%;
+}
