@@ -305,34 +305,6 @@ app.post("/jobs", authenticate, async (req, res) => {
 
 // Route for searching jobs
 
-// app.get("/jobs/search", async (req, res) => {
-//   try {
-//     const { title, skills, experience, page, limit } = req.query;
-
-//     const filter = {};
-//     if (title) filter.title = { $regex: title, $options: "i" };
-//     if (skills) filter.skills = { $in: skills.split(",") };
-//     if (experience) filter.experience = experience;
-
-//     const currentPage = parseInt(page) || 1;
-//     const resultsPerPage = parseInt(limit) || 10;
-
-//     const skip = (currentPage - 1) * resultsPerPage;
-
-//     const jobs = await Job.find(filter).skip(skip).limit(resultsPerPage);
-
-//     const totalResults = await Job.countDocuments(filter);
-
-//     res.json({
-//       results: jobs,
-//       totalResults: totalResults,
-//     });
-//   } catch (error) {
-//     console.error("Error while fetching jobs:", error);
-//     res.status(500).json({ message: "An error occurred while fetching jobs" });
-//   }
-// });
-
 app.get("/jobs/search", async (req, res) => {
   try {
     const { title, skills, experience, page, limit, sort, order } = req.query;
