@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
 import AddIcon from "@mui/icons-material/Add";
@@ -11,50 +11,73 @@ const ResumeBuilder = () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const token = getCookie("mytoken");
-  const [skills, setSkills] = useState([{ skillName: "", experience: "" }]);
 
+  const [userSkills, setUserSkills] = useState([]);
+  const [userProjects, setUserProjects] = useState([]);
+  const [userProfiles, setUserProfiles] = useState([]);
+
+  const [skills, setSkills] = useState([{ skillName: "", experience: "" }]);
   const [projects, setProjects] = useState([
     { title: "", duration: "", details: "" },
   ]);
-
   const [profiles, setProfiles] = useState([
     { websiteName: "", websiteLink: "" },
   ]);
 
   const addSkillField = () => {
-    setSkills([...skills, { skillName: "", experience: "" }]);
+    setUserSkills([...userSkills, { skillName: "", experience: "" }]);
   };
-
   const addProjectField = () => {
-    setProjects([...projects, { title: "", duration: "", details: "" }]);
+    setUserProjects([
+      ...userProjects,
+      { title: "", duration: "", details: "" },
+    ]);
+  };
+  const addProfileField = () => {
+    setUserProfiles([...userProfiles, { websiteName: "", websiteLink: "" }]);
   };
 
-  const addProfileField = () => {
-    setProfiles([...profiles, { websiteName: "", websiteLink: "" }]);
-  };
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/user/details", {
+          method: "GET",
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Populate originally fetched data
+          setUserSkills(data.resume.skills);
+          setUserProjects(data.resume.projects);
+          setUserProfiles(data.resume.onlineProfiles);
+
+          // Populate user input data with empty arrays initially
+          setSkills([]);
+          setProjects([]);
+          setProfiles([]);
+        } else {
+          console.error("Failed to fetch user details.");
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching user details:", error);
+      }
+    };
+
+    fetchUserDetails();
+  }, [token]);
 
   const sendDataToApi = async () => {
-    const filteredSkills = skills.filter(
-      (skill) => skill.skillName.trim() !== "" && skill.experience.trim() !== ""
-    );
+    const combinedSkills = [...userSkills, ...skills];
+    const combinedProjects = [...userProjects, ...projects];
+    const combinedProfiles = [...userProfiles, ...profiles];
 
-    // Remove empty project entries
-    const filteredProjects = projects.filter(
-      (project) =>
-        project.title.trim() !== "" &&
-        project.duration.trim() !== "" &&
-        project.details.trim() !== ""
-    );
-
-    // Remove empty profile entries
-    const filteredProfiles = profiles.filter(
-      (profile) =>
-        profile.websiteName.trim() !== "" && profile.websiteLink.trim() !== ""
-    );
     const data = {
-      skills,
-      projects,
-      profiles,
+      skills: combinedSkills,
+      projects: combinedProjects,
+      onlineProfiles: combinedProfiles,
     };
 
     try {
@@ -68,8 +91,8 @@ const ResumeBuilder = () => {
       });
 
       if (response.ok) {
-        // Data sent successfully
         console.log("Data sent successfully!");
+        window.location.reload();
       } else {
         console.error("Failed to send data to API.");
       }
@@ -94,16 +117,16 @@ const ResumeBuilder = () => {
       <div className="rb-con">
         <div className="skills-box">
           <h3>Skills</h3>
-          {skills.map((skill, index) => (
+          {userSkills.map((skill, index) => (
             <div key={index} className="skill">
               <input
                 type="text"
                 value={skill.skillName}
                 placeholder="Skill Name"
                 onChange={(e) => {
-                  const updatedSkills = [...skills];
+                  const updatedSkills = [...userSkills];
                   updatedSkills[index].skillName = e.target.value;
-                  setSkills(updatedSkills);
+                  setUserSkills(updatedSkills);
                 }}
               />
               <input
@@ -111,9 +134,9 @@ const ResumeBuilder = () => {
                 value={skill.experience}
                 placeholder="Experience (in years)"
                 onChange={(e) => {
-                  const updatedSkills = [...skills];
+                  const updatedSkills = [...userSkills];
                   updatedSkills[index].experience = e.target.value;
-                  setSkills(updatedSkills);
+                  setUserSkills(updatedSkills);
                 }}
               />
             </div>
@@ -126,7 +149,7 @@ const ResumeBuilder = () => {
 
         <div className="project-box">
           <h3>Projects</h3>
-          {projects.map((project, index) => (
+          {userProjects.map((project, index) => (
             <div key={index} className="project">
               <div className="project-input-group">
                 <input
@@ -134,9 +157,9 @@ const ResumeBuilder = () => {
                   value={project.title}
                   placeholder="Project Title"
                   onChange={(e) => {
-                    const updatedProjects = [...projects];
+                    const updatedProjects = [...userProjects];
                     updatedProjects[index].title = e.target.value;
-                    setProjects(updatedProjects);
+                    setUserProjects(updatedProjects);
                   }}
                 />
                 <input
@@ -144,9 +167,9 @@ const ResumeBuilder = () => {
                   value={project.duration}
                   placeholder="Duration"
                   onChange={(e) => {
-                    const updatedProjects = [...projects];
+                    const updatedProjects = [...userProjects];
                     updatedProjects[index].duration = e.target.value;
-                    setProjects(updatedProjects);
+                    setUserProjects(updatedProjects);
                   }}
                 />
               </div>
@@ -154,9 +177,9 @@ const ResumeBuilder = () => {
                 value={project.details}
                 placeholder="Details"
                 onChange={(e) => {
-                  const updatedProjects = [...projects];
+                  const updatedProjects = [...userProjects];
                   updatedProjects[index].details = e.target.value;
-                  setProjects(updatedProjects);
+                  setUserProjects(updatedProjects);
                 }}
               />
             </div>
@@ -165,8 +188,9 @@ const ResumeBuilder = () => {
             <AddIcon />
           </button>
         </div>
-        <hr />
 
+        <hr />
+        {/* 
         <div className="education-box">
           <h3>Education</h3>
           {profiles.map((profile, index) => (
@@ -197,8 +221,8 @@ const ResumeBuilder = () => {
             <AddIcon />
           </button>
         </div>
-        <hr />
-
+        <hr /> */}
+        {/* 
         <div className="experience-box">
           <h3>Experience</h3>
           {profiles.map((profile, index) => (
@@ -229,19 +253,20 @@ const ResumeBuilder = () => {
             <AddIcon />
           </button>
         </div>
-        <hr />
+        <hr /> */}
+
         <div className="online-profile-box">
           <h3>Online Profiles</h3>
-          {profiles.map((profile, index) => (
+          {userProfiles.map((profile, index) => (
             <div key={index} className="profile">
               <input
                 type="text"
                 value={profile.websiteName}
                 placeholder="Profile Name"
                 onChange={(e) => {
-                  const updatedProfiles = [...profiles];
+                  const updatedProfiles = [...userProfiles];
                   updatedProfiles[index].websiteName = e.target.value;
-                  setProfiles(updatedProfiles);
+                  setUserProfiles(updatedProfiles);
                 }}
               />
               <input
@@ -249,9 +274,9 @@ const ResumeBuilder = () => {
                 value={profile.websiteLink}
                 placeholder="Website Link"
                 onChange={(e) => {
-                  const updatedProfiles = [...profiles];
+                  const updatedProfiles = [...userProfiles];
                   updatedProfiles[index].websiteLink = e.target.value;
-                  setProfiles(updatedProfiles);
+                  setUserProfiles(updatedProfiles);
                 }}
               />
             </div>
@@ -260,6 +285,7 @@ const ResumeBuilder = () => {
             <AddIcon />
           </button>
         </div>
+
         <button onClick={sendDataToApi}>Save</button>
       </div>
     </>

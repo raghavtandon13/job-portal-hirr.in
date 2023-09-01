@@ -44,7 +44,6 @@ const userSchema = new mongoose.Schema({
     projects: [
       {
         title: { type: String },
-        isFinished: { type: Boolean, default: true },
         duration: { type: Number },
         details: { type: String },
       },

@@ -700,31 +700,135 @@ app.post("/otp-verify", async (req, res) => {
 //   }
 // });
 
+// app.post("/resume-update", userAuthenticate, async (req, res) => {
+//   try {
+//     const user = req.user;
+
+//     // Extract the resume data from the request body
+//     const { skills, projects, profiles } = req.body;
+
+//     // Update the user's resume data
+//     if (skills !== undefined) {
+//       // Filter out empty or incomplete skill entries
+//       const filteredSkills = skills.filter(
+//         (skill) => skill.skillName.trim() !== "" && skill.experience !== ""
+//       );
+//       user.resume.skills.push(...filteredSkills);
+//     }
+//     if (projects !== undefined) {
+//       // Filter out empty or incomplete project entries
+//       const filteredProjects = projects.filter(
+//         (project) =>
+//           project.title.trim() !== "" &&
+//           project.duration.trim() !== "" &&
+//           project.details.trim() !== ""
+//       );
+//       // user.resume.projects.push(...filteredProjects);
+//       user.resume.projects = filteredProjects;
+//     }
+//     if (profiles !== undefined) {
+//       // Filter out empty or incomplete profile entries
+//       const filteredProfiles = profiles.filter(
+//         (profile) =>
+//           profile.websiteName.trim() !== "" && profile.websiteLink.trim() !== ""
+//       );
+//       user.resume.onlineProfiles.push(...filteredProfiles);
+//     }
+
+//     // Save the user with updated resume data
+//     await user.save();
+
+//     res.status(200).json({ message: "Resume updated successfully!" });
+//   } catch (error) {
+//     console.error("Error updating resume:", error);
+//     res.status(500).json({ error: "An error occurred while updating resume." });
+//   }
+// });
 app.post("/resume-update", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
 
     // Extract the resume data from the request body
-    const { skills, projects, profiles } = req.body;
+    const { skills, projects, onlineProfiles } = req.body;
+    console.log(req.body);
 
     // Update the user's resume data
-    if (skills !== undefined) {
+    if (skills !== undefined && Array.isArray(skills)) {
       // Filter out empty or incomplete skill entries
-      const filteredSkills = skills.filter(skill => skill.skillName.trim() !== "" && skill.experience !== "");
-      user.resume.skills.push(...filteredSkills);
+      const filteredSkills = skills.filter(
+        (skill) =>
+          skill &&
+          typeof skill === "object" &&
+          skill.skillName &&
+          typeof skill.skillName === "string" &&
+          skill.skillName.trim() !== "" &&
+          skill.experience !== ""
+      );
+      user.resume.skills = filteredSkills;
     }
-    if (projects !== undefined) {
-      // Filter out empty or incomplete project entries
-      const filteredProjects = projects.filter(project => project.title.trim() !== "" && project.duration.trim() !== "" && project.details.trim() !== "");
-      user.resume.projects.push(...filteredProjects);
+    // if (projects !== undefined && Array.isArray(projects)) {
+    //   // Filter out empty or incomplete project entries
+    //   const filteredProjects = projects.filter((project) => {
+    //     return (
+    //       project &&
+    //       typeof project === "object" &&
+    //       project.title &&
+    //       typeof project.title === "string" &&
+    //       project.title.trim() !== "" &&
+    //       project.duration &&
+    //       typeof project.duration === "string" &&
+    //       project.duration.trim() !== "" &&
+    //       project.details &&
+    //       typeof project.details === "string" &&
+    //       project.details.trim() !== ""
+    //     );
+    //   });
+    //   user.resume.projects = filteredProjects;
+    //   console.log("Filtered Projects:", filteredProjects);
+    //   console.log("Total Projects:", projects);
+      
+    // }
+    if (projects !== undefined && Array.isArray(projects)) {
+      // Preserve existing projects and filter out new empty or incomplete projects
+      const filteredProjects = projects
+        .map((project) => ({
+          title: (project.title || "").trim(),
+          duration: typeof project.duration === "string" ? project.duration.trim() : "", // Check and trim if it's a string
+          details: (project.details || "").trim(),
+        }))
+        .filter(
+          (project) =>
+            project.title !== "" &&
+            project.duration !== "" &&
+            project.details !== ""
+        );
+    
+      // Merge the filtered projects with existing projects
+      user.resume.projects = [
+        ...user.resume.projects, // Preserve existing projects
+        ...filteredProjects, // Add the filtered projects
+      ];
+      console.log("Total Projects:", projects);
+      console.log("Filtered Projects:", filteredProjects);
     }
-    if (profiles !== undefined) {
+    
+    
+    if (onlineProfiles !== undefined && Array.isArray(onlineProfiles)) {
       // Filter out empty or incomplete profile entries
-      const filteredProfiles = profiles.filter(profile => profile.websiteName.trim() !== "" && profile.websiteLink.trim() !== "");
-      user.resume.onlineProfiles.push(...filteredProfiles);
+      const filteredProfiles = onlineProfiles.filter(
+        (profile) =>
+          profile &&
+          typeof profile === "object" &&
+          profile.websiteName &&
+          typeof profile.websiteName === "string" &&
+          profile.websiteName.trim() !== "" &&
+          profile.websiteLink &&
+          typeof profile.websiteLink === "string" &&
+          profile.websiteLink.trim() !== ""
+      );
+      user.resume.onlineProfiles = filteredProfiles;
     }
 
-    // Save the user with updated resume data
     await user.save();
 
     res.status(200).json({ message: "Resume updated successfully!" });
@@ -733,7 +837,6 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
     res.status(500).json({ error: "An error occurred while updating resume." });
   }
 });
-
 
 //------------------------------------------------
 // Express App listening on PORT
