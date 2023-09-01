@@ -34,6 +34,23 @@ const ResumeBuilder = () => {
   };
 
   const sendDataToApi = async () => {
+    const filteredSkills = skills.filter(
+      (skill) => skill.skillName.trim() !== "" && skill.experience.trim() !== ""
+    );
+
+    // Remove empty project entries
+    const filteredProjects = projects.filter(
+      (project) =>
+        project.title.trim() !== "" &&
+        project.duration.trim() !== "" &&
+        project.details.trim() !== ""
+    );
+
+    // Remove empty profile entries
+    const filteredProfiles = profiles.filter(
+      (profile) =>
+        profile.websiteName.trim() !== "" && profile.websiteLink.trim() !== ""
+    );
     const data = {
       skills,
       projects,

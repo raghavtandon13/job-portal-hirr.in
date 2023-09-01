@@ -670,6 +670,36 @@ app.post("/otp-verify", async (req, res) => {
   }
 });
 // Route for updating resume
+// app.post("/resume-update", userAuthenticate, async (req, res) => {
+//   try {
+//     const user = req.user;
+
+//     // Extract the resume data from the request body
+//     const { skills, projects, profiles } = req.body;
+
+//     // Update the user's resume data
+//     if (skills !== undefined) {
+//       // user.resume.skills = skills;
+//       user.resume.skills.push(...skills);
+//     }
+//     if (projects !== undefined) {
+//       user.resume.projects.push(...projects);
+//     }
+//     if (profiles !== undefined) {
+//       // Add new online profiles to the existing array
+//       user.resume.onlineProfiles.push(...profiles);
+//     }
+
+//     // Save the user with updated resume data
+//     await user.save();
+
+//     res.status(200).json({ message: "Resume updated successfully!" });
+//   } catch (error) {
+//     console.error("Error updating resume:", error);
+//     res.status(500).json({ error: "An error occurred while updating resume." });
+//   }
+// });
+
 app.post("/resume-update", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
@@ -678,9 +708,21 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
     const { skills, projects, profiles } = req.body;
 
     // Update the user's resume data
-    user.resume.skills = skills;
-    user.resume.projects = projects;
-    user.resume.onlineProfiles = profiles;
+    if (skills !== undefined) {
+      // Filter out empty or incomplete skill entries
+      const filteredSkills = skills.filter(skill => skill.skillName.trim() !== "" && skill.experience !== "");
+      user.resume.skills.push(...filteredSkills);
+    }
+    if (projects !== undefined) {
+      // Filter out empty or incomplete project entries
+      const filteredProjects = projects.filter(project => project.title.trim() !== "" && project.duration.trim() !== "" && project.details.trim() !== "");
+      user.resume.projects.push(...filteredProjects);
+    }
+    if (profiles !== undefined) {
+      // Filter out empty or incomplete profile entries
+      const filteredProfiles = profiles.filter(profile => profile.websiteName.trim() !== "" && profile.websiteLink.trim() !== "");
+      user.resume.onlineProfiles.push(...filteredProfiles);
+    }
 
     // Save the user with updated resume data
     await user.save();
@@ -691,6 +733,7 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
     res.status(500).json({ error: "An error occurred while updating resume." });
   }
 });
+
 
 //------------------------------------------------
 // Express App listening on PORT
