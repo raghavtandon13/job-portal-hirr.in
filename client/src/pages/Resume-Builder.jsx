@@ -15,6 +15,9 @@ const ResumeBuilder = () => {
   const [userSkills, setUserSkills] = useState([]);
   const [userProjects, setUserProjects] = useState([]);
   const [userProfiles, setUserProfiles] = useState([]);
+  const [userHeadline, setUserHeadline] = useState("");
+  const [userEmployment, setUserEmployment] = useState([]);
+  const [userEducation, setUserEducation] = useState([]);
 
   const [skills, setSkills] = useState([{ skillName: "", experience: "" }]);
   const [projects, setProjects] = useState([
@@ -23,6 +26,9 @@ const ResumeBuilder = () => {
   const [profiles, setProfiles] = useState([
     { websiteName: "", websiteLink: "" },
   ]);
+  const [headline, setHeadline] = useState("");
+  const [education, setEducation] = useState([]);
+  const [employment, setEmployment] = useState([]);
 
   const addSkillField = () => {
     setUserSkills([...userSkills, { skillName: "", experience: "" }]);
@@ -35,6 +41,33 @@ const ResumeBuilder = () => {
   };
   const addProfileField = () => {
     setUserProfiles([...userProfiles, { websiteName: "", websiteLink: "" }]);
+  };
+  const addEmploymentField = () => {
+    setUserEmployment([
+      ...userEmployment,
+      {
+        currentlyEmployed: false,
+        employmentType: "",
+        totalExperience: "",
+        currentCompany: "",
+        joiningDate: null,
+        salary: "",
+        skillsRequired: [],
+      },
+    ]);
+  };
+
+  const addEducationField = () => {
+    setUserEducation([
+      ...userEducation,
+      {
+        educationType: "",
+        course: "",
+        university: "",
+        courseType: "",
+        duration: "",
+      },
+    ]);
   };
 
   useEffect(() => {
@@ -53,11 +86,17 @@ const ResumeBuilder = () => {
           setUserSkills(data.resume.skills);
           setUserProjects(data.resume.projects);
           setUserProfiles(data.resume.onlineProfiles);
+          setUserHeadline(data.resume.resumeHeadline);
+          setUserEmployment(data.resume.employment);
+          setUserEducation(data.resume.education);
 
           // Populate user input data with empty arrays initially
           setSkills([]);
           setProjects([]);
           setProfiles([]);
+          setHeadline("");
+          setEmployment([]);
+          setEducation([]);
         } else {
           console.error("Failed to fetch user details.");
         }
@@ -73,11 +112,16 @@ const ResumeBuilder = () => {
     const combinedSkills = [...userSkills, ...skills];
     const combinedProjects = [...userProjects, ...projects];
     const combinedProfiles = [...userProfiles, ...profiles];
+    const combinedEmployment = [...userEmployment];
+    const combinedEducation = [...userEducation];
 
     const data = {
       skills: combinedSkills,
       projects: combinedProjects,
       onlineProfiles: combinedProfiles,
+      resumeHeadline: userHeadline,
+      employment: combinedEmployment,
+      education: combinedEducation,
     };
 
     try {
@@ -113,8 +157,21 @@ const ResumeBuilder = () => {
         dropdown1="option #1"
         dropdown2="option #2"
       />
-      <ProfileBanner/>
+      <ProfileBanner />
       <div className="rb-con">
+        <div className="headline-box">
+          <h3>Resume HeadLine</h3>
+          <input
+            type="text"
+            value={userHeadline}
+            placeholder="Headline"
+            onChange={(e) => {
+              const updatedHeadline = e.target.value; // Capture the new value
+              setUserHeadline(updatedHeadline); // Update the state with the new value
+            }}
+          />
+        </div>
+        <hr />
         <div className="skills-box">
           <h3>Skills</h3>
           {userSkills.map((skill, index) => (
@@ -188,73 +245,7 @@ const ResumeBuilder = () => {
             <AddIcon />
           </button>
         </div>
-
         <hr />
-        {/* 
-        <div className="education-box">
-          <h3>Education</h3>
-          {profiles.map((profile, index) => (
-            <div key={index} className="profile">
-              <input
-                type="text"
-                value={profile.websiteName}
-                placeholder="Institute"
-                onChange={(e) => {
-                  const updatedProfiles = [...profiles];
-                  updatedProfiles[index].websiteName = e.target.value;
-                  setProfiles(updatedProfiles);
-                }}
-              />
-              <input
-                type="url"
-                value={profile.websiteLink}
-                placeholder="Year"
-                onChange={(e) => {
-                  const updatedProfiles = [...profiles];
-                  updatedProfiles[index].websiteLink = e.target.value;
-                  setProfiles(updatedProfiles);
-                }}
-              />
-            </div>
-          ))}
-          <button className="add-btn" onClick={addProfileField}>
-            <AddIcon />
-          </button>
-        </div>
-        <hr /> */}
-        {/* 
-        <div className="experience-box">
-          <h3>Experience</h3>
-          {profiles.map((profile, index) => (
-            <div key={index} className="profile">
-              <input
-                type="text"
-                value={profile.websiteName}
-                placeholder="Organization"
-                onChange={(e) => {
-                  const updatedProfiles = [...profiles];
-                  updatedProfiles[index].websiteName = e.target.value;
-                  setProfiles(updatedProfiles);
-                }}
-              />
-              <input
-                type="url"
-                value={profile.websiteLink}
-                placeholder="Designation"
-                onChange={(e) => {
-                  const updatedProfiles = [...profiles];
-                  updatedProfiles[index].websiteLink = e.target.value;
-                  setProfiles(updatedProfiles);
-                }}
-              />
-            </div>
-          ))}
-          <button className="add-btn" onClick={addProfileField}>
-            <AddIcon />
-          </button>
-        </div>
-        <hr /> */}
-
         <div className="online-profile-box">
           <h3>Online Profiles</h3>
           {userProfiles.map((profile, index) => (
@@ -282,6 +273,148 @@ const ResumeBuilder = () => {
             </div>
           ))}
           <button className="add-btn" onClick={addProfileField}>
+            <AddIcon />
+          </button>
+        </div>
+        <hr />
+
+        <div className="employment-box">
+          <h3>Employment</h3>
+          {userEmployment.map((employment, index) => (
+            <div key={index} className="employment">
+              <input
+                type="checkbox"
+                checked={employment.currentlyEmployed}
+                onChange={(e) => {
+                  const updatedEmployment = [...userEmployment];
+                  updatedEmployment[index].currentlyEmployed = e.target.checked;
+                  setUserEmployment(updatedEmployment);
+                }}
+              />
+              <select
+                value={employment.employmentType}
+                onChange={(e) => {
+                  const updatedEmployment = [...userEmployment];
+                  updatedEmployment[index].employmentType = e.target.value;
+                  setUserEmployment(updatedEmployment);
+                }}
+              >
+                <option value="">Select Type</option>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Internship">Internship</option>
+              </select>
+              <input
+                type="number"
+                value={employment.totalExperience}
+                placeholder="Total Experience (in years)"
+                onChange={(e) => {
+                  const updatedEmployment = [...userEmployment];
+                  updatedEmployment[index].totalExperience = e.target.value;
+                  setUserEmployment(updatedEmployment);
+                }}
+              />
+              <input
+                type="text"
+                value={employment.currentCompany}
+                placeholder="Company Name"
+                onChange={(e) => {
+                  const updatedEmployment = [...userEmployment];
+                  updatedEmployment[index].currentCompany = e.target.value;
+                  setUserEmployment(updatedEmployment);
+                }}
+              />
+              <div className="custom-date-input">
+                <input
+                  type="date"
+                  placeholder="joining Date"
+                  value={employment.joiningDate}
+                  onChange={(e) => {
+                    const updatedEmployment = [...userEmployment];
+                    updatedEmployment[index].joiningDate = e.target.value;
+                    setUserEmployment(updatedEmployment);
+                  }}
+                />
+                <label>Joining Date</label>
+              </div>
+              <input
+                type="number"
+                value={employment.salary}
+                placeholder="Salary"
+                onChange={(e) => {
+                  const updatedEmployment = [...userEmployment];
+                  updatedEmployment[index].salary = e.target.value;
+                  setUserEmployment(updatedEmployment);
+                }}
+              />
+              {/* Add more input fields for other employment details */}
+            </div>
+          ))}
+          <button className="add-btn" onClick={addEmploymentField}>
+            <AddIcon />
+          </button>
+        </div>
+        <hr />
+
+        <div className="education-box">
+          <h3>Education</h3>
+          {userEducation.map((education, index) => (
+            <div key={index} className="education">
+              <select
+                value={education.educationType}
+                onChange={(e) => {
+                  const updatedEducation = [...userEducation];
+                  updatedEducation[index].educationType = e.target.value;
+                  setUserEducation(updatedEducation);
+                }}
+              >
+                <option value="">Select Type</option>
+                <option value="Full Time">Full Time</option>
+                <option value="Correspondence">Correspondence</option>
+              </select>
+              <input
+                type="text"
+                value={education.course}
+                placeholder="Course"
+                onChange={(e) => {
+                  const updatedEducation = [...userEducation];
+                  updatedEducation[index].course = e.target.value;
+                  setUserEducation(updatedEducation);
+                }}
+              />
+              <input
+                type="text"
+                value={education.university}
+                placeholder="University"
+                onChange={(e) => {
+                  const updatedEducation = [...userEducation];
+                  updatedEducation[index].university = e.target.value;
+                  setUserEducation(updatedEducation);
+                }}
+              />
+              <input
+                type="text"
+                value={education.courseType}
+                placeholder="Course Type"
+                onChange={(e) => {
+                  const updatedEducation = [...userEducation];
+                  updatedEducation[index].courseType = e.target.value;
+                  setUserEducation(updatedEducation);
+                }}
+              />
+              <input
+                type="number"
+                value={education.duration}
+                placeholder="Duration (in years)"
+                onChange={(e) => {
+                  const updatedEducation = [...userEducation];
+                  updatedEducation[index].duration = e.target.value;
+                  setUserEducation(updatedEducation);
+                }}
+              />
+            </div>
+          ))}
+          <button className="add-btn" onClick={addEducationField}>
             <AddIcon />
           </button>
         </div>

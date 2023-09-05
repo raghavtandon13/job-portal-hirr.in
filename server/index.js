@@ -678,7 +678,14 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
     const user = req.user;
 
     // Extract the resume data from the request body
-    const { skills, projects, onlineProfiles } = req.body;
+    const {
+      skills,
+      projects,
+      onlineProfiles,
+      resumeHeadline,
+      education,
+      employment,
+    } = req.body;
     console.log(req.body);
 
     // Update the user's resume data
@@ -694,6 +701,41 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
           skill.experience !== ""
       );
       user.resume.skills = filteredSkills;
+    }
+    if (education !== undefined && Array.isArray(education)) {
+      // Filter out empty or incomplete skill entries
+      const filteredEducation = education.filter(
+        (edu) =>
+          edu &&
+          typeof edu === "object" &&
+          edu.course &&
+          typeof edu.course === "string" &&
+          edu.course.trim() !== "" &&
+          edu.duration !== "" &&
+          edu.university &&
+          typeof edu.university === "string" &&
+          edu.university.trim() !== "" &&
+          edu.courseType &&
+          typeof edu.courseType === "string" &&
+          edu.courseType.trim() !== ""
+      );
+      user.resume.education = filteredEducation;
+    }
+    if (employment !== undefined && Array.isArray(employment)) {
+      // Filter out empty or incomplete skill entries
+      const filteredEmployment = employment.filter(
+        (emp) =>
+          emp &&
+          typeof emp === "object" &&
+          emp.currentCompany &&
+          typeof emp.currentCompany === "string" &&
+          emp.currentCompany.trim() !== "" &&
+          emp.experience !== "" &&
+          emp.joiningDate !== null &&
+          emp.salary !== ""
+      );
+      user.resume.employment = filteredEmployment;
+      console.log(filteredEmployment);
     }
 
     if (projects !== undefined && Array.isArray(projects)) {
@@ -717,8 +759,8 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
         ...user.resume.projects, // Preserve existing projects
         ...filteredProjects, // Add the filtered projects
       ];
-      console.log("Total Projects:", projects);
-      console.log("Filtered Projects:", filteredProjects);
+      // console.log("Total Projects:", projects);
+      // console.log("Filtered Projects:", filteredProjects);
     }
 
     if (onlineProfiles !== undefined && Array.isArray(onlineProfiles)) {
@@ -737,6 +779,8 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
       user.resume.onlineProfiles = filteredProfiles;
     }
 
+    user.resume.resumeHeadline = resumeHeadline;
+
     await user.save();
 
     res.status(200).json({ message: "Resume updated successfully!" });
@@ -747,7 +791,6 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
 });
 
 // Route for fetching user profile using UserID
-
 
 //------------------------------------------------
 // Express App listening on PORT

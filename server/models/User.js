@@ -25,22 +25,26 @@ const userSchema = new mongoose.Schema({
         experience: { type: Number },
       },
     ],
-    employment: {
-      currentlyEmployed: { type: Boolean, default: false },
-      employmentType: ["Full Time", "Part Time", "Internship"],
-      totalExperience: { type: Number },
-      currentCompany: { type: String },
-      joiningDate: { type: Date },
-      salary: { type: Number },
-      skillsRequired: [{ type: String }],
-    },
-    education: {
-      educationType: ["Full Time", "Correspondence"],
-      course: { type: String },
-      university: { type: String },
-      courseType: { type: String },
-      duration: { type: Number },
-    },
+    employment: [
+      {
+        currentlyEmployed: { type: Boolean, default: false },
+        employmentType: ["Full Time", "Part Time", "Internship"],
+        totalExperience: { type: Number },
+        currentCompany: { type: String },
+        joiningDate: { type: String },
+        salary: { type: Number },
+        skillsRequired: [{ type: String }],
+      },
+    ],
+    education: [
+      {
+        educationType: ["Full Time", "Correspondence"],
+        course: { type: String },
+        university: { type: String },
+        courseType: { type: String },
+        duration: { type: Number },
+      },
+    ],
     projects: [
       {
         title: { type: String },
