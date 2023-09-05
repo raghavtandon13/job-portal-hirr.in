@@ -120,7 +120,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         await navigator.share({
           title: data.title,
           text: "Check out this job!",
-          url: `http://your-website-url.com/job/${data._id}`, // Replace with the actual URL
+          url: `http://localhost:5173/job/${data._id}`, // Replace with the actual URL
         });
       } else {
         console.log("Web Share API is not supported in this browser.");

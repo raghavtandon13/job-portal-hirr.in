@@ -113,7 +113,7 @@ const ResumeBuilder = () => {
         dropdown1="option #1"
         dropdown2="option #2"
       />
-      <ProfileBanner />
+      <ProfileBanner/>
       <div className="rb-con">
         <div className="skills-box">
           <h3>Skills</h3>

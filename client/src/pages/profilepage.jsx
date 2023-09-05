@@ -13,7 +13,7 @@ const Profilepage = () => {
         button2Link="/signup"
         button2Label="Settings"
       />
-      <ProfileBanner />
+      <ProfileBanner/>
       <Resume/>
       <Footer/>
     </>

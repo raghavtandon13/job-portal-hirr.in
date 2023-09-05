@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import image from "../assets/user.png";
 import "./profile-banner.css";
 
-const ProfileBanner = () => {
+const ProfileBanner = ({ useNewApi , userId}) => {
+  const originalApi = "http://localhost:3000/user/details";
+  const newApi = "http://localhost:3000/user/:user/details";
+
+  const apiEndpoint = useNewApi
+    ? `http://localhost:3000/user/${userId}/details`
+    : "http://localhost:3000/user/details";
+
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -17,7 +24,7 @@ const ProfileBanner = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch("http://localhost:3000/user/details", {
+        const response = await fetch(apiEndpoint, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
