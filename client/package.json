@@ -17,11 +17,15 @@
     "axios": "^1.4.0",
     "chart.js": "^4.4.0",
     "js-cookie": "^3.0.5",
+    "pdf-parse": "^1.1.1",
+    "pdfjs": "^2.5.2",
+    "pdfjs-dist": "^2.16.105",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-ga": "^3.3.1",
+    "react-pdf": "^7.3.3",
     "react-router-dom": "^6.14.2"
   },
   "devDependencies": {

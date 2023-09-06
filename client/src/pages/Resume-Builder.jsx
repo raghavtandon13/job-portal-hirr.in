@@ -56,7 +56,6 @@ const ResumeBuilder = () => {
       },
     ]);
   };
-
   const addEducationField = () => {
     setUserEducation([
       ...userEducation,
@@ -418,6 +417,7 @@ const ResumeBuilder = () => {
             <AddIcon />
           </button>
         </div>
+        <hr />
 
         <button onClick={sendDataToApi}>Save</button>
       </div>

@@ -16,6 +16,8 @@ import "./passport-setup.js";
 import "./utils/otp.util.js";
 import { generateOTP } from "./utils/otp.util.js";
 import { constrainedMemory } from "process";
+// const { PDFDocument, rgb } = require('pdf-lib');
+import { PDFDocument, rgb } from "pdf-lib";
 
 dotenv.config();
 
@@ -791,6 +793,61 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
 });
 
 // Route for fetching user profile using UserID
+
+// Route for PDF creation
+async function generateProfilePDF(userDetails) {
+  // Create a new PDF document
+  const pdfDoc = await PDFDocument.create();
+
+  // Add pages, text, and other content to the PDF based on userDetails
+  // Customize the PDF generation logic as needed
+
+  return pdfDoc;
+}
+
+app.get("/generate-pdf/:userId", async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // Fetch the user's details using the /user/:user/details route
+    const userDetailsResponse = await fetch(
+      `http://localhost:3000/user/${userId}/details`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `${token}`, // Add the user's token for authorization
+        },
+      }
+    );
+    console.log(userDetailsResponse);
+
+    if (userDetailsResponse.ok) {
+      const userDetails = await userDetailsResponse.json();
+      console.log(userDetails);
+
+      // Generate the PDF including profile banner, resume, and user details
+      const pdfDoc = await generateProfilePDF(userDetails);
+
+      // Set the response headers for the PDF download
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader(
+        "Content-Disposition",
+        "attachment; filename=user_profile.pdf"
+      );
+
+      // Send the PDF as a response
+      const pdfBytes = await pdfDoc.save();
+      res.send(pdfBytes);
+    } else {
+      console.error("Failed to fetch user details");
+      res.status(404).json({ error: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 //------------------------------------------------
 // Express App listening on PORT

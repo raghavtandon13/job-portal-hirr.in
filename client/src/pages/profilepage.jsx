@@ -3,8 +3,13 @@ import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
 import Resume from "../components/resume";
 import Footer from "../components/Footer";
+import "./profilepage.css";
 
 const Profilepage = () => {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
     <>
       <Navbar
@@ -13,9 +18,14 @@ const Profilepage = () => {
         button2Link="/signup"
         button2Label="Settings"
       />
-      <ProfileBanner/>
-      <Resume/>
-      <Footer/>
+      <ProfileBanner />
+      <Resume />
+      <div className="print-div">
+        <button className="print-btn" onClick={handlePrint}>
+          Print to PDF
+        </button>
+      </div>
+      <Footer />
     </>
   );
 };

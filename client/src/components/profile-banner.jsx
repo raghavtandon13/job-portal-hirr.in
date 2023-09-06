@@ -3,6 +3,7 @@ import image from "../assets/user.png";
 import "./profile-banner.css";
 
 const ProfileBanner = ({ useNewApi , userId}) => {
+
   const originalApi = "http://localhost:3000/user/details";
   const newApi = "http://localhost:3000/user/:user/details";
 

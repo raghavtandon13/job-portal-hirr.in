@@ -78,3 +78,6 @@
 .resume-skills {
   display: flex;
 }
+.keep-together {
+  page-break-inside: avoid; /* Prevent this div from breaking across pages */
+}

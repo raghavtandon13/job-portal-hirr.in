@@ -5,11 +5,11 @@ const Resume = () => {
   return (
     <>
       <div className="resume">
-        <div className="resume-headline">
+        <div className="resume-headline keep-together">
           <h4 className="title">Resume Headline</h4>
           <h4 className="name">Software Enggineer from San Fransico</h4>
         </div>
-        <div className="resume-skills">
+        <div className="resume-skills keep-together">
           <h4 className="title">Key Skills</h4>
           <div className="skills-group">
             <h5>Node.js</h5>
@@ -21,7 +21,7 @@ const Resume = () => {
             <h5>Express</h5>
           </div>
         </div>
-        <div className="resume-employment">
+        <div className="resume-employment keep-together">
           <h4 className="title">Employment</h4>
           <div className="employment-group">
             <h4 className="name">Backend Developer</h4>
@@ -29,20 +29,20 @@ const Resume = () => {
             <h4>Full-time Since 2021</h4>
           </div>
         </div>
-        <div className="resume-education">
+        <div className="resume-education keep-together">
           <h4 className="title">Education</h4>
           <div className="education-group">
             <h4 className="name">B.Tech</h4>
             <h4>San Fran University</h4>
             <h4>Full time 2018-2021</h4>
           </div>
-          <div className="education-group">
+          <div className="education-group keep-together">
             <h4 className="name">Class XII</h4>
             <h4>San Fran Community Education</h4>
             <h4>2017</h4>
           </div>
         </div>
-        <div className="resume-projects">
+        <div className="resume-projects keep-together">
           <h4 className="title">Projects</h4>
           <div className="project-group">
             <h4 className="name">Social Sphere</h4>
@@ -50,14 +50,14 @@ const Resume = () => {
             <h4>May 2022 to Jun 2022</h4>
             <h4>A full stack social media platform made with MERN stack.</h4>
           </div>
-          <div className="project-group">
+          <div className="project-group keep-together">
             <h4 className="name">Style Savant</h4>
             <h4>College Project</h4>
             <h4>Apr 2022 to May 2022</h4>
             <h4>A modern and stylish fashion e-commerce website.</h4>
           </div>
         </div>
-        <div className="resume-profiles">
+        <div className="resume-profiles keep-together">
           <h4 className="title">Online Profiles</h4>
           <div className="profile-group">
             <h4 className="name">Github</h4>

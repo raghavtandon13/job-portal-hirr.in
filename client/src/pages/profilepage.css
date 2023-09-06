@@ -1,0 +1,35 @@
+.print-div {
+  width: 70vw;
+  display: flex;
+  justify-content: flex-end;
+}
+@media print {
+  /* Define styles for printing */
+  html {
+    background-image: none;
+  }
+  body {
+    background-color: rgb(0, 0, 0);
+    font-size: 8pt;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* Hide unnecessary elements for printing */
+  .navbar-left,
+  .footer,
+  .print-btn {
+    display: none;
+  }
+  .navbar {
+    position: absolute;
+  }
+  .resume,
+  .profile-banner {
+    width: 90vw;
+  }
+  .keep-together {
+    page-break-inside: avoid; /* Prevent this div from breaking across pages */
+  }
+}
