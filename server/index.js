@@ -15,9 +15,8 @@ import dotenv from "dotenv";
 import "./passport-setup.js";
 import "./utils/otp.util.js";
 import { generateOTP } from "./utils/otp.util.js";
-import { constrainedMemory } from "process";
-// const { PDFDocument, rgb } = require('pdf-lib');
-import { PDFDocument, rgb } from "pdf-lib";
+import pdf2json from 'pdf2json';
+import fs from 'fs/promises';
 
 dotenv.config();
 
@@ -793,62 +792,41 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
 });
 
 // Route for fetching user profile using UserID
-
-// Route for PDF creation
-async function generateProfilePDF(userDetails) {
-  // Create a new PDF document
-  const pdfDoc = await PDFDocument.create();
-
-  // Add pages, text, and other content to the PDF based on userDetails
-  // Customize the PDF generation logic as needed
-
-  return pdfDoc;
-}
-
-app.get("/generate-pdf/:userId", async (req, res) => {
-  const userId = req.params.userId;
-
+///////////////////////////////
+// Set up a route to handle file uploads and PDF extraction
+app.post('/upload-pdf', upload.single('pdf'), async (req, res) => {
   try {
-    // Fetch the user's details using the /user/:user/details route
-    const userDetailsResponse = await fetch(
-      `http://localhost:3000/user/${userId}/details`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: `${token}`, // Add the user's token for authorization
-        },
-      }
-    );
-    console.log(userDetailsResponse);
+    // Get the uploaded PDF file from the request
+    const pdfFile = req.file; // Assuming the file input has the name "pdf"
 
-    if (userDetailsResponse.ok) {
-      const userDetails = await userDetailsResponse.json();
-      console.log(userDetails);
-
-      // Generate the PDF including profile banner, resume, and user details
-      const pdfDoc = await generateProfilePDF(userDetails);
-
-      // Set the response headers for the PDF download
-      res.setHeader("Content-Type", "application/pdf");
-      res.setHeader(
-        "Content-Disposition",
-        "attachment; filename=user_profile.pdf"
-      );
-
-      // Send the PDF as a response
-      const pdfBytes = await pdfDoc.save();
-      res.send(pdfBytes);
-    } else {
-      console.error("Failed to fetch user details");
-      res.status(404).json({ error: "User not found" });
+    // Check if a PDF file was uploaded
+    if (!pdfFile) {
+      return res.status(400).json({ error: 'No PDF file uploaded' });
     }
+
+    // Initialize pdf2json
+    const pdfParser = new pdf2json.PdfParser();
+
+    // Register event handlers for parsing
+    pdfParser.on('pdfParser_dataReady', (pdfData) => {
+      // Access the parsed data
+      const pdfText = pdfData.formImage.Pages[0].Texts.map((text) => text.R[0].T).join(' ');
+
+      // Here, you can process the extracted text as needed
+      res.json({ extractedText: pdfText });
+    });
+
+    // Read and parse the PDF file
+    const pdfData = await fs.readFile(pdfFile.path);
+    pdfParser.parseBuffer(pdfData);
   } catch (error) {
-    console.error("Error generating PDF:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while processing the PDF' });
   }
 });
 
+
+////////////////////
 //------------------------------------------------
 // Express App listening on PORT
 

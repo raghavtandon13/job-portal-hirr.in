@@ -107,6 +107,43 @@ const ResumeBuilder = () => {
     fetchUserDetails();
   }, [token]);
 
+  //
+  const [pdfFile, setPdfFile] = useState(null);
+  const [extractedText, setExtractedText] = useState("");
+
+  const handlePdfUpload = (e) => {
+    const file = e.target.files[0];
+    setPdfFile(file);
+  };
+
+  const handleExtractPdf = async () => {
+    if (!pdfFile) {
+      alert("Please select a PDF file.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("pdf", pdfFile);
+
+    try {
+      const response = await fetch("http://localhost:3000/upload-pdf", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setExtractedText(data.extractedText);
+      } else {
+        console.error("PDF extraction failed.");
+      }
+    } catch (error) {
+      console.error("An error occurred while extracting PDF:", error);
+    }
+  };
+
+  //
+
   const sendDataToApi = async () => {
     const combinedSkills = [...userSkills, ...skills];
     const combinedProjects = [...userProjects, ...projects];
@@ -418,6 +455,18 @@ const ResumeBuilder = () => {
           </button>
         </div>
         <hr />
+        {/* i want pdf upload here and the text extracted should be below it */}
+        <div className="pdf-upload-box">
+          <h3>Upload PDF</h3>
+          <input type="file" accept=".pdf" onChange={handlePdfUpload} />
+          <button onClick={handleExtractPdf}>Extract Text</button>
+        </div>
+        {extractedText && (
+          <div className="extracted-text">
+            <h3>Extracted Text:</h3>
+            <p>{extractedText}</p>
+          </div>
+        )}
 
         <button onClick={sendDataToApi}>Save</button>
       </div>

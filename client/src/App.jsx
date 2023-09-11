@@ -17,6 +17,7 @@ import JobDetails from "./pages/JobDetailsPage";
 import OrgJobDetailsPage from "./pages/orgJobDetailsPage";
 import ApplicantsPage from "./pages/ApplicantsPage";
 import Userpage from "./pages/Userpage";
+// import UploadPage from "./pages/upload";
 import "./App.css";
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* User Routes */}
+{/* 
+          <Route path="/upload" element={<UploadPage />} /> */}
           <Route
             path="/login"
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <Loginpage />}
