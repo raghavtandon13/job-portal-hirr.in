@@ -16,7 +16,8 @@
   display: flex;
   flex-direction: row;
   background-color: #2a2a48;
-  padding: 16px 24px;
+  padding: 8px 24px;
+  margin: 4px 0px;
   width: 66vw;
   color: white !important;
   border-radius: 16px;

@@ -5,6 +5,16 @@ import Card from "../components/card";
 import "./rsa.css";
 
 const ApplicationsPage = () => {
+  function handleLogout() {
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload();
+    return <Navigate to="/login" />;
+  }
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -15,7 +25,7 @@ const ApplicationsPage = () => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl = "http://localhost:3000/user/applications";
+  const apiUrl = "http://34.131.250.17/api/user/applications";
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -46,15 +56,18 @@ const ApplicationsPage = () => {
       <Navbar
         buttonLink="/profile"
         buttonLabel="Profile"
-        button2Link="/user/applications"
-        button2Label="Applications"
+        button2Link="/user/saved"
+        button2Label="Saved Posts"
         funcBtnName="Logout"
+        funcBtn={handleLogout}
         dropdownName={"Settings"}
         dropdown1="option #1"
         dropdown2="option #2"
+        dropdown2Link="#"
+        dropdown1Link="#"
       />
       <div className="page-title">
-        <h2>Your Applications</h2>
+        <h3>Your Applications</h3>
       </div>
       <div className="card-collection">
         {jobs.map((data) => (

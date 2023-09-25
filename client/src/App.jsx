@@ -17,14 +17,15 @@ import JobDetails from "./pages/JobDetailsPage";
 import OrgJobDetailsPage from "./pages/orgJobDetailsPage";
 import ApplicantsPage from "./pages/ApplicantsPage";
 import Userpage from "./pages/Userpage";
+import { ToastContainer } from 'react-toastify';
 // import UploadPage from "./pages/upload";
 import "./App.css";
 
 function App() {
   const isLoggedIn = () => {
     const token = document.cookie.includes("mytoken");
-    console.log("google", token);
-    return token;
+    token && console.log(token, "present mytoken");
+    return !token;
   };
   const isLoggedInOrg = () => {
     const token = document.cookie.includes("orgtoken");
@@ -36,9 +37,6 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* User Routes */}
-{/* 
-          <Route path="/upload" element={<UploadPage />} /> */}
           <Route
             path="/login"
             element={isLoggedIn() ? <Navigate to={"/home"} /> : <Loginpage />}
@@ -61,6 +59,9 @@ function App() {
             path="/home"
             element={isLoggedIn() ? <Homepage /> : <Navigate to={"/"} />}
           />
+
+          {/* <Route path="/home" element={<Homepage/>}/> */} 
+          {/* Dummy route */}
 
           <Route
             path="/profile"
@@ -143,6 +144,7 @@ function App() {
           <Route path="users/:userId" element={<Userpage />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer toastStyle={{ backgroundColor: "black" }}/>
     </>
   );
 }

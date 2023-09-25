@@ -67,6 +67,7 @@
     flex-direction: column;
     padding: 10px 4px;
     max-height: none !important;
+    max-width: 86vw;
   }
   .banner-search input {
     color: #fff;
@@ -96,7 +97,9 @@
 }
 @media only screen and (max-width: 400px) {
   .banner-search {
-    max-width: 40px;
+    /* max-width: 40px; */
+    margin-top: 0px;
+    max-width: 86vw;
   }
   .sorting {
     flex-direction: column;

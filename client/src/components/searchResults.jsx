@@ -27,9 +27,9 @@ const SearchResults = () => {
 
     const resultsPerPage = 3; // number of results per page
 
-    // const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}`;
-    // const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${sortCriteria}&order=${sortOrder}`;
-    const apiUrl = `http://localhost:3000/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${selectedSortOption}&order=${sortOrder}`;
+    // const apiUrl = `http://34.131.250.17/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}`;
+    // const apiUrl = `http://34.131.250.17/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${sortCriteria}&order=${sortOrder}`;
+    const apiUrl = `http://34.131.250.17/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${selectedSortOption}&order=${sortOrder}`;
 
     try {
       const response = await fetch(apiUrl, {

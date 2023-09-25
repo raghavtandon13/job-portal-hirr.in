@@ -58,7 +58,7 @@
     /* margin-top: 40px; */
     height: max-content;
     border-radius: 20px;
-    background-color: rgb(31, 34, 35);
+    /* background-color: rgb(31, 34, 35); */
     /* max-height: 180px; */
     padding-bottom: 10px;
     padding: 10px 0;
@@ -87,7 +87,7 @@
 }
 .meter-text p {
   padding: 2%;
-  background-color: rgb(31, 34, 35);
+  /* background-color: rgb(31, 34, 35); */
   border-radius: 10px;
   border: 2px solid rgb(42 42 72);
   color: #e6e7fc;

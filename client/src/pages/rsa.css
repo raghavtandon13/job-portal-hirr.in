@@ -1,3 +1,30 @@
 .card-collection {
-    width: 70vw;
+  width: 70vw;
+}
+.card-collection .card {
+  width: auto;
+}
+.page-title {
+  color: #fff;
+  border-radius: 20px;
+  /* background-color: #fff; */
+  border: 1px solid rgb(47, 51, 54);
+  padding: 6px 10px;
+  /* margin: 2% 0; */
+  background-color: #00000085;
+}
+.page-title h3 {
+    font-weight: 400;
+}
+
+.saved-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (max-width: 700px) {
+  .card-collection {
+    width: 90vw;
+  }
 }

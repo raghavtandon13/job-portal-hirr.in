@@ -1,8 +1,26 @@
 .print-div {
   width: 70vw;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
+.print-div svg {
+  margin: 0px -12px -2px 0px;
+  height: 16px;
+}
+
+@media only screen and (max-width: 700px) {
+  .profile-banner {
+    width: 90vw;
+    padding: 6% 0%;
+  }
+  .resume {
+    width: 90vw;
+  }
+  .print-div {
+    width: 90vw;
+  }
+}
+
 @media print {
   /* Define styles for printing */
   html {

@@ -10,10 +10,21 @@ function JobDetails() {
 
   const [jobDetails, setJobDetails] = useState(null);
 
+  function handleLogout() {
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload();
+    return <Navigate to="/login" />;
+  }
+
   useEffect(() => {
     async function fetchJobDetails() {
       try {
-        const response = await fetch(`http://localhost:3000/jobs/${jobId}`);
+        const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`);
         const data = await response.json();
         setJobDetails(data);
         console.log(jobDetails.jobDescription);
@@ -25,28 +36,28 @@ function JobDetails() {
     fetchJobDetails();
   }, [jobId]);
 
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
-
-  const token = getCookie("mytoken");
+  const isLoggedIn = () => {
+    const token = document.cookie.includes("mytoken");
+    return token;
+  };
 
   // Fetch job details using jobId from your backend (API call, database, etc.)
 
   return (
     <>
-      {token ? (
+      {isLoggedIn() ? (
         <Navbar
           buttonLink="/profile"
           buttonLabel="Profile"
           button2Link="/user/applications"
           button2Label="Applications"
           funcBtnName="Logout"
+          funcBtn={handleLogout}
           dropdownName={"Settings"}
           dropdown1="option #1"
           dropdown2="option #2"
+          dropdown2Link="#"
+          dropdown1Link="#"
         />
       ) : (
         <Navbar

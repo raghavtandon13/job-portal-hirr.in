@@ -29,7 +29,7 @@ const OrgSignup = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/signup/company/", {
+      const response = await fetch("http://34.131.250.17/api/signup/company/", {
         method: "POST",
         body: data,
       });

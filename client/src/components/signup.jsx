@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import "./signup.css";
 
 const Signup = () => {
@@ -26,7 +29,7 @@ const Signup = () => {
   };
 
   const handleGoogleAuth = () => {
-    window.location.href = "http://localhost:3000/auth/google";
+    window.location.href = "http://34.131.250.17/api/auth/google";
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +44,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/signup/user/", {
+      const response = await fetch("http://34.131.250.17/api/signup/user/", {
         method: "POST",
         body: data,
       });
@@ -54,8 +57,14 @@ const Signup = () => {
         document.cookie = `mytoken=${token}`;
 
         console.log("Signup successful!");
-        navigate("/resume-builder");
-        window.location.reload();
+        toast.success("Signup successful! You can now log in.", {
+          onClose: () => {
+            // Redirect the user to the login page
+            navigate("/login");
+          },
+        });
+        // navigate("/resume-builder");
+        // window.location.reload();
       } else {
         console.error("Signup failed");
       }

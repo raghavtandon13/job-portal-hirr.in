@@ -15,20 +15,21 @@ import dotenv from "dotenv";
 import "./passport-setup.js";
 import "./utils/otp.util.js";
 import { generateOTP } from "./utils/otp.util.js";
-import pdf2json from 'pdf2json';
-import fs from 'fs/promises';
+import pdf2json from "pdf2json";
+import fs from "fs/promises";
 
 dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+// app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(cors({ credentials: true, origin: "http://34.131.250.17" }));
 // app.use(cors({ origin: "*" }));
 // app.use(cors());
 app.use(express.json());
 
-app.use("/static", express.static("public"));
+app.use("/api/static", express.static("public"));
 
 // Passport middleware
 app.use(
@@ -129,13 +130,13 @@ mongoose
 
 // Home Route
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("WELCOME, you're one step closer to finding your dream job.");
 });
 
 // Route for Login for User
 
-app.post("/login/user", async (req, res) => {
+app.post("/api/login/user", async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log(email);
@@ -179,7 +180,7 @@ app.post("/login/user", async (req, res) => {
 
 // Route for Login for Organization
 
-app.post("/login/company", async (req, res) => {
+app.post("/api/login/company", async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log(email);
@@ -213,68 +214,80 @@ app.post("/login/company", async (req, res) => {
 
 // Route for Signup for User
 
-app.post("/signup/user", upload.single("profilePicture"), async (req, res) => {
-  try {
-    const { name, email, password, phone } = req.body;
-    let profilePicture = req.file ? req.file.filename : "";
-    profilePicture = `http://localhost:3000/static/uploads/${profilePicture}`;
+app.post(
+  "/api/signup/user",
+  upload.single("profilePicture"),
+  async (req, res) => {
+    try {
+      const { name, email, password, phone } = req.body;
+      let profilePicture = req.file ? req.file.filename : "";
+      profilePicture = `http://34.131.250.17/api/api/static/uploads/${profilePicture}`;
 
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(409).json({ message: "Email is already registered" });
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(409).json({ message: "Email is already registered" });
+      }
+
+      const user = new User({ name, email, phone, password, profilePicture });
+      await user.save();
+
+      const token = jwt.sign({ userId: user._id }, "your-secret-key");
+      console.log(token);
+      res.cookie("mytoken", token, {
+        expires: new Date(Date.now() + 3600000),
+        httpOnly: true,
+        domain: ".34.131.250.17",
+        secure: true,
+        path: "/", // Set the path to the root of your application
+      });
+
+      res
+        .status(201)
+        .json({ message: "User created successfully", token: token });
+    } catch (error) {
+      console.error("Error during signup:", error);
+      res.status(500).json({ message: "An error occurred during signup" });
     }
-
-    const user = new User({ name, email, phone, password, profilePicture });
-    await user.save();
-
-    const token = jwt.sign({ userId: user._id }, "your-secret-key");
-    res.cookie("mytoken", token, {
-      expires: new Date(Date.now() + 3600000),
-      httpOnly: true,
-    });
-
-    res
-      .status(201)
-      .json({ message: "User created successfully", token: token });
-  } catch (error) {
-    console.error("Error during signup:", error);
-    res.status(500).json({ message: "An error occurred during signup" });
   }
-});
+);
 
 // Route for Signup for Organization
 
-app.post("/signup/company", upload.single("orgPicture"), async (req, res) => {
-  try {
-    const { companyName, industry, email, password } = req.body;
-    const orgPicture = req.file ? req.file.filename : "";
+app.post(
+  "/api/signup/company",
+  upload.single("orgPicture"),
+  async (req, res) => {
+    try {
+      const { companyName, industry, email, password } = req.body;
+      const orgPicture = req.file ? req.file.filename : "";
 
-    const existingCompany = await Company.findOne({ email });
-    if (existingCompany) {
-      return res.status(409).json({ message: "Email is already registered" });
+      const existingCompany = await Company.findOne({ email });
+      if (existingCompany) {
+        return res.status(409).json({ message: "Email is already registered" });
+      }
+
+      const company = new Company({
+        companyName,
+        industry,
+        email,
+        password,
+        orgPicture,
+      });
+      await company.save();
+
+      res.status(201).json({ message: "Company registered successfully" });
+    } catch (error) {
+      console.error("Error during company signup:", error);
+      res
+        .status(500)
+        .json({ message: "An error occurred during company signup" });
     }
-
-    const company = new Company({
-      companyName,
-      industry,
-      email,
-      password,
-      orgPicture,
-    });
-    await company.save();
-
-    res.status(201).json({ message: "Company registered successfully" });
-  } catch (error) {
-    console.error("Error during company signup:", error);
-    res
-      .status(500)
-      .json({ message: "An error occurred during company signup" });
   }
-});
+);
 
 // Route for posting jobs
 
-app.post("/jobs", authenticate, async (req, res) => {
+app.post("/api/jobs", authenticate, async (req, res) => {
   try {
     console.log("Request body:", req.body);
     const { companyName, title, skills, experience, jobDescription } = req.body;
@@ -307,7 +320,7 @@ app.post("/jobs", authenticate, async (req, res) => {
 
 // Route for searching jobs
 
-app.get("/jobs/search", async (req, res) => {
+app.get("/api/jobs/search", async (req, res) => {
   try {
     const { title, skills, experience, page, limit, sort, order } = req.query;
 
@@ -350,7 +363,7 @@ app.get("/jobs/search", async (req, res) => {
   }
 });
 
-app.get("/jobs/reccos", async (req, res) => {
+app.get("/api/jobs/reccos", async (req, res) => {
   try {
     const { title, skills, experience } = req.query;
 
@@ -371,7 +384,7 @@ app.get("/jobs/reccos", async (req, res) => {
 
 // Route for fetching details of a job (by job ID)
 
-app.get("/jobs/:jobId", async (req, res) => {
+app.get("/api/jobs/:jobId", async (req, res) => {
   try {
     const jobId = req.params.jobId;
 
@@ -389,7 +402,7 @@ app.get("/jobs/:jobId", async (req, res) => {
 
 // Route for applying in a given job
 
-app.post("/jobs/:jobId/apply", userAuthenticate, async (req, res) => {
+app.post("/api/jobs/:jobId/apply", userAuthenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const user = req.user;
@@ -419,7 +432,7 @@ app.post("/jobs/:jobId/apply", userAuthenticate, async (req, res) => {
 
 // Route for saving in a given job
 
-app.post("/jobs/:jobId/save", userAuthenticate, async (req, res) => {
+app.post("/api/jobs/:jobId/save", userAuthenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const user = req.user;
@@ -451,7 +464,7 @@ app.post("/jobs/:jobId/save", userAuthenticate, async (req, res) => {
 
 // Route for viewing applications of user
 
-app.get("/user/applications", userAuthenticate, async (req, res) => {
+app.get("/api/user/applications", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
 
@@ -467,7 +480,7 @@ app.get("/user/applications", userAuthenticate, async (req, res) => {
 });
 // Route for fetching saved jobs of user
 
-app.get("/user/saved", userAuthenticate, async (req, res) => {
+app.get("/api/user/saved", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
     console.log(user);
@@ -484,7 +497,7 @@ app.get("/user/saved", userAuthenticate, async (req, res) => {
 
 // Route for fetching applicants of given job
 
-app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
+app.get("/api/jobs/:jobId/applicants", authenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const company = req.company;
@@ -513,7 +526,7 @@ app.get("/jobs/:jobId/applicants", authenticate, async (req, res) => {
 
 // Route for fetching job posts from given organization (with org authentication)
 
-app.get("/company/jobs", authenticate, async (req, res) => {
+app.get("/api/company/jobs", authenticate, async (req, res) => {
   try {
     const { company } = req;
     console.log(company.companyName, "from route");
@@ -531,7 +544,7 @@ app.get("/company/jobs", authenticate, async (req, res) => {
 
 // Route for fetching job posts from given organization (with company ID)
 
-app.get("/jobs/:companyId/all", async (req, res) => {
+app.get("/api/jobs/:companyId/all", async (req, res) => {
   const companyId = req.params.companyId;
   try {
     const jobs = await Job.find({ companyId: companyId });
@@ -559,7 +572,7 @@ app.get("/api/validate_token", (req, res) => {
 });
 
 //Route for user details
-app.get("/user/details", userAuthenticate, async (req, res) => {
+app.get("/api/user/details", userAuthenticate, async (req, res) => {
   const user = req.user;
   try {
     const userDetails = await User.findOne({ _id: user._id });
@@ -575,7 +588,7 @@ app.get("/user/details", userAuthenticate, async (req, res) => {
   }
 });
 
-app.get("/user/:user/details", async (req, res) => {
+app.get("/api/user/:user/details", async (req, res) => {
   // const user = req.user;
   const user = req.params.user;
   console.log(user);
@@ -595,7 +608,7 @@ app.get("/user/:user/details", async (req, res) => {
 
 //Route for know application status for a given job {applied or can apply}
 
-app.get("/jobs/:jobId/status", userAuthenticate, async (req, res) => {
+app.get("/api/jobs/:jobId/status", userAuthenticate, async (req, res) => {
   try {
     const jobId = req.params.jobId;
     const user = req.user;
@@ -618,12 +631,12 @@ app.get("/jobs/:jobId/status", userAuthenticate, async (req, res) => {
 // Route for google auth
 
 app.get(
-  "/auth/google",
+  "/api/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 app.get(
-  "/auth/google/callback",
+  "/api/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
     const user = req.user;
@@ -636,12 +649,13 @@ app.get(
     res.cookie("mytoken", token);
     console.log(token);
 
-    res.redirect("http://localhost:5173");
+    // res.redirect("http://localhost:5173");
+    res.redirect("http://34.131.250.17");
   }
 );
 
 // Route for OTP login for user
-app.post("/otp-login", async (req, res) => {
+app.post("/api/otp-login", async (req, res) => {
   const { phone } = req.body;
   console.log(phone);
   const user = await User.findOne({ phone });
@@ -654,7 +668,7 @@ app.post("/otp-login", async (req, res) => {
   user.otp = otp;
   await user.save();
 });
-app.post("/otp-verify", async (req, res) => {
+app.post("/api/otp-verify", async (req, res) => {
   const { phone, otp } = req.body;
   const user = await User.findOne({ phone });
   console.log(user);
@@ -674,7 +688,7 @@ app.post("/otp-verify", async (req, res) => {
 });
 // Route for updating resume
 
-app.post("/resume-update", userAuthenticate, async (req, res) => {
+app.post("/api/resume-update", userAuthenticate, async (req, res) => {
   try {
     const user = req.user;
 
@@ -794,23 +808,25 @@ app.post("/resume-update", userAuthenticate, async (req, res) => {
 // Route for fetching user profile using UserID
 ///////////////////////////////
 // Set up a route to handle file uploads and PDF extraction
-app.post('/upload-pdf', upload.single('pdf'), async (req, res) => {
+app.post("/api/upload-pdf", upload.single("pdf"), async (req, res) => {
   try {
     // Get the uploaded PDF file from the request
     const pdfFile = req.file; // Assuming the file input has the name "pdf"
 
     // Check if a PDF file was uploaded
     if (!pdfFile) {
-      return res.status(400).json({ error: 'No PDF file uploaded' });
+      return res.status(400).json({ error: "No PDF file uploaded" });
     }
 
     // Initialize pdf2json
     const pdfParser = new pdf2json.PdfParser();
 
     // Register event handlers for parsing
-    pdfParser.on('pdfParser_dataReady', (pdfData) => {
+    pdfParser.on("pdfParser_dataReady", (pdfData) => {
       // Access the parsed data
-      const pdfText = pdfData.formImage.Pages[0].Texts.map((text) => text.R[0].T).join(' ');
+      const pdfText = pdfData.formImage.Pages[0].Texts.map(
+        (text) => text.R[0].T
+      ).join(" ");
 
       // Here, you can process the extracted text as needed
       res.json({ extractedText: pdfText });
@@ -821,10 +837,111 @@ app.post('/upload-pdf', upload.single('pdf'), async (req, res) => {
     pdfParser.parseBuffer(pdfData);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while processing the PDF' });
+    res
+      .status(500)
+      .json({ error: "An error occurred while processing the PDF" });
   }
 });
 
+// Rouete for toggling "complete your porfile" banner
+
+app.post("/api/prof-req", userAuthenticate, async (req, res) => {
+  try {
+    const user = req.user;
+    user.updateReqeust = false;
+    await user.save();
+    res.json({ message: "Prof req turned off" });
+  } catch (error) {
+    console.error("Error during job application:", error);
+    res
+      .status(500)
+      .json({ message: "An error occurred during job application" });
+  }
+});
+///-----------------------------------------------------------------------
+///-----------------------------------------------------------------------
+///-----------------------------------------------------------------------
+///-----------------------------------------------------------------------
+///-----------------------------------------------------------------------
+///-----------------------------------------------------------------------
+///-----------------------------------------------------------------------
+function calculateResumeCompletion(user) {
+  const weights = {
+    employment: 0.3,
+    education: 0.2,
+    projects: 0.15,
+    onlineProfiles: 0.15,
+  };
+
+  let totalCompleteness = 0;
+  let totalWeight = 0;
+
+  for (const section of Object.keys(weights)) {
+    const weight = weights[section];
+    const sectionData = user.resume[section];
+
+    if (sectionData) {
+      if (sectionHasData(sectionData)) {
+        totalWeight += weight;
+        totalCompleteness += weight;
+      }
+    }
+  }
+
+  const overallCompleteness = (totalCompleteness / totalWeight) * 100;
+
+  return Math.round(overallCompleteness - 17);
+}
+
+function sectionHasData(sectionData) {
+  return Object.values(sectionData).some(
+    (field) => field !== null && field !== undefined && field !== ""
+  );
+}
+
+app.get("/api/resume-completion", userAuthenticate, async (req, res) => {
+  try {
+    const user = req.user;
+    const resumeCompletionPercentage = calculateResumeCompletion(user);
+    res.json({ percentage: resumeCompletionPercentage });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.post(
+  "/api/change-profile-picture",
+  upload.single("newProfilePicture"),
+  userAuthenticate,
+  async (req, res) => {
+    try {
+      const userId = req.user; // Assuming you have middleware to extract user ID from the token
+
+      // Check if the user exists
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      let newProfilePicture = req.file ? req.file.filename : "";
+      if (!newProfilePicture) {
+        return res.status(400).json({ message: "No profile picture provided" });
+      }
+
+      // Update the user's profile picture
+      user.profilePicture = `http://34.131.250.17/api/static/uploads/${newProfilePicture}`;
+      await user.save();
+
+      res.status(200).json({ message: "Profile picture changed successfully" });
+    } catch (error) {
+      console.error("Error changing profile picture:", error);
+      res.status(500).json({
+        message: "An error occurred while changing the profile picture",
+      });
+    }
+  }
+);
 
 ////////////////////
 //------------------------------------------------

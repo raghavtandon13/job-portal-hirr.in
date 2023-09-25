@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
 import AddIcon from "@mui/icons-material/Add";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Resume-Builder.css";
 
 const ResumeBuilder = () => {
+  const navigate = useNavigate();
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -72,7 +76,7 @@ const ResumeBuilder = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch("http://localhost:3000/user/details", {
+        const response = await fetch("http://34.131.250.17/api/user/details", {
           method: "GET",
           headers: {
             Authorization: `${token}`,
@@ -126,7 +130,7 @@ const ResumeBuilder = () => {
     formData.append("pdf", pdfFile);
 
     try {
-      const response = await fetch("http://localhost:3000/upload-pdf", {
+      const response = await fetch("http://34.131.250.17/api/upload-pdf", {
         method: "POST",
         body: formData,
       });
@@ -161,7 +165,7 @@ const ResumeBuilder = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:3000/resume-update`, {
+      const response = await fetch(`http://34.131.250.17/api/resume-update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -172,7 +176,13 @@ const ResumeBuilder = () => {
 
       if (response.ok) {
         console.log("Data sent successfully!");
-        window.location.reload();
+        toast.success("Ressume updated successfully.", {
+          onClose: () => {
+            // Redirect the user to the login page
+            navigate("/profile");
+          },
+        });
+        // window.location.reload();
       } else {
         console.error("Failed to send data to API.");
       }
@@ -180,6 +190,16 @@ const ResumeBuilder = () => {
       console.error("An error occurred:", error);
     }
   };
+  function handleLogout() {
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload();
+    return <Navigate to="/login" />;
+  }
 
   return (
     <>
@@ -189,9 +209,12 @@ const ResumeBuilder = () => {
         button2Link="/user/applications"
         button2Label="Applications"
         funcBtnName="Logout"
+        funcBtn={handleLogout}
         dropdownName={"Settings"}
         dropdown1="option #1"
         dropdown2="option #2"
+        dropdown2Link="#"
+        dropdown1Link="#"
       />
       <ProfileBanner />
       <div className="rb-con">
@@ -468,7 +491,9 @@ const ResumeBuilder = () => {
           </div>
         )}
 
-        <button onClick={sendDataToApi}>Save</button>
+        <button className="save-btn-2" onClick={sendDataToApi}>
+          Save
+        </button>
       </div>
     </>
   );

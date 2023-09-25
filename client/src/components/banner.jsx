@@ -32,12 +32,12 @@ const Banner = ({ heading, subheading }) => {
         <img src={samsung} alt="" />
         <img src={toyota} alt="" />
       </div>
-      <div className="banner-ad">
-        <div className="banner-ad-left">
+      <div className="banner-pro">
+        <div className="banner-pro-left">
           <h1>Discover Your Dream Job Today</h1>
           <button>Register</button>
         </div>
-        <div className="banner-ad-right">
+        <div className="banner-pro-right">
           <div className="banner-part">
             <div className="banner-part-l">
               <img src={cube} alt="" />

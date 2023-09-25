@@ -11,7 +11,8 @@ passport.use(
     {
       clientID: YOUR_CLIENT_ID,
       clientSecret: YOUR_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/callback",
+      // callbackURL: "http://34.131.250.17/api/auth/google/callback",
+      callbackURL: "http://34.131.250.17/auth/google/callback",
     },
     async (mytoken, refreshToken, profile, done) => {
       try {

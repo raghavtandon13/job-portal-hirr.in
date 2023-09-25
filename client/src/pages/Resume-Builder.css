@@ -105,3 +105,25 @@
   font-size: 12px;
   color: #ffffff;
 }
+@media only screen and (max-width: 700px) {
+  .rb-con {
+    width: 90vw;
+  }
+  .project textarea,
+  .rb-con input {
+    width: 80vw;
+  }
+  .project-input-group {
+    flex-direction: column;
+  }
+  .pdf-upload-box {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .save-btn-2 {
+    width: 85vw;
+    color: #00ff00b8;
+  }
+}

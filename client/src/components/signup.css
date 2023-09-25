@@ -57,7 +57,7 @@
   z-index: 0;
 }
 
-input[type="file"]::after {
+.file-input-container [type="file"]::after {
   content: "Upload profile picture";
   color: gray;
   position: absolute;

@@ -15,7 +15,7 @@ const ReccoPage = () => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl = "http://localhost:3000/jobs/search/";
+  const apiUrl = "http://34.131.250.17/api/jobs/search/";
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -53,8 +53,8 @@ const ReccoPage = () => {
         dropdown1="option #1"
         dropdown2="option #2"
       />
-      <div style={{ width: "64vw", textAlign: "left" }} className="page-title">
-        <h2>Reccomendations for you</h2>
+      <div style={{ width: "60vw" }} className="page-title">
+        <h3>Reccomendations for you</h3>
       </div>
       <div className="card-collection">
         {jobs.map((data) => (

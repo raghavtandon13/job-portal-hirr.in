@@ -33,7 +33,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
     async function fetchApplicationStatus() {
       try {
         const response = await fetch(
-          `http://localhost:3000/jobs/${data._id}/status`,
+          `http://34.131.250.17/api/jobs/${data._id}/status`,
           {
             method: "GET",
             headers: {
@@ -64,7 +64,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
     }
     try {
       const response = await fetch(
-        `http://localhost:3000/jobs/${data._id}/apply`,
+        `http://34.131.250.17/api/jobs/${data._id}/apply`,
         {
           method: "POST",
           headers: {
@@ -92,7 +92,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
     }
     try {
       const response = await fetch(
-        `http://localhost:3000/jobs/${data._id}/save`,
+        `http://34.131.250.17/api/jobs/${data._id}/save`,
         {
           method: "POST",
           headers: {
@@ -131,7 +131,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
       // Handle the error if sharing fails.
     }
   };
-  const picUrl = `http://localhost:3000/static/uploads/${data.orgPicture}`;
+  const picUrl = `http://34.131.250.17/api/static/uploads/${data.orgPicture}`;
 
   return (
     <>

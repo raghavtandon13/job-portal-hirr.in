@@ -25,7 +25,7 @@ const MakePost = () => {
     e.preventDefault();
     const data = { companyName, title, skills, experience, jobDescription };
     try {
-      const response = await fetch("http://localhost:3000/jobs", {
+      const response = await fetch("http://34.131.250.17/api/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

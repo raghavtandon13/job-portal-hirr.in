@@ -14,11 +14,12 @@ const LongBanner = () => {
   const [userName, setUserName] = useState("");
   const [userImage, setUserImage] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch("http://localhost:3000/user/details", {
+        const response = await fetch("http://34.131.250.17/api/user/details", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -28,6 +29,7 @@ const LongBanner = () => {
 
         if (response.ok) {
           const data = await response.json();
+          setUserData(data);
           // console.log(data.profilePicture);
           const imageUrl = `${data.profilePicture}`;
 
@@ -50,35 +52,73 @@ const LongBanner = () => {
   }, []);
 
   return (
-    <>
-      <div className="long-banner">
-        <div className="long-left">
-          <img src={userImage || image} alt="" />
+    // <>
+    //   {userData && userData.resume && userData.resume.employment ? (
+    //     <div className="long-banner">
+    //       <div className="long-left">
+    //         <img src={userImage || image} alt="" />
+    //       </div>
+    //       <div className="long-right">
+    //         <div className="long-name">
+    //           <Link to={"/profile"}>
+    //             <h1>{userName}</h1>
+    //           </Link>
+    //           <h3>{userData.resume.employment[0].employmentType.join(", ")}</h3>
+    //           <h4>at {userData.resume.employment[0].currentCompany}</h4>
+    //         </div>
+    //         <hr />
+    //         <div className="long-details">
+    //           <div className="long-details-left">
+    //             <h4>New Delhi, India</h4>
+    //             <h4>{userData.resume.employment[0].totalExperience} Years</h4>
+    //             <h4>₹ {userData.resume.employment[0].salary}</h4>
+    //           </div>
+    //           <div className="long-details-right">
+    //             <h4>{userData.phone}</h4>
+    //             <h4>{userEmail}</h4>
+    //             <h4>15 days of notice</h4>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   ) : (
+    //     <p>Loading...</p>
+    //   )}
+    // </>
+
+    <div className="long-banner">
+      <div className="long-left">
+        <img src={userImage || image} alt="" />
+      </div>
+      <div className="long-right">
+        <div className="long-name">
+          <Link to={"/profile"}>
+            <h1>{userName}</h1>
+          </Link>
+          <h3>
+            {userData?.resume?.employment?.[0]?.employmentType?.join(", ")}
+          </h3>
+          <h4>{userData?.resume?.employment?.[0]?.currentCompany}</h4>
         </div>
-        <div className="long-right">
-          <div className="long-name">
-            <Link to={"/profile"}>
-              <h1>{userName}</h1>
-            </Link>
-            <h3>Backend Developer</h3>
-            <h4>at Google</h4>
-          </div>
-          <hr />
+        <hr />
+        {userData?.resume?.employment ? (
           <div className="long-details">
             <div className="long-details-left">
               <h4>New Delhi, India</h4>
-              <h4>4 Year</h4>
-              <h4>₹ 8,00,00</h4>
+              <h4>
+                {userData?.resume?.employment?.[0]?.totalExperience} Years
+              </h4>
+              <h4>₹ {userData?.resume?.employment?.[0]?.salary}</h4>
             </div>
             <div className="long-details-right">
-              <h4>9817264590</h4>
+              <h4>{userData.phone}</h4>
               <h4>{userEmail}</h4>
-              <h4>15 days of less notice</h4>
+              <h4>15 days of notice</h4>
             </div>
           </div>
-        </div>
+        ) : null}
       </div>
-    </>
+    </div>
   );
 };
 

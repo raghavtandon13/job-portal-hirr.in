@@ -168,4 +168,7 @@
   .navbar-btn-group button {
     font-size: 70%;
   }
+  .dropdown-1 {
+    display: none;
+  }
 }

@@ -12,13 +12,14 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl1 = "http://localhost:3000/user/saved";
-  const apiUrl2 = "http://localhost:3000/jobs/reccos";
+  const apiUrl1 = "http://34.131.250.17/api/user/saved";
+  const apiUrl2 = "http://34.131.250.17/api/jobs/reccos";
 
   const apiUrl = useApiUrl2 ? apiUrl2 : apiUrl1;
 
   const savedUrl = "/user/saved";
-  const reccoUrl = "/user/reccos";
+  // const reccoUrl = "/user/reccos"; original
+  const reccoUrl = "/home";
 
   const linkUrl = useApiUrl2 ? reccoUrl : savedUrl;
   useEffect(() => {
@@ -57,14 +58,16 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
       <div className="reccos-group">
         {jobs.slice(0, 3).map((job) => {
-          const imageUrl = `http://localhost:3000/static/uploads/${job.orgPicture}`;
+          const imageUrl = `http://34.131.250.17/api/static/uploads/${job.orgPicture}`;
           return (
             <div className="recc" key={job._id}>
               <div className="recc-pic">
                 <img src={imageUrl} alt="" />
               </div>
               <div className="recc-txt">
-                <p>{job.title}</p>
+                <Link to={`/job/${job._id}`}>
+                  <p>{job.title}</p>
+                </Link>
                 <p>{job.companyName}</p>
                 <p>Skills: {job.skills.join(", ")}</p>
               </div>

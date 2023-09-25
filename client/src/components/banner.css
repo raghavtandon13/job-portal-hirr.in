@@ -63,29 +63,29 @@
   width: 90px;
   filter: grayscale(1) contrast(0.1);
 }
-.banner-ad {
+.banner-pro {
   font-family: "Roboto Slab", serif;
   /* height: 100vh; */
   display: flex;
   flex-direction: row;
 }
-.banner-ad-left {
+.banner-pro-left {
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: flex-start;
   /* align-content: flex-start; */
 }
-.banner-ad-left h1 {
+.banner-pro-left h1 {
   text-align: left;
 }
-.banner-ad-left button {
+.banner-pro-left button {
   background-color: black;
 }
-.banner-ad-right {
+.banner-pro-right {
   flex: 1;
 }
-.banner-ad-right img {
+.banner-pro-right img {
   width: 30px;
   color: white;
 }
@@ -113,14 +113,17 @@
 }
 
 @media only screen and (max-width: 700px) {
-  .banner-ad {
+  .banner-pro {
     flex-direction: column;
   }
-  .banner-ad-left {
+  .banner-pro-left {
     margin-bottom: 10%;
   }
   .brands {
     display: flex;
     flex-wrap: wrap;
+  }
+  .banner-search {
+    max-width: 86vw;
   }
 }

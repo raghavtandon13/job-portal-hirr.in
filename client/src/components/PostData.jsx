@@ -17,7 +17,7 @@ const PostData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/company/jobs", {
+        const response = await fetch("http://34.131.250.17/api/company/jobs", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `${token}`,
@@ -36,7 +36,7 @@ const PostData = () => {
   const fetchApplicantImages = async (jobId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/jobs/${jobId}/applicants`,
+        `http://34.131.250.17/api/jobs/${jobId}/applicants`,
         {
           headers: {
             "Content-Type": "application/json",

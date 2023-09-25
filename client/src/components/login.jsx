@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const response = await fetch("http://localhost:3000/login/user/", {
+      const response = await fetch("http://34.131.250.17/api/login/user/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const Login = () => {
   };
 
   const handleGoogleAuth = () => {
-    window.location.href = "http://localhost:3000/auth/google";
+    window.location.href = "http://34.131.250.17/api/auth/google";
   };
 
   return (

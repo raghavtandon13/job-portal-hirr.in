@@ -12,7 +12,9 @@ const Navbar = ({
   funcBtnName,
   dropdownName,
   dropdown1,
+  dropdown1Link,
   dropdown2,
+  dropdown2Link,
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -49,15 +51,11 @@ const Navbar = ({
               >
                 <div className="notification-icon">
                   <NotificationsNoneIcon />
-                  <div className="notification-count">5</div>
+                  {/* <div className="notification-count">5</div> */}
                 </div>
               </button>
               <div className="dropdown-content-1">
-                <Link to="/org/login">{dropdown1 || "Employer Login"}</Link>
-                <Link to="/org/signup">{dropdown2 || "Register"}</Link>
-                <a onClick={funcBtn} href="">
-                  {funcBtnName}
-                </a>
+                <p>No new notifications</p>
               </div>
             </div>
           )}
@@ -73,11 +71,17 @@ const Navbar = ({
               {dropdownName || "Employer Login"}&#8628;
             </button>
             <div className="dropdown-content">
-              <Link to="/org/login">{dropdown1 || "Employer Login"}</Link>
-              <Link to="/org/signup">{dropdown2 || "Register"}</Link>
-              <a onClick={funcBtn} href="">
-                {funcBtnName}
-              </a>
+              <Link to={dropdown1Link || "/org/login"}>
+                {dropdown1 || "Employer Login"}
+              </Link>
+              <Link to={dropdown2Link || "/org/signup"}>
+                {dropdown2 || "Register"}
+              </Link>
+              {isLoggedIn && (
+                <a onClick={funcBtn} href="">
+                  {funcBtnName}
+                </a>
+              )}
             </div>
           </div>
         </div>

@@ -35,3 +35,7 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.custom-toast-success {
+  color: #fff;
+  background-color: rgb(27, 30, 31);
+}

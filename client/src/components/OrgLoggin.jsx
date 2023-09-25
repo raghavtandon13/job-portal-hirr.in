@@ -12,7 +12,7 @@ const OrgLogin = () => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const response = await fetch("http://localhost:3000/login/company/", {
+      const response = await fetch("http://34.131.250.17/api/login/company/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const OrgLogin = () => {
 
       if (response.ok) {
         console.log("Login successful!");
-        window.location.reload();
+        // window.location.reload();
         navigate("/org/home");
       } else {
         const errorData = await response.json();

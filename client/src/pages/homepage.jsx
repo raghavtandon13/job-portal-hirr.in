@@ -23,7 +23,7 @@ const Homepage = () => {
 
   const checkProfileStatus = async () => {
     try {
-      const apiResponse = await fetch("http://localhost:3000/user/details", {
+      const apiResponse = await fetch("http://34.131.250.17/api/user/details", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -62,10 +62,39 @@ const Homepage = () => {
       {showProfileReq && (
         <div className="profile-req">
           <h3>
-            <a href="/profile">Complete Your Profile Here !!</a>
+            <a href="/resume-builder">Complete Your Profile Here !!</a>
           </h3>
           <button
-            onClick={() => {
+            onClick={async () => {
+              try {
+                const response = await fetch(
+                  "http://34.131.250.17/api/prof-req",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: token,
+                    },
+                    // You can include any request body data here if needed
+                    body: JSON.stringify({}),
+                  }
+                );
+
+                if (response.ok) {
+                  // Successful request, you can handle the response here if needed
+                  console.log("Profile request sent successfully");
+                } else {
+                  // Handle error response
+                  console.error(
+                    "Error sending profile request:",
+                    response.statusText
+                  );
+                }
+              } catch (error) {
+                // Handle network error
+                console.error("Error sending profile request:", error);
+              }
+              // After sending the request, you can hide the profile request div
               setShowProfileReq(false);
             }}
           >
@@ -82,7 +111,9 @@ const Homepage = () => {
         funcBtnName="Logout"
         dropdownName={"Settings"}
         dropdown1="option #1"
+        dropdown1Link="#"
         dropdown2="option #2"
+        dropdown2Link="#"
       />
       <Search />
       <div className="wrapper">

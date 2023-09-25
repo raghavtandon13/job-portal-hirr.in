@@ -11,6 +11,9 @@
   width: 100vw;
   align-items: center;
 }
+.container .card {
+  width: auto;
+}
 
 .footer {
   flex-shrink: 0;

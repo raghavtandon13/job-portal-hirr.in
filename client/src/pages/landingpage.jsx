@@ -3,6 +3,8 @@ import Navbar from "../components/navbar";
 import Banner from "../components/banner";
 import Testimonials from "../components/testimonials";
 import Footer from "../components/footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LandingPage = () => {
   return (
@@ -16,7 +18,7 @@ const LandingPage = () => {
       />
       <Banner />
       <Testimonials />
-      <Footer/>
+      <Footer />
     </>
   );
 };
