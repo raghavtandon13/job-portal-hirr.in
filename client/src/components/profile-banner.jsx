@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import image from "../assets/user.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./profile-banner.css";
 
 const ProfileBanner = ({ useNewApi, userId }) => {
+  const fileInputRef = useRef(null);
+
   const originalApi = "http://34.131.250.17/api/user/details";
   const newApi = "http://34.131.250.17/api/user/:user/details";
 
@@ -60,44 +64,92 @@ const ProfileBanner = ({ useNewApi, userId }) => {
     fetchUserDetails();
   }, []);
 
-  // Function to handle profile picture change
-  const handleProfilePictureChange = async () => {
-    if (!newProfilePicture) {
-      console.error("No new profile picture selected.");
-      return;
-    }
+  const [isEditing, setIsEditing] = useState(false);
 
-    const formData = new FormData();
-    formData.append("newProfilePicture", newProfilePicture);
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
 
+  const handleSaveClick = async () => {
     try {
+      // Create a new FormData object
+      const formData = new FormData();
+      formData.append("newProfilePicture", fileInputRef.current.files[0]); // Add the selected file to the form data
+
       const response = await fetch(
-        `http://34.131.250.17/api/change-profile-picture`,
+        "http://34.131.250.17/api/change-profile-picture",
         {
           method: "POST",
           headers: {
-            Authorization: token,
+            Authorization: `${token}`,
           },
-          body: formData,
+          body: formData, // Set the form data as the request body
         }
       );
 
       if (response.ok) {
-        console.log("Profile picture changed successfully");
-        fetchUserDetails();
+        // Image successfully uploaded, handle any other actions needed
+        // Reset the visibility:
+        setIsEditing(false);
+        setUserImage(fileInputRef.current.files[0]);
+        toast.success("Profile Picture Saved", {
+          onClose: () => {},
+        });
       } else {
-        console.error("Failed to change profile picture");
+        console.error("Failed to upload image");
       }
     } catch (error) {
-      console.error("Error changing profile picture:", error);
+      console.error("Error uploading image:", error);
     }
+  };
+  const handleChooseFileClick = () => {
+    fileInputRef.current.click(); // Programmatically trigger the file input
   };
 
   return (
     <>
       <div className="profile-banner">
         <div className="profile-left">
-          <img src={userImage || image} alt="" />
+          <div className="image-container">
+            <img src={userImage || image} alt="" />
+            {!isEditing && (
+              <button
+                style={{ fontSize: "10px" }}
+                className="hover-button"
+                onClick={handleEditClick}
+              >
+                Edit
+              </button>
+            )}
+            {isEditing && (
+              <div className="img-div">
+                <input
+                  className="img-div-in"
+                  ref={fileInputRef}
+                  type="file"
+                  id="image-upload"
+                />
+                <label
+                  style={{
+                    fontSize: "12px",
+                    border: "1px solid white",
+                    padding: "4px",
+                    borderRadius: "8px",
+                    marginBottom: "20px",
+                  }}
+                  className="file-input-button"
+                  htmlFor="image-upload"
+                  onClick={handleChooseFileClick}
+                >
+                  Upload
+                  {/* <button>Upload</button> */}
+                </label>
+                <button style={{ fontSize: "10px" }} onClick={handleSaveClick}>
+                  Save
+                </button>
+              </div>
+            )}
+          </div>
         </div>
         <div className="profile-right">
           <div className="profile-name">

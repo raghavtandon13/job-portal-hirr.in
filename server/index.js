@@ -910,7 +910,7 @@ app.get("/api/resume-completion", userAuthenticate, async (req, res) => {
   }
 });
 
-router.post(
+app.post(
   "/api/change-profile-picture",
   upload.single("newProfilePicture"),
   userAuthenticate,

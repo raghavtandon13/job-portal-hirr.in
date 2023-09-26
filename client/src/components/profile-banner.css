@@ -27,7 +27,49 @@
   width: 13vw;
   height: 13vw;
 }
+/* CSS */
+.profile-left {
+  position: relative; /* Needed for absolute positioning of the button */
+}
 
+.hover-button {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #3498db;
+  color: #fff; */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-left:hover .hover-button {
+  display: inline-block; /* Display the button when hovering over profile-left */
+}
+
+.img-div {
+  display: flex;
+  flex-direction: column;
+  /* display: none; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #3498db;
+  color: #fff; */
+  /* padding: 10px 20px; */
+  border: none;
+  cursor: pointer;
+}
+.img-div label:hover {
+  color: blue;
+}
+.img-div-in{
+  display: none;
+  width: 100%;
+}
 .profile-right {
   gap: 3%;
   text-align: left;
@@ -76,3 +118,7 @@ h4 {
 }
 .profile-details-right {
 }
+
+
+/* chnages */
+/* CSS */
