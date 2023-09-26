@@ -216,7 +216,7 @@ const ResumeBuilder = () => {
         dropdown2Link="#"
         dropdown1Link="#"
       />
-      <ProfileBanner />
+      <ProfileBanner showUpload={true} />
       <div className="rb-con">
         <div className="headline-box">
           <h3>Resume HeadLine</h3>

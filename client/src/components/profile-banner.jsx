@@ -4,7 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./profile-banner.css";
 
-const ProfileBanner = ({ useNewApi, userId }) => {
+const ProfileBanner = ({ useNewApi, userId, showUpload = false}) => {
+  const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef(null);
 
   const originalApi = "http://34.131.250.17/api/user/details";
@@ -61,10 +62,10 @@ const ProfileBanner = ({ useNewApi, userId }) => {
       }
     };
 
-    fetchUserDetails();
-  }, []);
-
-  const [isEditing, setIsEditing] = useState(false);
+    if (!isEditing) {
+      fetchUserDetails();
+    }
+  }, [isEditing]);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -91,7 +92,6 @@ const ProfileBanner = ({ useNewApi, userId }) => {
         // Image successfully uploaded, handle any other actions needed
         // Reset the visibility:
         setIsEditing(false);
-        setUserImage(fileInputRef.current.files[0]);
         toast.success("Profile Picture Saved", {
           onClose: () => {},
         });
@@ -112,7 +112,7 @@ const ProfileBanner = ({ useNewApi, userId }) => {
         <div className="profile-left">
           <div className="image-container">
             <img src={userImage || image} alt="" />
-            {!isEditing && (
+            {showUpload && !isEditing && (
               <button
                 style={{ fontSize: "10px" }}
                 className="hover-button"
@@ -121,14 +121,8 @@ const ProfileBanner = ({ useNewApi, userId }) => {
                 Edit
               </button>
             )}
-            {isEditing && (
+            {showUpload && isEditing && (
               <div className="img-div">
-                <input
-                  className="img-div-in"
-                  ref={fileInputRef}
-                  type="file"
-                  id="image-upload"
-                />
                 <label
                   style={{
                     fontSize: "12px",
@@ -138,11 +132,15 @@ const ProfileBanner = ({ useNewApi, userId }) => {
                     marginBottom: "20px",
                   }}
                   className="file-input-button"
-                  htmlFor="image-upload"
-                  onClick={handleChooseFileClick}
                 >
                   Upload
-                  {/* <button>Upload</button> */}
+                  <input
+                    className="img-div-in"
+                    ref={fileInputRef}
+                    type="file"
+                    id="image-upload"
+                    style={{ display: "none" }}
+                  />
                 </label>
                 <button style={{ fontSize: "10px" }} onClick={handleSaveClick}>
                   Save
