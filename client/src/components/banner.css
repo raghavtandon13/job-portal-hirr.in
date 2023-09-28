@@ -35,14 +35,15 @@
   color: #fff;
   border-radius: 14px;
   width: 25%;
-  font-size: 90%;
+  font-size: 14px;
   border: none;
   background-color: rgb(24, 26, 27);
   text-align: center;
   font-family: "Cabin", sans-serif;
 }
 .banner-search button {
-  border-radius: 90%;
+  border-radius: 14px;
+  font-size: 90%;
 }
 .banner-search input::placeholder {
   text-align: center;

@@ -134,6 +134,7 @@
 @media only screen and (max-width: 1340px) {
   .navbar {
     justify-content: space-between;
+    font-size: 85%;
   }
   .navbar-btn-group button {
     font-size: 80%;
@@ -153,6 +154,9 @@
   }
 }
 @media only screen and (max-width: 400px) {
+  .navbar {
+    font-size: 85%;
+  }
   .navbar-left {
     flex: 5;
   }

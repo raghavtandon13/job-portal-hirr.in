@@ -18,7 +18,7 @@
   color: #fff;
   border-radius: 14px;
   width: 25%;
-  font-size: 90%;
+  font-size: 14px;
   border: none;
   background-color: rgb(24, 26, 27);
   text-align: center;
@@ -73,7 +73,7 @@
     color: #fff;
     border-radius: 20px;
     width: 100% !important;
-    font-size: 90%;
+    font-size: 12px;
     border: none;
     background-color: rgb(24, 26, 27);
     text-align: center;

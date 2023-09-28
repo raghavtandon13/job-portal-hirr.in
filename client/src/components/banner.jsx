@@ -11,6 +11,7 @@ import samsung from "../assets/logos/samsung-logo-removebg-preview.png";
 import toyota from "../assets/logos/toyota-logo-removebg-preview.png";
 // import ViewInArTwoToneIcon from "@mui/icons-material/ViewInArTwoTone";
 import cube from "../assets/cube.svg";
+import { Link } from "react-router-dom";
 const Banner = ({ heading, subheading }) => {
   const defaultHeading = "Find your dream job now";
   const defaultSubheading = "5 lakh+ jobs for you to explore";
@@ -35,7 +36,9 @@ const Banner = ({ heading, subheading }) => {
       <div className="banner-pro">
         <div className="banner-pro-left">
           <h1>Discover Your Dream Job Today</h1>
-          <button>Register</button>
+          <Link to={"/signup"}>
+            <button>Register</button>
+          </Link>
         </div>
         <div className="banner-pro-right">
           <div className="banner-part">
