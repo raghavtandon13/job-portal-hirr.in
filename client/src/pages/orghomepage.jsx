@@ -15,9 +15,7 @@ const Orghomepage = () => {
   return (
     <>
       <Navbar
-        buttonLink="/login"
         buttonLabel="Posts"
-        button2Link="/signup"
         button2Label="Profile"
         funcBtnName="About Us"
         dropdownName="Settings"

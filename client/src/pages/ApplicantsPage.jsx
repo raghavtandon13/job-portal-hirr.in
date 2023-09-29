@@ -65,7 +65,7 @@ const ApplicantsPage = () => {
       />
 
       <div className="wrapper-ap">
-        {jobDetails && <Card data={jobDetails} />}
+        {jobDetails && <Card data={jobDetails} isCompanyLoggedIn={true} />}
 
         {jobDetails && (
           <div className="job-desc">

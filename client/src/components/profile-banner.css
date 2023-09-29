@@ -15,6 +15,17 @@
   background-color: #00000085;
   border: 1px solid rgb(47, 51, 54);
 }
+.profile-contact-div {
+  margin-top: 10px;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 2% 0%;
+  background-color: #00000085;
+  border: 1px solid rgb(47, 51, 54);
+  justify-content: space-evenly;
+}
 .profile-left {
   display: flex;
   align-items: center;
@@ -66,7 +77,7 @@
 .img-div label:hover {
   color: blue;
 }
-.img-div-in{
+.img-div-in {
   display: none;
   width: 100%;
 }
@@ -114,11 +125,15 @@ h4 {
   height: 0px;
   transform: rotate(90deg);
 }
-.profile-details-left {
-}
-.profile-details-right {
-}
 
-
-/* chnages */
-/* CSS */
+.profile-conatct-div {
+  margin-top: 10px;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 2% 0%;
+  background-color: #00000085;
+  border: 1px solid rgb(47, 51, 54);
+  justify-content: space-evenly;
+}

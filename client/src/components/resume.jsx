@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import "./resume.css";
 
-const Resume = () => {
+const Resume = ({ useNewApi, userId }) => {
   const [resumeData, setResumeData] = useState(null);
+
+  const apiEndpoint = useNewApi
+    ? `http://34.131.250.17/api/user/${userId}/details`
+    : "http://34.131.250.17/api/user/details";
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -19,7 +23,7 @@ const Resume = () => {
 
   const fetchResumeData = async () => {
     try {
-      const response = await fetch("http://34.131.250.17/api/user/details", {
+      const response = await fetch(apiEndpoint, {
         headers: {
           Authorization: `${token}`,
         },

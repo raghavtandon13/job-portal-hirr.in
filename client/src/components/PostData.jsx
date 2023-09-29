@@ -78,14 +78,16 @@ const PostData = () => {
                   <h4>Post Insights</h4>
                   <p>Applicants: {job.applicants.length}</p>
                   <div className="applicants-group">
-                    {applicantImages[job._id]?.map((imageUrl, index) => (
-                      <img
-                        key={index}
-                        src={imageUrl}
-                        alt={`Applicant ${index}`}
-                        title={job.applicants[index]?.name} // Set the tooltip title
-                      />
-                    ))}
+                    {applicantImages[job._id]
+                      ?.slice(0, 4)
+                      .map((imageUrl, index) => (
+                        <img
+                          key={index}
+                          src={imageUrl}
+                          alt={`Applicant ${index}`}
+                          title={job.applicants[index]?.name} // Set the tooltip title
+                        />
+                      ))}
                   </div>
                 </div>
                 <div className="post-details-btn">

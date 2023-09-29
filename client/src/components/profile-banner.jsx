@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./profile-banner.css";
 
-const ProfileBanner = ({ useNewApi, userId, showUpload = false}) => {
+const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
   const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef(null);
 
@@ -21,6 +21,7 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false}) => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const token = getCookie("mytoken");
+  const orgToken = getCookie("orgtoken");
 
   const [userName, setUserName] = useState("");
   const [userImage, setUserImage] = useState("");
@@ -30,6 +31,7 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false}) => {
   const [userExperience, setUserExperience] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [userNotice, setUserNotice] = useState("");
+  const [showEmail, setShowEmail] = useState(false);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -170,6 +172,18 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false}) => {
           </div>
         </div>
       </div>
+      {orgToken && (
+        <div className="profile-contact-div">
+          <button
+            onClick={() => {
+              setShowEmail(!showEmail);
+            }}
+          >
+            Conatct vis Email
+          </button>
+          {showEmail && <h4>{userEmail}</h4>}
+        </div>
+      )}
     </>
   );
 };
