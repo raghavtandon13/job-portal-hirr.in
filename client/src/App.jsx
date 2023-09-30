@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./pages/landingpage";
 import Loginpage from "./pages/loginpage";
@@ -17,7 +18,8 @@ import JobDetails from "./pages/JobDetailsPage";
 import OrgJobDetailsPage from "./pages/orgJobDetailsPage";
 import ApplicantsPage from "./pages/ApplicantsPage";
 import Userpage from "./pages/Userpage";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
+
 // import UploadPage from "./pages/upload";
 import "./App.css";
 
@@ -35,116 +37,102 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/login"
-            element={isLoggedIn() ? <Navigate to={"/home"} /> : <Loginpage />}
-          />
 
-          <Route
-            path="/"
-            element={
-              isLoggedIn() ? (
-                <Navigate to={"/home"} />
-              ) : isLoggedInOrg() ? (
-                <Navigate to={"/org/home"} />
-              ) : (
-                <LandingPage />
-              )
-            }
-          />
 
-          <Route
-            path="/home"
-            element={isLoggedIn() ? <Homepage /> : <Navigate to={"/"} />}
-          />
+      <Routes>
+        <Route
+          path="/login"
+          element={isLoggedIn() ? <Navigate to={"/home"} /> : <Loginpage />}
+        />
 
-          {/* <Route path="/home" element={<Homepage/>}/> */} 
-          {/* Dummy route */}
+        <Route
+          path="/"
+          element={
+            isLoggedIn() ? (
+              <Navigate to={"/home"} />
+            ) : isLoggedInOrg() ? (
+              <Navigate to={"/org/home"} />
+            ) : (
+              <LandingPage />
+            )
+          }
+        />
 
-          <Route
-            path="/profile"
-            element={
-              isLoggedIn() ? <Profilepage /> : <Navigate to={"/login"} />
-            }
-          />
-          <Route
-            path="/resume-builder"
-            element={
-              isLoggedIn() ? <ResumeBuilder /> : <Navigate to={"/login"} />
-            }
-          />
-          <Route
-            path="/signup"
-            element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}
-          />
+        <Route
+          path="/home"
+          element={isLoggedIn() ? <Homepage /> : <Navigate to={"/"} />}
+        />
 
-          <Route
-            path="/user/saved"
-            element={isLoggedIn() ? <SavedPage /> : <Navigate to={"/"} />}
-          />
+        {/* <Route path="/home" element={<Homepage/>}/> */}
+        {/* Dummy route */}
 
-          <Route
-            path="/user/applications"
-            element={
-              isLoggedIn() ? <ApplicationsPage /> : <Navigate to={"/"} />
-            }
-          />
+        <Route
+          path="/profile"
+          element={isLoggedIn() ? <Profilepage /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/resume-builder"
+          element={
+            isLoggedIn() ? <ResumeBuilder /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route
+          path="/signup"
+          element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}
+        />
 
-          <Route
-            path="/user/reccos"
-            element={isLoggedIn() ? <ReccoPage /> : <Navigate to={"/"} />}
-          />
+        <Route
+          path="/user/saved"
+          element={isLoggedIn() ? <SavedPage /> : <Navigate to={"/"} />}
+        />
 
-          <Route path="/search" element={<Searchpage />} />
+        <Route
+          path="/user/applications"
+          element={isLoggedIn() ? <ApplicationsPage /> : <Navigate to={"/"} />}
+        />
 
-          <Route path="/job/:jobId" element={<JobDetails />} />
+        <Route
+          path="/user/reccos"
+          element={isLoggedIn() ? <ReccoPage /> : <Navigate to={"/"} />}
+        />
 
-          {/* Org Routes */}
+        <Route path="/search" element={<Searchpage />} />
 
-          <Route
-            path="/org/home"
-            element={isLoggedInOrg() ? <Orghomepage /> : <Navigate to={"/"} />}
-          />
+        <Route path="/job/:jobId" element={<JobDetails />} />
 
-          <Route
-            path="/org/signup"
-            element={
-              isLoggedInOrg() ? (
-                <Navigate to={"/org/home"} />
-              ) : (
-                <OrgsignupPage />
-              )
-            }
-          />
+        {/* Org Routes */}
 
-          <Route
-            path="/org/makepost"
-            element={
-              isLoggedInOrg() ? (
-                <Makepostpage />
-              ) : (
-                <Navigate to={"/org/login"} />
-              )
-            }
-          />
+        <Route
+          path="/org/home"
+          element={isLoggedInOrg() ? <Orghomepage /> : <Navigate to={"/"} />}
+        />
 
-          <Route
-            path="/org/login"
-            element={
-              isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <Orgloginpage />
-            }
-          />
-          <Route path="org/jobs/:jobId" element={<OrgJobDetailsPage />} />
-          <Route
-            path="org/jobs/:jobId/applicants"
-            element={<ApplicantsPage />}
-          />
-          <Route path="users/:userId" element={<Userpage />} />
-        </Routes>
-      </BrowserRouter>
-      <ToastContainer toastStyle={{ backgroundColor: "black" }}/>
+        <Route
+          path="/org/signup"
+          element={
+            isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <OrgsignupPage />
+          }
+        />
+
+        <Route
+          path="/org/makepost"
+          element={
+            isLoggedInOrg() ? <Makepostpage /> : <Navigate to={"/org/login"} />
+          }
+        />
+
+        <Route
+          path="/org/login"
+          element={
+            isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <Orgloginpage />
+          }
+        />
+        <Route path="org/jobs/:jobId" element={<OrgJobDetailsPage />} />
+        <Route path="org/jobs/:jobId/applicants" element={<ApplicantsPage />} />
+        <Route path="users/:userId" element={<Userpage />} />
+      </Routes>
+
+      <ToastContainer toastStyle={{ backgroundColor: "black" }} />
     </>
   );
 }

@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 .dropdown-content {
-  display: none;
+  /* display: none; */
   position: absolute;
   background-color: rgb(27, 30, 31);
   min-width: 160px;
@@ -71,9 +71,9 @@
   background-color: rgb(43, 47, 49);
   border-radius: 5px;
 }
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
   display: block;
-}
+} */
 .navbar-btn-group svg {
   width: 30px;
   align-self: center;
@@ -154,6 +154,11 @@
 @media only screen and (max-width: 800px) {
   .navbar-left {
     flex: 2;
+  }
+  .dropdown-content {
+    margin-top: 8px;
+    right: 40px;
+    left: auto;
   }
 }
 @media only screen and (max-width: 400px) {

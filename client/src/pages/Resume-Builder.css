@@ -8,6 +8,7 @@
   background-color: #00000085;
   border: 1px solid rgb(47, 51, 54);
   border-radius: 20px;
+  min-width: fit-content;
 }
 .add-btn {
   display: flex;

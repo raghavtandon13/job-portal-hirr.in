@@ -17,6 +17,7 @@ const Navbar = ({
   dropdown2Link,
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const checkLoginStatus = () => {
     const token = document.cookie.includes("mytoken");
@@ -67,22 +68,24 @@ const Navbar = ({
             <button>{button2Label}</button>
           </Link>
           <div className="dropdown">
-            <button className="emp-btn dropdown-button">
+            <button className="emp-btn dropdown-button" onClick={()=>{setIsOpen(!isOpen)}}>
               {dropdownName || "Employer Login"}&#8628;
             </button>
-            <div className="dropdown-content">
-              <Link to={dropdown1Link || "/org/login"}>
-                {dropdown1 || "Employer Login"}
-              </Link>
-              <Link to={dropdown2Link || "/org/signup"}>
-                {dropdown2 || "Register"}
-              </Link>
-              {isLoggedIn && (
-                <a onClick={funcBtn} href="">
-                  {funcBtnName}
-                </a>
-              )}
-            </div>
+            {isOpen && (
+              <div className="dropdown-content">
+                <Link to={dropdown1Link || "/org/login"}>
+                  {dropdown1 || "Employer Login"}
+                </Link>
+                <Link to={dropdown2Link || "/org/signup"}>
+                  {dropdown2 || "Register"}
+                </Link>
+                {isLoggedIn && (
+                  <a onClick={funcBtn} href="">
+                    {funcBtnName}
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

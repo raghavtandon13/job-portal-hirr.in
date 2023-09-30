@@ -3,6 +3,11 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 import Reccos from "../components/reccos";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+
 import "./jobdetailspage.css";
 
 function JobDetails() {
@@ -70,7 +75,13 @@ function JobDetails() {
       )}
 
       {jobDetails && <Card data={jobDetails} />}
-
+      <div className="like-div">
+        <h3>Rate This Recruiter</h3>
+        <div className="like-btn-div">
+        <ThumbUpOffAltIcon/>
+        <ThumbDownOffAltIcon/>
+        </div>
+      </div>
       {jobDetails && (
         <div className="job-desc">
           <h3>Job Description</h3>
