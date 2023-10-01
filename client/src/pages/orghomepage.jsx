@@ -17,8 +17,12 @@ const Orghomepage = () => {
       <Navbar
         buttonLabel="Posts"
         button2Label="Profile"
-        funcBtnName="About Us"
+        funcBtnName="Logout"
         dropdownName="Settings"
+        dropdown1="option #1"
+        dropdown1Link="#"
+        dropdown2="option #2"
+        dropdown2Link="#"
         funcBtn={handleLogout}
       />
       <OrgPosts />

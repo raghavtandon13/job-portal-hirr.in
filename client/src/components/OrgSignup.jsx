@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./OrgSignup.css";
 
 const OrgSignup = () => {
@@ -39,9 +41,15 @@ const OrgSignup = () => {
         const token = responseData.token;
 
         console.log("Signup successful!");
+        toast.success("Signup successful! You can now log in.", {
+          onClose: () => {
+            // Redirect the user to the login page
+            navigate("/org/login");
+          },
+        });
         localStorage.setItem("token", token);
         console.log("token stored");
-        navigate("/org/home");
+        // navigate("/org/home");
       } else {
         console.error("Signup failed");
       }

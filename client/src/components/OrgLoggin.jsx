@@ -23,7 +23,7 @@ const OrgLogin = () => {
 
       if (response.ok) {
         console.log("Login successful!");
-        // window.location.reload();
+        window.location.reload();
         navigate("/org/home");
       } else {
         const errorData = await response.json();
