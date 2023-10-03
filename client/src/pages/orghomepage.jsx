@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import OrgPosts from "../components/OrgPosts";
-import PostData from "../components/PostData";
+import OrgProfile from "../components/OrgProfile";
 
 const Orghomepage = () => {
   function handleLogout() {
@@ -12,6 +12,7 @@ const Orghomepage = () => {
     window.location.reload();
     return <Navigate to="org/login" />;
   }
+
   return (
     <>
       <Navbar
@@ -25,6 +26,7 @@ const Orghomepage = () => {
         dropdown2Link="#"
         funcBtn={handleLogout}
       />
+      <OrgProfile />
       <OrgPosts />
     </>
   );

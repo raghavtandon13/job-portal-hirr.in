@@ -168,6 +168,7 @@ app.post("/api/login/user", async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        // token: token,
         // Add other relevant user data
       },
     });
@@ -292,6 +293,7 @@ app.post("/api/jobs", authenticate, async (req, res) => {
     console.log("Request body:", req.body);
     const { companyName, title, skills, experience, jobDescription } = req.body;
 
+    // const company = req.company;
     const company = await Company.findOne({ companyName });
     if (!company) {
       return res.status(404).json({ message: "Company not found" });
@@ -362,6 +364,8 @@ app.get("/api/jobs/search", async (req, res) => {
     res.status(500).json({ message: "An error occurred while fetching jobs" });
   }
 });
+
+// Route for reccos
 
 app.get("/api/jobs/reccos", async (req, res) => {
   try {
@@ -571,7 +575,7 @@ app.get("/api/validate_token", (req, res) => {
   }
 });
 
-//Route for user details
+//Route for user details (with user authentication)
 app.get("/api/user/details", userAuthenticate, async (req, res) => {
   const user = req.user;
   try {
@@ -588,6 +592,7 @@ app.get("/api/user/details", userAuthenticate, async (req, res) => {
   }
 });
 
+//Route for user details (with user ID)
 app.get("/api/user/:user/details", async (req, res) => {
   // const user = req.user;
   const user = req.params.user;
@@ -606,7 +611,7 @@ app.get("/api/user/:user/details", async (req, res) => {
   }
 });
 
-//Route for know application status for a given job {applied or can apply}
+//Route for application status for a given job {applied or can apply}
 
 app.get("/api/jobs/:jobId/status", userAuthenticate, async (req, res) => {
   try {
@@ -942,6 +947,23 @@ app.post(
     }
   }
 );
+
+//Route for Company details (with org authentication)
+app.get("/api/company/details", authenticate, async (req, res) => {
+  const company = req.company;
+  try {
+    const companyDetails = await Company.findOne({ _id: company._id });
+
+    if (!companyDetails) {
+      return res.status(404).json({ error: "Company not found" });
+    }
+
+    return res.json(companyDetails);
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 ////////////////////
 //------------------------------------------------

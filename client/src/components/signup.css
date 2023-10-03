@@ -14,7 +14,7 @@
   color: #e1e1e1;
 }
 .signup-input {
-  height: 45vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -96,4 +96,26 @@
 }
 .signup-box form p {
   padding-top: 12px;
+}
+
+.ok {
+  font-family: "Cabin", sans-serif;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #8c8273;
+  border-radius: 10px;
+  background: none;
+  color: white;
+  width: 96%;
+  display: flex;
+  align-items: center;
+}
+.ok p {
+  width: 50%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0 !important;
+  margin: 0;
+  margin-left: 10px;
 }

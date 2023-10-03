@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 import "./signup.css";
 
 const Signup = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -51,7 +62,7 @@ const Signup = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData)
+        console.log(responseData);
         const token = responseData.token;
         console.log(token);
         document.cookie = `mytoken=${token}`;
@@ -141,6 +152,33 @@ const Signup = () => {
             {isFileSelected && (
               <span className="file-selected-icon">&#10003;</span>
             )}
+          </div>
+
+          <div className="ok">
+            <input
+              type="file"
+              accept="image/*" // Specify the file types you want to accept
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+              id="file-input"
+            />
+            <label htmlFor="file-input">
+              <Button
+                variant="contained"
+                component="span"
+                startIcon={<CloudUploadIcon sx={{ width: "19px" }} />}
+                sx={{
+                  "&:hover":{backgroundColor:"#1f2223", color:"wheat"},
+                  fontSize: "11px",
+                  color: "Black",
+                  my:"-2px",
+                  backgroundColor: "wheat",
+                }}
+              >
+                Upload Profile Picture
+              </Button>
+            </label>
+            {selectedFile && <p>{selectedFile.name}</p>}
           </div>
         </div>
         <div className="signup-button">

@@ -1,0 +1,33 @@
+.org-profile{
+    align-items: flex-start;
+    background-color: #00000085;
+    margin: 2% 0;
+    padding: 20px;
+    border: 1px solid rgb(47,51,54);
+    border-radius: 20px;
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+}
+.org-photo {
+    flex: 2;
+}
+.org-photo img {
+    width: 100px;
+    border-radius: 12px;
+}
+.org-details {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.org-details h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 36px;
+}
+.org-details h4 {
+    font-size: 13px;
+    color: #a9a9a9;
+}

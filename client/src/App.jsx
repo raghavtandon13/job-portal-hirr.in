@@ -37,8 +37,6 @@ function App() {
 
   return (
     <>
-
-
       <Routes>
         <Route
           path="/login"
@@ -63,7 +61,7 @@ function App() {
           element={isLoggedIn() ? <Homepage /> : <Navigate to={"/"} />}
         />
 
-        {/* <Route path="/home" element={<Homepage/>}/> */}
+        {/* <Route path="/oh" element={<Orghomepage />}/> */}
         {/* Dummy route */}
 
         <Route
