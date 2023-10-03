@@ -23,6 +23,21 @@ const OrgLogin = () => {
 
       if (response.ok) {
         console.log("Login successful!");
+
+        ////////////////////////////////////////////
+        //----------For Development---------------//
+        ////////////////////////////////////////////
+
+        // const responseData = await response.json();
+        // console.log(responseData);
+        // const token = responseData.token;
+        // console.log(token);
+        // document.cookie = `orgtoken=${token}`;
+        
+        ////////////////////////////////////////////
+        ////////////////////////////////////////////
+        ////////////////////////////////////////////
+
         window.location.reload();
         navigate("/org/home");
       } else {

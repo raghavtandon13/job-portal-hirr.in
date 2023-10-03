@@ -24,7 +24,24 @@ const Login = () => {
 
       if (response.ok) {
         console.log("Login successful!");
+        
+        ////////////////////////////////////////////
+        //----------For Development---------------//
+        ////////////////////////////////////////////
+
+        // const responseData = await response.json();
+        // console.log(responseData);
+        // const token = responseData.user.token;
+        // console.log(token);
+        // document.cookie = `mytoken=${token}`;
+        
+        ////////////////////////////////////////////
+        ////////////////////////////////////////////
+        ////////////////////////////////////////////
+        
         window.location.reload();
+
+
         navigate("/home");
       } else {
         const errorData = await response.json();

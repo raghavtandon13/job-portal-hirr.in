@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import OrgPosts from "../components/OrgPosts";
 import OrgProfile from "../components/OrgProfile";
+import Footer from "../components/Footer"
 
 const Orghomepage = () => {
   function handleLogout() {
@@ -28,6 +29,7 @@ const Orghomepage = () => {
       />
       <OrgProfile />
       <OrgPosts />
+      <Footer/>
     </>
   );
 };

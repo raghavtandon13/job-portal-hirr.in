@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "./card";
+import Job from "../assets/job-posts.svg"
 import "./PostData.css";
 
 const PostData = () => {
@@ -67,42 +68,50 @@ const PostData = () => {
 
   return (
     <div>
-      <ul>
-        {jobs.map((job) => (
-          <li key={job._id}>
-            <div className="post-details">
-              <Card isCompanyLoggedIn={true} key={job._id} data={job} />
-              <div className="group">
-                <div className="post-details-text">
-                  <h3>{job.title}</h3>
-                  <h4>Post Insights</h4>
-                  <p>Applicants: {job.applicants.length}</p>
-                  <div className="applicants-group">
-                    {applicantImages[job._id]
-                      ?.slice(0, 4)
-                      .map((imageUrl, index) => (
-                        <img
-                          key={index}
-                          src={imageUrl}
-                          alt={`Applicant ${index}`}
-                          title={job.applicants[index]?.name} // Set the tooltip title
-                        />
-                      ))}
+      {jobs.length === 0 ? (
+        <div className="empty-job">
+          <h2>You don't have any job posts...</h2>
+          <img src={Job} alt="" />
+          
+        </div>
+      ) : (
+        <ul>
+          {jobs.map((job) => (
+            <li key={job._id}>
+              <div className="post-details">
+                <Card isCompanyLoggedIn={true} key={job._id} data={job} />
+                <div className="group">
+                  <div className="post-details-text">
+                    <h3>{job.title}</h3>
+                    <h4>Post Insights</h4>
+                    <p>Applicants: {job.applicants.length}</p>
+                    <div className="applicants-group">
+                      {applicantImages[job._id]
+                        ?.slice(0, 4)
+                        .map((imageUrl, index) => (
+                          <img
+                            key={index}
+                            src={imageUrl}
+                            alt={`Applicant ${index}`}
+                            title={job.applicants[index]?.name} // Set the tooltip title
+                          />
+                        ))}
+                    </div>
+                  </div>
+                  <div className="post-details-btn">
+                    <Link to={`/org/jobs/${job._id}/applicants`}>
+                      <button>See Applicants</button>
+                    </Link>
+                    <button>Remove Post</button>
+                    <button>Edit Post</button>
                   </div>
                 </div>
-                <div className="post-details-btn">
-                  <Link to={`/org/jobs/${job._id}/applicants`}>
-                    <button>See Applicants</button>
-                  </Link>
-                  <button>Remove Post</button>
-                  <button>Edit Post</button>
-                </div>
               </div>
-            </div>
-            <hr className="post-end-break" />
-          </li>
-        ))}
-      </ul>
+              <hr className="post-end-break" />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
