@@ -13,6 +13,17 @@ const OrgJobDetailsPage = () => {
 
   const [jobDetails, setJobDetails] = useState(null);
 
+  function handleLogout() {
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload();
+    return <Navigate to="/login" />;
+  }
+
   useEffect(() => {
     async function fetchJobDetails() {
       try {
@@ -34,7 +45,7 @@ const OrgJobDetailsPage = () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  const token = getCookie("mytoken");
+  const token = getCookie("orgtoken");
 
   // Fetch job details using jobId from your backend (API call, database, etc.)
 
@@ -42,14 +53,15 @@ const OrgJobDetailsPage = () => {
     <>
       {token ? (
         <Navbar
-          buttonLink="/profile"
+          // buttonLink="/profile"
           buttonLabel="Profile"
-          button2Link="/user/applications"
-          button2Label="Applications"
+          // button2Link="/user/applications"
+          button2Label="Posts"
           funcBtnName="Logout"
           dropdownName={"Settings"}
           dropdown1="option #1"
           dropdown2="option #2"
+          funcBtn={handleLogout}
         />
       ) : (
         <Navbar

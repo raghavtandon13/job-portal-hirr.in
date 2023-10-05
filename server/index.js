@@ -965,6 +965,72 @@ app.get("/api/company/details", authenticate, async (req, res) => {
   }
 });
 
+// Route for editing a job post
+app.post("/api/job/edit/", authenticate, async (req, res) => {
+  const company = req.company;
+  const { jobId, companyName, title, skills, experience, jobDescription } =
+    req.body;
+  try {
+    const companyDetails = await Company.findOne({ _id: company._id });
+
+    // Check if the company owns the job post
+    if (companyDetails.jobs.includes(jobId)) {
+      const job = await Job.findOne({ _id: jobId });
+
+      // Update job properties
+      job.title = title;
+      job.companyName = companyName;
+      job.skills = skills;
+      job.experience = experience;
+      job.jobDescription = jobDescription;
+
+      await job.save();
+
+      res.status(200).json({ message: "Job updated successfully!" });
+    }
+  } catch (error) {
+    console.error("Error updating resume:", error);
+    res.status(500).json({ error: "An error occurred while updating job." });
+  }
+});
+
+// Route for deleting a job
+
+app.delete("/api/jobs/:jobId", authenticate, async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
+    const company = req.company;
+
+    // Find the job by its ID
+    const job = await Job.findById(jobId);
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    // Check if the job is in the company's jobs array
+    if (!company.jobs.includes(job._id)) {
+      return res
+        .status(403)
+        .json({ message: "Job does not belong to this company" });
+    }
+
+    // Remove the job from the company's jobs array
+    const jobIndex = company.jobs.indexOf(job._id);
+    if (jobIndex !== -1) {
+      company.jobs.splice(jobIndex, 1);
+      await company.save();
+    }
+
+    // Delete the job from the database
+    await job.deleteOne()
+
+    res.status(200).json({ message: "Job deleted successfully" });
+  } catch (error) {
+    console.error("Error during job deletion:", error);
+    res.status(500).json({ message: "An error occurred during job deletion" });
+  }
+});
+
 ////////////////////
 //------------------------------------------------
 // Express App listening on PORT

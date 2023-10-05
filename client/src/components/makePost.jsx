@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./makePost.css";
 
 const MakePost = () => {
+  const navigate = useNavigate();
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -15,6 +19,8 @@ const MakePost = () => {
   const [companyName, setcompanyName] = useState("");
   const [jobDescription, setJobDescription] = useState("");
 
+
+  
   const handleReset = () => {
     document.getElementById("name").value = "";
     document.getElementById("title").value = "";
@@ -36,10 +42,23 @@ const MakePost = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+        toast.success("Job posting successful!", {
+          onClose: () => {
+            // Redirect the user to the login page
+            navigate("/org/home");
+          },
+        });
+        navigate("/org/home");
 
         console.log("Job posted succesfully");
       } else {
         console.error("Job posting failed");
+        // toast.error("Job posting failed", {
+        //   onClose: () => {
+        //     // Redirect the user to the login page
+        //     navigate("/login");
+        //   },
+        // });
       }
     } catch (error) {
       console.error("An error occurred:", error);

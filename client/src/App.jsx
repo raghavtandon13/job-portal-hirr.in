@@ -18,6 +18,7 @@ import JobDetails from "./pages/JobDetailsPage";
 import OrgJobDetailsPage from "./pages/orgJobDetailsPage";
 import ApplicantsPage from "./pages/ApplicantsPage";
 import Userpage from "./pages/Userpage";
+import OrgJobEditPage from "./pages/OrgJobEditPage";
 import { ToastContainer } from "react-toastify";
 
 // import UploadPage from "./pages/upload";
@@ -116,6 +117,12 @@ function App() {
           path="/org/makepost"
           element={
             isLoggedInOrg() ? <Makepostpage /> : <Navigate to={"/org/login"} />
+          }
+        />
+        <Route
+          path="/org/jobs/:jobId/edit"
+          element={
+            isLoggedInOrg() ? <OrgJobEditPage/> : <Navigate to={"/org/login"} />
           }
         />
 

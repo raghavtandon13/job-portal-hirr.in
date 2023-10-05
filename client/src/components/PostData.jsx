@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "./card";
-import Job from "../assets/job-posts.svg"
+import Job from "../assets/job-posts.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./PostData.css";
 
 const PostData = () => {
@@ -53,6 +55,39 @@ const PostData = () => {
     }
   };
 
+  const handleDeletePost = async (jobId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this job?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
+
+      if (response.ok) {
+        // Job post deleted successfully
+        // You can add additional handling here, e.g., show a success message
+        // and then reload the page to reflect the changes
+        toast.success("Job posting successful!", {
+          onClose: () => {
+            // Redirect the user to the login page
+          },
+        });
+        // window.location.reload();
+      } else {
+        // Handle the case where the deletion was not successful
+        console.error("Error deleting job post");
+      }
+    } catch (error) {
+      console.error("Error deleting job post:", error);
+    }
+  };
+
   useEffect(() => {
     const loadApplicantImages = async () => {
       const imagesData = {};
@@ -72,7 +107,6 @@ const PostData = () => {
         <div className="empty-job">
           <h2>You don't have any job posts...</h2>
           <img src={Job} alt="" />
-          
         </div>
       ) : (
         <ul>
@@ -102,7 +136,9 @@ const PostData = () => {
                     <Link to={`/org/jobs/${job._id}/applicants`}>
                       <button>See Applicants</button>
                     </Link>
-                    <button>Remove Post</button>
+                    <button onClick={() => handleDeletePost(job._id)}>
+                      Delete Post
+                    </button>
                     <button>Edit Post</button>
                   </div>
                 </div>

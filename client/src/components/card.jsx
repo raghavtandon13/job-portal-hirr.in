@@ -120,7 +120,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         await navigator.share({
           title: data.title,
           text: "Check out this job!",
-          url: `http://localhost:5173/job/${data._id}`, // Replace with the actual URL
+          url: `http://34.131.250.17/job/${data._id}`, // Replace with the actual URL
         });
       } else {
         console.log("Web Share API is not supported in this browser.");
@@ -148,7 +148,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
             </Link>
             <h4>{data.companyName}</h4>
             <p>Experience: {data.experience}</p>
-            <p>Skills: Javascrpit,Typescript, MERN stack</p>
+            <p>Skills: {data.skills}</p>
             <p>Location: Delhi</p>
           </div>
           <div className="card-pic">
@@ -169,7 +169,9 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         </div>
         <div className="card-btns">
           {isCompanyLoggedIn ? (
+            <Link to={`/org/jobs/${data._id}/edit`}>
             <button><CreateIcon/>Edit</button>
+            </Link>
           ) : applied ? (
             <button style={{ backgroundColor: "gray" }}>Applied</button>
           ) : (
