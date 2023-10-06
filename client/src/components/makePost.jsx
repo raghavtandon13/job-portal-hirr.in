@@ -18,18 +18,25 @@ const MakePost = () => {
   const [experience, setExperience] = useState("");
   const [companyName, setcompanyName] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const [location, setLocation] = useState("");
 
-
-  
   const handleReset = () => {
     document.getElementById("name").value = "";
     document.getElementById("title").value = "";
     document.getElementById("experience").value = "";
     document.getElementById("skills").value = "";
+    document.getElementById("location").value = "";
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { companyName, title, skills, experience, jobDescription };
+    const data = {
+      companyName,
+      title,
+      skills,
+      experience,
+      jobDescription,
+      location,
+    };
     try {
       const response = await fetch("http://34.131.250.17/api/jobs", {
         method: "POST",
@@ -43,10 +50,7 @@ const MakePost = () => {
       if (response.ok) {
         const responseData = await response.json();
         toast.success("Job posting successful!", {
-          onClose: () => {
-            // Redirect the user to the login page
-            navigate("/org/home");
-          },
+          onClose: () => {},
         });
         navigate("/org/home");
 
@@ -100,6 +104,13 @@ const MakePost = () => {
             placeholder="Experience in number of years"
             value={experience}
             onChange={(e) => setExperience(e.target.value)}
+          />
+          <input
+            type="text"
+            id="location"
+            placeholder="Location of work"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           />
           {/* Job Description Textarea */}
           <textarea

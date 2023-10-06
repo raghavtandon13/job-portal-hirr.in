@@ -291,7 +291,8 @@ app.post(
 app.post("/api/jobs", authenticate, async (req, res) => {
   try {
     console.log("Request body:", req.body);
-    const { companyName, title, skills, experience, jobDescription } = req.body;
+    const { companyName, title, skills, experience, jobDescription, location } =
+      req.body;
 
     // const company = req.company;
     const company = await Company.findOne({ companyName });
@@ -308,6 +309,7 @@ app.post("/api/jobs", authenticate, async (req, res) => {
       companyId,
       orgPicture,
       jobDescription,
+      location,
     });
     await job.save();
     company.jobs.push(job);
@@ -968,10 +970,18 @@ app.get("/api/company/details", authenticate, async (req, res) => {
 // Route for editing a job post
 app.post("/api/job/edit/", authenticate, async (req, res) => {
   const company = req.company;
-  const { jobId, companyName, title, skills, experience, jobDescription } =
-    req.body;
+  const {
+    jobId,
+    companyName,
+    title,
+    skills,
+    experience,
+    jobDescription,
+    location,
+  } = req.body;
   try {
     const companyDetails = await Company.findOne({ _id: company._id });
+    console.log("location recieved from req:", location);
 
     // Check if the company owns the job post
     if (companyDetails.jobs.includes(jobId)) {
@@ -983,6 +993,8 @@ app.post("/api/job/edit/", authenticate, async (req, res) => {
       job.skills = skills;
       job.experience = experience;
       job.jobDescription = jobDescription;
+      job.location = location;
+      console.log("location saved in job object:", job.location);
 
       await job.save();
 
@@ -1022,7 +1034,7 @@ app.delete("/api/jobs/:jobId", authenticate, async (req, res) => {
     }
 
     // Delete the job from the database
-    await job.deleteOne()
+    await job.deleteOne();
 
     res.status(200).json({ message: "Job deleted successfully" });
   } catch (error) {
@@ -1030,7 +1042,6 @@ app.delete("/api/jobs/:jobId", authenticate, async (req, res) => {
     res.status(500).json({ message: "An error occurred during job deletion" });
   }
 });
-
 ////////////////////
 //------------------------------------------------
 // Express App listening on PORT

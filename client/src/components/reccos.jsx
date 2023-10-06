@@ -70,6 +70,7 @@ const Reccos = ({ desc, useApiUrl2 }) => {
                 </Link>
                 <p>{job.companyName}</p>
                 <p>Skills: {job.skills.join(", ")}</p>
+                <p>Location: {job.location}</p>
               </div>
             </div>
           );

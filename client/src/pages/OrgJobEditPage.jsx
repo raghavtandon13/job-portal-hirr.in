@@ -17,6 +17,7 @@ const OrgJobEditPage = () => {
   const [experience, setExperience] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const [location, setLocation] = useState("");
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -42,6 +43,7 @@ const OrgJobEditPage = () => {
       skills,
       experience,
       jobDescription,
+      location,
     };
     try {
       const response = await fetch("http://34.131.250.17/api/job/edit", {
@@ -57,22 +59,13 @@ const OrgJobEditPage = () => {
         const responseData = await response.json();
         toast.success("Job Edited successful!", {
           onClose: () => {
-            // Redirect the user to the login page
-            // navigate("/org/home");
           },
         });
         navigate(`/org/jobs/${jobId}`);
 
-
         console.log("Job posted succesfully");
       } else {
         console.error("Job posting failed");
-        // toast.error("Job posting failed", {
-        //   onClose: () => {
-        //     // Redirect the user to the login page
-        //     navigate("/login");
-        //   },
-        // });
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -89,6 +82,7 @@ const OrgJobEditPage = () => {
         setSkills(data.skills);
         setTitle(data.title);
         setCompanyName(data.companyName);
+        setLocation(data.location);
         console.log(jobDetails.jobDescription);
         console.log(jobDetails);
       } catch (error) {
@@ -147,6 +141,13 @@ const OrgJobEditPage = () => {
                 value={experience}
                 onChange={(e) => setExperience(e.target.value)}
               />
+              <input
+                type="text"
+                id="location"
+                placeholder="Location of work"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
               {/* Job Description Textarea */}
               <textarea
                 id="jobDescription"
@@ -154,43 +155,6 @@ const OrgJobEditPage = () => {
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
               />
-
-              {/* <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Enter Organization's Name "
-                value={editedCompanyName}
-                onChange={(e) => setEditedCompanyName(e.target.value)}
-              />
-              <input
-                type="text"
-                id="title"
-                placeholder="Job Title"
-                value={editedTitle}
-                onChange={(e) => setEditedTitle(e.target.value)}
-              />
-              <input
-                type="text"
-                id="skills"
-                placeholder="Skills Required"
-                value={editedSkills}
-                onChange={(e) => setEditedSkills(e.target.value)}
-              />
-              <input
-                type="number"
-                id="experience"
-                placeholder="Experience in number of years"
-                value={editedExperience}
-                onChange={(e) => setEditedExperience(e.target.value)}
-              />
-              Job Description Textarea
-              <textarea
-                id="jobDescription"
-                placeholder="Job Description"
-                value={editedJobDescription}
-                onChange={(e) => setEditedJobDescription(e.target.value)}
-              /> */}
             </div>
             <div className="signup-button">
               <button type="submit">Submit</button>

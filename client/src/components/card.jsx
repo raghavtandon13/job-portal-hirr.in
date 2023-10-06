@@ -149,7 +149,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
             <h4>{data.companyName}</h4>
             <p>Experience: {data.experience}</p>
             <p>Skills: {data.skills}</p>
-            <p>Location: Delhi</p>
+            <p>Location: {data.location}</p>
           </div>
           <div className="card-pic">
             <img src={picUrl} alt="" />

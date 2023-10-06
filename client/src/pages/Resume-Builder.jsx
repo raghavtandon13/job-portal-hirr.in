@@ -177,12 +177,9 @@ const ResumeBuilder = () => {
       if (response.ok) {
         console.log("Data sent successfully!");
         toast.success("Ressume updated successfully.", {
-          onClose: () => {
-            // Redirect the user to the login page
-            navigate("/profile");
-          },
+          onClose: () => {},
         });
-        // window.location.reload();
+        navigate("/profile");
       } else {
         console.error("Failed to send data to API.");
       }
@@ -225,8 +222,8 @@ const ResumeBuilder = () => {
             value={userHeadline}
             placeholder="Headline"
             onChange={(e) => {
-              const updatedHeadline = e.target.value; // Capture the new value
-              setUserHeadline(updatedHeadline); // Update the state with the new value
+              const updatedHeadline = e.target.value;
+              setUserHeadline(updatedHeadline);
             }}
           />
         </div>
@@ -478,7 +475,6 @@ const ResumeBuilder = () => {
           </button>
         </div>
         <hr />
-        {/* i want pdf upload here and the text extracted should be below it */}
         <div className="pdf-upload-box">
           <h3>Upload PDF</h3>
           <input type="file" accept=".pdf" onChange={handlePdfUpload} />

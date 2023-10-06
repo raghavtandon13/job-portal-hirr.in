@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "./card";
 import Job from "../assets/job-posts.svg";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,9 +13,10 @@ const PostData = () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const token = getCookie("orgtoken");
+  const navigate = useNavigate();
 
   const [jobs, setJobs] = useState([]);
-  const [applicantImages, setApplicantImages] = useState({}); // Store applicant images
+  const [applicantImages, setApplicantImages] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,17 +71,11 @@ const PostData = () => {
       });
 
       if (response.ok) {
-        // Job post deleted successfully
-        // You can add additional handling here, e.g., show a success message
-        // and then reload the page to reflect the changes
-        toast.success("Job posting successful!", {
-          onClose: () => {
-            // Redirect the user to the login page
-          },
+        toast.success("Job deleted successfully!", {
+          onClose: () => {},
         });
-        // window.location.reload();
+        navigate(`/org/jobs/${jobId}`);
       } else {
-        // Handle the case where the deletion was not successful
         console.error("Error deleting job post");
       }
     } catch (error) {
@@ -127,7 +122,7 @@ const PostData = () => {
                             key={index}
                             src={imageUrl}
                             alt={`Applicant ${index}`}
-                            title={job.applicants[index]?.name} // Set the tooltip title
+                            title={job.applicants[index]?.name}
                           />
                         ))}
                     </div>

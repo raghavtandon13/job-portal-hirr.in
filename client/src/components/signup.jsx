@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-
 import "./signup.css";
 
 const Signup = () => {
@@ -69,13 +67,9 @@ const Signup = () => {
 
         console.log("Signup successful!");
         toast.success("Signup successful! You can now log in.", {
-          onClose: () => {
-            // Redirect the user to the login page
-            navigate("/login");
-          },
+          onClose: () => {},
         });
-        // navigate("/resume-builder");
-        // window.location.reload();
+        navigate("/login");
       } else {
         console.error("Signup failed");
       }
@@ -157,7 +151,7 @@ const Signup = () => {
           <div className="ok">
             <input
               type="file"
-              accept="image/*" // Specify the file types you want to accept
+              accept="image/*"
               style={{ display: "none" }}
               onChange={handleFileChange}
               id="file-input"
@@ -168,10 +162,10 @@ const Signup = () => {
                 component="span"
                 startIcon={<CloudUploadIcon sx={{ width: "19px" }} />}
                 sx={{
-                  "&:hover":{backgroundColor:"#1f2223", color:"wheat"},
+                  "&:hover": { backgroundColor: "#1f2223", color: "wheat" },
                   fontSize: "11px",
                   color: "Black",
-                  my:"-2px",
+                  my: "-2px",
                   backgroundColor: "wheat",
                 }}
               >
