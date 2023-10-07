@@ -89,6 +89,9 @@ li {
   height: 100vh;
   /* position: relative; */
 }
+.chakra-modal__footer {
+  gap: 5px;
+}
 
 @media only screen and (max-width: 800px) {
   .post-details {

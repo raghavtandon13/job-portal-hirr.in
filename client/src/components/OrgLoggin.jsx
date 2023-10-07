@@ -28,11 +28,11 @@ const OrgLogin = () => {
         //----------For Development---------------//
         ////////////////////////////////////////////
 
-        const responseData = await response.json();
-        console.log(responseData);
-        const token = responseData.token;
-        console.log(token);
-        document.cookie = `orgtoken=${token}`;
+        // const responseData = await response.json();
+        // console.log(responseData);
+        // const token = responseData.token;
+        // console.log(token);
+        // document.cookie = `orgtoken=${token}`;
         
         ////////////////////////////////////////////
         ////////////////////////////////////////////
