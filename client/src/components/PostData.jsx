@@ -3,6 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import Card from "./card";
 import Job from "../assets/job-posts.svg";
 import { ToastContainer, toast } from "react-toastify";
+import {
+  useDisclosure,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  AlertDialogCloseButton,
+  Button,
+} from "@chakra-ui/react";
+
 import "react-toastify/dist/ReactToastify.css";
 import "./PostData.css";
 
@@ -13,7 +25,10 @@ const PostData = () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const token = getCookie("orgtoken");
+  const cancelRef = React.useRef();
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [jobToDelete, setJobToDelete] = useState(null);
 
   const [jobs, setJobs] = useState([]);
   const [applicantImages, setApplicantImages] = useState({});
@@ -56,11 +71,64 @@ const PostData = () => {
     }
   };
 
-  const handleDeletePost = async (jobId) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this job?"
-    );
-    if (!confirmDelete) return;
+  // const handleDeletePost = async (jobId) => {
+  //   const confirmDelete = window.confirm(
+  //     "Are you sure you want to delete this job?"
+  //   );
+  //   if (!confirmDelete) return;
+
+  //   try {
+  //     const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         Authorization: `${token}`,
+  //       },
+  //     });
+
+  //     if (response.ok) {
+  //       toast.success("Job deleted successfully!", {
+  //         onClose: () => {},
+  //       });
+  //       navigate(`/org/jobs/${jobId}`);
+  //     } else {
+  //       console.error("Error deleting job post");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting job post:", error);
+  //   }
+  // };
+
+  const handleDeletePost = (jobId) => {
+    setJobToDelete(jobId);
+    onOpen();
+  };
+
+  // const onDeleteConfirmation = async (jobId) => {
+  //   onClose(); // Close the Chakra UI Alert dialog.
+
+  //   try {
+  //     const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         Authorization: `${token}`,
+  //       },
+  //     });
+
+  //     if (response.ok) {
+  //       toast.success("Job deleted successfully!", {
+  //         onClose: () => {},
+  //       });
+  //       navigate(`/org/jobs/${jobId}`);
+  //     } else {
+  //       console.error("Error deleting job post");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting job post:", error);
+  //   }
+  // };
+
+  const onDeleteConfirmation = async (jobId) => {
+    onClose(); // Close the Chakra UI Alert dialog.
 
     try {
       const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`, {
@@ -95,6 +163,20 @@ const PostData = () => {
 
     loadApplicantImages();
   }, [jobs]);
+
+  useEffect(() => {
+    // Calculate half of the screen size
+    const screenHeight = window.innerHeight;
+    const halfScreenHeight = screenHeight / 2;
+
+    // Set the top and left CSS properties for the AlertDialogContent
+    const dialogContent = document.querySelector(".chakra-modal__content");
+    if (dialogContent) {
+      dialogContent.style.top = `calc(50% - ${halfScreenHeight}px)`;
+      dialogContent.style.left = "50%";
+      dialogContent.style.transform = "translateX(-50%)";
+    }
+  }, [isOpen]);
 
   return (
     <div>
@@ -143,6 +225,67 @@ const PostData = () => {
           ))}
         </ul>
       )}
+
+      <AlertDialog
+        // size="sm"
+        // isCentered
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+        motionPreset="slideInBottom"
+        // display={"flex"}
+        // alignContent={"center"}
+        // justifyContent={"center"}
+      >
+        <AlertDialogOverlay
+          // backdropBlur={"100%"}
+          backgroundColor={"rgb(54 54 54 / 83%);"}
+          // display={"flex"}
+          // alignContent={"center"}
+          // justifyContent={"center"}
+          // width={"100vw"}
+          // height={"100vh"}
+        >
+          <AlertDialogContent
+            marginTop={"250px"}
+            // display={"flex"}
+            // alignContent={"center"}
+            // justifyContent={"center"}
+            // position={"relative"}
+            width={"300px"}
+            padding={"20px"}
+            border={"1px solid rgb(47, 51, 54)"}
+            bg="black"
+            borderRadius="20px"
+            // boxShadow="lg"
+          >
+            <AlertDialogHeader
+              fontFamily={"Cabin"}
+              fontSize="lg"
+              fontWeight="bold"
+            >
+              Delete Job
+            </AlertDialogHeader>
+
+            <AlertDialogBody fontFamily={"Cabin"}>
+              Are you sure you want to delete this job?
+            </AlertDialogBody>
+
+            <AlertDialogFooter marginTop={"10px"}>
+              <Button ref={cancelRef} onClick={onClose}>
+                Cancel
+              </Button>
+              <Button
+                color={"red"}
+                onClick={() => onDeleteConfirmation(jobToDelete)}
+                ml={3}
+              >
+                Delete
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </div>
   );
 };

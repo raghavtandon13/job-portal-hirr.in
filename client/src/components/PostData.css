@@ -82,6 +82,13 @@ li {
 .empty-job img {
   height: 150px;
 }
+.css-1oxhx2p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* position: relative; */
+}
 
 @media only screen and (max-width: 800px) {
   .post-details {
