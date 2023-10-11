@@ -90,7 +90,7 @@ const PostData = () => {
         toast.success("Job deleted successfully!", {
           onClose: () => {},
         });
-        navigate(`/org/jobs/${jobId}`);
+        navigate(`/org/home`);
       } else {
         console.error("Error deleting job post");
       }

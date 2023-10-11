@@ -146,7 +146,9 @@ const Card = ({ data, isCompanyLoggedIn }) => {
             >
               <h3>{data.title}</h3>
             </Link>
+            <Link to={`/org/${data.companyId}`}>
             <h4>{data.companyName}</h4>
+            </Link>
             <p>Experience: {data.experience}</p>
             <p>Skills: {data.skills}</p>
             <p>Location: {data.location}</p>

@@ -596,7 +596,6 @@ app.get("/api/user/details", userAuthenticate, async (req, res) => {
 
 //Route for user details (with user ID)
 app.get("/api/user/:user/details", async (req, res) => {
-  // const user = req.user;
   const user = req.params.user;
   console.log(user);
   try {
@@ -955,6 +954,25 @@ app.get("/api/company/details", authenticate, async (req, res) => {
   const company = req.company;
   try {
     const companyDetails = await Company.findOne({ _id: company._id });
+
+    if (!companyDetails) {
+      return res.status(404).json({ error: "Company not found" });
+    }
+
+    return res.json(companyDetails);
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+//Route for Company details (with companyId)
+app.get("/api/company/:company/details", async (req, res) => {
+  const company = req.params.company;
+  console.log(company);
+  try {
+    const companyDetails = await Company.findOne({ _id: company })
+    .select('-sessionToken');;
 
     if (!companyDetails) {
       return res.status(404).json({ error: "Company not found" });

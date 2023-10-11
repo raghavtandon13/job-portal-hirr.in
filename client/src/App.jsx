@@ -19,6 +19,7 @@ import OrgJobDetailsPage from "./pages/orgJobDetailsPage";
 import ApplicantsPage from "./pages/ApplicantsPage";
 import Userpage from "./pages/Userpage";
 import OrgJobEditPage from "./pages/OrgJobEditPage";
+import CompanyPage from "./pages/CompanyPage";
 import { ToastContainer } from "react-toastify";
 
 // import UploadPage from "./pages/upload";
@@ -135,6 +136,10 @@ function App() {
         <Route path="org/jobs/:jobId" element={<OrgJobDetailsPage />} />
         <Route path="org/jobs/:jobId/applicants" element={<ApplicantsPage />} />
         <Route path="users/:userId" element={<Userpage />} />
+
+
+
+        <Route path="org/:companyId" element={<CompanyPage />} />
       </Routes>
 
       <ToastContainer toastStyle={{ backgroundColor: "black" }} />
