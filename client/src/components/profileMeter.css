@@ -8,6 +8,15 @@
   max-height: 180px;
   padding-bottom: 30px;
 }
+.p-light {
+  border: 1px solid rgb(232, 230, 227);
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
+  background-color: white !important;
+}
+
+.p-light .meter-brand h3 {
+  color: black;
+}
 .meter-brand h3 {
   padding-top: 10px;
   font-weight: 500;
@@ -44,6 +53,11 @@
   display: flex;
   flex-direction: row;
 }
+.p-light .meter-text p {
+  background-color: lavender;
+  color: black;
+  border: none;
+}
 .meter-text p {
   padding: 4%;
   background-color: black;
@@ -63,34 +77,34 @@
     padding-bottom: 10px;
     padding: 10px 0;
     max-height: none;
-}
-.meter-details {
-  display: flex;
-  flex-direction: column;
-}
-.meter-percent {
-  /* width: 100%; */
-  display: flex;
-  margin: 10px;
-  margin-left: 20px;
-  margin-bottom: -15px;
-  justify-content: center;
-}
-.meter-text {
-  justify-content: space-evenly;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 12%;
-  gap: 4px;
-}
-.meter-text p {
-  padding: 2%;
-  /* background-color: rgb(31, 34, 35); */
-  border-radius: 10px;
-  border: 2px solid rgb(42 42 72);
-  color: #e6e7fc;
-  width: 80%;
-}
+  }
+  .meter-details {
+    display: flex;
+    flex-direction: column;
+  }
+  .meter-percent {
+    /* width: 100%; */
+    display: flex;
+    margin: 10px;
+    margin-left: 20px;
+    margin-bottom: -15px;
+    justify-content: center;
+  }
+  .meter-text {
+    justify-content: space-evenly;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12%;
+    gap: 4px;
+  }
+  .meter-text p {
+    padding: 2%;
+    /* background-color: rgb(31, 34, 35); */
+    border-radius: 10px;
+    border: 2px solid rgb(42 42 72);
+    color: #e6e7fc;
+    width: 80%;
+  }
 }

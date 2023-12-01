@@ -1,10 +1,11 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import CreateIcon from '@mui/icons-material/Create';
+import CreateIcon from "@mui/icons-material/Create";
 import ShareIcon from "@mui/icons-material/Share";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./card.css";
 
 const Card = ({ data, isCompanyLoggedIn }) => {
@@ -19,6 +20,9 @@ const Card = ({ data, isCompanyLoggedIn }) => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "c-dark" : "c-light";
+
   const token = getCookie("mytoken");
   const getRandomColor = () => {
     const letters = "0123456789ABCDEF";
@@ -32,16 +36,13 @@ const Card = ({ data, isCompanyLoggedIn }) => {
   useEffect(() => {
     async function fetchApplicationStatus() {
       try {
-        const response = await fetch(
-          `http://34.131.250.17/api/jobs/${data._id}/status`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `${token}`,
-            },
-          }
-        );
+        const response = await fetch(`http://34.131.250.17/api/jobs/${data._id}/status`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+        });
 
         if (response.ok) {
           const responseData = await response.json();
@@ -63,16 +64,13 @@ const Card = ({ data, isCompanyLoggedIn }) => {
       navigate("/login");
     }
     try {
-      const response = await fetch(
-        `http://34.131.250.17/api/jobs/${data._id}/apply`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `${token}`,
-          },
-        }
-      );
+      const response = await fetch(`http://34.131.250.17/api/jobs/${data._id}/apply`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      });
 
       if (response.ok) {
         setApplied(true);
@@ -91,16 +89,13 @@ const Card = ({ data, isCompanyLoggedIn }) => {
       navigate("/login");
     }
     try {
-      const response = await fetch(
-        `http://34.131.250.17/api/jobs/${data._id}/save`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `${token}`,
-          },
-        }
-      );
+      const response = await fetch(`http://34.131.250.17/api/jobs/${data._id}/save`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      });
 
       if (response.ok) {
         setSaved(!saved);
@@ -135,19 +130,14 @@ const Card = ({ data, isCompanyLoggedIn }) => {
 
   return (
     <>
-      <div className="card">
+      <div className={`card ${theme}`}>
         <div className="card-info">
           <div className="card-txt">
-            <Link
-              to={
-                isCompanyLoggedIn ? `/org/jobs/${data._id}` : `/job/${data._id}`
-              }
-              style={{ color: "white" }}
-            >
+            <Link to={isCompanyLoggedIn ? `/org/jobs/${data._id}` : `/job/${data._id}`} style={{ color: "white" }}>
               <h3>{data.title}</h3>
             </Link>
             <Link to={`/org/${data.companyId}`}>
-            <h4>{data.companyName}</h4>
+              <h4>{data.companyName}</h4>
             </Link>
             <p>Experience: {data.experience}</p>
             <p>Skills: {data.skills}</p>
@@ -172,7 +162,10 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         <div className="card-btns">
           {isCompanyLoggedIn ? (
             <Link to={`/org/jobs/${data._id}/edit`}>
-            <button><CreateIcon/>Edit</button>
+              <button>
+                <CreateIcon />
+                Edit
+              </button>
             </Link>
           ) : applied ? (
             <button style={{ backgroundColor: "gray" }}>Applied</button>

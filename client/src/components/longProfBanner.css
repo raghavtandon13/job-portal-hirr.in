@@ -3,15 +3,21 @@
   /* font-family: "Poppins", sans-serif; */
   font-family: "Cabin", sans-serif;
   border-radius: 30px;
-  width: 25vw;
+  width: 15vw;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  background-color: white;
   /* margin-top: 4%; */
   background-color: #00000085;
   /* height: inherit; */
-  max-height: 85vh;
+
+  height: 100%;
+}
+.lb-light .long-banner {
+  background-color: white;
+  border: 1px solid rgb(232, 230, 227);
+  width: 15vw;
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
 }
 .long-left {
   display: flex;
@@ -41,11 +47,19 @@
   border: 1px solid #8080803b;
 }
 .long-name h1 {
-  color: rgba(195, 190, 182, 0.83) !important;
+  color: rgba(195, 190, 182, 0.83);
   margin: 0;
+}
+
+.lb-light h3 {
+  color: #1f2223;
 }
 .long-name a h1 {
   font-size: 2.2em;
+}
+.lb-light .long-name a h1 {
+  font-size: 2.2em;
+  color: #1f2223;
 }
 .long-name a h1:hover {
   color: #646cffaa !important;
@@ -57,12 +71,18 @@ h4 {
 }
 .long-name a h3 {
   font-weight: 500;
-  color: #333333d3 !important;
+  color: #333333d3;
+}
+.lb-light .long-name a h3 {
+  font-weight: 500;
+}
+
+.lb-light .long-name h4 {
+  color: gray;
 }
 .long-name h4 {
   font-weight: 500;
-  color: #333333b9;
-  color: rgba(200, 195, 188, 0.72);
+  color: rgba(200, 195, 188, 0.61);
 }
 .long-details {
   gap: 15%;
@@ -76,6 +96,12 @@ h4 {
   color: #3333339c;
   color: rgba(200, 195, 188, 0.61);
 }
+.lb-light .long-details h4 {
+  font-weight: 400;
+  font-size: small;
+  color: #3333339c;
+}
+
 .long-details hr {
   height: 0px;
   transform: rotate(90deg);

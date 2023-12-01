@@ -27,10 +27,8 @@ const OrgJobEditPage = () => {
   const token = getCookie("orgtoken");
 
   function handleLogout() {
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="org/login" />;
   }
@@ -58,8 +56,7 @@ const OrgJobEditPage = () => {
       if (response.ok) {
         const responseData = await response.json();
         toast.success("Job Edited successful!", {
-          onClose: () => {
-          },
+          onClose: () => {},
         });
         navigate(`/org/jobs/${jobId}`);
 
@@ -119,20 +116,8 @@ const OrgJobEditPage = () => {
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
               />
-              <input
-                type="text"
-                id="title"
-                placeholder="Job Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <input
-                type="text"
-                id="skills"
-                placeholder="Skills Required"
-                value={skills}
-                onChange={(e) => setSkills(e.target.value)}
-              />
+              <input type="text" id="title" placeholder="Job Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+              <input type="text" id="skills" placeholder="Skills Required" value={skills} onChange={(e) => setSkills(e.target.value)} />
 
               <input
                 type="number"
@@ -141,13 +126,7 @@ const OrgJobEditPage = () => {
                 value={experience}
                 onChange={(e) => setExperience(e.target.value)}
               />
-              <input
-                type="text"
-                id="location"
-                placeholder="Location of work"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
+              <input type="text" id="location" placeholder="Location of work" value={location} onChange={(e) => setLocation(e.target.value)} />
               {/* Job Description Textarea */}
               <textarea
                 id="jobDescription"

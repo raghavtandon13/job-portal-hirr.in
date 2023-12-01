@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import image from "../assets/user.png";
 import "./OrgProfile.css";
 
@@ -15,9 +15,7 @@ const OrgProfile = ({ useNewApi, companyId }) => {
   const originalApi = "http://34.131.250.17/api/company/details";
   const newApi = "http://34.131.250.17/api/company/:company/details";
 
-  const apiEndpoint = useNewApi
-    ? `http://34.131.250.17/api/company/${companyId}/details`
-    : "http://34.131.250.17/api/company/details";
+  const apiEndpoint = useNewApi ? `http://34.131.250.17/api/company/${companyId}/details` : "http://34.131.250.17/api/company/details";
 
   // const picUrl = `http://34.131.250.17/api/static/uploads/${data.orgPicture}`;
 
@@ -42,9 +40,7 @@ const OrgProfile = ({ useNewApi, companyId }) => {
     fetchData();
   }, [apiEndpoint, token]);
 
-  const picUrl = data
-    ? `http://34.131.250.17/api/static/uploads/${data.orgPicture}`
-    : image; // Use the imported image if there's no photo in the data
+  const picUrl = data ? `http://34.131.250.17/api/static/uploads/${data.orgPicture}` : image; // Use the imported image if there's no photo in the data
 
   return (
     <>

@@ -14,12 +14,9 @@ const OrgJobDetailsPage = () => {
   const [jobDetails, setJobDetails] = useState(null);
 
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
@@ -64,14 +61,7 @@ const OrgJobDetailsPage = () => {
           funcBtn={handleLogout}
         />
       ) : (
-        <Navbar
-          buttonLink="/login"
-          buttonLabel="Posts"
-          button2Link="/signup"
-          button2Label="Profile"
-          funcBtnName="About Us"
-          dropdownName="Settings"
-        />
+        <Navbar buttonLink="/login" buttonLabel="Posts" button2Link="/signup" button2Label="Profile" funcBtnName="About Us" dropdownName="Settings" />
       )}
       <div className="wrapper-ohdp">
         {jobDetails && <Card data={jobDetails} isCompanyLoggedIn={true} />}
@@ -79,18 +69,13 @@ const OrgJobDetailsPage = () => {
         {jobDetails && (
           <div className="job-desc">
             <h3>Job Description</h3>
-            <p style={{ whiteSpace: "pre-line" }}>
-              {jobDetails.jobDescription}
-            </p>
+            <p style={{ whiteSpace: "pre-line" }}>{jobDetails.jobDescription}</p>
           </div>
         )}
         <OrgChart viewsData={viewsData} />
         {jobDetails && (
           <div className="random-div">
-            <Reccos
-              desc={`More jobs from ${jobDetails.companyName}`}
-              useApiUrl2={true}
-            />
+            <Reccos desc={`More jobs from ${jobDetails.companyName}`} useApiUrl2={true} />
           </div>
         )}
       </div>

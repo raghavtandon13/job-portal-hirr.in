@@ -8,6 +8,17 @@
   justify-content: center;
   align-items: center;
 }
+.test-dark {
+}
+.test-light {
+}
+.test-light .test-div {
+  border: 2px solid lavender;
+  background-color: #e6e6fa57;
+}
+.test-light .test-div h3 {
+  color: black;
+}
 .test-div {
   border: 1px solid gray;
   border-radius: 16px;

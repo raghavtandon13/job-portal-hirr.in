@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext } from "react";
 import Search from "./search";
 import "./banner.css";
 import att from "../assets/logos/att-logo-removebg-preview.png";
@@ -10,15 +10,19 @@ import microsoft from "../assets/logos/microsoft-logo-removebg-preview.png";
 import samsung from "../assets/logos/samsung-logo-removebg-preview.png";
 import toyota from "../assets/logos/toyota-logo-removebg-preview.png";
 import cube from "../assets/cube.svg";
-import { Link } from "react-router-dom";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import Button from "./Button";
 
 const Banner = ({ heading, subheading }) => {
   const defaultHeading = "Find your dream job now";
   const defaultSubheading = "5 lakh+ jobs for you to explore";
 
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "banner-dark" : "banner-light";
+
   return (
-    <div className="banner">
-      <div className="banner-heading">
+    <div className={`banner ${theme}`}>
+      <div className="banner-heading ">
         <h1>{heading || defaultHeading}</h1>
         <p>{subheading || defaultSubheading}</p>
       </div>
@@ -36,9 +40,7 @@ const Banner = ({ heading, subheading }) => {
       <div className="banner-pro">
         <div className="banner-pro-left">
           <h1>Discover Your Dream Job Today</h1>
-          <Link  to={"/signup"}>
-            <button>Register</button>
-          </Link>
+          <Button link={"/signup"}>Register</Button>
         </div>
         <div className="banner-pro-right">
           <div className="banner-part">
@@ -48,10 +50,7 @@ const Banner = ({ heading, subheading }) => {
             </div>
             <div className="banner-part-r">
               <h3>Easy process</h3>
-              <h4>
-                Create your profile, search jobs and apply with just a few
-                clicks.
-              </h4>
+              <h4>Create your profile, search jobs and apply with just a few clicks.</h4>
             </div>
           </div>
           <div className="banner-part">
@@ -61,10 +60,7 @@ const Banner = ({ heading, subheading }) => {
             </div>
             <div className="banner-part-r">
               <h3>Job Matches</h3>
-              <h4>
-                Receive personalized job recommendations based on your skills
-                and preferences.
-              </h4>
+              <h4>Receive personalized job recommendations based on your skills and preferences.</h4>
             </div>
           </div>
           <div className="banner-part">
@@ -74,10 +70,7 @@ const Banner = ({ heading, subheading }) => {
             </div>
             <div className="banner-part-r">
               <h3>Connect with Employers</h3>
-              <h4>
-                Engage with potential employers through messaging and interview
-                requests.
-              </h4>
+              <h4>Engage with potential employers through messaging and interview requests.</h4>
             </div>
           </div>
           <div className="banner-part">
@@ -86,10 +79,7 @@ const Banner = ({ heading, subheading }) => {
             </div>
             <div className="banner-part-r">
               <h3>Stay Updated</h3>
-              <h4>
-                Get notifications on new job openings and updates on your
-                application status.{" "}
-              </h4>
+              <h4>Get notifications on new job openings and updates on your application status. </h4>
             </div>
           </div>
         </div>

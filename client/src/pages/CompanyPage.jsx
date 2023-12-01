@@ -9,12 +9,9 @@ const CompanyPage = () => {
   const { companyId } = useParams();
   const [responseData, setResponseData] = useState([]);
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
@@ -65,22 +62,12 @@ const CompanyPage = () => {
           dropdown1Link="#"
         />
       ) : (
-        <Navbar
-          buttonLink="/login"
-          buttonLabel="Login"
-          button2Link="/signup"
-          button2Label="Register"
-          funcBtnName="About Us"
-        />
+        <Navbar buttonLink="/login" buttonLabel="Login" button2Link="/signup" button2Label="Register" funcBtnName="About Us" />
       )}
       <div className="com-cont">
         <OrgProfile useNewApi={true} companyId={companyId} />
         <div className="card-container">
-          {responseData.length === 0 ? (
-            <p className="no-res">No results found.</p>
-          ) : (
-            responseData.map((item) => <Card key={item._id} data={item} />)
-          )}
+          {responseData.length === 0 ? <p className="no-res">No results found.</p> : responseData.map((item) => <Card key={item._id} data={item} />)}
         </div>
       </div>
     </>

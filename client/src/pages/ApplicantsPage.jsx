@@ -20,14 +20,11 @@ const ApplicantsPage = () => {
 
   const fetchApplicantsWithAuthToken = async () => {
     try {
-      const response = await fetch(
-        `http://34.131.250.17/api/jobs/${jobId}/applicants`,
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-        }
-      );
+      const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}/applicants`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
       const data = await response.json();
       setApplicants(data);
     } catch (error) {
@@ -70,9 +67,7 @@ const ApplicantsPage = () => {
         {jobDetails && (
           <div className="job-desc">
             <h3>Job Description</h3>
-            <p style={{ whiteSpace: "pre-line" }}>
-              {jobDetails.jobDescription}
-            </p>
+            <p style={{ whiteSpace: "pre-line" }}>{jobDetails.jobDescription}</p>
           </div>
         )}
         <div className="applicants-list">

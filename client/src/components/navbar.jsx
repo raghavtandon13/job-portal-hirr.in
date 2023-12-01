@@ -1,7 +1,11 @@
 import "./Navbar.css";
 import React, { useState, useEffect, useRef } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { Link, Navigate } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
+import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const Navbar = ({
   buttonLabel,
@@ -16,6 +20,9 @@ const Navbar = ({
   dropdown2,
   dropdown2Link,
 }) => {
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "navbar-dark" : "navbar-light";
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -51,25 +58,22 @@ const Navbar = ({
 
   const handleDropdownClick = () => {
     const dropdownContent = document.querySelector(".dropdown-content-1");
-    dropdownContent.style.display =
-      dropdownContent.style.display === "block" ? "none" : "block";
+    dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${theme}`}>
       <div className="navbar-right">
-        <div className="navbar-brand">
+        <div className={mode === "dark" ? "navbar-brand dark-brand" : "navbar-brand light-brand"}>
           <Link to="/">HIRR.IN</Link>
         </div>
       </div>
       <div className="navbar-left">
         <div className="navbar-btn-group">
+          <DarkModeToggle />
           {isLoggedIn && (
             <div className="dropdown-1">
-              <button
-                className="emp-btn dropdown-button-1"
-                onClick={handleDropdownClick}
-              >
+              <button className="emp-btn dropdown-button-1" onClick={handleDropdownClick}>
                 <div className="notification-icon">
                   <NotificationsNoneIcon />
                   {/* <div className="notification-count">5</div> */}
@@ -80,30 +84,21 @@ const Navbar = ({
               </div>
             </div>
           )}
-
-          <Link to={buttonLink}>
-            <button>{buttonLabel}</button>
-          </Link>
-          <Link to={button2Link}>
-            <button>{button2Label}</button>
-          </Link>
+          <Button link={buttonLink}>{buttonLabel}</Button>
+          <Button link={button2Link}>{button2Label}</Button>
           <div className="dropdown" ref={dropdownRef}>
-            <button
+            <Button
               className="emp-btn dropdown-button"
-              onClick={() => {
+              handleClick={() => {
                 setIsOpen(!isOpen);
               }}
             >
               {dropdownName || "Employer Login"}&#8628;
-            </button>
+            </Button>
             {isOpen && (
               <div className="dropdown-content">
-                <Link to={dropdown1Link || "/org/login"}>
-                  {dropdown1 || "Employer Login"}
-                </Link>
-                <Link to={dropdown2Link || "/org/signup"}>
-                  {dropdown2 || "Register"}
-                </Link>
+                <Link to={dropdown1Link || "/org/login"}>{dropdown1 || "Employer Login"}</Link>
+                <Link to={dropdown2Link || "/org/signup"}>{dropdown2 || "Register"}</Link>
                 {isLoggedIn && (
                   <a onClick={funcBtn} href="">
                     {funcBtnName}

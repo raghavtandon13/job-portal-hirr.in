@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import { Link } from "react-router-dom";
 import "./reccos.css";
 
@@ -9,6 +11,9 @@ const Reccos = ({ desc, useApiUrl2 }) => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const token = getCookie("mytoken");
+
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "r-dark" : "r-light";
 
   const [jobs, setJobs] = useState([]);
 
@@ -48,7 +53,7 @@ const Reccos = ({ desc, useApiUrl2 }) => {
   }, []);
 
   return (
-    <div className="reccos">
+    <div className={`reccos ${theme}`}>
       <div className="reccos-brand">
         <h3>{desc}</h3>
         <Link to={linkUrl}>

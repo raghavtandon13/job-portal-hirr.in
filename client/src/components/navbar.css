@@ -1,5 +1,4 @@
 .navbar {
-  /* font-family: "Roboto Slab", serif; */
   font-family: "Cabin", sans-serif;
   display: flex;
   justify-content: center;
@@ -16,6 +15,16 @@
   background-color: rgba(0, 0, 0, 0.65);
   border-bottom: 1px solid rgb(47, 51, 54);
 }
+/* themes */
+.navbar-light {
+  background-color: #fff;
+  border-bottom: none;
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
+  /* transition: 1s all ease; */
+}
+.navbar-dark {
+  /* transition: 1s all ease; */
+}
 .navbar-right {
   flex: 1;
 }
@@ -24,8 +33,11 @@
   color: rgb(224, 224, 224);
   font-size: 30px;
 }
-.navbar-brand a {
+.dark-brand a {
   color: rgb(224, 224, 224);
+}
+.light-brand a {
+  color: rgb(43, 43, 43);
 }
 .navbar-brand a:hover {
   color: rgb(224, 224, 224);
@@ -61,19 +73,34 @@
   margin-top: 1px;
   border-radius: 12px;
 }
+.navbar-light .dropdown-content {
+  background-color: white;
+}
 .dropdown-content a {
   color: rgb(200, 195, 188);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
+.navbar-light .dropdown-content a {
+  color: #1f2223;
+}
 .dropdown-content a:hover {
   background-color: rgb(43, 47, 49);
+  border-radius: 5px;
+}
+.navbar-light .dropdown-content a:hover {
+  background-color: rgb(171, 171, 171);
   border-radius: 5px;
 }
 /* .dropdown:hover .dropdown-content {
   display: block;
 } */
+.navbar-light .navbar-btn-group svg {
+  color: #1f2223;
+  width: 30px;
+  align-self: center;
+}
 .navbar-btn-group svg {
   width: 30px;
   align-self: center;

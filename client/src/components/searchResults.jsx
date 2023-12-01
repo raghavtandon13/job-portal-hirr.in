@@ -3,11 +3,16 @@ import { useLocation } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Card from "./card";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./search.css";
 
 const SearchResults = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
+
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "sp-dark" : "sp-light";
 
   const [responseData, setResponseData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,7 +69,7 @@ const SearchResults = () => {
 
   return (
     <div>
-      <div className="sorting">
+      <div className={`sorting ${theme}`}>
         <label>Sort by:</label>
         <div>
           <input
@@ -77,13 +82,7 @@ const SearchResults = () => {
           <label htmlFor="default">Reccomended</label>
         </div>
         <div>
-          <input
-            type="radio"
-            id="rating"
-            value="rating"
-            checked={selectedSortOption === "rating"}
-            onChange={() => setSelectedSortOption("rating")}
-          />
+          <input type="radio" id="rating" value="rating" checked={selectedSortOption === "rating"} onChange={() => setSelectedSortOption("rating")} />
           <label htmlFor="rating">Rating</label>
         </div>
         <div>
@@ -106,31 +105,17 @@ const SearchResults = () => {
           />
           <label htmlFor="datePosted">Date Posted</label>
         </div>
-        <button
-          onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-        >
-          {sortOrder === "asc" ? "▲ Ascending" : "▼ Descending"}
-        </button>
+        <button onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>{sortOrder === "asc" ? "▲ Ascending" : "▼ Descending"}</button>
       </div>
 
-      <div className="card-container">
-        {responseData.length === 0 ? (
-          <p className="no-res">No results found.</p>
-        ) : (
-          responseData.map((item) => <Card key={item._id} data={item} />)
-        )}
+      <div className={`card-container ${theme}`}>
+        {responseData.length === 0 ? <p className="no-res">No results found.</p> : responseData.map((item) => <Card key={item._id} data={item} />)}
       </div>
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
+      <div className={`pagination ${theme}`}>
+        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
           <ArrowBackIosNewIcon />
         </button>
-        <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
+        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
           <ArrowForwardIosIcon />
         </button>
       </div>

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 import "./resume.css";
 
 const Resume = ({ useNewApi, userId }) => {
   const [resumeData, setResumeData] = useState(null);
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "res-dark" : "res-light";
 
-  const apiEndpoint = useNewApi
-    ? `http://34.131.250.17/api/user/${userId}/details`
-    : "http://34.131.250.17/api/user/details";
+  const apiEndpoint = useNewApi ? `http://34.131.250.17/api/user/${userId}/details` : "http://34.131.250.17/api/user/details";
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -42,7 +44,7 @@ const Resume = ({ useNewApi, userId }) => {
   return (
     <>
       {resumeData ? (
-        <div className="resume">
+        <div className={`resume ${theme}`}>
           <div className="resume-headline keep-together">
             <h4 className="title">Resume Headline</h4>
             <h4 className="name">{resumeData.resumeHeadline}</h4>
@@ -61,9 +63,7 @@ const Resume = ({ useNewApi, userId }) => {
               <div className="employment-group" key={index}>
                 <h4 className="name">{employment.employmentType.join(", ")}</h4>
                 <h4>{employment.currentCompany}</h4>
-                <h4>
-                  Working Since {new Date(employment.joiningDate).getFullYear()}
-                </h4>
+                <h4>Working Since {new Date(employment.joiningDate).getFullYear()}</h4>
               </div>
             ))}
           </div>
@@ -74,8 +74,7 @@ const Resume = ({ useNewApi, userId }) => {
                 <h4 className="name">{education.course}</h4>
                 <h4>{education.university}</h4>
                 <h4>
-                  {education.duration}{" "}
-                  {education.duration === 1 ? "year" : "years"}
+                  {education.duration} {education.duration === 1 ? "year" : "years"}
                 </h4>
               </div>
             ))}

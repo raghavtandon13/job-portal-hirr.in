@@ -47,12 +47,9 @@ const Homepage = () => {
     checkProfileStatus();
   }, []);
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
@@ -67,28 +64,22 @@ const Homepage = () => {
           <button
             onClick={async () => {
               try {
-                const response = await fetch(
-                  "http://34.131.250.17/api/prof-req",
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: token,
-                    },
-                    // You can include any request body data here if needed
-                    body: JSON.stringify({}),
-                  }
-                );
+                const response = await fetch("http://34.131.250.17/api/prof-req", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                  },
+                  // You can include any request body data here if needed
+                  body: JSON.stringify({}),
+                });
 
                 if (response.ok) {
                   // Successful request, you can handle the response here if needed
                   console.log("Profile request sent successfully");
                 } else {
                   // Handle error response
-                  console.error(
-                    "Error sending profile request:",
-                    response.statusText
-                  );
+                  console.error("Error sending profile request:", response.statusText);
                 }
               } catch (error) {
                 // Handle network error

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import image from "../assets/user.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./profile-banner.css";
 
 const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
@@ -11,9 +13,10 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
   const originalApi = "http://34.131.250.17/api/user/details";
   const newApi = "http://34.131.250.17/api/user/:user/details";
 
-  const apiEndpoint = useNewApi
-    ? `http://34.131.250.17/api/user/${userId}/details`
-    : "http://34.131.250.17/api/user/details";
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "pb-dark" : "pb-light";
+
+  const apiEndpoint = useNewApi ? `http://34.131.250.17/api/user/${userId}/details` : "http://34.131.250.17/api/user/details";
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -79,16 +82,13 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
       const formData = new FormData();
       formData.append("newProfilePicture", fileInputRef.current.files[0]); // Add the selected file to the form data
 
-      const response = await fetch(
-        "http://34.131.250.17/api/change-profile-picture",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `${token}`,
-          },
-          body: formData, // Set the form data as the request body
-        }
-      );
+      const response = await fetch("http://34.131.250.17/api/change-profile-picture", {
+        method: "POST",
+        headers: {
+          Authorization: `${token}`,
+        },
+        body: formData, // Set the form data as the request body
+      });
 
       if (response.ok) {
         // Image successfully uploaded, handle any other actions needed
@@ -110,16 +110,12 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
 
   return (
     <>
-      <div className="profile-banner">
+      <div className={`profile-banner ${theme}`}>
         <div className="profile-left">
           <div className="image-container">
             <img src={userImage || image} alt="" />
             {showUpload && !isEditing && (
-              <button
-                style={{ fontSize: "10px" }}
-                className="hover-button"
-                onClick={handleEditClick}
-              >
+              <button style={{ fontSize: "10px" }} className="hover-button" onClick={handleEditClick}>
                 Edit
               </button>
             )}
@@ -136,13 +132,7 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
                   className="file-input-button"
                 >
                   Upload
-                  <input
-                    className="img-div-in"
-                    ref={fileInputRef}
-                    type="file"
-                    id="image-upload"
-                    style={{ display: "none" }}
-                  />
+                  <input className="img-div-in" ref={fileInputRef} type="file" id="image-upload" style={{ display: "none" }} />
                 </label>
                 <button style={{ fontSize: "10px" }} onClick={handleSaveClick}>
                   Save

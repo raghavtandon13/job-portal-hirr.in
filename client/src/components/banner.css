@@ -7,6 +7,12 @@
   width: 70vw;
   padding-bottom: 5%;
 }
+.banner-dark {
+  color: #fff;
+}
+.banner-light {
+  color: black;
+}
 .banner-heading {
   font-family: "Roboto Slab", serif;
   display: flex;
@@ -26,18 +32,33 @@
   max-width: 68vw;
   /* margin-top: 80px; */
   border: 1px solid rgb(47, 51, 54);
+  /* background-color: #00000085; */
+}
+.search-dark {
   background-color: #00000085;
+}
+.search-dark input {
+  color: #fff;
+  background-color: rgb(24, 26, 27);
+}
+.search-light {
+  background-color: lavender;
+  border: none;
+}
+.search-light input {
+  color: black;
+  background-color: #fff;
 }
 .banner-heading p {
   font-size: 20px;
 }
 .banner-search input {
-  color: #fff;
+  /* color: #fff; */
   border-radius: 14px;
   width: 25%;
   font-size: 14px;
   border: none;
-  background-color: rgb(24, 26, 27);
+  /* background-color: rgb(24, 26, 27); */
   text-align: center;
   font-family: "Cabin", sans-serif;
 }
@@ -81,7 +102,7 @@
   text-align: left;
 }
 .banner-pro-left button {
-  background-color: black;
+  /* background-color: black; */
 }
 .banner-pro-right {
   flex: 1;

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./Orgloggin.css";
 
 const OrgLogin = () => {
@@ -8,11 +9,14 @@ const OrgLogin = () => {
   const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
 
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "l2-dark" : "l2-light";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const response = await fetch("http://34.131.250.17/api/login/company/", {
+      const response = await fetch("http://hirr.in/api/login/company/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +37,7 @@ const OrgLogin = () => {
         // const token = responseData.token;
         // console.log(token);
         // document.cookie = `orgtoken=${token}`;
-        
+
         ////////////////////////////////////////////
         ////////////////////////////////////////////
         ////////////////////////////////////////////
@@ -51,28 +55,16 @@ const OrgLogin = () => {
   };
 
   return (
-    <div className="login-box">
+    <div className={`login-box ${theme}`}>
       <div className="login-heading">
         <h1>Employer Login</h1>
         <h2>India's no. 1 Recruitment Platform</h2>
       </div>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {loginError && (
-            <div className="error-message">Incorrect email or password</div>
-          )}
+          <input type="text" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {loginError && <div className="error-message">Incorrect email or password</div>}
           <button type="submit">Submit</button>
         </form>
         <a href="">Use OTP to login</a>

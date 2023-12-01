@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import image from "../assets/user.png";
 import "./longProfBanner.css";
 import { Link } from "react-router-dom";
@@ -15,6 +16,9 @@ const LongBanner = () => {
   const [userImage, setUserImage] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userData, setUserData] = useState(null);
+
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "lb-dark" : "lb-light";
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -52,71 +56,35 @@ const LongBanner = () => {
   }, []);
 
   return (
-    // <>
-    //   {userData && userData.resume && userData.resume.employment ? (
-    //     <div className="long-banner">
-    //       <div className="long-left">
-    //         <img src={userImage || image} alt="" />
-    //       </div>
-    //       <div className="long-right">
-    //         <div className="long-name">
-    //           <Link to={"/profile"}>
-    //             <h1>{userName}</h1>
-    //           </Link>
-    //           <h3>{userData.resume.employment[0].employmentType.join(", ")}</h3>
-    //           <h4>at {userData.resume.employment[0].currentCompany}</h4>
-    //         </div>
-    //         <hr />
-    //         <div className="long-details">
-    //           <div className="long-details-left">
-    //             <h4>New Delhi, India</h4>
-    //             <h4>{userData.resume.employment[0].totalExperience} Years</h4>
-    //             <h4>₹ {userData.resume.employment[0].salary}</h4>
-    //           </div>
-    //           <div className="long-details-right">
-    //             <h4>{userData.phone}</h4>
-    //             <h4>{userEmail}</h4>
-    //             <h4>15 days of notice</h4>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   ) : (
-    //     <p>Loading...</p>
-    //   )}
-    // </>
-
-    <div className="long-banner">
-      <div className="long-left">
-        <img src={userImage || image} alt="" />
-      </div>
-      <div className="long-right">
-        <div className="long-name">
-          <Link to={"/profile"}>
-            <h1>{userName}</h1>
-          </Link>
-          <h3>
-            {userData?.resume?.employment?.[0]?.employmentType?.join(", ")}
-          </h3>
-          <h4>{userData?.resume?.employment?.[0]?.currentCompany}</h4>
+    <div className={`${theme}`}>
+      <div className="long-banner">
+        <div className="long-left">
+          <img src={userImage || image} alt="" />
         </div>
-        <hr />
-        {userData?.resume?.employment ? (
-          <div className="long-details">
-            <div className="long-details-left">
-              <h4>New Delhi, India</h4>
-              <h4>
-                {userData?.resume?.employment?.[0]?.totalExperience} Years
-              </h4>
-              <h4>₹ {userData?.resume?.employment?.[0]?.salary}</h4>
-            </div>
-            <div className="long-details-right">
-              <h4>{userData.phone}</h4>
-              <h4>{userEmail}</h4>
-              <h4>15 days of notice</h4>
-            </div>
+        <div className="long-right">
+          <div className="long-name">
+            <Link to={"/profile"}>
+              <h1>{userName}</h1>
+            </Link>
+            <h3>{userData?.resume?.employment?.[0]?.employmentType?.join(", ")}</h3>
+            <h4>{userData?.resume?.employment?.[0]?.currentCompany}</h4>
           </div>
-        ) : null}
+          <hr />
+          {userData?.resume?.employment ? (
+            <div className="long-details">
+              <div className="long-details-left">
+                <h4>New Delhi, India</h4>
+                <h4>{userData?.resume?.employment?.[0]?.totalExperience} Years</h4>
+                <h4>₹ {userData?.resume?.employment?.[0]?.salary}</h4>
+              </div>
+              <div className="long-details-right">
+                <h4>{userData.phone}</h4>
+                <h4>{userEmail}</h4>
+                <h4>15 days of notice</h4>
+              </div>
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

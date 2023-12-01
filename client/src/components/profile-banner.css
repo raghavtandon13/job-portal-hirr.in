@@ -15,6 +15,11 @@
   background-color: #00000085;
   border: 1px solid rgb(47, 51, 54);
 }
+.pb-light.profile-banner {
+  background-color: white !important;
+  border: 1px solid rgb(232, 230, 227) !important;
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
+}
 .profile-contact-div {
   margin-top: 10px;
   width: 70vw;
@@ -95,6 +100,15 @@
   border: 1px solid #80808040;
   margin-left: 0%;
 }
+.pb-light .profile-name h1 {
+  color: black;
+}
+.pb-light .profile-name h3 {
+  color: black;
+}
+.pb-light .profile-name h4 {
+  color: black;
+}
 .profile-name h1 {
   margin: 0;
   color: white;
@@ -116,6 +130,9 @@ h4 {
   gap: 15%;
   height: 10%;
   display: flex;
+}
+.pb-light .profile-details h4 {
+  color: rgba(0, 0, 0, 0.736);
 }
 .profile-details h4 {
   font-weight: 500;

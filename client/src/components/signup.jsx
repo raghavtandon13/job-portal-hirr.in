@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "@mui/material/Button";
@@ -10,7 +11,8 @@ import "./signup.css";
 
 const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "s1-dark" : "s1-light";
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
@@ -79,52 +81,23 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-box">
+    <div className={`signup-box ${theme}`}>
       <div className="signup-heading">
         <h1>Register to find jobs and grow your career</h1>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="googlediv">
-          <button
-            className="googleBtn"
-            type="button"
-            onClick={handleGoogleAuth}
-          >
+          <button className="googleBtn" type="button" onClick={handleGoogleAuth}>
             <GoogleIcon />
             Sign up with Google
           </button>
         </div>
         <p>or</p>
         <div className="signup-input">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="number"
-            name="phone"
-            id="phone"
-            placeholder="Mobile Number"
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Address"
-          />
+          <input type="text" name="name" id="name" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <input type="number" name="phone" id="phone" placeholder="Mobile Number" onChange={(e) => setPhone(e.target.value)} />
+          <input type="email" name="email" id="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" name="address" id="address" placeholder="Address" />
           <input
             type="password"
             name="password"
@@ -143,12 +116,10 @@ const Signup = () => {
               title="Upload profile picture"
               required
             />
-            {isFileSelected && (
-              <span className="file-selected-icon">&#10003;</span>
-            )}
+            {isFileSelected && <span className="file-selected-icon">&#10003;</span>}
           </div>
 
-          <div className="ok">
+          {/* <div className="ok">
             <input
               type="file"
               accept="image/*"
@@ -173,7 +144,7 @@ const Signup = () => {
               </Button>
             </label>
             {selectedFile && <p>{selectedFile.name}</p>}
-          </div>
+          </div> */}
         </div>
         <div className="signup-button">
           <button type="submit">Submit</button>

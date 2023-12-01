@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./pages/landingpage";
 import Loginpage from "./pages/loginpage";
 import SignUp from "./pages/signuppage";
@@ -40,61 +39,24 @@ function App() {
   return (
     <>
       <Routes>
-        <Route
-          path="/login"
-          element={isLoggedIn() ? <Navigate to={"/home"} /> : <Loginpage />}
-        />
+        <Route path="/login" element={isLoggedIn() ? <Navigate to={"/home"} /> : <Loginpage />} />
 
-        <Route
-          path="/"
-          element={
-            isLoggedIn() ? (
-              <Navigate to={"/home"} />
-            ) : isLoggedInOrg() ? (
-              <Navigate to={"/org/home"} />
-            ) : (
-              <LandingPage />
-            )
-          }
-        />
+        <Route path="/" element={isLoggedIn() ? <Navigate to={"/home"} /> : isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <LandingPage />} />
 
-        <Route
-          path="/home"
-          element={isLoggedIn() ? <Homepage /> : <Navigate to={"/"} />}
-        />
+        <Route path="/home" element={isLoggedIn() ? <Homepage /> : <Navigate to={"/"} />} />
 
         {/* <Route path="/oh" element={<Orghomepage />}/> */}
         {/* Dummy route */}
 
-        <Route
-          path="/profile"
-          element={isLoggedIn() ? <Profilepage /> : <Navigate to={"/login"} />}
-        />
-        <Route
-          path="/resume-builder"
-          element={
-            isLoggedIn() ? <ResumeBuilder /> : <Navigate to={"/login"} />
-          }
-        />
-        <Route
-          path="/signup"
-          element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />}
-        />
+        <Route path="/profile" element={isLoggedIn() ? <Profilepage /> : <Navigate to={"/login"} />} />
+        <Route path="/resume-builder" element={isLoggedIn() ? <ResumeBuilder /> : <Navigate to={"/login"} />} />
+        <Route path="/signup" element={isLoggedIn() ? <Navigate to={"/home"} /> : <SignUp />} />
 
-        <Route
-          path="/user/saved"
-          element={isLoggedIn() ? <SavedPage /> : <Navigate to={"/"} />}
-        />
+        <Route path="/user/saved" element={isLoggedIn() ? <SavedPage /> : <Navigate to={"/"} />} />
 
-        <Route
-          path="/user/applications"
-          element={isLoggedIn() ? <ApplicationsPage /> : <Navigate to={"/"} />}
-        />
+        <Route path="/user/applications" element={isLoggedIn() ? <ApplicationsPage /> : <Navigate to={"/"} />} />
 
-        <Route
-          path="/user/reccos"
-          element={isLoggedIn() ? <ReccoPage /> : <Navigate to={"/"} />}
-        />
+        <Route path="/user/reccos" element={isLoggedIn() ? <ReccoPage /> : <Navigate to={"/"} />} />
 
         <Route path="/search" element={<Searchpage />} />
 
@@ -102,42 +64,17 @@ function App() {
 
         {/* Org Routes */}
 
-        <Route
-          path="/org/home"
-          element={isLoggedInOrg() ? <Orghomepage /> : <Navigate to={"/"} />}
-        />
+        <Route path="/org/home" element={isLoggedInOrg() ? <Orghomepage /> : <Navigate to={"/"} />} />
 
-        <Route
-          path="/org/signup"
-          element={
-            isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <OrgsignupPage />
-          }
-        />
+        <Route path="/org/signup" element={isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <OrgsignupPage />} />
 
-        <Route
-          path="/org/makepost"
-          element={
-            isLoggedInOrg() ? <Makepostpage /> : <Navigate to={"/org/login"} />
-          }
-        />
-        <Route
-          path="/org/jobs/:jobId/edit"
-          element={
-            isLoggedInOrg() ? <OrgJobEditPage/> : <Navigate to={"/org/login"} />
-          }
-        />
+        <Route path="/org/makepost" element={isLoggedInOrg() ? <Makepostpage /> : <Navigate to={"/org/login"} />} />
+        <Route path="/org/jobs/:jobId/edit" element={isLoggedInOrg() ? <OrgJobEditPage /> : <Navigate to={"/org/login"} />} />
 
-        <Route
-          path="/org/login"
-          element={
-            isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <Orgloginpage />
-          }
-        />
+        <Route path="/org/login" element={isLoggedInOrg() ? <Navigate to={"/org/home"} /> : <Orgloginpage />} />
         <Route path="org/jobs/:jobId" element={<OrgJobDetailsPage />} />
         <Route path="org/jobs/:jobId/applicants" element={<ApplicantsPage />} />
         <Route path="users/:userId" element={<Userpage />} />
-
-
 
         <Route path="org/:companyId" element={<CompanyPage />} />
       </Routes>

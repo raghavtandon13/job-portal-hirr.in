@@ -2,14 +2,12 @@ import React from "react";
 import Navbar from "../components/navbar";
 import OrgPosts from "../components/OrgPosts";
 import OrgProfile from "../components/OrgProfile";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 
 const Orghomepage = () => {
   function handleLogout() {
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="org/login" />;
   }
@@ -29,7 +27,7 @@ const Orghomepage = () => {
       />
       <OrgProfile />
       <OrgPosts />
-      <Footer/>
+      <Footer />
     </>
   );
 };

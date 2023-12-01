@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./login.css";
 
 const Login = () => {
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "l1-dark" : "l1-light";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
@@ -13,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const response = await fetch("http://34.131.250.17/api/login/user/", {
+      const response = await fetch("http://hirr.in/api/login/user/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +28,7 @@ const Login = () => {
 
       if (response.ok) {
         console.log("Login successful!");
-        
+
         ////////////////////////////////////////////
         //----------For Development---------------//
         ////////////////////////////////////////////
@@ -34,13 +38,12 @@ const Login = () => {
         // const token = responseData.user.token;
         // console.log(token);
         // document.cookie = `mytoken=${token}`;
-        
-        ////////////////////////////////////////////
-        ////////////////////////////////////////////
-        ////////////////////////////////////////////
-        
-        window.location.reload();
 
+        ////////////////////////////////////////////
+        ////////////////////////////////////////////
+        ////////////////////////////////////////////
+
+        window.location.reload();
 
         navigate("/home");
       } else {
@@ -54,11 +57,11 @@ const Login = () => {
   };
 
   const handleGoogleAuth = () => {
-    window.location.href = "http://34.131.250.17/api/auth/google";
+    window.location.href = "http://hirr.in/api/auth/google";
   };
 
   return (
-    <div className="login-box">
+    <div className={`login-box ${theme}`}>
       <div className="login-heading">
         <h1>Login</h1>
       </div>
@@ -71,21 +74,9 @@ const Login = () => {
       <p>or</p>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {loginError && (
-            <div className="error-message">Incorrect email or password</div>
-          )}
+          <input type="text" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {loginError && <div className="error-message">Incorrect email or password</div>}
           <button type="submit">Submit</button>
         </form>
         <a href="">Use OTP to login</a>

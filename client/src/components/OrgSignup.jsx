@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./OrgSignup.css";
 
@@ -12,6 +13,9 @@ const OrgSignup = () => {
   const navigate = useNavigate();
   const [orgPicture, setOrgPicture] = useState(null);
   const [isFileSelected, setIsFileSelected] = useState(false);
+
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "s2-dark" : "s2-light";
 
   const handleOrgPictureChange = (file) => {
     setOrgPicture(file);
@@ -65,7 +69,7 @@ const OrgSignup = () => {
     document.getElementById("re-password").value = "";
   };
   return (
-    <div className="signup-box">
+    <div className={`signup-box ${theme}`}>
       <form onSubmit={handleSubmit}>
         <div className="signup-heading">
           <h1>Register your Organisation to recruit candidates</h1>
@@ -80,28 +84,9 @@ const OrgSignup = () => {
             onChange={(e) => setcompanyName(e.target.value)}
           />
 
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Address"
-          />
-          <input
-            type="text"
-            name="industry"
-            id="industry"
-            placeholder="Industry"
-            value={industry}
-            onChange={(e) => setIndustry(e.target.value)}
-          />
+          <input type="email" name="email" id="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" name="address" id="address" placeholder="Address" />
+          <input type="text" name="industry" id="industry" placeholder="Industry" value={industry} onChange={(e) => setIndustry(e.target.value)} />
           <input
             type="password"
             name="password"
@@ -120,9 +105,7 @@ const OrgSignup = () => {
               title="Upload profile picture"
               required
             />
-            {isFileSelected && (
-              <span className="file-selected-icon">&#10003;</span>
-            )}
+            {isFileSelected && <span className="file-selected-icon">&#10003;</span>}
           </div>
         </div>
 

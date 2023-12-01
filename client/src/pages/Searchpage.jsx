@@ -3,16 +3,15 @@ import Navbar from "../components/navbar";
 import Search from "../components/search";
 import SearchResults from "../components/searchResults";
 import Footer from "../components/Footer";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./Searchpage.css";
 
 const Searchpage = () => {
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
@@ -41,13 +40,7 @@ const Searchpage = () => {
             dropdown1Link="#"
           />
         ) : (
-          <Navbar
-            buttonLink="/login"
-            buttonLabel="Login"
-            button2Link="/signup"
-            button2Label="Register"
-            funcBtnName="About Us"
-          />
+          <Navbar buttonLink="/login" buttonLabel="Login" button2Link="/signup" button2Label="Register" funcBtnName="About Us" />
         )}
         <div className="wrapper-searchpage">
           <Search />

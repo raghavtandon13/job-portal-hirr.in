@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "./card";
 import Job from "../assets/job-posts.svg";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import {
   useDisclosure,
   AlertDialog,
@@ -54,15 +54,12 @@ const PostData = () => {
 
   const fetchApplicantImages = async (jobId) => {
     try {
-      const response = await fetch(
-        `http://34.131.250.17/api/jobs/${jobId}/applicants`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `${token}`,
-          },
-        }
-      );
+      const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}/applicants`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      });
       const data = await response.json();
       return data.map((applicant) => applicant.profilePicture);
     } catch (error) {
@@ -144,25 +141,16 @@ const PostData = () => {
                     <h4>Post Insights</h4>
                     <p>Applicants: {job.applicants.length}</p>
                     <div className="applicants-group">
-                      {applicantImages[job._id]
-                        ?.slice(0, 4)
-                        .map((imageUrl, index) => (
-                          <img
-                            key={index}
-                            src={imageUrl}
-                            alt={`Applicant ${index}`}
-                            title={job.applicants[index]?.name}
-                          />
-                        ))}
+                      {applicantImages[job._id]?.slice(0, 4).map((imageUrl, index) => (
+                        <img key={index} src={imageUrl} alt={`Applicant ${index}`} title={job.applicants[index]?.name} />
+                      ))}
                     </div>
                   </div>
                   <div className="post-details-btn">
                     <Link to={`/org/jobs/${job._id}/applicants`}>
                       <button>See Applicants</button>
                     </Link>
-                    <button onClick={() => handleDeletePost(job._id)}>
-                      Delete Post
-                    </button>
+                    <button onClick={() => handleDeletePost(job._id)}>Delete Post</button>
                     <button>Edit Post</button>
                   </div>
                 </div>
@@ -173,12 +161,7 @@ const PostData = () => {
         </ul>
       )}
 
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={onClose}
-        motionPreset="slideInBottom"
-      >
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose} motionPreset="slideInBottom">
         <AlertDialogOverlay backgroundColor={"rgb(54 54 54 / 83%);"}>
           <AlertDialogContent
             marginTop={"250px"}
@@ -188,27 +171,17 @@ const PostData = () => {
             bg="black"
             borderRadius="20px"
           >
-            <AlertDialogHeader
-              fontFamily={"Cabin"}
-              fontSize="lg"
-              fontWeight="bold"
-            >
+            <AlertDialogHeader fontFamily={"Cabin"} fontSize="lg" fontWeight="bold">
               Delete Job
             </AlertDialogHeader>
 
-            <AlertDialogBody fontFamily={"Cabin"}>
-              Are you sure you want to delete this job?
-            </AlertDialogBody>
+            <AlertDialogBody fontFamily={"Cabin"}>Are you sure you want to delete this job?</AlertDialogBody>
 
             <AlertDialogFooter marginTop={"10px"}>
               <Button ref={cancelRef} onClick={onClose}>
                 Cancel
               </Button>
-              <Button
-                color={"red"}
-                onClick={() => onDeleteConfirmation(jobToDelete)}
-                ml={3}
-              >
+              <Button color={"red"} onClick={() => onDeleteConfirmation(jobToDelete)} ml={3}>
                 Delete
               </Button>
             </AlertDialogFooter>

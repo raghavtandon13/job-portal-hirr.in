@@ -1,3 +1,8 @@
+.r-light {
+  background-color: white !important;
+  border: 1px solid rgb(232, 230, 227) !important;
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
+}
 .reccos {
   border: 1px solid rgb(47, 51, 54);
   color: black;
@@ -15,6 +20,9 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.r-light .reccos-brand button {
+  background-color: #8282c8;
+}
 .reccos-brand button {
   font-size: small;
   font-weight: 300;
@@ -29,6 +37,13 @@
   margin-left: 20px;
   margin-top: 10px;
   color: white;
+}
+.r-light .reccos-brand h3 {
+  color: black;
+}
+.r-light .recc {
+  background-color: white;
+  border: 1px solid rgb(232, 230, 227);
 }
 .reccos-group {
   width: 100%;
@@ -59,9 +74,15 @@
   width: 40px;
   border-radius: 4px;
 }
+.r-light .recc-txt p {
+  color: rgba(0, 0, 0, 0.673);
+}
 .recc-txt p {
   margin: 0;
   color: white;
+}
+.r-light .recc-txt a p {
+  color: black;
 }
 .recc-txt p:first-child:hover {
   color: #646cff;

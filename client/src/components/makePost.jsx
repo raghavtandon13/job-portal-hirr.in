@@ -83,20 +83,8 @@ const MakePost = () => {
             value={companyName}
             onChange={(e) => setcompanyName(e.target.value)}
           />
-          <input
-            type="text"
-            id="title"
-            placeholder="Job Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            type="text"
-            id="skills"
-            placeholder="Skills Required"
-            value={skills}
-            onChange={(e) => setSkills(e.target.value)}
-          />
+          <input type="text" id="title" placeholder="Job Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input type="text" id="skills" placeholder="Skills Required" value={skills} onChange={(e) => setSkills(e.target.value)} />
 
           <input
             type="number"
@@ -105,20 +93,9 @@ const MakePost = () => {
             value={experience}
             onChange={(e) => setExperience(e.target.value)}
           />
-          <input
-            type="text"
-            id="location"
-            placeholder="Location of work"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
+          <input type="text" id="location" placeholder="Location of work" value={location} onChange={(e) => setLocation(e.target.value)} />
           {/* Job Description Textarea */}
-          <textarea
-            id="jobDescription"
-            placeholder="Job Description"
-            value={jobDescription}
-            onChange={(e) => setJobDescription(e.target.value)}
-          />
+          <textarea id="jobDescription" placeholder="Job Description" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />
         </div>
         <div className="signup-button">
           <button type="submit">Submit</button>

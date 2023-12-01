@@ -1,8 +1,10 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./profileMeter.css";
 
 const ProfileMeter = () => {
@@ -13,22 +15,22 @@ const ProfileMeter = () => {
   }
   const token = getCookie("mytoken");
 
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "p-dark" : "p-light";
+
   const [percentage, setPercentage] = useState(null);
 
   useEffect(() => {
     // Fetch the profile completion percentage from the server
     async function fetchProfileCompletion() {
       try {
-        const response = await fetch(
-          "http://34.131.250.17/api/resume-completion",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `${getCookie("mytoken")}`, // Include the token
-            },
-          }
-        );
+        const response = await fetch("http://34.131.250.17/api/resume-completion", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${getCookie("mytoken")}`, // Include the token
+          },
+        });
 
         if (response.ok) {
           const data = await response.json();
@@ -45,7 +47,7 @@ const ProfileMeter = () => {
   }, []);
   return (
     <Link to="/resume-builder">
-      <div className="profile-meter">
+      <div className={`profile-meter ${theme}`}>
         <div className="meter-brand">
           <h3>Profile Completion Status</h3>
         </div>
@@ -55,11 +57,7 @@ const ProfileMeter = () => {
         <div className="meter-details">
           <div className="meter-percent" style={{ width: 100, height: 100 }}>
             {/* <CircularProgressbar value={percentage} text={`${percentage}%`} /> */}
-            {percentage !== null ? (
-              <CircularProgressbar value={percentage} text={`${percentage}%`} />
-            ) : (
-              <CircularProgressbar value={50} text="50%" />
-            )}
+            {percentage !== null ? <CircularProgressbar value={percentage} text={`${percentage}%`} /> : <CircularProgressbar value={50} text="50%" />}
           </div>
           <div className="meter-text">
             <p>Projects</p>

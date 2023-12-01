@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./rsa.css";
 
 const ApplicationsPage = () => {
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
@@ -20,6 +19,8 @@ const ApplicationsPage = () => {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "ap-dark" : "ap-light";
 
   const token = getCookie("mytoken");
 
@@ -66,7 +67,7 @@ const ApplicationsPage = () => {
         dropdown2Link="#"
         dropdown1Link="#"
       />
-      <div className="page-title">
+      <div className={`page-title ${theme}`}>
         <h3>Your Applications</h3>
       </div>
       <div className="card-collection">

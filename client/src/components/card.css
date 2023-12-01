@@ -11,6 +11,11 @@
   align-items: flex-start;
   width: 60vw;
 }
+.c-light.card {
+  background-color: white;
+  border: 1px solid rgb(232, 230, 227) !important;
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
+}
 .card h3 {
   font-weight: 500;
 }
@@ -37,20 +42,32 @@
   min-width: 65px;
   font-size: 10px;
 }
+.c-light .card-btns button {
+  background-color: #8282c8;
+}
 .card-btns {
   margin-top: 10px;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.save-btn,.share-btn {
+.c-light .save-btn,
+.share-btn {
+  background: none !important;
+  border: none !important;
+  color: rgb(111, 111, 111);
+}
+.save-btn,
+.share-btn {
   background: none;
   border: none;
 }
-.save-btn:focus, .share-btn:focus {
+.save-btn:focus,
+.share-btn:focus {
   outline: none;
 }
-.save-btn:hover svg, .share-btn:hover svg {
+.save-btn:hover svg,
+.share-btn:hover svg {
   fill: #7c7c7c;
 }
 .card-info {
@@ -65,8 +82,17 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.c-light .card-txt h3 {
+  color: black;
+}
+.c-light .card-txt a h4 {
+  color: rgba(0, 0, 0, 0.69);
+}
+.c-light .card-txt p {
+  color: rgba(0, 0, 0, 0.658);
+}
 .card-txt a {
-  text-align: left
+  text-align: left;
 }
 .card-pic img {
   width: 100px;
@@ -80,7 +106,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 8px;width: 100%;
+  gap: 8px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: row;

@@ -3,16 +3,15 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 import Footer from "../components/Footer";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./rsa.css";
 
 const SavedPage = () => {
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
@@ -21,6 +20,8 @@ const SavedPage = () => {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "ap-dark" : "ap-light";
 
   const token = getCookie("mytoken");
 
@@ -67,7 +68,7 @@ const SavedPage = () => {
         dropdown2Link="#"
         dropdown1Link="#"
       />
-      <div className="saved-wrapper">
+      <div className={`saved-wrapper ${theme}`}>
         <div style={{ width: "60vw" }} className="page-title">
           <h3>Your Saved Jobs</h3>
         </div>

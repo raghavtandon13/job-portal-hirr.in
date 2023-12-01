@@ -1,21 +1,30 @@
 .footer {
-  background-color: #1f2223;
-  color: white;
   margin-top: 10vh;
-}
-
-.footer a {
-  color: white;
-}
-
-
-.footer {
+  bottom: 0;
   width: 100%;
   background-color: #1f2223;
   color: white;
   border-top: 1px solid rgb(47, 51, 54);
   background-color: rgba(0, 0, 0, 0.65);
   border-bottom: 1px solid rgb(47, 51, 54);
+}
+.footer a {
+  color: white;
+}
+.footer-dark {
+  /* background-color: #1f2223; */
+  color: white;
+}
+.footer-light {
+  border: none;
+  background-color: #f0f4f6;
+  color: black;
+}
+.footer-light .footer-logo a {
+  color: black;
+}
+.footer-light .footer-links a {
+  color: black;
 }
 .footer-container {
   max-width: 1200px;
@@ -25,18 +34,16 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .footer-logo a {
   text-decoration: none;
   font-family: "Angkor", cursive;
   color: rgb(224, 224, 224);
   font-size: 30px;
 }
-
 .footer-links a {
   text-decoration: none;
   margin-right: 20px;
-  color: white; /* Set your desired link color */
+  color: white;
 }
 @media only screen and (max-width: 700px) {
   .footer-container {

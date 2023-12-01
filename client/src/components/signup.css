@@ -10,8 +10,14 @@
   /* font-family: "Cabin", sans-serif; */
   color: black;
 }
+.s1-light .signup-heading {
+  color: #1f2223;
+}
 .signup-heading h1 {
   color: #e1e1e1;
+}
+.s1-light .signup-heading h1 {
+  color: #1f2223;
 }
 .signup-input {
   height: 50vh;
@@ -31,6 +37,9 @@
   width: 96%;
   display: flex;
 }
+.s1-light .signup-input input {
+  color: #1f2223;
+}
 .signup-input textarea {
   font-family: "Cabin", sans-serif;
   padding: 8px;
@@ -41,6 +50,9 @@
   color: white;
   width: 96%;
   display: flex;
+}
+.s1-light .signup-input textarea {
+  color: #1f2223;
 }
 .signup-button {
   gap: 4px;
@@ -86,6 +98,9 @@
   justify-content: space-around;
   align-items: center;
   border: 1px solid #8c8273;
+}
+.s1-light .googleBtn {
+  background-color: #8282c8;
 }
 
 .googlediv {

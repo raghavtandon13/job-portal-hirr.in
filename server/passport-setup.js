@@ -2,8 +2,7 @@ import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import User from "./models/User.js";
 
-const YOUR_CLIENT_ID =
-  "705654658896-io99ql0f0nrjah3mn8k255g870opaq62.apps.googleusercontent.com";
+const YOUR_CLIENT_ID = "705654658896-io99ql0f0nrjah3mn8k255g870opaq62.apps.googleusercontent.com";
 const YOUR_CLIENT_SECRET = "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";
 
 passport.use(
@@ -12,20 +11,17 @@ passport.use(
       clientID: YOUR_CLIENT_ID,
       clientSecret: YOUR_CLIENT_SECRET,
       // callbackURL: "http://34.131.250.17/api/auth/google/callback",
-      callbackURL: "http://34.131.250.17/auth/google/callback",
+      callbackURL: "http://hirr.in/api/auth/google/callback",
     },
     async (mytoken, refreshToken, profile, done) => {
+      let user = await User.findOne({ email: profile.emails[0].value });
       try {
-        let user = await User.findOne({ email: profile.emails[0].value });
 
         if (!user) {
           user = new User({
             name: profile.displayName,
             email: profile.emails[0].value,
-            profilePicture:
-              profile.photos && profile.photos.length > 0
-                ? profile.photos[0].value
-                : "",
+            profilePicture: profile.photos && profile.photos.length > 0 ? profile.photos[0].value : "",
             // Set other user properties as needed
           });
           await user.save();

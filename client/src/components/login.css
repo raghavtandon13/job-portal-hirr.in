@@ -24,12 +24,19 @@
 .login-form form button {
   background-color: rgb(31, 34, 35);
 }
-.login-form a {
+.l1-dark .login-form a {
   color: rgb(232, 230, 227);
 }
-.login-heading {
+.l1-light .login-form a {
+  color: #1f2223;
+}
+.l1-dark .login-heading {
   font-family: "Roboto Slab", serif;
   /* font-family: "Cabin", sans-serif; */
+}
+.l1-light .login-heading {
+  font-family: "Roboto Slab", serif;
+  color: #1f2223;
 }
 .login-form form input {
   /* font-family: "Roboto Slab", serif; */
@@ -41,6 +48,10 @@
   background: none;
   border-color: rgb(140, 130, 115);
 }
+
+.l1-light .login-form form input {
+  color: #1f2223;
+}
 .googleBtn2 {
   gap: 10px;
   width: max-content;
@@ -48,6 +59,9 @@
   justify-content: space-around;
   align-items: center;
   border: 1px solid #8c8273;
+}
+.l1-light .googleBtn2 {
+  background-color: #8282c8;
 }
 
 .googlediv2 {

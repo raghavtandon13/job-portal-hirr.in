@@ -10,11 +10,33 @@
   border-radius: 20px;
   min-width: fit-content;
 }
+.rb-light.rb-con {
+  background-color: white !important;
+  border: 1px solid rgb(232, 230, 227) !important;
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
+}
+
+.rb-light .add-btn {
+  background-color: #e4e4e4;
+}
+.rb-light .add-btn svg {
+  color: #767676;
+}
 .add-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2px;
+}
+
+.rb-light .skills-box,
+.rb-light .education-box,
+.rb-light .experience-box,
+.rb-light .online-profile-box,
+.rb-light .project-box,
+.rb-light .headline-box,
+.rb-light .employment-box {
+  color: black;
 }
 .skills-box,
 .education-box,
@@ -46,6 +68,9 @@
   display: flex;
   gap: 10px;
 }
+.rb-light .project textarea {
+  color: black;
+}
 .project textarea {
   font-family: "Cabin", sans-serif;
   padding: 8px;
@@ -55,6 +80,9 @@
   background: none;
   color: white;
 }
+.rb-light.rb-con input {
+  color: black;
+}
 .rb-con input {
   font-family: "Cabin", sans-serif;
   padding: 8px;
@@ -63,6 +91,10 @@
   border-radius: 10px;
   background: none;
   color: white;
+}
+.rb-light.rb-con select {
+  background: white;
+  color: black;
 }
 .rb-con select {
   font-family: "Cabin", sans-serif;
@@ -90,6 +122,14 @@
   border-radius: 10px;
 }
 
+.rb-light .save-btn-2 {
+  background-color: rgb(130 130 200);
+}
+
+.rb-light .custom-date-input input:focus + label,
+.rb-light .custom-date-input input:not(:placeholder-shown) + label {
+  color: black;
+}
 .custom-date-input label {
   position: absolute;
   top: 12px;
@@ -101,7 +141,7 @@
 
 .custom-date-input input:focus + label,
 .custom-date-input input:not(:placeholder-shown) + label {
-  top: -8px;
+  top: -18px;
   left: 6px;
   font-size: 12px;
   color: #ffffff;

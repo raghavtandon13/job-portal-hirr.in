@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
@@ -16,15 +17,15 @@ function JobDetails() {
   const [jobDetails, setJobDetails] = useState(null);
 
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
+
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "jd-dark" : "jd-light";
 
   useEffect(() => {
     async function fetchJobDetails() {
@@ -65,35 +66,26 @@ function JobDetails() {
           dropdown1Link="#"
         />
       ) : (
-        <Navbar
-          buttonLink="/login"
-          buttonLabel="Login"
-          button2Link="/signup"
-          button2Label="Register"
-          funcBtnName="About Us"
-        />
+        <Navbar buttonLink="/login" buttonLabel="Login" button2Link="/signup" button2Label="Register" funcBtnName="About Us" />
       )}
 
       {jobDetails && <Card data={jobDetails} />}
-      <div className="like-div">
+      <div className={`like-div ${theme}`}>
         <h3>Rate This Recruiter</h3>
         <div className="like-btn-div">
-        <ThumbUpOffAltIcon/>
-        <ThumbDownOffAltIcon/>
+          <ThumbUpOffAltIcon />
+          <ThumbDownOffAltIcon />
         </div>
       </div>
       {jobDetails && (
-        <div className="job-desc">
+        <div className={`job-desc ${theme}`}>
           <h3>Job Description</h3>
           <p style={{ whiteSpace: "pre-line" }}>{jobDetails.jobDescription}</p>
         </div>
       )}
       {jobDetails && (
-        <div className="random-div">
-          <Reccos
-            desc={`More jobs from ${jobDetails.companyName}`}
-            useApiUrl2={true}
-          />
+        <div className={`random-div ${theme}`}>
+          <Reccos desc={`More jobs from ${jobDetails.companyName}`} useApiUrl2={true} />
         </div>
       )}
     </>

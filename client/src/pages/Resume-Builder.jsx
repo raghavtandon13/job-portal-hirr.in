@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
@@ -16,6 +17,9 @@ const ResumeBuilder = () => {
   }
   const token = getCookie("mytoken");
 
+  const { mode } = useContext(ThemeContext);
+  const theme = mode === "dark" ? "rb-dark" : "rb-light";
+
   const [userSkills, setUserSkills] = useState([]);
   const [userProjects, setUserProjects] = useState([]);
   const [userProfiles, setUserProfiles] = useState([]);
@@ -24,12 +28,8 @@ const ResumeBuilder = () => {
   const [userEducation, setUserEducation] = useState([]);
 
   const [skills, setSkills] = useState([{ skillName: "", experience: "" }]);
-  const [projects, setProjects] = useState([
-    { title: "", duration: "", details: "" },
-  ]);
-  const [profiles, setProfiles] = useState([
-    { websiteName: "", websiteLink: "" },
-  ]);
+  const [projects, setProjects] = useState([{ title: "", duration: "", details: "" }]);
+  const [profiles, setProfiles] = useState([{ websiteName: "", websiteLink: "" }]);
   const [headline, setHeadline] = useState("");
   const [education, setEducation] = useState([]);
   const [employment, setEmployment] = useState([]);
@@ -38,10 +38,7 @@ const ResumeBuilder = () => {
     setUserSkills([...userSkills, { skillName: "", experience: "" }]);
   };
   const addProjectField = () => {
-    setUserProjects([
-      ...userProjects,
-      { title: "", duration: "", details: "" },
-    ]);
+    setUserProjects([...userProjects, { title: "", duration: "", details: "" }]);
   };
   const addProfileField = () => {
     setUserProfiles([...userProfiles, { websiteName: "", websiteLink: "" }]);
@@ -188,12 +185,9 @@ const ResumeBuilder = () => {
     }
   };
   function handleLogout() {
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
     return <Navigate to="/login" />;
   }
@@ -214,7 +208,7 @@ const ResumeBuilder = () => {
         dropdown1Link="#"
       />
       <ProfileBanner showUpload={true} />
-      <div className="rb-con">
+      <div className={`rb-con ${theme}`}>
         <div className="headline-box">
           <h3>Resume HeadLine</h3>
           <input
@@ -474,7 +468,7 @@ const ResumeBuilder = () => {
             <AddIcon />
           </button>
         </div>
-        <hr />
+        {/* <hr />
         <div className="pdf-upload-box">
           <h3>Upload PDF</h3>
           <input type="file" accept=".pdf" onChange={handlePdfUpload} />
@@ -485,7 +479,7 @@ const ResumeBuilder = () => {
             <h3>Extracted Text:</h3>
             <p>{extractedText}</p>
           </div>
-        )}
+        )} */}
 
         <button className="save-btn-2" onClick={sendDataToApi}>
           Save

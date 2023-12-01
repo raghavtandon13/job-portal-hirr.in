@@ -45,6 +45,23 @@
   border: 1px solid rgb(47, 51, 54);
   padding: 20px 0px;
 }
+
+.res-light .resume-headline,
+.res-light .resume-skills,
+.res-light .resume-employment,
+.res-light .resume-education,
+.res-light .resume-projects,
+.res-light .resume-profiles {
+  background-color: white !important;
+  border: 1px solid rgb(232, 230, 227) !important;
+  box-shadow: 0px 0px 20px 0px #e6e7fc;
+}
+
+.res-light .skills-group h5 {
+  background-color: lavender !important;
+  border: 1px solid rgb(232, 230, 227) !important;
+  color: #181a1b;
+}
 .skills-group h5 {
   background-color: #181a1b;
   border: 1px solid #363b60;
@@ -63,6 +80,9 @@
   justify-content: center;
   gap: 2%;
   padding-bottom: 10px;
+}
+.res-light .name {
+  color: #181a1b !important;
 }
 .name {
   color: white !important;
