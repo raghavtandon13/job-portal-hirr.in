@@ -27,7 +27,7 @@ const Login = () => {
       });
 
       if (response.ok) {
-        console.log("Login successful!");
+        // console.log("Login successful!");
 
         ////////////////////////////////////////////
         //----------For Development---------------//

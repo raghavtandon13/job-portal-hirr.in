@@ -76,7 +76,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         setApplied(true);
         const responseData = await response.json();
 
-        console.log("Job applied succesfully");
+        // console.log("Job applied succesfully");
       } else {
         console.error("Job application failed");
       }
@@ -101,7 +101,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         setSaved(!saved);
         const responseData = await response.json();
 
-        console.log("Job save/unsave succesfully");
+        // console.log("Job save/unsave succesfully");
       } else {
         console.error("Job save/unsave failed");
       }
@@ -118,7 +118,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
           url: `http://34.131.250.17/job/${data._id}`, // Replace with the actual URL
         });
       } else {
-        console.log("Web Share API is not supported in this browser.");
+        // console.log("Web Share API is not supported in this browser.");
         // Provide a fallback behavior or UI here.
       }
     } catch (error) {

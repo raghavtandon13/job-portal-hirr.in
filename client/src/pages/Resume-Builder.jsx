@@ -172,7 +172,7 @@ const ResumeBuilder = () => {
       });
 
       if (response.ok) {
-        console.log("Data sent successfully!");
+        // console.log("Data sent successfully!");
         toast.success("Ressume updated successfully.", {
           onClose: () => {},
         });

@@ -43,7 +43,7 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
         const data = await response.json();
         setJobs(data);
-        console.log(jobs);
+        // console.log(jobs);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

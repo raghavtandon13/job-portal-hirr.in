@@ -27,12 +27,12 @@ import "./App.css";
 function App() {
   const isLoggedIn = () => {
     const token = document.cookie.includes("mytoken");
-    token && console.log(token, "present mytoken");
+    // token && console.log(token, "present mytoken");
     return token;
   };
   const isLoggedInOrg = () => {
     const token = document.cookie.includes("orgtoken");
-    console.log(token);
+    // console.log(token);
     return token;
   };
 

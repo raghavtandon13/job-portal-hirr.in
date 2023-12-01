@@ -33,7 +33,7 @@ const Homepage = () => {
 
       if (apiResponse.ok) {
         const data = await apiResponse.json();
-        console.log(data.updateReqeust);
+        // console.log(data.updateReqeust);
         setShowProfileReq(data.updateReqeust);
       } else {
         console.error("Error fetching API:", apiResponse.statusText);
@@ -76,7 +76,7 @@ const Homepage = () => {
 
                 if (response.ok) {
                   // Successful request, you can handle the response here if needed
-                  console.log("Profile request sent successfully");
+                  // console.log("Profile request sent successfully");
                 } else {
                   // Handle error response
                   console.error("Error sending profile request:", response.statusText);

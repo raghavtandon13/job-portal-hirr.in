@@ -46,7 +46,7 @@ const SearchResults = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData.totalResults);
+        // console.log(responseData.totalResults);
         setResponseData(responseData.results);
         setTotalPages(Math.ceil(responseData.totalResults / resultsPerPage));
       } else {

@@ -1,10 +1,7 @@
-import React from "react";
 import Navbar from "../components/navbar";
 import Search from "../components/search";
 import SearchResults from "../components/searchResults";
 import Footer from "../components/Footer";
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContext";
 import "./Searchpage.css";
 
 const Searchpage = () => {
@@ -18,7 +15,7 @@ const Searchpage = () => {
 
   const isLoggedIn = () => {
     const token = document.cookie.includes("mytoken");
-    token && console.log(token, "present mytoken");
+    // token && console.log(token, "present mytoken");
     return token;
   };
 

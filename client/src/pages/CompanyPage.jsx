@@ -18,7 +18,7 @@ const CompanyPage = () => {
 
   const isLoggedIn = () => {
     const token = document.cookie.includes("orgtoken");
-    token && console.log(token, "present mytoken");
+    // token && console.log(token, "present mytoken");
     return token;
   };
   const apiUrl = `http://34.131.250.17/api/jobs/${companyId}/all`;

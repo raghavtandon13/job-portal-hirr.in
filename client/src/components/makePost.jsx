@@ -54,7 +54,7 @@ const MakePost = () => {
         });
         navigate("/org/home");
 
-        console.log("Job posted succesfully");
+        // console.log("Job posted succesfully");
       } else {
         console.error("Job posting failed");
         // toast.error("Job posting failed", {

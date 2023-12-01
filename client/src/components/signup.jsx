@@ -62,12 +62,12 @@ const Signup = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
+        // console.log(responseData);
         const token = responseData.token;
-        console.log(token);
+        // console.log(token);
         document.cookie = `mytoken=${token}`;
 
-        console.log("Signup successful!");
+        // console.log("Signup successful!");
         toast.success("Signup successful! You can now log in.", {
           onClose: () => {},
         });

@@ -44,13 +44,13 @@ const OrgSignup = () => {
         const responseData = await response.json();
         const token = responseData.token;
 
-        console.log("Signup successful!");
+        // console.log("Signup successful!");
         toast.success("Signup successful! You can now log in.", {
           onClose: () => {},
         });
         navigate("/org/login");
         localStorage.setItem("token", token);
-        console.log("token stored");
+        // console.log("token stored");
         // navigate("/org/home");
       } else {
         console.error("Signup failed");

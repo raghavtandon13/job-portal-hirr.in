@@ -60,7 +60,7 @@ const OrgJobEditPage = () => {
         });
         navigate(`/org/jobs/${jobId}`);
 
-        console.log("Job posted succesfully");
+        // console.log("Job posted succesfully");
       } else {
         console.error("Job posting failed");
       }
@@ -80,8 +80,8 @@ const OrgJobEditPage = () => {
         setTitle(data.title);
         setCompanyName(data.companyName);
         setLocation(data.location);
-        console.log(jobDetails.jobDescription);
-        console.log(jobDetails);
+        // console.log(jobDetails.jobDescription);
+        // console.log(jobDetails);
       } catch (error) {
         console.error("An error occurred:", error);
       }

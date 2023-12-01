@@ -38,7 +38,7 @@ const ApplicantsPage = () => {
         const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`);
         const data = await response.json();
         setJobDetails(data);
-        console.log(jobDetails.jobDescription);
+        // console.log(jobDetails.jobDescription);
       } catch (error) {
         console.error("An error occurred:", error);
       }
@@ -47,7 +47,7 @@ const ApplicantsPage = () => {
     fetchJobDetails();
     fetchApplicantsWithAuthToken();
   }, [jobId]);
-  console.log(applicants);
+  // console.log(applicants);
   return (
     <>
       <Navbar

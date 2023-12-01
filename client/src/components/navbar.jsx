@@ -37,12 +37,12 @@ const Navbar = ({
 
     // Add event listener to the entire document
     document.addEventListener("mousedown", handleClickOutside);
-    console.log("mosue down added");
+    // console.log("mosue down added");
 
     // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      console.log("mosue down removed");
+      // console.log("mosue down removed");
     };
   }, []);
 
