@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
@@ -18,7 +18,7 @@ const OrgJobDetailsPage = () => {
     document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
-    return <Navigate to="/login" />;
+    // return <Navigate to="/login" />;
   }
 
   useEffect(() => {

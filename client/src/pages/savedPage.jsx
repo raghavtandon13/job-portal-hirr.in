@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import  { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 import Footer from "../components/Footer";
@@ -13,7 +13,7 @@ const SavedPage = () => {
     document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
-    return <Navigate to="/login" />;
+    // return <Navigate to="/login" />;
   }
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -55,19 +55,7 @@ const SavedPage = () => {
 
   return (
     <>
-      <Navbar
-        buttonLink="/profile"
-        buttonLabel="Profile"
-        button2Link="/user/applications"
-        button2Label="Applications"
-        funcBtnName="Logout"
-        funcBtn={handleLogout}
-        dropdownName={"Settings"}
-        dropdown1="option #1"
-        dropdown2="option #2"
-        dropdown2Link="#"
-        dropdown1Link="#"
-      />
+      <Navbar buttonLink="/profile" buttonLabel="Profile" button2Link="/user/applications" button2Label="Applications" funcBtnName="Logout" funcBtn={handleLogout} dropdownName={"Settings"} dropdown1="option #1" dropdown2="option #2" dropdown2Link="#" dropdown1Link="#" />
       <div className={`saved-wrapper ${theme}`}>
         <div style={{ width: "60vw" }} className="page-title">
           <h3>Your Saved Jobs</h3>

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 import "./OrgJobEditPage.css";
 import OrgProfile from "../components/OrgProfile";
 import Footer from "../components/Footer";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const OrgJobEditPage = () => {
@@ -30,7 +30,7 @@ const OrgJobEditPage = () => {
     document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
-    return <Navigate to="org/login" />;
+    // return <Navigate to="org/login" />;
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +54,7 @@ const OrgJobEditPage = () => {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
+        // const responseData = await response.json();
         toast.success("Job Edited successful!", {
           onClose: () => {},
         });
@@ -91,49 +91,21 @@ const OrgJobEditPage = () => {
   }, [jobId]);
   return (
     <>
-      <Navbar
-        buttonLabel="Posts"
-        button2Label="Profile"
-        funcBtnName="Logout"
-        dropdownName="Settings"
-        dropdown1="option #1"
-        dropdown1Link="#"
-        dropdown2="option #2"
-        dropdown2Link="#"
-        funcBtn={handleLogout}
-      />
+      <Navbar buttonLabel="Posts" button2Label="Profile" funcBtnName="Logout" dropdownName="Settings" dropdown1="option #1" dropdown1Link="#" dropdown2="option #2" dropdown2Link="#" funcBtn={handleLogout} />
       <OrgProfile />
       {jobDetails && (
         <div className="signup-box">
           <div className="signup-heading"></div>
           <form onSubmit={handleSubmit}>
             <div className="signup-input">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Enter Organization's Name "
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-              />
+              <input type="text" name="name" id="name" placeholder="Enter Organization's Name " value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
               <input type="text" id="title" placeholder="Job Title" value={title} onChange={(e) => setTitle(e.target.value)} />
               <input type="text" id="skills" placeholder="Skills Required" value={skills} onChange={(e) => setSkills(e.target.value)} />
 
-              <input
-                type="number"
-                id="experience"
-                placeholder="Experience in number of years"
-                value={experience}
-                onChange={(e) => setExperience(e.target.value)}
-              />
+              <input type="number" id="experience" placeholder="Experience in number of years" value={experience} onChange={(e) => setExperience(e.target.value)} />
               <input type="text" id="location" placeholder="Location of work" value={location} onChange={(e) => setLocation(e.target.value)} />
               {/* Job Description Textarea */}
-              <textarea
-                id="jobDescription"
-                placeholder="Job Description"
-                value={jobDescription}
-                onChange={(e) => setJobDescription(e.target.value)}
-              />
+              <textarea id="jobDescription" placeholder="Job Description" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />
             </div>
             <div className="signup-button">
               <button type="submit">Submit</button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
@@ -18,20 +18,6 @@ const ApplicantsPage = () => {
   const [jobDetails, setJobDetails] = useState(null);
   const [applicants, setApplicants] = useState([]);
 
-  const fetchApplicantsWithAuthToken = async () => {
-    try {
-      const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}/applicants`, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      });
-      const data = await response.json();
-      setApplicants(data);
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  };
-
   useEffect(() => {
     async function fetchJobDetails() {
       try {
@@ -44,22 +30,27 @@ const ApplicantsPage = () => {
       }
     }
 
+    const fetchApplicantsWithAuthToken = async () => {
+      try {
+        const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}/applicants`, {
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+        const data = await response.json();
+        setApplicants(data);
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    };
+
     fetchJobDetails();
     fetchApplicantsWithAuthToken();
-  }, [jobId]);
+  }, [jobId, token]);
   // console.log(applicants);
   return (
     <>
-      <Navbar
-        buttonLink="/profile"
-        buttonLabel="Profile"
-        button2Link="/user/applications"
-        button2Label="Applications"
-        funcBtnName="Logout"
-        dropdownName={"Settings"}
-        dropdown1="option #1"
-        dropdown2="option #2"
-      />
+      <Navbar buttonLink="/profile" buttonLabel="Profile" button2Link="/user/applications" button2Label="Applications" funcBtnName="Logout" dropdownName={"Settings"} dropdown1="option #1" dropdown2="option #2" />
 
       <div className="wrapper-ap">
         {jobDetails && <Card data={jobDetails} isCompanyLoggedIn={true} />}

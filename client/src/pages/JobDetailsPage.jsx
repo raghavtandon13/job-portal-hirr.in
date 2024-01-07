@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 import Reccos from "../components/reccos";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+// import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+// import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 
 import "./jobdetailspage.css";
 
@@ -21,7 +21,7 @@ function JobDetails() {
     document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
-    return <Navigate to="/login" />;
+    // return <Navigate to="/login" />;
   }
 
   const { mode } = useContext(ThemeContext);
@@ -51,23 +51,7 @@ function JobDetails() {
 
   return (
     <>
-      {isLoggedIn() ? (
-        <Navbar
-          buttonLink="/profile"
-          buttonLabel="Profile"
-          button2Link="/user/applications"
-          button2Label="Applications"
-          funcBtnName="Logout"
-          funcBtn={handleLogout}
-          dropdownName={"Settings"}
-          dropdown1="option #1"
-          dropdown2="option #2"
-          dropdown2Link="#"
-          dropdown1Link="#"
-        />
-      ) : (
-        <Navbar buttonLink="/login" buttonLabel="Login" button2Link="/signup" button2Label="Register" funcBtnName="About Us" />
-      )}
+      {isLoggedIn() ? <Navbar buttonLink="/profile" buttonLabel="Profile" button2Link="/user/applications" button2Label="Applications" funcBtnName="Logout" funcBtn={handleLogout} dropdownName={"Settings"} dropdown1="option #1" dropdown2="option #2" dropdown2Link="#" dropdown1Link="#" /> : <Navbar buttonLink="/login" buttonLabel="Login" button2Link="/signup" button2Label="Register" funcBtnName="About Us" />}
 
       {jobDetails && <Card data={jobDetails} />}
       <div className={`like-div ${theme}`}>

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 import { useContext } from "react";
@@ -12,7 +11,7 @@ const ApplicationsPage = () => {
     document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
-    return <Navigate to="/login" />;
+    // return <Navigate to="/login" />;
   }
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -54,19 +53,7 @@ const ApplicationsPage = () => {
 
   return (
     <>
-      <Navbar
-        buttonLink="/profile"
-        buttonLabel="Profile"
-        button2Link="/user/saved"
-        button2Label="Saved Posts"
-        funcBtnName="Logout"
-        funcBtn={handleLogout}
-        dropdownName={"Settings"}
-        dropdown1="option #1"
-        dropdown2="option #2"
-        dropdown2Link="#"
-        dropdown1Link="#"
-      />
+      <Navbar buttonLink="/profile" buttonLabel="Profile" button2Link="/user/saved" button2Label="Saved Posts" funcBtnName="Logout" funcBtn={handleLogout} dropdownName={"Settings"} dropdown1="option #1" dropdown2="option #2" dropdown2Link="#" dropdown1Link="#" />
       <div className={`page-title ${theme}`}>
         <h3>Your Applications</h3>
       </div>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import Navbar from "../components/navbar";
-import ProfileBanner from "../components/profile-banner";
+// import ProfileBanner from "../components/profile-banner";
 import LongBanner from "../components/longProfBanner";
 import Search from "../components/search";
 import ProfileMeter from "../components/profileMeter";
@@ -93,19 +93,7 @@ const Homepage = () => {
           </button>
         </div>
       )}
-      <Navbar
-        buttonLink="/profile"
-        buttonLabel="Profile"
-        button2Link="/user/applications"
-        button2Label="Applications"
-        funcBtn={handleLogout}
-        funcBtnName="Logout"
-        dropdownName={"Settings"}
-        dropdown1="option #1"
-        dropdown1Link="#"
-        dropdown2="option #2"
-        dropdown2Link="#"
-      />
+      <Navbar buttonLink="/profile" buttonLabel="Profile" button2Link="/user/applications" button2Label="Applications" funcBtn={handleLogout} funcBtnName="Logout" dropdownName={"Settings"} dropdown1="option #1" dropdown1Link="#" dropdown2="option #2" dropdown2Link="#" />
       <Search />
       <div className="wrapper">
         <LongBanner />

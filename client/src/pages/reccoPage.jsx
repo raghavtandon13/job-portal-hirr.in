@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
 import "./rsa.css";
@@ -43,16 +43,7 @@ const ReccoPage = () => {
 
   return (
     <>
-      <Navbar
-        buttonLink="/profile"
-        buttonLabel="Profile"
-        button2Link="/user/applications"
-        button2Label="Applications"
-        funcBtnName="Logout"
-        dropdownName={"Settings"}
-        dropdown1="option #1"
-        dropdown2="option #2"
-      />
+      <Navbar buttonLink="/profile" buttonLabel="Profile" button2Link="/user/applications" button2Label="Applications" funcBtnName="Logout" dropdownName={"Settings"} dropdown1="option #1" dropdown2="option #2" />
       <div style={{ width: "60vw" }} className="page-title">
         <h3>Reccomendations for you</h3>
       </div>

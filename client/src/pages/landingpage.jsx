@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 import Navbar from "../components/navbar";
 import Banner from "../components/banner";
 import Testimonials from "../components/testimonials";
 import Footer from "../components/Footer";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LandingPage = () => {

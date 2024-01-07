@@ -11,7 +11,7 @@ import "./card.css";
 const Card = ({ data, isCompanyLoggedIn }) => {
   const [applied, setApplied] = useState(false);
   const [saved, setSaved] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
   function getCookie(name) {
@@ -19,19 +19,19 @@ const Card = ({ data, isCompanyLoggedIn }) => {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
+  const token = getCookie("mytoken");
 
   const { mode } = useContext(ThemeContext);
   const theme = mode === "dark" ? "c-dark" : "c-light";
 
-  const token = getCookie("mytoken");
-  const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
+  // const getRandomColor = () => {
+  //   const letters = "0123456789ABCDEF";
+  //   let color = "#";
+  //   for (let i = 0; i < 6; i++) {
+  //     color += letters[Math.floor(Math.random() * 16)];
+  //   }
+  //   return color;
+  // };
 
   useEffect(() => {
     async function fetchApplicationStatus() {
@@ -51,13 +51,11 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         }
       } catch (error) {
         console.error("An error occurred:", error);
-      } finally {
-        setIsLoading(false);
       }
     }
 
     fetchApplicationStatus();
-  }, [data._id]);
+  }, [data._id, token]);
 
   const handleApply = async () => {
     if (!token) {
@@ -74,7 +72,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
 
       if (response.ok) {
         setApplied(true);
-        const responseData = await response.json();
+        // const responseData = await response.json();
 
         // console.log("Job applied succesfully");
       } else {
@@ -99,7 +97,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
 
       if (response.ok) {
         setSaved(!saved);
-        const responseData = await response.json();
+        // const responseData = await response.json();
 
         // console.log("Job save/unsave succesfully");
       } else {

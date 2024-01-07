@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 import ProfileBanner from "../components/profile-banner";
 import AddIcon from "@mui/icons-material/Add";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Resume-Builder.css";
 
@@ -189,24 +189,12 @@ const ResumeBuilder = () => {
     document.cookie = "orgtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
-    return <Navigate to="/login" />;
+    // return <Navigate to="/login" />;
   }
 
   return (
     <>
-      <Navbar
-        buttonLink="/profile"
-        buttonLabel="Profile"
-        button2Link="/user/applications"
-        button2Label="Applications"
-        funcBtnName="Logout"
-        funcBtn={handleLogout}
-        dropdownName={"Settings"}
-        dropdown1="option #1"
-        dropdown2="option #2"
-        dropdown2Link="#"
-        dropdown1Link="#"
-      />
+      <Navbar buttonLink="/profile" buttonLabel="Profile" button2Link="/user/applications" button2Label="Applications" funcBtnName="Logout" funcBtn={handleLogout} dropdownName={"Settings"} dropdown1="option #1" dropdown2="option #2" dropdown2Link="#" dropdown1Link="#" />
       <ProfileBanner showUpload={true} />
       <div className={`rb-con ${theme}`}>
         <div className="headline-box">
