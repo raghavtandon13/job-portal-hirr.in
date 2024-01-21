@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import "./Orgloggin.css";
+import "./OrgLoggin.css";
 
 const OrgLogin = () => {
   const [email, setEmail] = useState("");
