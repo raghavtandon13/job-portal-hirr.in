@@ -1,4 +1,4 @@
-import "./Navbar.css";
+import "./navbar.css";
 import React, { useState, useEffect, useRef } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
