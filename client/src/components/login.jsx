@@ -43,7 +43,7 @@ const Login = () => {
         ////////////////////////////////////////////
         ////////////////////////////////////////////
 
-        window.location.reload();
+        //window.location.reload();
 
         navigate("/home");
       } else {
