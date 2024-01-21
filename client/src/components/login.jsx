@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const response = await fetch("http://hirr.in/api/login/user/", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/login/user/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,17 +33,17 @@ const Login = () => {
         //----------For Development---------------//
         ////////////////////////////////////////////
 
-        // const responseData = await response.json();
+         const responseData = await response.json();
         // console.log(responseData);
-        // const token = responseData.user.token;
+         const token = responseData.user.token;
         // console.log(token);
-        // document.cookie = `mytoken=${token}`;
+         document.cookie = `mytoken=${token}`;
 
         ////////////////////////////////////////////
         ////////////////////////////////////////////
         ////////////////////////////////////////////
 
-        window.location.reload();
+        //window.location.reload();
 
         navigate("/home");
       } else {
