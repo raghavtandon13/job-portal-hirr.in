@@ -33,11 +33,11 @@ const Login = () => {
         //----------For Development---------------//
         ////////////////////////////////////////////
 
-        // const responseData = await response.json();
+         const responseData = await response.json();
         // console.log(responseData);
-        // const token = responseData.user.token;
+         const token = responseData.user.token;
         // console.log(token);
-        // document.cookie = `mytoken=${token}`;
+         document.cookie = `mytoken=${token}`;
 
         ////////////////////////////////////////////
         ////////////////////////////////////////////
