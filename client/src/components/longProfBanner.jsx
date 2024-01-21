@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import image from "../assets/user.png";
 import "./longProfBanner.css";
@@ -23,7 +23,7 @@ const LongBanner = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch("http://34.131.250.17/api/user/details", {
+        const response = await fetch(`${process.env.BACKEND_URL}/api/user/details`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
