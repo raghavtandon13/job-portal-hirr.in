@@ -3,17 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Card from "./card";
 import Job from "../assets/job-posts.svg";
 import { toast } from "react-toastify";
-import {
-  useDisclosure,
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogContent,
-  AlertDialogOverlay,
-  AlertDialogCloseButton,
-  Button,
-} from "@chakra-ui/react";
+import { useDisclosure, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, AlertDialogCloseButton, Button } from "@chakra-ui/react";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./PostData.css";
@@ -36,7 +26,7 @@ const PostData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://34.131.250.17/api/company/jobs", {
+        const response = await fetch("https://hirrin-backend.vercel.app/api/company/jobs", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `${token}`,
@@ -54,7 +44,7 @@ const PostData = () => {
 
   const fetchApplicantImages = async (jobId) => {
     try {
-      const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}/applicants`, {
+      const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${jobId}/applicants`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `${token}`,
@@ -76,7 +66,7 @@ const PostData = () => {
   const onDeleteConfirmation = async (jobId) => {
     onClose();
     try {
-      const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`, {
+      const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${jobId}`, {
         method: "DELETE",
         headers: {
           Authorization: `${token}`,
@@ -163,14 +153,7 @@ const PostData = () => {
 
       <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose} motionPreset="slideInBottom">
         <AlertDialogOverlay backgroundColor={"rgb(54 54 54 / 83%);"}>
-          <AlertDialogContent
-            marginTop={"250px"}
-            width={"300px"}
-            padding={"20px"}
-            border={"1px solid rgb(47, 51, 54)"}
-            bg="black"
-            borderRadius="20px"
-          >
+          <AlertDialogContent marginTop={"250px"} width={"300px"} padding={"20px"} border={"1px solid rgb(47, 51, 54)"} bg="black" borderRadius="20px">
             <AlertDialogHeader fontFamily={"Cabin"} fontSize="lg" fontWeight="bold">
               Delete Job
             </AlertDialogHeader>

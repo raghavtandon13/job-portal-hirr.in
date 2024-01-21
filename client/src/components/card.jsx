@@ -36,7 +36,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
   useEffect(() => {
     async function fetchApplicationStatus() {
       try {
-        const response = await fetch(`http://34.131.250.17/api/jobs/${data._id}/status`, {
+        const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${data._id}/status`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
       navigate("/login");
     }
     try {
-      const response = await fetch(`http://34.131.250.17/api/jobs/${data._id}/apply`, {
+      const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${data._id}/apply`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
       navigate("/login");
     }
     try {
-      const response = await fetch(`http://34.131.250.17/api/jobs/${data._id}/save`, {
+      const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${data._id}/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -113,7 +113,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
         await navigator.share({
           title: data.title,
           text: "Check out this job!",
-          url: `http://34.131.250.17/job/${data._id}`, // Replace with the actual URL
+          url: `https://hirrin-backend.vercel.app/job/${data._id}`, // Replace with the actual URL
         });
       } else {
         // console.log("Web Share API is not supported in this browser.");
@@ -124,7 +124,7 @@ const Card = ({ data, isCompanyLoggedIn }) => {
       // Handle the error if sharing fails.
     }
   };
-  const picUrl = `http://34.131.250.17/api/static/uploads/${data.orgPicture}`;
+  const picUrl = `https://hirrin-backend.vercel.app/api/static/uploads/${data.orgPicture}`;
 
   return (
     <>

@@ -25,7 +25,7 @@ const ApplicationsPage = () => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl = "http://34.131.250.17/api/user/applications";
+  const apiUrl = "https://hirrin-backend.vercel.app/api/user/applications";
 
   useEffect(() => {
     const fetchJobs = async () => {

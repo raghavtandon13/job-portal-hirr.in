@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
@@ -27,7 +27,7 @@ const SavedPage = () => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl = "http://34.131.250.17/api/user/saved";
+  const apiUrl = "https://hirrin-backend.vercel.app/api/user/saved";
 
   useEffect(() => {
     const fetchJobs = async () => {

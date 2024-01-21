@@ -21,7 +21,7 @@ const ApplicantsPage = () => {
   useEffect(() => {
     async function fetchJobDetails() {
       try {
-        const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`);
+        const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${jobId}`);
         const data = await response.json();
         setJobDetails(data);
         // console.log(jobDetails.jobDescription);
@@ -32,7 +32,7 @@ const ApplicantsPage = () => {
 
     const fetchApplicantsWithAuthToken = async () => {
       try {
-        const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}/applicants`, {
+        const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${jobId}/applicants`, {
           headers: {
             Authorization: `${token}`,
           },

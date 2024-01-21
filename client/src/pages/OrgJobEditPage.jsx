@@ -44,7 +44,7 @@ const OrgJobEditPage = () => {
       location,
     };
     try {
-      const response = await fetch("http://34.131.250.17/api/job/edit", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/job/edit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const OrgJobEditPage = () => {
   useEffect(() => {
     async function fetchJobDetails() {
       try {
-        const response = await fetch(`http://34.131.250.17/api/jobs/${jobId}`);
+        const response = await fetch(`https://hirrin-backend.vercel.app/api/jobs/${jobId}`);
         const data = await response.json();
         setJobDetails(data);
         setExperience(data.experience);

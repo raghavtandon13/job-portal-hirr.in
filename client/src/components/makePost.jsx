@@ -38,7 +38,7 @@ const MakePost = () => {
       location,
     };
     try {
-      const response = await fetch("http://34.131.250.17/api/jobs", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,24 +75,11 @@ const MakePost = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <div className="signup-input">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter Organization's Name "
-            value={companyName}
-            onChange={(e) => setcompanyName(e.target.value)}
-          />
+          <input type="text" name="name" id="name" placeholder="Enter Organization's Name " value={companyName} onChange={(e) => setcompanyName(e.target.value)} />
           <input type="text" id="title" placeholder="Job Title" value={title} onChange={(e) => setTitle(e.target.value)} />
           <input type="text" id="skills" placeholder="Skills Required" value={skills} onChange={(e) => setSkills(e.target.value)} />
 
-          <input
-            type="number"
-            id="experience"
-            placeholder="Experience in number of years"
-            value={experience}
-            onChange={(e) => setExperience(e.target.value)}
-          />
+          <input type="number" id="experience" placeholder="Experience in number of years" value={experience} onChange={(e) => setExperience(e.target.value)} />
           <input type="text" id="location" placeholder="Location of work" value={location} onChange={(e) => setLocation(e.target.value)} />
           {/* Job Description Textarea */}
           <textarea id="jobDescription" placeholder="Job Description" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />

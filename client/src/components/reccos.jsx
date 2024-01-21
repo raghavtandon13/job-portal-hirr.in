@@ -17,8 +17,8 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl1 = "http://34.131.250.17/api/user/saved";
-  const apiUrl2 = "http://34.131.250.17/api/jobs/reccos";
+  const apiUrl1 = "https://hirrin-backend.vercel.app/api/user/saved";
+  const apiUrl2 = "https://hirrin-backend.vercel.app/api/jobs/reccos";
 
   const apiUrl = useApiUrl2 ? apiUrl2 : apiUrl1;
 
@@ -63,7 +63,7 @@ const Reccos = ({ desc, useApiUrl2 }) => {
 
       <div className="reccos-group">
         {jobs.slice(0, 3).map((job) => {
-          const imageUrl = `http://34.131.250.17/api/static/uploads/${job.orgPicture}`;
+          const imageUrl = `https://hirrin-backend.vercel.app/api/static/uploads/${job.orgPicture}`;
           return (
             <div className="recc" key={job._id}>
               <div className="recc-pic">

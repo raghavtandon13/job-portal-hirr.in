@@ -24,7 +24,7 @@ const ProfileMeter = () => {
     // Fetch the profile completion percentage from the server
     async function fetchProfileCompletion() {
       try {
-        const response = await fetch("http://34.131.250.17/api/resume-completion", {
+        const response = await fetch("https://hirrin-backend.vercel.app/api/resume-completion", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

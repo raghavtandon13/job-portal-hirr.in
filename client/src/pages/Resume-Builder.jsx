@@ -73,7 +73,7 @@ const ResumeBuilder = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch("http://34.131.250.17/api/user/details", {
+        const response = await fetch("https://hirrin-backend.vercel.app/api/user/details", {
           method: "GET",
           headers: {
             Authorization: `${token}`,
@@ -127,7 +127,7 @@ const ResumeBuilder = () => {
     formData.append("pdf", pdfFile);
 
     try {
-      const response = await fetch("http://34.131.250.17/api/upload-pdf", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/upload-pdf", {
         method: "POST",
         body: formData,
       });
@@ -162,7 +162,7 @@ const ResumeBuilder = () => {
     };
 
     try {
-      const response = await fetch(`http://34.131.250.17/api/resume-update`, {
+      const response = await fetch(`https://hirrin-backend.vercel.app/api/resume-update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

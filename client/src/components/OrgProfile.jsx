@@ -12,12 +12,12 @@ const OrgProfile = ({ useNewApi, companyId }) => {
   }
   const token = getCookie("orgtoken");
 
-  const originalApi = "http://34.131.250.17/api/company/details";
-  const newApi = "http://34.131.250.17/api/company/:company/details";
+  const originalApi = "https://hirrin-backend.vercel.app/api/company/details";
+  const newApi = "https://hirrin-backend.vercel.app/api/company/:company/details";
 
-  const apiEndpoint = useNewApi ? `http://34.131.250.17/api/company/${companyId}/details` : "http://34.131.250.17/api/company/details";
+  const apiEndpoint = useNewApi ? `https://hirrin-backend.vercel.app/api/company/${companyId}/details` : "https://hirrin-backend.vercel.app/api/company/details";
 
-  // const picUrl = `http://34.131.250.17/api/static/uploads/${data.orgPicture}`;
+  // const picUrl = `https://hirrin-backend.vercel.app/api/static/uploads/${data.orgPicture}`;
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +40,7 @@ const OrgProfile = ({ useNewApi, companyId }) => {
     fetchData();
   }, [apiEndpoint, token]);
 
-  const picUrl = data ? `http://34.131.250.17/api/static/uploads/${data.orgPicture}` : image; // Use the imported image if there's no photo in the data
+  const picUrl = data ? `https://hirrin-backend.vercel.app/api/static/uploads/${data.orgPicture}` : image; // Use the imported image if there's no photo in the data
 
   return (
     <>

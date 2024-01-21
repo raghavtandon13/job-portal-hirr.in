@@ -9,7 +9,7 @@ const Resume = ({ useNewApi, userId }) => {
   const { mode } = useContext(ThemeContext);
   const theme = mode === "dark" ? "res-dark" : "res-light";
 
-  const apiEndpoint = useNewApi ? `http://34.131.250.17/api/user/${userId}/details` : "http://34.131.250.17/api/user/details";
+  const apiEndpoint = useNewApi ? `https://hirrin-backend.vercel.app/api/user/${userId}/details` : "https://hirrin-backend.vercel.app/api/user/details";
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;

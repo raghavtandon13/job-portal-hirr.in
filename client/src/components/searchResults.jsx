@@ -32,9 +32,9 @@ const SearchResults = () => {
 
     const resultsPerPage = 3; // number of results per page
 
-    // const apiUrl = `http://34.131.250.17/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}`;
-    // const apiUrl = `http://34.131.250.17/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${sortCriteria}&order=${sortOrder}`;
-    const apiUrl = `http://34.131.250.17/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${selectedSortOption}&order=${sortOrder}`;
+    // const apiUrl = `https://hirrin-backend.vercel.app/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}`;
+    // const apiUrl = `https://hirrin-backend.vercel.app/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${sortCriteria}&order=${sortOrder}`;
+    const apiUrl = `https://hirrin-backend.vercel.app/api/jobs/search?experience=${experienceParam}&skills=${skillsParam}&title=${titleParam}&page=${currentPage}&limit=${resultsPerPage}&sort=${selectedSortOption}&order=${sortOrder}`;
 
     try {
       const response = await fetch(apiUrl, {
@@ -72,13 +72,7 @@ const SearchResults = () => {
       <div className={`sorting ${theme}`}>
         <label>Sort by:</label>
         <div>
-          <input
-            type="radio"
-            id="default"
-            value="default"
-            checked={selectedSortOption === "default"}
-            onChange={() => setSelectedSortOption("default")}
-          />
+          <input type="radio" id="default" value="default" checked={selectedSortOption === "default"} onChange={() => setSelectedSortOption("default")} />
           <label htmlFor="default">Reccomended</label>
         </div>
         <div>
@@ -86,31 +80,17 @@ const SearchResults = () => {
           <label htmlFor="rating">Rating</label>
         </div>
         <div>
-          <input
-            type="radio"
-            id="relevance"
-            value="relevance"
-            checked={selectedSortOption === "relevance"}
-            onChange={() => setSelectedSortOption("relevance")}
-          />
+          <input type="radio" id="relevance" value="relevance" checked={selectedSortOption === "relevance"} onChange={() => setSelectedSortOption("relevance")} />
           <label htmlFor="relevance">Relevance</label>
         </div>
         <div>
-          <input
-            type="radio"
-            id="datePosted"
-            value="datePosted"
-            checked={selectedSortOption === "datePosted"}
-            onChange={() => setSelectedSortOption("datePosted")}
-          />
+          <input type="radio" id="datePosted" value="datePosted" checked={selectedSortOption === "datePosted"} onChange={() => setSelectedSortOption("datePosted")} />
           <label htmlFor="datePosted">Date Posted</label>
         </div>
         <button onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>{sortOrder === "asc" ? "▲ Ascending" : "▼ Descending"}</button>
       </div>
 
-      <div className={`card-container ${theme}`}>
-        {responseData.length === 0 ? <p className="no-res">No results found.</p> : responseData.map((item) => <Card key={item._id} data={item} />)}
-      </div>
+      <div className={`card-container ${theme}`}>{responseData.length === 0 ? <p className="no-res">No results found.</p> : responseData.map((item) => <Card key={item._id} data={item} />)}</div>
       <div className={`pagination ${theme}`}>
         <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
           <ArrowBackIosNewIcon />

@@ -15,7 +15,7 @@ const ReccoPage = () => {
 
   const [jobs, setJobs] = useState([]);
 
-  const apiUrl = "http://34.131.250.17/api/jobs/search/";
+  const apiUrl = "https://hirrin-backend.vercel.app/api/jobs/search/";
 
   useEffect(() => {
     const fetchJobs = async () => {

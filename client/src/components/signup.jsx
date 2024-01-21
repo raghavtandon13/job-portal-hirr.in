@@ -40,7 +40,7 @@ const Signup = () => {
   };
 
   const handleGoogleAuth = () => {
-    window.location.href = "http://34.131.250.17/api/auth/google";
+    window.location.href = "https://hirrin-backend.vercel.app/api/auth/google";
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +55,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("http://34.131.250.17/api/signup/user/", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/signup/user/", {
         method: "POST",
         body: data,
       });
@@ -98,24 +98,9 @@ const Signup = () => {
           <input type="number" name="phone" id="phone" placeholder="Mobile Number" onChange={(e) => setPhone(e.target.value)} />
           <input type="email" name="email" id="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="text" name="address" id="address" placeholder="Address" />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <input type="password" name="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <div className="file-input-container">
-            <input
-              type="file"
-              name="profilePicture"
-              accept="image/*"
-              id="profilePictureInput"
-              onChange={(e) => handleProfilePictureChange(e.target.files[0])}
-              title="Upload profile picture"
-              required
-            />
+            <input type="file" name="profilePicture" accept="image/*" id="profilePictureInput" onChange={(e) => handleProfilePictureChange(e.target.files[0])} title="Upload profile picture" required />
             {isFileSelected && <span className="file-selected-icon">&#10003;</span>}
           </div>
 

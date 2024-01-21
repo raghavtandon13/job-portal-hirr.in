@@ -21,7 +21,7 @@ const CompanyPage = () => {
     // token && console.log(token, "present mytoken");
     return token;
   };
-  const apiUrl = `http://34.131.250.17/api/jobs/${companyId}/all`;
+  const apiUrl = `https://hirrin-backend.vercel.app/api/jobs/${companyId}/all`;
   const fetchJobs = async () => {
     try {
       const response = await fetch(apiUrl, {

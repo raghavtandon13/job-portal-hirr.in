@@ -23,7 +23,7 @@ const LongBanner = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch(`${process.env.BACKEND_URL}/api/user/details`, {
+        const response = await fetch(`https://hirrin-backend.vercel.app/api/user/details`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

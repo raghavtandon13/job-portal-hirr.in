@@ -35,7 +35,7 @@ const OrgSignup = () => {
     }
 
     try {
-      const response = await fetch("http://34.131.250.17/api/signup/company/", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/signup/company/", {
         method: "POST",
         body: data,
       });
@@ -75,36 +75,14 @@ const OrgSignup = () => {
           <h1>Register your Organisation to recruit candidates</h1>
         </div>
         <div className="signup-input">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Organisation Name"
-            value={companyName}
-            onChange={(e) => setcompanyName(e.target.value)}
-          />
+          <input type="text" name="name" id="name" placeholder="Organisation Name" value={companyName} onChange={(e) => setcompanyName(e.target.value)} />
 
           <input type="email" name="email" id="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="text" name="address" id="address" placeholder="Address" />
           <input type="text" name="industry" id="industry" placeholder="Industry" value={industry} onChange={(e) => setIndustry(e.target.value)} />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <input type="password" name="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <div className="file-input-container">
-            <input
-              type="file"
-              name="profilePicture"
-              accept="image/*"
-              id="profilePictureInput"
-              onChange={(e) => handleOrgPictureChange(e.target.files[0])}
-              title="Upload profile picture"
-              required
-            />
+            <input type="file" name="profilePicture" accept="image/*" id="profilePictureInput" onChange={(e) => handleOrgPictureChange(e.target.files[0])} title="Upload profile picture" required />
             {isFileSelected && <span className="file-selected-icon">&#10003;</span>}
           </div>
         </div>

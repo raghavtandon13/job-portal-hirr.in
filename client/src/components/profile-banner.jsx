@@ -10,13 +10,13 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
   const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef(null);
 
-  const originalApi = "http://34.131.250.17/api/user/details";
-  const newApi = "http://34.131.250.17/api/user/:user/details";
+  const originalApi = "https://hirrin-backend.vercel.app/api/user/details";
+  const newApi = "https://hirrin-backend.vercel.app/api/user/:user/details";
 
   const { mode } = useContext(ThemeContext);
   const theme = mode === "dark" ? "pb-dark" : "pb-light";
 
-  const apiEndpoint = useNewApi ? `http://34.131.250.17/api/user/${userId}/details` : "http://34.131.250.17/api/user/details";
+  const apiEndpoint = useNewApi ? `https://hirrin-backend.vercel.app/api/user/${userId}/details` : "https://hirrin-backend.vercel.app/api/user/details";
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -82,7 +82,7 @@ const ProfileBanner = ({ useNewApi, userId, showUpload = false }) => {
       const formData = new FormData();
       formData.append("newProfilePicture", fileInputRef.current.files[0]); // Add the selected file to the form data
 
-      const response = await fetch("http://34.131.250.17/api/change-profile-picture", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/change-profile-picture", {
         method: "POST",
         headers: {
           Authorization: `${token}`,

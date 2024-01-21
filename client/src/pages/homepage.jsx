@@ -23,7 +23,7 @@ const Homepage = () => {
 
   const checkProfileStatus = async () => {
     try {
-      const apiResponse = await fetch("http://34.131.250.17/api/user/details", {
+      const apiResponse = await fetch("https://hirrin-backend.vercel.app/api/user/details", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ const Homepage = () => {
           <button
             onClick={async () => {
               try {
-                const response = await fetch("http://34.131.250.17/api/prof-req", {
+                const response = await fetch("https://hirrin-backend.vercel.app/api/prof-req", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
