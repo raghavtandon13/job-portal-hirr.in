@@ -16,7 +16,7 @@ const OrgLogin = () => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const response = await fetch("http://hirr.in/api/login/company/", {
+      const response = await fetch("https://hirrin-backend.vercel.app/api/login/company/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
