@@ -33,17 +33,18 @@ const Login = () => {
         //----------For Development---------------//
         ////////////////////////////////////////////
 
-        // const responseData = await response.json();
-        // console.log(responseData);
-        // const token = responseData.user.token;
-        // console.log(token);
-        // document.cookie = `mytoken=${token}`;
+        const responseData = await response.json();
+        console.log(responseData);
+        const token = responseData.user.token;
+        console.log(token);
+        document.cookie = `mytoken=${token}`;
+        console.log("token set")
 
         ////////////////////////////////////////////
         ////////////////////////////////////////////
         ////////////////////////////////////////////
 
-        //window.location.reload();
+        window.location.reload();
 
         navigate("/home");
       } else {
