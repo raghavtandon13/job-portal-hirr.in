@@ -16,8 +16,7 @@ export const fast2sms = async (otp, contactNumber) => {
 
   const url = new URL("https://www.fast2sms.com/dev/bulkV2");
   const params = {
-    authorization:
-      "mSqeyUGhtg2i3dnFzk6x8JfXo4YAaw0ENLsPHRBWlQbKZOvCuIHgAPkimoq09z7sGnT5wjMId1t6XEL3",
+    authorization: "mSqeyUGhtg2i3dnFzk6x8JfXo4YAaw0ENLsPHRBWlQbKZOvCuIHgAPkimoq09z7sGnT5wjMId1t6XEL3",
     variables_values: otp,
     route: "otp",
     numbers: contactNumber,

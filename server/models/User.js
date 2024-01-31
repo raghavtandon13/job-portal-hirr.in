@@ -67,10 +67,7 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-userSchema.index(
-  { phone: 1 },
-  { unique: true, partialFilterExpression: { phone: { $ne: null } } }
-);
+userSchema.index({ phone: 1 }, { unique: true, partialFilterExpression: { phone: { $ne: null } } });
 
 const User = mongoose.model("User", userSchema);
 

@@ -1,5 +1,5 @@
-// {
-//   "globals": {
-//     "process": true
-//   }
-// }
+{
+  "globals": {
+    "process": true
+  }
+}
